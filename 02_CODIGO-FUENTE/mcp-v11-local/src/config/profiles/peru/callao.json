@@ -1,0 +1,5 @@
+{
+  "_comment": "Callao — Peru 53%. Needs stronger foreign filter.",
+  "scoring": { "MIN_RELEVANCE": 5 },
+  "penalties": { "foreignMultiplier": 0.1, "offTopicPenalty": -30 }
+}

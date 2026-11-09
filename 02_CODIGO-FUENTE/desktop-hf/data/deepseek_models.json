@@ -1,0 +1,13 @@
+{
+  "lastSynced": "2026-08-02T18:33:42.641Z",
+  "models": [
+    {
+      "id": "deepseek-v4-flash",
+      "name": "deepseek-v4-flash"
+    },
+    {
+      "id": "deepseek-v4-pro",
+      "name": "deepseek-v4-pro"
+    }
+  ]
+}

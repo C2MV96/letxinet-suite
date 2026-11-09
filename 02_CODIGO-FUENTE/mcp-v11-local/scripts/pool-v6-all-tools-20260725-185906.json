@@ -1,0 +1,232 @@
+﻿[
+    {
+        "run":  1,
+        "tool":  "search",
+        "verdict":  "HTTP_",
+        "ms":  null,
+        "http":  null,
+        "expect":  "results",
+        "error":  null,
+        "bodySample":  null
+    },
+    {
+        "run":  1,
+        "tool":  "batch_search",
+        "verdict":  "HTTP_",
+        "ms":  null,
+        "http":  null,
+        "expect":  "per_query",
+        "error":  null,
+        "bodySample":  null
+    },
+    {
+        "run":  1,
+        "tool":  "list_sources",
+        "verdict":  "HTTP_",
+        "ms":  null,
+        "http":  null,
+        "expect":  "sources",
+        "error":  null,
+        "bodySample":  null
+    },
+    {
+        "run":  1,
+        "tool":  "health_check",
+        "verdict":  "HTTP_",
+        "ms":  null,
+        "http":  null,
+        "expect":  "status",
+        "error":  null,
+        "bodySample":  null
+    },
+    {
+        "run":  1,
+        "tool":  "coverage_report",
+        "verdict":  "HTTP_",
+        "ms":  null,
+        "http":  null,
+        "expect":  "countries",
+        "error":  null,
+        "bodySample":  null
+    },
+    {
+        "run":  1,
+        "tool":  "help",
+        "verdict":  "HTTP_",
+        "ms":  null,
+        "http":  null,
+        "expect":  "tools",
+        "error":  null,
+        "bodySample":  null
+    },
+    {
+        "run":  1,
+        "tool":  "search_paperswithcode",
+        "verdict":  "HTTP_",
+        "ms":  null,
+        "http":  null,
+        "expect":  "papers",
+        "error":  null,
+        "bodySample":  null
+    },
+    {
+        "run":  1,
+        "tool":  "search_conferences",
+        "verdict":  "HTTP_",
+        "ms":  null,
+        "http":  null,
+        "expect":  "conferences",
+        "error":  null,
+        "bodySample":  null
+    },
+    {
+        "run":  1,
+        "tool":  "trending_papers",
+        "verdict":  "HTTP_",
+        "ms":  null,
+        "http":  null,
+        "expect":  "papers",
+        "error":  null,
+        "bodySample":  null
+    },
+    {
+        "run":  1,
+        "tool":  "enrich_metadata",
+        "verdict":  "HTTP_",
+        "ms":  null,
+        "http":  null,
+        "expect":  "enriched",
+        "error":  null,
+        "bodySample":  null
+    },
+    {
+        "run":  1,
+        "tool":  "download_pdf",
+        "verdict":  "HTTP_",
+        "ms":  null,
+        "http":  null,
+        "expect":  "url",
+        "error":  null,
+        "bodySample":  null
+    },
+    {
+        "run":  1,
+        "tool":  "resolve_pdf",
+        "verdict":  "HTTP_",
+        "ms":  null,
+        "http":  null,
+        "expect":  "resolved_url",
+        "error":  null,
+        "bodySample":  null
+    },
+    {
+        "run":  1,
+        "tool":  "pdf_metadata",
+        "verdict":  "HTTP_",
+        "ms":  null,
+        "http":  null,
+        "expect":  "metadata",
+        "error":  null,
+        "bodySample":  null
+    },
+    {
+        "run":  1,
+        "tool":  "pdf_citations",
+        "verdict":  "HTTP_",
+        "ms":  null,
+        "http":  null,
+        "expect":  "citations",
+        "error":  null,
+        "bodySample":  null
+    },
+    {
+        "run":  1,
+        "tool":  "pdf_smart_summary",
+        "verdict":  "HTTP_",
+        "ms":  null,
+        "http":  null,
+        "expect":  "summary",
+        "error":  null,
+        "bodySample":  null
+    },
+    {
+        "run":  1,
+        "tool":  "read_pdf",
+        "verdict":  "HTTP_",
+        "ms":  null,
+        "http":  null,
+        "expect":  "text",
+        "error":  null,
+        "bodySample":  null
+    },
+    {
+        "run":  1,
+        "tool":  "read_pdf_markdown",
+        "verdict":  "HTTP_",
+        "ms":  null,
+        "http":  null,
+        "expect":  "markdown",
+        "error":  null,
+        "bodySample":  null
+    },
+    {
+        "run":  1,
+        "tool":  "extract_section",
+        "verdict":  "HTTP_",
+        "ms":  null,
+        "http":  null,
+        "expect":  "section",
+        "error":  null,
+        "bodySample":  null
+    },
+    {
+        "run":  1,
+        "tool":  "extract_tables",
+        "verdict":  "HTTP_",
+        "ms":  null,
+        "http":  null,
+        "expect":  "tables",
+        "error":  null,
+        "bodySample":  null
+    },
+    {
+        "run":  1,
+        "tool":  "extract_formulas",
+        "verdict":  "HTTP_",
+        "ms":  null,
+        "http":  null,
+        "expect":  "formulas",
+        "error":  null,
+        "bodySample":  null
+    },
+    {
+        "run":  1,
+        "tool":  "convert_document",
+        "verdict":  "HTTP_",
+        "ms":  null,
+        "http":  null,
+        "expect":  "markdown",
+        "error":  null,
+        "bodySample":  null
+    },
+    {
+        "run":  1,
+        "tool":  "batch_convert",
+        "verdict":  "HTTP_",
+        "ms":  null,
+        "http":  null,
+        "expect":  "results",
+        "error":  null,
+        "bodySample":  null
+    },
+    {
+        "run":  1,
+        "tool":  "analyze_academic",
+        "verdict":  "HTTP_",
+        "ms":  null,
+        "http":  null,
+        "expect":  "analysis",
+        "error":  null,
+        "bodySample":  null
+    }
+]

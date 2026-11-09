@@ -1,0 +1,5 @@
+{
+  "_comment": "Cusco — Peru 64%, topic 33%. Needs lower threshold + topic filter.",
+  "scoring": { "MIN_RELEVANCE": 5 },
+  "penalties": { "foreignMultiplier": 0.2, "offTopicPenalty": -35 }
+}

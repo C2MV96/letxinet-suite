@@ -1,0 +1,44 @@
+﻿{
+  "name": "mcp-v11-local",
+  "version": "0.0.0",
+  "description": "MCP-V11 Local - Backend MCP de busqueda academica portable (LetXipu Desktop HF)",
+  "main": "dist/server.js",
+  "private": true,
+  "author": "C2MV",
+  "appId": "com.c2mv.mcpv11.local",
+  "productName": "MCP-V11-Local",
+  "build": {
+    "appId": "com.c2mv.mcpv11.local",
+    "productName": "MCP-V11-Local",
+    "copyright": "C2MV 2026",
+    "directories": {
+      "output": "dist",
+      "app": ".."
+    },
+    "files": [
+      "dist/**/*",
+      "node_modules/**/*",
+      "package.json",
+      "package-lock.json"
+    ],
+    "extraResources": [
+      {"from": "../dist/python", "to": "python"},
+      {"from": "../python-embedded", "to": "python-embedded", "filter": ["**/*"]},
+      {"from": "../start-mcp-local.cmd", "to": "start-mcp-local.cmd"}
+    ],
+    "win": {
+      "target": ["nsis"],
+      "signAndEditExecutable": false,
+      "forceCodeSigning": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "MCP-V11-Local",
+      "runAfterFinish": false
+    }
+  }
+}

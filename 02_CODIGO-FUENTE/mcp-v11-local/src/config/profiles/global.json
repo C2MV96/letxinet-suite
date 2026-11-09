@@ -1,0 +1,84 @@
+{
+  "_comment": "V18 Global defaults — inherited by all countries/combos/cities",
+  "scoring": {
+    "MIN_RELEVANCE": 15,
+    "MIN_COVERAGE_FLOOR_PCT": 0.2,
+    "MIN_COVERAGE_FLOOR_MAX": 10,
+    "scoreCap": 100,
+    "QUALITY_WEIGHT": 0.15,
+    "textWeight": 0.7,
+    "geoWeight": 0.3,
+    "FAST_PASS_LIMIT": 60,
+    "GEOCODE_LIMIT": 10,
+    "overFetchMultiplier": 3
+  },
+  "penalties": {
+    "offTopicPenalty": -25,
+    "shortTitlePenalty": -8,
+    "shortTitleThreshold": 25,
+    "veryShortTitlePenalty": -5,
+    "veryShortTitleThreshold": 15,
+    "genericTitlePenalty": -15,
+    "noUniversityPenalty": -8,
+    "foreignMultiplier": 0.3,
+    "nonPeruSourcePenalty": -10
+  },
+  "geoBoost": {
+    "city": { "maxKm": 50, "boost": 60 },
+    "region": { "maxKm": 200, "boost": 35 },
+    "nearby": { "maxKm": 500, "boost": 15 },
+    "far": { "maxKm": 2000, "boost": -5 },
+    "foreign": { "boost": -30 },
+    "geoCityBoost": 25,
+    "geoStateBoost": 15
+  },
+  "tokenMatch": {
+    "titleWeight": 3,
+    "abstractWeight": 1
+  },
+  "phraseMatch": {
+    "weight": 5
+  },
+  "conceptMatch": {
+    "weight": 8
+  },
+  "countryBoost": {
+    "matchBonus": 12,
+    "missBonus": 2,
+    "peruSourceBonus": 25
+  },
+  "universityTier": {
+    "tier1": 6,
+    "tier2": 4,
+    "tier3": 3
+  },
+  "matchedQueryBonus": 4,
+  "recency": {
+    "year2018": 2,
+    "year2010": 1
+  },
+  "regionMatch": {
+    "fullMatch": 30,
+    "partialMatch": 15,
+    "penaltyPerMissing": 8,
+    "penaltyCap": 25
+  },
+  "genericPatterns": [
+    "economia informal",
+    "el castigo estimula el delito",
+    "jovenes universitarios, violencia e inseguridad en colima",
+    "proceso analitico jerarquico neutrosofico"
+  ],
+  "quality": {
+    "doi": 20,
+    "url": 15,
+    "abstractThreshold": 80,
+    "abstractScore": 20,
+    "authors": 10,
+    "year": 10,
+    "university": 5,
+    "citationCap": 10,
+    "sourceCount3": 12,
+    "sourceCount2": 6
+  }
+}

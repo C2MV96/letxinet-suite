@@ -1,0 +1,198 @@
+﻿[
+    {
+        "tool":  "search",
+        "status":  "OK",
+        "ms":  1068,
+        "chars":  1641,
+        "error":  null
+    },
+    {
+        "tool":  "batch_search",
+        "status":  "OK",
+        "ms":  631,
+        "chars":  2823,
+        "error":  null
+    },
+    {
+        "tool":  "smart_search",
+        "status":  "OK",
+        "ms":  1894,
+        "chars":  2268,
+        "error":  null
+    },
+    {
+        "tool":  "list_sources",
+        "status":  "OK",
+        "ms":  331,
+        "chars":  11065,
+        "error":  null
+    },
+    {
+        "tool":  "health_check",
+        "status":  "OK",
+        "ms":  1948,
+        "chars":  1207,
+        "error":  null
+    },
+    {
+        "tool":  "coverage_report",
+        "status":  "OK",
+        "ms":  284,
+        "chars":  608,
+        "error":  null
+    },
+    {
+        "tool":  "help",
+        "status":  "OK",
+        "ms":  251,
+        "chars":  7552,
+        "error":  null
+    },
+    {
+        "tool":  "search_paperswithcode",
+        "status":  "OK",
+        "ms":  382,
+        "chars":  7877,
+        "error":  null
+    },
+    {
+        "tool":  "search_conferences",
+        "status":  "OK",
+        "ms":  708,
+        "chars":  13751,
+        "error":  null
+    },
+    {
+        "tool":  "search_dblp",
+        "status":  "OK",
+        "ms":  10722,
+        "chars":  187,
+        "error":  null
+    },
+    {
+        "tool":  "trending_papers",
+        "status":  "OK",
+        "ms":  345,
+        "chars":  17631,
+        "error":  null
+    },
+    {
+        "tool":  "enrich_metadata",
+        "status":  "OK",
+        "ms":  494,
+        "chars":  242,
+        "error":  null
+    },
+    {
+        "tool":  "fetch_metadata",
+        "status":  "OK",
+        "ms":  1261,
+        "chars":  315,
+        "error":  null
+    },
+    {
+        "tool":  "recover_metadata",
+        "status":  "OK",
+        "ms":  1231,
+        "chars":  384,
+        "error":  null
+    },
+    {
+        "tool":  "download_pdf",
+        "status":  "OK",
+        "ms":  4770,
+        "chars":  96,
+        "error":  null
+    },
+    {
+        "tool":  "resolve_pdf",
+        "status":  "OK",
+        "ms":  2671,
+        "chars":  558,
+        "error":  null
+    },
+    {
+        "tool":  "pdf_metadata",
+        "status":  "OK",
+        "ms":  762,
+        "chars":  291,
+        "error":  null
+    },
+    {
+        "tool":  "pdf_citations",
+        "status":  "OK",
+        "ms":  461,
+        "chars":  11706,
+        "error":  null
+    },
+    {
+        "tool":  "pdf_smart_summary",
+        "status":  "OK",
+        "ms":  1447,
+        "chars":  1993,
+        "error":  null
+    },
+    {
+        "tool":  "pdf_sections",
+        "status":  "OK",
+        "ms":  1500,
+        "chars":  6956,
+        "error":  null
+    },
+    {
+        "tool":  "read_pdf",
+        "status":  "OK",
+        "ms":  1487,
+        "chars":  1358,
+        "error":  null
+    },
+    {
+        "tool":  "read_pdf_markdown",
+        "status":  "OK",
+        "ms":  1470,
+        "chars":  1394,
+        "error":  null
+    },
+    {
+        "tool":  "extract_section",
+        "status":  "OK",
+        "ms":  400,
+        "chars":  1174,
+        "error":  null
+    },
+    {
+        "tool":  "extract_tables",
+        "status":  "OK",
+        "ms":  231,
+        "chars":  71,
+        "error":  null
+    },
+    {
+        "tool":  "extract_formulas",
+        "status":  "OK",
+        "ms":  236,
+        "chars":  73,
+        "error":  null
+    },
+    {
+        "tool":  "convert_document",
+        "status":  "OK",
+        "ms":  1256,
+        "chars":  1556,
+        "error":  null
+    },
+    {
+        "tool":  "batch_convert",
+        "status":  "OK",
+        "ms":  1537,
+        "chars":  223,
+        "error":  null
+    },
+    {
+        "tool":  "analyze_academic",
+        "status":  "OK",
+        "ms":  454,
+        "chars":  20553,
+        "error":  null
+    }
+]

@@ -1,0 +1,34 @@
+{
+  "mcpServers": {
+    "letxinet-v11": {
+      "type": "http",
+      "url": "http://127.0.0.1:4003/api/mcp"
+    },
+    "letxinet-osm": {
+      "type": "http",
+      "url": "http://127.0.0.1:7082/mcp"
+    },
+    "letxinet-markitdown": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "C:/Program Files/LetXinet Suite/MarkItDown/API/mcp-adapter/markitdown-mcp.js"
+      ],
+      "env": {
+        "MARKITDOWN_API_URL": "http://127.0.0.1:7860"
+      }
+    },
+    "letxinet-jobs": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "D:/OTROS/LETXINET-MCP-AGENT-GUI/LETXINET-MCP-AGENT-GUI-V2-main/gateway-mcp-bridge.cjs"
+      ],
+      "env": {
+        "GATEWAY_URL": "http://127.0.0.1:3000",
+        "LETXIPU_LOCAL_URL": "http://127.0.0.1:4003",
+        "JOBS_DIR": "D:/OTROS/LETXINET-MCP-AGENT-GUI/jobs"
+      }
+    }
+  }
+}

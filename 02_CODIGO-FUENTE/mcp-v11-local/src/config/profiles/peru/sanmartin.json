@@ -1,0 +1,5 @@
+{
+  "_comment": "San Martin — geo 0%. Needs higher geo boost + more geocoding.",
+  "scoring": { "GEOCODE_LIMIT": 15 },
+  "geoBoost": { "city": { "boost": 70 }, "geoCityBoost": 30 }
+}

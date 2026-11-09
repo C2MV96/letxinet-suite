@@ -1,0 +1,10 @@
+{
+  "_comment": "Madre de Dios — small Amazonian region, 43% Peru. Very low threshold.",
+  "scoring": {
+    "MIN_RELEVANCE": 0
+  },
+  "penalties": {
+    "offTopicPenalty": -10,
+    "foreignMultiplier": 0.2
+  }
+}

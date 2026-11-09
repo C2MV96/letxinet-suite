@@ -1,0 +1,5 @@
+{
+  "_comment": "Tumbes — Peru 53%. Small border region, needs lower threshold + foreign filter.",
+  "scoring": { "MIN_RELEVANCE": 0 },
+  "penalties": { "foreignMultiplier": 0.1 }
+}

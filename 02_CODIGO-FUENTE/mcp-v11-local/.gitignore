@@ -1,0 +1,56 @@
+# === Secrets ===
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+
+# === Build outputs ===
+dist/
+node_modules/
+.cache/
+
+# === Logs ===
+*.log
+!HITOS.log
+
+# === Backups ===
+*.bak
+README.pre-push-*
+
+# === Codebase-memory artifact (kept local, regenerated per machine) ===
+.codebase-memory/
+
+# === spaCy heavy models (use src/python/start.sh or pip install) ===
+src/python/models/**/3.8.0/
+src/python/models/**/ner/
+src/python/models/**/parser/
+src/python/models/**/tagger/
+src/python/models/**/senter/
+src/python/models/**/morphologizer/
+src/python/models/**/lemmatizer/
+src/python/models/**/tok2vec/
+src/python/models/**/vocab/
+src/python/models/**/attribute_ruler/
+src/python/models/**/config.cfg
+src/python/models/**/accuracy.json
+src/python/models/**/meta.json
+src/python/models/**/LICENSE
+src/python/models/**/LICENSES_SOURCES
+src/python/models/**/README.md
+
+# === Test artifacts (regenerable) ===
+top5_*.json
+results_spacy_*.json
+scripts/pool-v5-results-*.json
+scripts/retest-backlog-results-*.json
+scripts/e2e_console.log
+scripts/e2e_results.*
+scripts/e2e_report.md
+scripts/out/
+tests/v11_build_check.txt
+tests/v11_tsc_errors.txt
+
+# === OS artifacts ===
+Thumbs.db
+.DS_Store

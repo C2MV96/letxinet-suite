@@ -1,0 +1,28 @@
+LetXinet Suite - Arreglo 2 (MarkItDown en procesadores antiguos)
+==================================================================
+
+Para que sirve
+  Si el primer arreglo mostro:
+    "DLL load failed while importing _multiarray_umath:
+     Error en una rutina de inicializacion de biblioteca de vinculos dinamicos (DLL)"
+  MarkItDown no arranca porque la version de numpy que trae la Suite (2.5.1)
+  necesita un procesador con SSE4.2. Este arreglo pone numpy 2.3.5, que funciona
+  en procesadores mas antiguos, y guarda el numpy original por si hay que volver atras.
+
+Como usarlo
+  1. Descomprime todo el zip (por ejemplo en el Escritorio).
+  2. Doble clic en arreglar-markitdown.cmd y acepta el permiso de administrador.
+  3. Espera a que termine (unos 3 minutos) y mandale a Claude una foto de la ventana.
+  El resumen queda en el Escritorio: arreglo2-letxinet-<fecha>.txt
+
+Que cambia
+  Solo la carpeta numpy dentro de:
+    C:\Program Files\LetXinet Suite\MarkItDown\API\python-runtime\Lib\site-packages
+  El numpy original queda en:
+    C:\Program Files\LetXinet Suite\MarkItDown\API\python-runtime\respaldo-numpy-original
+  Si el procesador si tiene SSE4.2 y numpy ya carga, no cambia nada.
+
+En el repositorio de GitHub
+  El wheel de numpy no se incluye. Antes de armar el zip, descargalo en esta carpeta:
+    pip download numpy==2.3.5 --only-binary=:all: --platform win_amd64 --python-version 3.12 --no-deps -d .
+  Debe quedar numpy-2.3.5-cp312-cp312-win_amd64.whl junto a arreglar-markitdown.ps1.

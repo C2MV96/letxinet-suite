@@ -1,0 +1,2514 @@
+{
+  "lado": "letxinet",
+  "fecha": "2026-11-08",
+  "fuentes": {
+    "peru": [
+      "renati",
+      "laref_peru"
+    ],
+    "global": [
+      "openalex",
+      "pubmed",
+      "scielo",
+      "crossref"
+    ]
+  },
+  "consultas": [
+    {
+      "id": "Q1",
+      "consulta": "Control vectorial de Aedes aegypti en el Perú",
+      "segundos": 41.17,
+      "errores": [],
+      "referencias": [
+        {
+          "titulo": "Peruvian plant resources as potential natural controllers of adult Aedes aegypti",
+          "autores": [
+            "Cordova Paz Soldan, Ofelia Magdalena"
+          ],
+          "anio": 2023,
+          "doi": null,
+          "url": "https://hdl.handle.net/20.500.12759/90892",
+          "fuente": "La Referencia (Perú)",
+          "tipo": "articulo",
+          "universidad": "Universidad Privada Antenor Orrego",
+          "es_peru": true,
+          "enlace_abre": true
+        },
+        {
+          "titulo": "Eficacia del piryproxifen frente al temephos para el control de Aedes aegypti en condiciones de laboratorio en Lima Perú",
+          "autores": [
+            "Pérez Alarcón, María Elizabeth"
+          ],
+          "anio": 2019,
+          "doi": null,
+          "url": "https://hdl.handle.net/20.500.12672/10579",
+          "fuente": "La Referencia (Perú)",
+          "tipo": "tesis",
+          "universidad": "Universidad Nacional Mayor de San Marcos",
+          "es_peru": true,
+          "enlace_abre": false
+        },
+        {
+          "titulo": "Modelo de gestión de vigilancia y control del Aedes Aegypti vector del dengue, zika y la fiebre chikungunya en el distrito de Santa Anita - Lima Perú",
+          "autores": [
+            "Oriundo Vergara, Willy José"
+          ],
+          "anio": 2025,
+          "doi": null,
+          "url": "https://hdl.handle.net/20.500.13084/10493",
+          "fuente": "La Referencia (Perú)",
+          "tipo": "tesis",
+          "universidad": "Universidad Nacional Federico Villarreal",
+          "es_peru": true,
+          "enlace_abre": true
+        },
+        {
+          "titulo": "Enzyme profile of insecticide-resistant phenotypes of Aedes aegypti from Bagua, Peru",
+          "autores": [
+            "Cordova Paz Soldan, Ofelia Magdalena"
+          ],
+          "anio": 2023,
+          "doi": null,
+          "url": "https://hdl.handle.net/20.500.12759/90872",
+          "fuente": "La Referencia (Perú)",
+          "tipo": "articulo",
+          "universidad": "Universidad Privada Antenor Orrego",
+          "es_peru": true
+        },
+        {
+          "titulo": "Evaluation of temefos and pyriproxyfen to control Aedes aegypti larvae in laboratory conditions",
+          "autores": [
+            "Pérez, María"
+          ],
+          "anio": 2017,
+          "doi": null,
+          "url": "https://horizontemedico.usmp.edu.pe/index.php/horizontemed/article/view/685",
+          "fuente": "La Referencia (Perú)",
+          "tipo": "articulo",
+          "universidad": "Universidad de San Martín de Porres",
+          "es_peru": true
+        },
+        {
+          "titulo": "Caracterización metabólica de la resistencia de Aedes Aegypti (diptera: culicidae) a los insecticidas deltametrina y temefos en Trujillo, PERÚ",
+          "autores": [
+            "Sánchez Tamayo, Luis Alberto"
+          ],
+          "anio": 2023,
+          "doi": null,
+          "url": "https://hdl.handle.net/20.500.12759/10297",
+          "fuente": "La Referencia (Perú)",
+          "tipo": "tesis",
+          "universidad": "Universidad Privada Antenor Orrego",
+          "es_peru": true
+        },
+        {
+          "titulo": "Circulación del virus dengue en el Perú y crónicas para su control",
+          "autores": [
+            "Hijar Guerra, Gisely"
+          ],
+          "anio": 2006,
+          "doi": null,
+          "url": "https://hdl.handle.net/20.500.14196/688",
+          "fuente": "La Referencia (Perú)",
+          "tipo": "articulo",
+          "universidad": "Instituto Nacional de Salud",
+          "es_peru": true
+        },
+        {
+          "titulo": "Propuesta de un modelo matemático para controlar la propagación del dengue en la ciudad de Piura",
+          "autores": [
+            "Vicente Morocho, Angel Rafael"
+          ],
+          "anio": 2019,
+          "doi": null,
+          "url": "https://repositorio.unp.edu.pe/handle/UNP/1618",
+          "fuente": "La Referencia (Perú)",
+          "tipo": "tesis",
+          "universidad": "Universidad Nacional de Piura",
+          "es_peru": true
+        },
+        {
+          "titulo": "Biotecnología molecular en entomología médica: propuestas innovadoras para el control vectorial de Aedes aegypti",
+          "autores": [
+            "Archi Alejandro Ruiz Polo"
+          ],
+          "anio": 2026,
+          "doi": "10.20453/rmh.v37i1.7152",
+          "url": "https://revistas.upch.edu.pe/index.php/RMH/article/download/7152/6996",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Universidad Peruana Cayetano Heredia",
+          "es_peru": true
+        },
+        {
+          "titulo": "Effects of Spatial Heterogeneity on Transmission Potential in Vectorial-Contact Networks: A Comparison of Three\n                  <i>Aedes aegypti</i>\n                  Control Strategies",
+          "autores": [
+            "Héctor M. Sánchez C.",
+            "John M. Marshall",
+            "Sean L. Wu",
+            "Edgar E. Vallejo"
+          ],
+          "anio": 2017,
+          "doi": "10.1101/210450",
+          "url": "https://syndication.highwire.org/content/doi/10.1101/210450",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "openRxiv",
+          "es_peru": false,
+          "enlace_abre": false
+        },
+        {
+          "titulo": "Costo del control de Aedes aegypti en la Amazonía peruana",
+          "autores": [
+            "Salomon Durand",
+            "Arles Paredes",
+            "Carlos Pacheco",
+            "Ray Fernandez"
+          ],
+          "anio": 2024,
+          "doi": "10.17843/rpmesp.2024.411.12905",
+          "url": "https://rpmesp.ins.gob.pe/index.php/rpmesp/article/download/12905/5536",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Instituto Nacional de Salud (Peru)",
+          "es_peru": true
+        },
+        {
+          "titulo": "Microbial secondary metabolites in the control of Aedes aegypti",
+          "autores": [
+            "M. Govindarajan"
+          ],
+          "anio": 2025,
+          "doi": "10.1016/b978-0-443-21461-5.00002-x",
+          "url": "https://api.elsevier.com/content/article/PII:B978044321461500002X?httpAccept=text/xml",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Elsevier",
+          "es_peru": false,
+          "enlace_abre": true
+        },
+        {
+          "titulo": "Future avenues in research and surveillance for Aedes aegypti control",
+          "autores": [
+            "Mohan Rajeswary"
+          ],
+          "anio": 2025,
+          "doi": "10.1016/b978-0-443-21461-5.00015-8",
+          "url": "https://api.elsevier.com/content/article/PII:B9780443214615000158?httpAccept=text/xml",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Elsevier",
+          "es_peru": false,
+          "enlace_abre": true
+        },
+        {
+          "titulo": "Nanodrug delivery approaches in the control of Aedes aegypti",
+          "autores": [
+            "Muthukumar Abinaya",
+            "Periyasamy Gnanaprakasam"
+          ],
+          "anio": 2025,
+          "doi": "10.1016/b978-0-443-21461-5.00001-8",
+          "url": "https://api.elsevier.com/content/article/PII:B9780443214615000018?httpAccept=text/xml",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Elsevier",
+          "es_peru": false
+        },
+        {
+          "titulo": "Machine learning techniques in the control of Aedes aegypti",
+          "autores": [
+            "Ashokkumar Sibiya",
+            "B. Vaseeharan"
+          ],
+          "anio": 2025,
+          "doi": "10.1016/b978-0-443-21461-5.00004-3",
+          "url": "https://api.elsevier.com/content/article/PII:B9780443214615000043?httpAccept=text/xml",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Elsevier",
+          "es_peru": false
+        },
+        {
+          "titulo": "Sticky traps for Aedes aegypti surveillance and targeted vector control in Sincelejo, Colombia",
+          "autores": [
+            "Carlos Sermeño-Correa",
+            "Alexander Bedoya-Polo",
+            "Erwin Camacho",
+            "Eduar Bejarano-Martínez"
+          ],
+          "anio": 2025,
+          "doi": "10.7705/biomedica.7290",
+          "url": "https://revistabiomedica.org/index.php/biomedica/article/download/7290/5649",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Instituto Nacional de Salud (Colombia)",
+          "es_peru": false
+        }
+      ],
+      "enlaces_probados": 6,
+      "enlaces_que_abren": 4
+    },
+    {
+      "id": "Q2",
+      "consulta": "Efectividad de la nebulización espacial con insecticidas para el control del dengue",
+      "segundos": 31.425,
+      "errores": [],
+      "referencias": [
+        {
+          "titulo": "“Casos positivos de dengue relacionado a los métodos de intervención entomológica de la localidad de San Francisco Ayacucho, 2020”",
+          "autores": [
+            "Tintaya Peña, Vanessa"
+          ],
+          "anio": 2022,
+          "doi": null,
+          "url": "https://hdl.handle.net/20.500.12952/7027",
+          "fuente": "La Referencia (Perú)",
+          "tipo": "tesis",
+          "universidad": "Universidad Nacional del Callao",
+          "es_peru": true,
+          "enlace_abre": false
+        }
+      ],
+      "enlaces_probados": 1,
+      "enlaces_que_abren": 0
+    },
+    {
+      "id": "Q3",
+      "consulta": "Dengue en Chimbote, Áncash: epidemiología y factores de riesgo",
+      "segundos": 30.26,
+      "errores": [],
+      "referencias": [
+        {
+          "titulo": "Reporte de caso clínico Dengue hemorrágico en gestante hospitalizada en el servicio de gineco – obstetricia del Hospital La Caleta Chimbote, 2023",
+          "autores": [
+            "Holguin Ramos, Cristina Lisbeth"
+          ],
+          "anio": 2024,
+          "doi": null,
+          "url": "https://hdl.handle.net/20.500.12727/14807",
+          "fuente": "La Referencia (Perú)",
+          "tipo": "tesis",
+          "universidad": "Universidad de San Martín de Porres",
+          "es_peru": true,
+          "enlace_abre": true
+        },
+        {
+          "titulo": "Influencia del conocimiento y actitud de pacientes en la satisfacción del uso “Chatbot” de inteligencia artificial contra el dengue. Essalud-Chimbote",
+          "autores": [
+            "Julca Gil, Brenda Mileyde"
+          ],
+          "anio": 2025,
+          "doi": null,
+          "url": "https://hdl.handle.net/20.500.12692/164738",
+          "fuente": "La Referencia (Perú)",
+          "tipo": "tesis",
+          "universidad": "Universidad Cesar Vallejo",
+          "es_peru": true,
+          "enlace_abre": true
+        },
+        {
+          "titulo": "Adherencia al tratamiento y calidad de atención en la unidad de observación para pacientes febriles con dengue Centro de Salud Miraflores Alto-Chimbote 2024",
+          "autores": [
+            "Sanchez de la Cruz, Ebonny Sheyla"
+          ],
+          "anio": 2025,
+          "doi": null,
+          "url": "https://hdl.handle.net/20.500.12727/18906",
+          "fuente": "La Referencia (Perú)",
+          "tipo": "tesis",
+          "universidad": "Universidad de San Martín de Porres",
+          "es_peru": true,
+          "enlace_abre": true
+        },
+        {
+          "titulo": "El Hospital bajo la furia del Cólera",
+          "autores": [
+            "GONZALEZ DEL CARPIO, Diego"
+          ],
+          "anio": 2013,
+          "doi": null,
+          "url": "https://revistas.upch.edu.pe/index.php/RMH/article/view/332",
+          "fuente": "La Referencia (Perú)",
+          "tipo": "articulo",
+          "universidad": "Universidad Peruana Cayetano Heredia",
+          "es_peru": true
+        },
+        {
+          "titulo": "Estrategias didácticas para desarrollar el pensamiento crítico de los estudiantes de computación e informática del I Ciclo Del Ist”Csr” Del Distrito De Nuevo Chimbote, Santa- Ancash- 2009",
+          "autores": [
+            "Luz Esther Manrique Orbegozo"
+          ],
+          "anio": 2021,
+          "doi": "10.55364/the.vol3.iss5.52",
+          "url": "https://the.redcicue.com/index.php/the/article/download/52/58",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Red Cientifica Internacional del Campo Unificado de la Educacion",
+          "es_peru": true
+        },
+        {
+          "titulo": "Control Interno y Gestión Institucional en la Microfinanciera “Caritas Felices”, Chimbote, Ancash, Perú, 2020.",
+          "autores": [
+            "José Cayetano Vergaray Huamán",
+            "Walter Javier Gutiérrez Dextre",
+            "Francisco Rafael León Cavero",
+            "Christian Francisco León León"
+          ],
+          "anio": 2022,
+          "doi": "10.58299/6tfqrn09",
+          "url": "https://educateconciencia.com/index.php/revistaeducate/article/download/108/98",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Universidad Tecnocientífica del Pacífico SC",
+          "es_peru": true
+        },
+        {
+          "titulo": "Urban demographic expansion and environmental sustainability of the district of New Chimbote – Ancash – Peru, 2023",
+          "autores": [
+            "Víctor Bratzo Unyén Kuzma"
+          ],
+          "anio": 2024,
+          "doi": "10.17268/rev.cyt.2024.01.02",
+          "url": "https://doi.org/10.17268/rev.cyt.2024.01.02",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Universidad Nacional de Trujillo",
+          "es_peru": true
+        },
+        {
+          "titulo": "Alfabetización digital de los estudiantes egresados del VII ciclo de educación básica regular en Chimbote, Ancash, Perú",
+          "autores": [
+            "Juana Luz Montero Pereda"
+          ],
+          "anio": 2013,
+          "doi": "10.21895/incres.2013.v4n1.04",
+          "url": "https://revistas.uladech.edu.pe/index.php/increscendo/article/viewFile/20/20",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Universidad Catolica Los Angeles de Chimbote",
+          "es_peru": true
+        },
+        {
+          "titulo": "Programa LUDOCREO para mejorar habilidades sociales en estudiantes de quinto de primaria en Chimbote-Ancash –  2022",
+          "autores": [
+            "Lupe Maribel Vargas Delgado",
+            "Maritza Isabel Villanueva Campos"
+          ],
+          "anio": 2023,
+          "doi": "10.46363/searching.v4i2.4",
+          "url": "https://revista.uct.edu.pe/index.php/searching/article/download/477/529",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Asociacion Civil Universidad Catolica de Trujillo UCT Benedicto XVI",
+          "es_peru": true
+        },
+        {
+          "titulo": "Rabia en chimbote (Ancash, Perú)",
+          "autores": [
+            "Gonzalo Aznarán Urquía"
+          ],
+          "anio": null,
+          "doi": "10.11606/d.6.1969.tde-20251106-162502",
+          "url": "https://teses.usp.br/teses/disponiveis/6/0/tde-20251106-162502/publico/AznaranUrquia-Gonzalo.pdf",
+          "fuente": "Crossref",
+          "tipo": "tesis",
+          "universidad": "Universidade de São Paulo. Agência de Bibliotecas e Coleções Digitais",
+          "es_peru": true
+        },
+        {
+          "titulo": "Optimización de estrategias de calidad para mejorar el nivel de satisfacción del cliente en una empresa pesquera en Chimbote",
+          "autores": [
+            "Leslie Gardella",
+            "Yersy Ticliahuanga",
+            "Fiorella Lozano",
+            "Cristopher Garnica"
+          ],
+          "anio": 2025,
+          "doi": "10.1590/scielopreprints.10901",
+          "url": "https://doi.org/10.1590/scielopreprints.10901",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": true
+        },
+        {
+          "titulo": "Propuesta de Plan Estratégico para la Sostenibilidad de una Empresa de Servicios Courier - Chimbote 2024",
+          "autores": [
+            "Dan Pita Q.",
+            "Alexandra Obando Rubio",
+            "Omar Farfan Canchis",
+            "Valery Muñoz Villanueva"
+          ],
+          "anio": 2024,
+          "doi": "10.1590/scielopreprints.9505",
+          "url": "https://doi.org/10.1590/scielopreprints.9505",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": true
+        },
+        {
+          "titulo": "Propuesta de Mejora en la Gestión de Operaciones para Reducir los Costos de Producción en una Empresa Panificadora, Nuevo Chimbote - 2024",
+          "autores": [
+            "Yelsi Xiomara Henriquez Muñoz",
+            "Aldahir Sebastian Melendez Guillen",
+            "Marly Pierina Dolores Mogollon",
+            "Miguel Anghello Velásquez Pardo"
+          ],
+          "anio": 2025,
+          "doi": "10.1590/scielopreprints.10823",
+          "url": "https://doi.org/10.1590/scielopreprints.10823",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": true
+        },
+        {
+          "titulo": "Estrategias para mejorar la calidad de servicio con impacto en la satisfacción del cliente en una empresa de Chimbote, 2024",
+          "autores": [
+            "Michael Steven Pedreros Ramos",
+            "Josué Carlos Espinoza Ygnacio",
+            "Arturo Manuel Sotelo Contreras",
+            "Cristhian Fabian Espinoza Agüero"
+          ],
+          "anio": 2024,
+          "doi": "10.1590/scielopreprints.10723",
+          "url": "https://doi.org/10.1590/scielopreprints.10723",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": true
+        },
+        {
+          "titulo": "Implementación de un sistema de Gestión de Producción para  Mejorar la Eficiencia en una Panificadora – Nuevo Chimbote 2024",
+          "autores": [
+            "Carlos Manuel Burgos Medina",
+            "Victor Jacob Maza Collantes",
+            "Jae Li Merge Zapata",
+            "Raul Eduardo Urbano López"
+          ],
+          "anio": 2025,
+          "doi": "10.1590/scielopreprints.10817",
+          "url": "https://doi.org/10.1590/scielopreprints.10817",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": true
+        },
+        {
+          "titulo": "INFLUENCIA DE ESCORIA DE ACERO EN LA ESTABILIZACIÓN DE LA SUBRASANTE DE LA AVENIDA CAMINO REAL – ANCASH – 2023",
+          "autores": [
+            "Janella Kattiuska Becerra Becerra",
+            "Ruben Alexander Cruz Diaz"
+          ],
+          "anio": 2024,
+          "doi": "10.1590/scielopreprints.7650",
+          "url": "https://doi.org/10.1590/scielopreprints.7650",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": true
+        },
+        {
+          "titulo": "Nursing students' experiences in selfcare during training process in a private university in Chimbote, Peru",
+          "autores": [
+            "Carmen Leticia Gorriti Siappo",
+            "Yolanda Rodríguez Núñez",
+            "Ivone Evangelista Cabral"
+          ],
+          "anio": 2016,
+          "doi": "10.5935/1414-8145.20160003",
+          "url": "https://doi.org/10.5935/1414-8145.20160003",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": true
+        },
+        {
+          "titulo": "Una nueva especie de Telmatobius (Anura, Leptodactylidae), de Ancash, Peru",
+          "autores": [
+            "Víctor R. Morales"
+          ],
+          "anio": 1988,
+          "doi": "10.1590/s0101-81751988000400009",
+          "url": "https://doi.org/10.1590/s0101-81751988000400009",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": true
+        },
+        {
+          "titulo": "Optimización de la temperatura de secado y presión de vacío en la decoloración y composición del aceite crudo de pescado",
+          "autores": [
+            "",
+            "Lourdes Esquivel-Paredes",
+            "Ashley Campos-Grijalva",
+            ""
+          ],
+          "anio": 2018,
+          "doi": "10.18271/ria.2018.330",
+          "url": "https://doi.org/10.18271/ria.2018.330",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Universidad Nacional Del Altiplano",
+          "es_peru": false,
+          "enlace_abre": true
+        }
+      ],
+      "enlaces_probados": 4,
+      "enlaces_que_abren": 4
+    },
+    {
+      "id": "Q4",
+      "consulta": "Resistencia a insecticidas piretroides en Aedes aegypti en Perú",
+      "segundos": 30.6,
+      "errores": [],
+      "referencias": [
+        {
+          "titulo": "Caracterización metabólica de la resistencia de Aedes Aegypti (diptera: culicidae) a los insecticidas deltametrina y temefos en Trujillo, PERÚ",
+          "autores": [
+            "Sánchez Tamayo, Luis Alberto"
+          ],
+          "anio": 2023,
+          "doi": null,
+          "url": "https://hdl.handle.net/20.500.12759/10297",
+          "fuente": "La Referencia (Perú)",
+          "tipo": "tesis",
+          "universidad": "Universidad Privada Antenor Orrego",
+          "es_peru": true,
+          "enlace_abre": true
+        },
+        {
+          "titulo": "Primer reporte de la mutación F1534C, asociada con resistencia cruzada a DDT y piretroides, en Aedes aegypti de Colombia",
+          "autores": [
+            "María Claudia Atencia",
+            "María de Jesús Pérez",
+            "María Cristina Jaramillo",
+            "Sandy Milena Caldera"
+          ],
+          "anio": 2016,
+          "doi": "10.7705/biomedica.v36i3.2834",
+          "url": "http://www.revistabiomedica.org/index.php/biomedica/article/viewFile/2834/3030",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Instituto Nacional de Salud (Colombia)",
+          "es_peru": false,
+          "enlace_abre": false
+        },
+        {
+          "titulo": "Identificación mole­cular de la resistencia a organofosfo­rados y carbamatos en &lt;i&gt;Aedes aegypti&lt;/i&gt; de distintas edades fisiológicas en un cementerio del Perú",
+          "autores": [
+            "Rosa Elena Santillan-Valdivia",
+            "Mariano Manuel Yañez Cesti",
+            "Ruth Noemi Neyra-Palacios",
+            "Archi Alejandro Ruiz-Polo"
+          ],
+          "anio": 2025,
+          "doi": "10.17843/rpmesp.2025.423.14471",
+          "url": "https://rpmesp.ins.gob.pe/index.php/rpmesp/article/download/14471/6003",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Instituto Nacional de Salud (Peru)",
+          "es_peru": true,
+          "enlace_abre": false
+        },
+        {
+          "titulo": "Evaluación de la eficacia biológica y de la sensibilidad de Aedes aegypti a los insecticidas piretroides deltametrina y ciflutrina durante el brote del virus Zika en Kuna Yala, Panamá",
+          "autores": [
+            "Lorenzo Cáceres",
+            "Cipriano Ayarza",
+            "Damaris Bernal"
+          ],
+          "anio": 2023,
+          "doi": "10.7705/biomedica.6746",
+          "url": "https://revistabiomedica.org/index.php/biomedica/article/download/6746/5264",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Instituto Nacional de Salud (Colombia)",
+          "es_peru": false,
+          "enlace_abre": false
+        },
+        {
+          "titulo": "Resistencia a insecticidas y detoxificación en el mosquito Aedes aegypti, vector de dengue y otros arbovirus",
+          "autores": [
+            "",
+            "Alberto Nicolás Barrera Illanes"
+          ],
+          "anio": null,
+          "doi": "10.35537/10915/186297",
+          "url": "https://doi.org/10.35537/10915/186297",
+          "fuente": "Crossref",
+          "tipo": "tesis",
+          "universidad": "Universidad Nacional de La Plata",
+          "es_peru": false,
+          "enlace_abre": true
+        },
+        {
+          "titulo": "Resistencia a deltametrina en dos poblaciones de Aedes aegypti (Diptera, Culicidae) del Perú",
+          "autores": [
+            "Julio Chávez",
+            "Jessica Vargas",
+            "Franklin Vargas"
+          ],
+          "anio": 2005,
+          "doi": "10.15381/rpb.v12i1.2372",
+          "url": "https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/article/download/2372/2071",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Universidad Nacional Mayor de San Marcos, Vicerectorado de Investigacion",
+          "es_peru": true,
+          "enlace_abre": false
+        },
+        {
+          "titulo": "Reappearance of Aedes aegypti (Diptera: Culicidae) in Lima, Peru",
+          "autores": [
+            "Carlos Sevilla Andrade",
+            "Abraham G Cáceres",
+            "Aldo Vaquerizo",
+            "Sergio Ibañez-Bernal"
+          ],
+          "anio": 2001,
+          "doi": "10.1590/s0074-02762001000500011",
+          "url": "https://doi.org/10.1590/s0074-02762001000500011",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": true
+        },
+        {
+          "titulo": "Determinación del estado de la susceptibilidad a insecticidas organofosforados, carbamato y piretroides en poblaciones de Aedes aegypti Linneaus, 1762 (Díptera: Culicidae) de Panamá",
+          "autores": [
+            "Lorenzo Cáceres",
+            "José Rovira",
+            "Arsenio García",
+            "Rolando Torres"
+          ],
+          "anio": 2012,
+          "doi": "10.7705/biomedica.v33i0.703",
+          "url": "http://www.revistabiomedica.org/index.php/biomedica/article/download/703/2165",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Instituto Nacional de Salud (Colombia)",
+          "es_peru": false
+        },
+        {
+          "titulo": "Genetic lineages in the yellow fever mosquito Aedes (Stegomyia) aegypti (Diptera: Culicidae) from Peru",
+          "autores": [
+            "André Luis da Costa-da-Silva",
+            "Margareth Lara Capurro",
+            "José Eduardo Bracco"
+          ],
+          "anio": 2005,
+          "doi": "10.1590/s0074-02762005000600007",
+          "url": "https://doi.org/10.1590/s0074-02762005000600007",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": true
+        },
+        {
+          "titulo": "O Aedes aegypti e o digital",
+          "autores": [
+            "Jean Segata"
+          ],
+          "anio": 2017,
+          "doi": "10.1590/s0104-71832017000200002",
+          "url": "https://doi.org/10.1590/s0104-71832017000200002",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "Genotypic dynamics and dispersion in Colombian biomes of kdr mutations associated with resistance to pyrethroids in the Aedes aegypti mosquito (Diptera: Culicidae)",
+          "autores": [
+            "Oscar Alexander Aguirre-Obando",
+            "Bryan Steven Valencia-Marín",
+            "Irene Duarte-Gandica"
+          ],
+          "anio": 2024,
+          "doi": "10.15517/rev.biol.trop..v72i1.54870",
+          "url": "https://revistas.ucr.ac.cr/index.php/rrbt/article/download/9957/15856",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Universidad de Costa Rica",
+          "es_peru": false
+        },
+        {
+          "titulo": "Acetylcholinesterase inhibitory potential of scorpion venom in Aedes aegypti (Diptera: Culicidae)",
+          "autores": [
+            "N. Riaz",
+            "F. Zubair",
+            "N. Amjad",
+            "S. Ashraf"
+          ],
+          "anio": 2024,
+          "doi": "10.1590/1519-6984.259506",
+          "url": "https://doi.org/10.1590/1519-6984.259506",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "Evaluación de la resistencia a insecticidas de una cepa de Aedes aegypti de El Salvador",
+          "autores": [
+            "Juan A. Bisset Lazcano",
+            "María M. Rodríguez",
+            "José L. San Martín",
+            "José E. Romero"
+          ],
+          "anio": 2009,
+          "doi": "10.1590/s1020-49892009000900007",
+          "url": "https://doi.org/10.1590/s1020-49892009000900007",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "Modelo matemático para el control químico con resistencia del Aedes aegypti (Diptera: Culicidae)",
+          "autores": [
+            "Leonardo D Restrepo-Alape",
+            "Hernán D Toro-Zapata",
+            "Aníbal Muñoz-Loaiza"
+          ],
+          "anio": 2010,
+          "doi": "10.1590/s0124-00642010000600015",
+          "url": "https://doi.org/10.1590/s0124-00642010000600015",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "Is the mosquito the problem? Aedes aegypti and urban arboviruses - contradictions and reflections",
+          "autores": [
+            "Denise Valle",
+            "Raquel Aguiar"
+          ],
+          "anio": 2023,
+          "doi": "10.1590/s2237-96222023000200024",
+          "url": "https://doi.org/10.1590/s2237-96222023000200024",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "Aedes aegypti e Aedes albopictus no Brasil",
+          "autores": [
+            "Pedro Luiz Tauil"
+          ],
+          "anio": 1989,
+          "doi": "10.1590/s0037-86821989000100011",
+          "url": "https://doi.org/10.1590/s0037-86821989000100011",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "Aedes aegypti aegypti",
+          "autores": [
+            ""
+          ],
+          "anio": 2019,
+          "doi": "10.1079/cabicompendium.95795",
+          "url": "https://doi.org/10.1079/cabicompendium.95795",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "CABI Publishing",
+          "es_peru": false
+        }
+      ],
+      "enlaces_probados": 6,
+      "enlaces_que_abren": 2
+    },
+    {
+      "id": "Q5",
+      "consulta": "Anemia infantil en el Perú: factores asociados",
+      "segundos": 18.094,
+      "errores": [],
+      "referencias": [
+        {
+          "titulo": "Factores materno infantiles asociados a anemia en niños",
+          "autores": [
+            "Roldán Arbieto, Luis Humberto"
+          ],
+          "anio": 2022,
+          "doi": null,
+          "url": "https://hdl.handle.net/20.500.12867/5942",
+          "fuente": "La Referencia (Perú)",
+          "tipo": "articulo",
+          "universidad": "Universidad Tecnológica del Perú",
+          "es_peru": true,
+          "enlace_abre": false
+        },
+        {
+          "titulo": "Factores sociodemográficos y clínicos asociados a anemia en gestantes hospital docente regional materno infantil “El Carmen” Huancayo, 2022",
+          "autores": [
+            "Leon Untiveros, Gina Fiorella"
+          ],
+          "anio": 2024,
+          "doi": null,
+          "url": "https://hdl.handle.net/20.500.12952/10327",
+          "fuente": "La Referencia (Perú)",
+          "tipo": "tesis",
+          "universidad": "Universidad Nacional del Callao",
+          "es_peru": true,
+          "enlace_abre": false
+        },
+        {
+          "titulo": "Factores que influyen en la disminución de anemia en las niñas, niños y gestantes del distrito de Iguaín, provincia de Huanta, Ayacucho",
+          "autores": [
+            "Chávez Molina, Lidz Pamela"
+          ],
+          "anio": 2019,
+          "doi": null,
+          "url": "http://hdl.handle.net/20.500.12404/21765",
+          "fuente": "La Referencia (Perú)",
+          "tipo": "tesis",
+          "universidad": "Pontificia Universidad Católica del Perú",
+          "es_peru": true,
+          "enlace_abre": true
+        },
+        {
+          "titulo": "Factores epidemiológicos-clínicos asociados a anemia en niños del programa de anemia del Centro de Salud Materno Infantil El Porvenir, Lima – Perú 2022",
+          "autores": [
+            "",
+            "Elar Palomino Vargas"
+          ],
+          "anio": null,
+          "doi": "10.59590/upsjb/ep.msalud.pub/tesis/5067",
+          "url": "https://doi.org/10.59590/upsjb/ep.msalud.pub/tesis/5067",
+          "fuente": "Crossref",
+          "tipo": "tesis",
+          "universidad": "Universidad Privada San Juan Bautista",
+          "es_peru": true
+        },
+        {
+          "titulo": "Factores asociados a la anemia infantil en los pacientes atendidos en el Hospital Nacional Hipólito Unanue año 2021",
+          "autores": [
+            "",
+            "Jorge Luis Agustin Jiménez Sernaqué"
+          ],
+          "anio": null,
+          "doi": "10.59590/upsjb/fcs.med.hum/tesis/5006",
+          "url": "https://doi.org/10.59590/upsjb/fcs.med.hum/tesis/5006",
+          "fuente": "Crossref",
+          "tipo": "tesis",
+          "universidad": "Universidad Privada San Juan Bautista",
+          "es_peru": false,
+          "enlace_abre": false
+        },
+        {
+          "titulo": "Factores de riesgo asociados a anemia infantil en dos establecimientos de atención primaria, Ica 2023 estudio multicéntrico",
+          "autores": [
+            "",
+            "Reyna Yazmin Hernandez Antezano"
+          ],
+          "anio": null,
+          "doi": "10.59590/upsjb/fcs.med.hum/tesis/5835",
+          "url": "https://doi.org/10.59590/upsjb/fcs.med.hum/tesis/5835",
+          "fuente": "Crossref",
+          "tipo": "tesis",
+          "universidad": "Universidad Privada San Juan Bautista",
+          "es_peru": false,
+          "enlace_abre": false
+        },
+        {
+          "titulo": "Factores asociados a mujeres embarazadas con anemia atendidas en el centro materno infantil José Gálvez, Lima en el 2023",
+          "autores": [
+            "",
+            "Dorian Carlo Figueroa Alvarez"
+          ],
+          "anio": null,
+          "doi": "10.59590/upsjb/fcs.med.hum/tesis/5474",
+          "url": "https://doi.org/10.59590/upsjb/fcs.med.hum/tesis/5474",
+          "fuente": "Crossref",
+          "tipo": "tesis",
+          "universidad": "Universidad Privada San Juan Bautista",
+          "es_peru": true
+        },
+        {
+          "titulo": "Factores asociados del bajo peso al nacer en gestantes con anemia atendidas en un Centro Materno Infantil de Lima, 2024",
+          "autores": [
+            "",
+            "Junior Gianncarlho Guzman Tipa"
+          ],
+          "anio": null,
+          "doi": "10.59590/upsjb/fcs.med.hum/tesis/6474",
+          "url": "https://doi.org/10.59590/upsjb/fcs.med.hum/tesis/6474",
+          "fuente": "Crossref",
+          "tipo": "tesis",
+          "universidad": "Universidad Privada San Juan Bautista",
+          "es_peru": true
+        },
+        {
+          "titulo": "Factores asociados a la anemia ferropénica en gestantes atendidas en el Centro Materno Infantil José Carlos Mariátegui durante el año 2022",
+          "autores": [
+            "",
+            "Lizette Gutierrez Benzaquen"
+          ],
+          "anio": null,
+          "doi": "10.59590/upsjb/fcs.med.hum/tesis/5395",
+          "url": "https://doi.org/10.59590/upsjb/fcs.med.hum/tesis/5395",
+          "fuente": "Crossref",
+          "tipo": "tesis",
+          "universidad": "Universidad Privada San Juan Bautista",
+          "es_peru": false,
+          "enlace_abre": false
+        },
+        {
+          "titulo": "Factores obstétricos asociados a anemia en gestantes que acuden al centro materno infantil Santa Anita durante el año 2019",
+          "autores": [
+            "",
+            "Erika Carol Berto Inga"
+          ],
+          "anio": null,
+          "doi": "10.59590/upsjb/fcs.med.hum/tesis/3181",
+          "url": "https://doi.org/10.59590/upsjb/fcs.med.hum/tesis/3181",
+          "fuente": "Crossref",
+          "tipo": "tesis",
+          "universidad": "Universidad Privada San Juan Bautista",
+          "es_peru": false
+        },
+        {
+          "titulo": "Factores de riesgo asociados con anemia en puérperas atendidas del Centro de Salud Materno Infantil Santa Luzmila II, Lima – 2022",
+          "autores": [
+            "",
+            "Miguel Ángel Galarza Rojas"
+          ],
+          "anio": null,
+          "doi": "10.59590/upsjb/fcs.med.hum/tesis/5178",
+          "url": "https://doi.org/10.59590/upsjb/fcs.med.hum/tesis/5178",
+          "fuente": "Crossref",
+          "tipo": "tesis",
+          "universidad": "Universidad Privada San Juan Bautista",
+          "es_peru": true
+        },
+        {
+          "titulo": "Factores asociados a violencia física reciente de pareja hacia la mujer en el Perú, 2004-2007",
+          "autores": [
+            "Dora Blitchtein-Winicki",
+            "Esperanza Reyes-Solari"
+          ],
+          "anio": 2012,
+          "doi": "10.1590/s1726-46342012000100006",
+          "url": "https://doi.org/10.1590/s1726-46342012000100006",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "Proyección de trabajo en el interior del país y factores asociados en médicos recién colegiados de Lima, Perú 2010",
+          "autores": [
+            "Percy Mayta-Tristán",
+            "Christian R. Mejia",
+            "Pedro Riega-Lopez",
+            "Leonardo Rojas-Mezarina"
+          ],
+          "anio": 2011,
+          "doi": "10.1590/s1726-46342011000200004",
+          "url": "https://doi.org/10.1590/s1726-46342011000200004",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": true
+        },
+        {
+          "titulo": "Prevalencia del intento de interrumpir el embarazo y factores asociados en una comunidad urbano marginal de Lima-Perú, 2006",
+          "autores": [
+            "Carolina Tarqui-Mamani",
+            "Alejandro Barreda",
+            "Milagros Barreda",
+            "Hernán Sanabria-Roja"
+          ],
+          "anio": 2010,
+          "doi": "10.1590/s1726-46342010000100007",
+          "url": "https://doi.org/10.1590/s1726-46342010000100007",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": true
+        },
+        {
+          "titulo": "Factores sociales y salud infantil asociados con la vejez",
+          "autores": [
+            "Teresita Elisa Ruiz-Pantoja",
+            "Roberto Ham-Chande"
+          ],
+          "anio": 2007,
+          "doi": "10.1590/s0036-36342007001000009",
+          "url": "https://doi.org/10.1590/s0036-36342007001000009",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "Factores alimentarios y dietéticos asociados a la obesidad infantil: recomendaciones para su prevención antes de los dos años de vida",
+          "autores": [
+            "José M Saavedra",
+            "Anne M Dattilo"
+          ],
+          "anio": 2012,
+          "doi": "10.1590/s1726-46342012000300014",
+          "url": "https://doi.org/10.1590/s1726-46342012000300014",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "Factores sociodemográficos y ambientales asociados con el desmedro infantil en zonas rurales de Guatemala",
+          "autores": [
+            "Autor Desconocido"
+          ],
+          "anio": 2006,
+          "doi": "10.1590/s1020-49892006000400013",
+          "url": "https://doi.org/10.1590/s1020-49892006000400013",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "Factores psicosociales asociados a un alto, medio y bajo riesgo de síntomas depresivos en el posparto inmediato",
+          "autores": [
+            "Cynthia Inés Paolini",
+            "Alicia Juana Oiberman",
+            "Silvia Balzano"
+          ],
+          "anio": 2012,
+          "doi": "10.1590/s1519-38292012000100007",
+          "url": "https://doi.org/10.1590/s1519-38292012000100007",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "Factores asociados a complicaciones de la colangiopancreatografía retrógrada endoscópica en un hospital de alta complejidad",
+          "autores": [
+            "Angel Quispe-Mauricio",
+            "Wilmer Sierra-Cahuata",
+            "David Callacondo",
+            "Juan Torreblanca-Nava"
+          ],
+          "anio": 2010,
+          "doi": "10.1590/s1726-46342010000200007",
+          "url": "https://doi.org/10.1590/s1726-46342010000200007",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        }
+      ],
+      "enlaces_probados": 6,
+      "enlaces_que_abren": 1
+    },
+    {
+      "id": "Q6",
+      "consulta": "Stevia rebaudiana: actividad antioxidante y usos",
+      "segundos": 31.322,
+      "errores": [],
+      "referencias": [
+        {
+          "titulo": "Aplicación del diseño experimental de Doehlert en la optimización de variables experimentales en mezclas de manzanilla común (Matricaria Chamomilla L.), Hojas de Moringa (Moringa oleífera) y Stevia (Stevia Rebaudiana) para maximizar su aceptabilidad y capacidad antioxidante",
+          "autores": [
+            "Durand Gamez, Antonio Ernesto"
+          ],
+          "anio": 2021,
+          "doi": null,
+          "url": "http://hdl.handle.net/20.500.12773/11965",
+          "fuente": "La Referencia (Perú)",
+          "tipo": "tesis",
+          "universidad": "Universidad Nacional de San Agustín",
+          "es_peru": true,
+          "enlace_abre": true
+        },
+        {
+          "titulo": "Zastosowanie stewii (Stevia rebaudiana) w żywieniu człowieka i medycynie / The Use of Stevia (Stevia rebaudiana) in Human Nutrition and Medicine",
+          "autores": [
+            "Autor Desconocido"
+          ],
+          "anio": 2026,
+          "doi": "10.29316/9788368103397_17",
+          "url": "https://doi.org/10.29316/9788368103397_17",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "John Paul II University in Biała Podlaska",
+          "es_peru": false,
+          "enlace_abre": true
+        },
+        {
+          "titulo": "Recursos naturais com poder edulcorante: caracterização fitoquímica e antioxidante da stevia rebaudiana (bert.), análise sensorial e centesimal de receitas de bolo de limão com incorporação de s. Rebaudiana",
+          "autores": [
+            "Carla Sousa",
+            "Adriana Oliveira",
+            "Sara Pinto",
+            "M. Conceição Manso"
+          ],
+          "anio": 2018,
+          "doi": "10.46691/es.v2i23.189",
+          "url": "https://egitaniasciencia.ipg.pt/index.php/revista-egitaniasciencia/article/download/189/161",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Guarda Polytechnic Institute",
+          "es_peru": false,
+          "enlace_abre": true
+        },
+        {
+          "titulo": "Micropropagation of Stevia rebaudiana plants",
+          "autores": [
+            "Marta Teresa Rokosa",
+            "Danuta Kulpa"
+          ],
+          "anio": 2020,
+          "doi": "10.1590/0103-8478cr20181029",
+          "url": "https://doi.org/10.1590/0103-8478cr20181029",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false,
+          "enlace_abre": true
+        },
+        {
+          "titulo": "Steviol effect, a glycoside of Stevia rebaudiana, on glucose clearances in rats",
+          "autores": [
+            "MS. Melis",
+            "ST. Rocha",
+            "A. Augusto"
+          ],
+          "anio": 2009,
+          "doi": "10.1590/s1519-69842009000200019",
+          "url": "https://doi.org/10.1590/s1519-69842009000200019",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "Water consumption of the estevia (Stevia rebaudiana (Bert.) Bertoni) crop estimated through microlysimeter",
+          "autores": [
+            "Diniz Fronza",
+            "Marcos Vinícius Folegatti"
+          ],
+          "anio": 2003,
+          "doi": "10.1590/s0103-90162003000300028",
+          "url": "https://doi.org/10.1590/s0103-90162003000300028",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "SINTOMAS DE DESORDENS NUTRICIONAIS EM ESTÉVIA Stevia rebaudiana (Bert.) Bertoni",
+          "autores": [
+            "O. F. de Lima Filho",
+            "E Malavolta"
+          ],
+          "anio": 1997,
+          "doi": "10.1590/s0103-90161997000100008",
+          "url": "https://doi.org/10.1590/s0103-90161997000100008",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "ABSORÇÃO E ACUMULAÇÃO DE NUTRIENTES EM ESTÉVIA Stevia rebaudiana (Bert.) Bertoni: II. MICRONUTRIENTES",
+          "autores": [
+            "O.F. de Lima Filho",
+            "E Malavolta",
+            ".O.A. de Sena",
+            "J.W.P Carneiro"
+          ],
+          "anio": 1997,
+          "doi": "10.1590/s0103-90161997000100004",
+          "url": "https://doi.org/10.1590/s0103-90161997000100004",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "In vitro micropropagation of Stevia rebaudiana Bertoni in Malaysia",
+          "autores": [
+            "Ummi Nur Ain Abdul Razak",
+            "Chong Boon Ong",
+            "Tiew Sing Yu",
+            "Li Kiaw Lau"
+          ],
+          "anio": 2014,
+          "doi": "10.1590/s1516-89132014000100004",
+          "url": "https://doi.org/10.1590/s1516-89132014000100004",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "Actividad antioxidante de pigmentos antociánicos",
+          "autores": [
+            "E. Marta Kuskoski",
+            "Agustín G. Asuero",
+            "M. Carmen García-Parilla",
+            "Ana M. Troncoso"
+          ],
+          "anio": 2004,
+          "doi": "10.1590/s0101-20612004000400036",
+          "url": "https://doi.org/10.1590/s0101-20612004000400036",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "Use of Stevia rebaudiana sweeteners in Japan",
+          "autores": [
+            "Autor Desconocido"
+          ],
+          "anio": 2001,
+          "doi": "10.1201/9780203165942-17",
+          "url": "https://doi.org/10.1201/9780203165942-17",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "CRC Press",
+          "es_peru": false
+        },
+        {
+          "titulo": "Ethnobotany of Stevia and Stevia rebaudiana",
+          "autores": [
+            "Autor Desconocido"
+          ],
+          "anio": 2001,
+          "doi": "10.1201/9780203165942-11",
+          "url": "https://doi.org/10.1201/9780203165942-11",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "CRC Press",
+          "es_peru": false
+        },
+        {
+          "titulo": "Botany of Stevia and Stevia rebaudiana",
+          "autores": [
+            "Autor Desconocido"
+          ],
+          "anio": 2001,
+          "doi": "10.1201/9780203165942-10",
+          "url": "https://doi.org/10.1201/9780203165942-10",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "CRC Press",
+          "es_peru": false
+        },
+        {
+          "titulo": "Sweet and non-sweet constituents of Stevia rebaudiana",
+          "autores": [
+            "Autor Desconocido"
+          ],
+          "anio": 2001,
+          "doi": "10.1201/9780203165942-12",
+          "url": "https://doi.org/10.1201/9780203165942-12",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "CRC Press",
+          "es_peru": false
+        },
+        {
+          "titulo": "Use of stevioside and cultivation of Stevia rebaudiana in Korea",
+          "autores": [
+            "Autor Desconocido"
+          ],
+          "anio": 2001,
+          "doi": "10.1201/9780203165942-18",
+          "url": "https://doi.org/10.1201/9780203165942-18",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "CRC Press",
+          "es_peru": false
+        },
+        {
+          "titulo": "Stevia rebaudiana",
+          "autores": [
+            ""
+          ],
+          "anio": 2019,
+          "doi": "10.1079/cabicompendium.110325",
+          "url": "https://doi.org/10.1079/cabicompendium.110325",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "CABI Publishing",
+          "es_peru": false
+        }
+      ],
+      "enlaces_probados": 4,
+      "enlaces_que_abren": 4
+    },
+    {
+      "id": "Q7",
+      "consulta": "Calidad del agua de consumo humano en Chimbote (tesis)",
+      "segundos": 34.826,
+      "errores": [],
+      "referencias": [
+        {
+          "titulo": "Comparación entre los índices de agua potable IAP y los índices de riesgo de la calidad de agua para consumo humano IRCA utilizados para la determinación de la calidad del agua para consumo humano",
+          "autores": [
+            "Javier Mauricio González Díaz",
+            "Natalia Gómez Díaz",
+            "Ana Milena Quijano Cuellar"
+          ],
+          "anio": 2010,
+          "doi": "10.22490/25394088.578",
+          "url": "http://hemeroteca.unad.edu.co/index.php/publicaciones-e-investigacion/article/viewFile/578/1290",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Universidad Nacional Abierta y a Distancia",
+          "es_peru": false,
+          "enlace_abre": true
+        },
+        {
+          "titulo": "Calidad microbiológica del agua de consumo humano del sector Fila alta-Jaén, 2019",
+          "autores": [
+            "Melina Vargas",
+            "Nander Calle",
+            "Candy Ocaña",
+            "Juan Garay"
+          ],
+          "anio": 2021,
+          "doi": "10.37787/pakamuros-unj.v9i4.246",
+          "url": "http://revistas.unj.edu.pe/index.php/pakamuros/article/download/246/316",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Universidad Nacional de Jaen",
+          "es_peru": true,
+          "enlace_abre": false
+        },
+        {
+          "titulo": "Determinación de la calidad de agua subterránea para consumo humano",
+          "autores": [
+            "",
+            "Grecia Thane Oscco Medina"
+          ],
+          "anio": null,
+          "doi": "10.21142/tb.2020.1465",
+          "url": "https://doi.org/10.21142/tb.2020.1465",
+          "fuente": "Crossref",
+          "tipo": "tesis",
+          "universidad": "Universidad Cientifica del Sur",
+          "es_peru": false,
+          "enlace_abre": true
+        },
+        {
+          "titulo": "Impacto ambiental del vertido de efluentes de una empresa pesquera en la calidad del agua marina: estudio de caso en una zona costera del norte de Perú",
+          "autores": [
+            "Henry Manuel Arzola Díaz",
+            "Wilmer Ugarte López"
+          ],
+          "anio": 2026,
+          "doi": "10.1590/scielopreprints.15648",
+          "url": "https://doi.org/10.1590/scielopreprints.15648",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": true,
+          "enlace_abre": true
+        },
+        {
+          "titulo": "Calidad del agua de consumo humano influenciada por aguas servidas",
+          "autores": [
+            "Ismael Suárez Medina"
+          ],
+          "anio": 2020,
+          "doi": "10.37518/2663-6360x2020v3n1p80",
+          "url": "https://doi.org/10.37518/2663-6360x2020v3n1p80",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Universidad Nacional Autónoma de Chota",
+          "es_peru": false,
+          "enlace_abre": true
+        },
+        {
+          "titulo": "Tratamientos de Agua para Consumo Humano Garantizando la Calidad del Agua Potable",
+          "autores": [
+            "Xavier Pardell Peña",
+            "Xavier Pardell"
+          ],
+          "anio": 2025,
+          "doi": "10.22541/au.173862210.06500331/v1",
+          "url": "https://www.authorea.com/doi/pdf/10.22541/au.173862210.06500331/v1",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Wiley",
+          "es_peru": false
+        },
+        {
+          "titulo": "Generalidades de la calidad del agua para consumo humano",
+          "autores": [
+            "Autor Desconocido"
+          ],
+          "anio": 2015,
+          "doi": "10.2307/j.ctt1c3q113.5",
+          "url": "https://doi.org/10.2307/j.ctt1c3q113.5",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Universidad Piloto",
+          "es_peru": false
+        },
+        {
+          "titulo": "Calidad bacteriológica del agua para consumo humano en zonas de alta marginación de Chiapas",
+          "autores": [
+            "Héctor Javier Sánchez-Pérez",
+            "María Guadalupe Vargas-Morales",
+            "José Domingo Méndez-Sánchez"
+          ],
+          "anio": 2000,
+          "doi": "10.1590/s0036-36342000000500005",
+          "url": "https://doi.org/10.1590/s0036-36342000000500005",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "Cáncer por contaminación química del agua de consumo humano en menores de 19 años: una revisión sistemática",
+          "autores": [
+            "Vanessa Oller-Arlandis",
+            "Javier Sanz-Valero"
+          ],
+          "anio": 2012,
+          "doi": "10.1590/s1020-49892012001300007",
+          "url": "https://doi.org/10.1590/s1020-49892012001300007",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "Calidad de agua para consumo humano en el departamento de Boyacá 3 |",
+          "autores": [
+            "Mabel Idaliana Medina Alfonso"
+          ],
+          "anio": 2024,
+          "doi": "10.19053/uptc.9789586608459.3",
+          "url": "https://doi.org/10.19053/uptc.9789586608459.3",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Editorial UPTC",
+          "es_peru": false
+        },
+        {
+          "titulo": "Cáncer digestivo y calidad del agua de consumo 5 |",
+          "autores": [
+            "Bibiana Matilde Bernal Gómez"
+          ],
+          "anio": 2024,
+          "doi": "10.19053/uptc.9789586608459.5",
+          "url": "https://doi.org/10.19053/uptc.9789586608459.5",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Editorial UPTC",
+          "es_peru": false
+        },
+        {
+          "titulo": "La calidad del agua de consumo y las enfermedades diarreicas en Cuba, 1996-1997",
+          "autores": [
+            "Pablo Aguiar Prieto",
+            "José A. Cepero Martín",
+            "Gisele Coutin Marie"
+          ],
+          "anio": 2000,
+          "doi": "10.1590/s1020-49892000000500004",
+          "url": "https://doi.org/10.1590/s1020-49892000000500004",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "Optimización de estrategias de calidad para mejorar el nivel de satisfacción del cliente en una empresa pesquera en Chimbote",
+          "autores": [
+            "Leslie Gardella",
+            "Yersy Ticliahuanga",
+            "Fiorella Lozano",
+            "Cristopher Garnica"
+          ],
+          "anio": 2025,
+          "doi": "10.1590/scielopreprints.10901",
+          "url": "https://doi.org/10.1590/scielopreprints.10901",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": true,
+          "enlace_abre": true
+        },
+        {
+          "titulo": "Estrategias para mejorar la calidad de servicio con impacto en la satisfacción del cliente en una empresa de Chimbote, 2024",
+          "autores": [
+            "Michael Steven Pedreros Ramos",
+            "Josué Carlos Espinoza Ygnacio",
+            "Arturo Manuel Sotelo Contreras",
+            "Cristhian Fabian Espinoza Agüero"
+          ],
+          "anio": 2024,
+          "doi": "10.1590/scielopreprints.10723",
+          "url": "https://doi.org/10.1590/scielopreprints.10723",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": true
+        },
+        {
+          "titulo": "Probable contaminación del agua de consumo por Toxoplasma",
+          "autores": [
+            "Autor Desconocido"
+          ],
+          "anio": 1997,
+          "doi": "10.1590/s1020-49891997001100014",
+          "url": "https://doi.org/10.1590/s1020-49891997001100014",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        }
+      ],
+      "enlaces_probados": 6,
+      "enlaces_que_abren": 5
+    },
+    {
+      "id": "Q8",
+      "consulta": "Machine learning for dengue outbreak prediction",
+      "segundos": 22.109,
+      "errores": [],
+      "referencias": [
+        {
+          "titulo": "A Machine Learning Tool with An Integrated Dataset Towards the Construction of An Early Warning System for Dengue in Zulia State, Venezuela",
+          "autores": [
+            "Cabrera, Maritza"
+          ],
+          "anio": 2025,
+          "doi": null,
+          "url": "https://cmhnaaa.org.pe/index.php/rcmhnaaa/article/view/2815",
+          "fuente": "La Referencia (Perú)",
+          "tipo": "articulo",
+          "universidad": "Cuerpo Médico Hospital Nacional Almanzor Aguinaga Asenjo",
+          "es_peru": true,
+          "enlace_abre": false
+        },
+        {
+          "titulo": "Traditional Machine Learning based on Atmospheric Conditions for Prediction of Dengue Presence",
+          "autores": [
+            "Sánchez López, Brenda Sofía Zoila"
+          ],
+          "anio": 2023,
+          "doi": null,
+          "url": "https://hdl.handle.net/20.500.12724/19484",
+          "fuente": "La Referencia (Perú)",
+          "tipo": "articulo",
+          "universidad": "Universidad de Lima",
+          "es_peru": true,
+          "enlace_abre": false
+        },
+        {
+          "titulo": "Desarrollo y evaluación de modelos de machine learning para la predicción del número de casos de dengue en Perú",
+          "autores": [
+            "Chu Peramás, Sebastian Alejandro"
+          ],
+          "anio": 2025,
+          "doi": null,
+          "url": "https://hdl.handle.net/20.500.12815/441",
+          "fuente": "RENATI (SUNEDU)",
+          "tipo": "tesis",
+          "universidad": "Universidad de Ingeniería y Tecnología",
+          "es_peru": true,
+          "enlace_abre": true
+        },
+        {
+          "titulo": "Propuesta de un sistema predictivo con algoritmos machine learning para detección temprana de la enfermedad del dengue en Castilla, 2024",
+          "autores": [
+            "Alvarado Chero, Mary Mar"
+          ],
+          "anio": 2025,
+          "doi": null,
+          "url": "https://hdl.handle.net/20.500.12692/179810",
+          "fuente": "RENATI (SUNEDU)",
+          "tipo": "tesis",
+          "universidad": "Universidad César Vallejo",
+          "es_peru": true
+        },
+        {
+          "titulo": "Price Prediction of Agricultural Products: Machine Learning",
+          "autores": [
+            "Cerna, Rino"
+          ],
+          "anio": 2021,
+          "doi": "10.1007/978-981-16-2102-4_78",
+          "url": "https://hdl.handle.net/20.500.13067/1634",
+          "fuente": "RENATI (SUNEDU)",
+          "tipo": "articulo",
+          "universidad": "Universidad Autónoma del Perú",
+          "es_peru": true
+        },
+        {
+          "titulo": "Machine Learning for Price Prediction for Agricultural Products",
+          "autores": [
+            "Bayona-Oré, Sussy"
+          ],
+          "anio": 2021,
+          "doi": "10.37394/23207.2021.18.92",
+          "url": "https://hdl.handle.net/20.500.13067/1687",
+          "fuente": "RENATI (SUNEDU)",
+          "tipo": "articulo",
+          "universidad": "Universidad Autónoma del Perú",
+          "es_peru": true
+        },
+        {
+          "titulo": "“Breast Cancer Prediction using Machine Learning Models“",
+          "autores": [
+            "Iparraguirre-Villanueva, Orlando"
+          ],
+          "anio": 2023,
+          "doi": "10.14569/IJACSA.2023.0140272",
+          "url": "https://hdl.handle.net/20.500.13053/9106",
+          "fuente": "RENATI (SUNEDU)",
+          "tipo": "articulo",
+          "universidad": "Universidad Norbert Wiener",
+          "es_peru": true
+        },
+        {
+          "titulo": "Employee attrition prediction using machine learning models",
+          "autores": [
+            "Iparraguirre-Villanueva, Orlando"
+          ],
+          "anio": 2024,
+          "doi": "10.18687/LACCEI2024.1.1.498",
+          "url": "https://hdl.handle.net/20.500.12867/14263",
+          "fuente": "RENATI (SUNEDU)",
+          "tipo": "articulo",
+          "universidad": "Universidad Tecnológica del Perú",
+          "es_peru": true
+        },
+        {
+          "titulo": "Mejora de la gestión de abastecimiento para incrementar la disponibilidad de productos de lavado y cuidado de la ropa en las diez principales tiendas de Tottus S.A. mediante la integración de modelos de Machine Learning y Business Intelligence",
+          "autores": [
+            "Araujo Zuloaga, Martin Rodrigo",
+            "Diaz Huaman, Laura Antonella Cleofe",
+            "Sifuentes Flores, Valeria Milena"
+          ],
+          "anio": 2026,
+          "doi": null,
+          "url": "https://hdl.handle.net/20.500.12640/5093",
+          "fuente": "RENATI (SUNEDU)",
+          "tipo": "articulo",
+          "universidad": "Universidad ESAN",
+          "es_peru": true
+        },
+        {
+          "titulo": "Prediction of Peruvian Companies' Stock Prices Using Machine Learning",
+          "autores": [
+            "Espiritu Pera, Jose Antonio"
+          ],
+          "anio": 2024,
+          "doi": null,
+          "url": "https://hdl.handle.net/20.500.12724/21096",
+          "fuente": "RENATI (SUNEDU)",
+          "tipo": "tesis",
+          "universidad": "Universidad de Lima",
+          "es_peru": true
+        },
+        {
+          "titulo": "Prediction of bubble pressure using machine learning",
+          "autores": [
+            "Gil, Oscar"
+          ],
+          "anio": null,
+          "doi": null,
+          "url": "https://revistas.ulasalle.edu.pe/innosoft/article/view/82",
+          "fuente": "RENATI (SUNEDU)",
+          "tipo": "articulo",
+          "universidad": "Universidad La Salle",
+          "es_peru": true
+        },
+        {
+          "titulo": "Machine learning algorithms for dementia prediction: A systematic review",
+          "autores": [
+            "Guido Haro, Marco Lucas"
+          ],
+          "anio": null,
+          "doi": null,
+          "url": "https://revistas.ulasalle.edu.pe/innosoft/article/view/309",
+          "fuente": "RENATI (SUNEDU)",
+          "tipo": "articulo",
+          "universidad": "Universidad La Salle",
+          "es_peru": true
+        },
+        {
+          "titulo": "Machine learning for dengue outbreak prediction: A performance evaluation of different prominent classifiers",
+          "autores": [
+            "Naiyar Iqbal",
+            "Mohammad Islam"
+          ],
+          "anio": 2019,
+          "doi": "10.31449/inf.v43i3.1548",
+          "url": "https://www.informatica.si/index.php/informatica/article/download/1548/1334",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Slovenian Association Informatika",
+          "es_peru": false,
+          "enlace_abre": true
+        },
+        {
+          "titulo": "Identification of Significant Climatic Risk Factors and Machine Learning Models in Dengue Outbreak Prediction",
+          "autores": [
+            "Felestin Yavari Nejad",
+            "Kasturi Dewi Varathan"
+          ],
+          "anio": 2020,
+          "doi": "10.21203/rs.2.15755/v6",
+          "url": "https://www.researchsquare.com/article/rs-6415/v6",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "Springer Science and Business Media LLC",
+          "es_peru": true
+        },
+        {
+          "titulo": "Integrating Climate Data and Advanced Machine Learning for Precision Dengue Outbreak Prediction: A Study in Ba Ria-Vung Tau province, Vietnam",
+          "autores": [
+            "Dang Anh Tuan",
+            "Tran Ngoc Dang"
+          ],
+          "anio": 2024,
+          "doi": "10.20944/preprints202409.1535.v2",
+          "url": "https://doi.org/10.20944/preprints202409.1535.v2",
+          "fuente": "Crossref",
+          "tipo": "articulo",
+          "universidad": "MDPI AG",
+          "es_peru": true
+        },
+        {
+          "titulo": "Integrating machine learning and data-driven modelling: predicting dengue outbreaks and revealing spatially heterogeneous climatic drivers in Brazil.",
+          "autores": [
+            "Li D",
+            "Li W",
+            "Zhang H",
+            "Hu S"
+          ],
+          "anio": 2026,
+          "doi": "10.1098/rsif.2026.0071",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42744318/",
+          "fuente": "PubMed",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": true
+        },
+        {
+          "titulo": "Advancing outbreak detection: Hybridizing machine learning with wavelets for weekly dengue case forecasting.",
+          "autores": [
+            "Eligado AA",
+            "Hasegawa T",
+            "Hattori Y",
+            "Nakamura K"
+          ],
+          "anio": 2026,
+          "doi": "10.1371/journal.pntd.0014444",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13349185/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false,
+          "enlace_abre": true
+        },
+        {
+          "titulo": "Artificial intelligence models for dengue outbreak prediction in Ho Chi Minh City, Vietnam under climate change.",
+          "autores": [
+            "Trang LT",
+            "Huyen PTT",
+            "Kieu VTK",
+            "Van Anh NT"
+          ],
+          "anio": 2026,
+          "doi": "10.1007/s00484-026-03333-y",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42831950/",
+          "fuente": "PubMed",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": true
+        },
+        {
+          "titulo": "Comparative evaluation of machine learning strategies for short-term dengue forecasting in Brazilian capital municipalities.",
+          "autores": [
+            "Silva DCDCE",
+            "Nery LM",
+            "Nicomedes NP",
+            "Camargo PCMG"
+          ],
+          "anio": 2026,
+          "doi": "10.1007/s00484-026-03300-7",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13476183/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false,
+          "enlace_abre": true
+        },
+        {
+          "titulo": "Machine learning reveals temperature as a key predictor of dengue risk across Thailand's provinces: A 20-year analysis.",
+          "autores": [
+            "Suttirat P",
+            "Chadsuthi S",
+            "Aekthong S",
+            "Rocklöv J"
+          ],
+          "anio": 2026,
+          "doi": "10.1371/journal.pntd.0014590",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13440873/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "A 13-year cohort study using clinical machine learning to differentiate bacterial and viral infections in young infants in a dengue hyperendemic region.",
+          "autores": [
+            "Cortés-Guzmán LJ",
+            "Salgado DM",
+            "Narváez CF"
+          ],
+          "anio": 2026,
+          "doi": "10.1093/tropej/fmag050",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13389304/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "Generative embedding of sparse data with a tabular foundation model for dengue anticipatory action: a machine learning approach.",
+          "autores": [
+            "Pelitro KJ",
+            "Manzano JF",
+            "Matavia TO",
+            "Soriano K"
+          ],
+          "anio": 2026,
+          "doi": "10.64898/2026.07.03.26357228",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13370574/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "Integrating google trends and hybrid statistical-machine learning models for dengue surveillance in an inland vietnamese province: a 94-month evaluation (2013-2021) with search-signal anomaly screening.",
+          "autores": [
+            "Tuan DA",
+            "Uyen PVN"
+          ],
+          "anio": 2026,
+          "doi": "10.1007/s00484-026-03241-1",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42258012/",
+          "fuente": "PubMed",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "Data-Driven Machine Learning-Based Forecasting of Dengue in Bangladesh: Supporting Digital Health Approaches for Early Warning.",
+          "autores": [
+            "Chowdhury AH"
+          ],
+          "anio": 2026,
+          "doi": "10.1002/hsr2.72147",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13097490/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "Climate-Driven Advanced Machine Learning Approach for Dengue Incidence Forecasting in Bangladesh.",
+          "autores": [
+            "Faruk O"
+          ],
+          "anio": 2026,
+          "doi": "10.1002/hsr2.72207",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13087637/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": true
+        },
+        {
+          "titulo": "Machine Learning forecasting of dengue in São Paulo using virtual data augmentation and urban incident predictors: Addressing the exceptional surge of cases in 2024.",
+          "autores": [
+            "Bannoud MA",
+            "Mendes JL",
+            "Sacay RS",
+            "Martins TD"
+          ],
+          "anio": 2026,
+          "doi": "10.1016/j.actatropica.2026.107992",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41605294/",
+          "fuente": "PubMed",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "Integrating machine learning and time-to-event models to explain and predict risk of hospitalization due to dengue in Colombia.",
+          "autores": [
+            "Velasco H",
+            "Ortiz S",
+            "Catano-Lopez A",
+            "Castro C"
+          ],
+          "anio": 2025,
+          "doi": "10.1038/s41598-025-22681-0",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12592715/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "Comparison of serum lactate and lactate-derived ratios as prognostic biomarkers in pediatric dengue shock syndrome using supervised machine learning models.",
+          "autores": [
+            "Thanh NT",
+            "Luan VT"
+          ],
+          "anio": 2025,
+          "doi": "10.1371/journal.pone.0335022",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12558473/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": true
+        },
+        {
+          "titulo": "Fine-scale predictive modeling of Aedes mosquito abundance and dengue risk indicators using machine learning algorithms with microclimatic variables.",
+          "autores": [
+            "Dom NC",
+            "Abdullah NAMH",
+            "Dapari R",
+            "Salleh SA"
+          ],
+          "anio": 2025,
+          "doi": "10.1038/s41598-025-17191-y",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12549883/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": true
+        },
+        {
+          "titulo": "Causal and spatiotemporal deep learning for dengue forecasting and extreme outbreak risk under climate variability: a framework from Vietnam.",
+          "autores": [
+            "Tuan DA"
+          ],
+          "anio": 2026,
+          "doi": "10.1007/s00484-026-03151-2",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41860701/",
+          "fuente": "PubMed",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": true
+        },
+        {
+          "titulo": "Sustainable concrete performance prediction using machine learning for mechanical and durability properties with Construction and Demolition waste",
+          "autores": [
+            "Parthiban Velusamy",
+            "Sashikkumar Madurai Chidambaram"
+          ],
+          "anio": 2026,
+          "doi": "10.1590/1517-7076-rmat-2026-0094",
+          "url": "https://doi.org/10.1590/1517-7076-rmat-2026-0094",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "Performance prediction of sustainable geopolymer concrete incorporating biochar and nano-cellulose using machine learning models",
+          "autores": [
+            "Ramya Alagarsamy",
+            "Lavanya Ganesan"
+          ],
+          "anio": 2026,
+          "doi": "10.1590/1517-7076-rmat-2025-0692",
+          "url": "https://doi.org/10.1590/1517-7076-rmat-2025-0692",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "Machine learning-based prediction of ultimate load in pultruded glass fibre column under axial compression",
+          "autores": [
+            "Perumal Kajendran",
+            "Pannirselvam Narayanan"
+          ],
+          "anio": 2025,
+          "doi": "10.1590/1517-7076-rmat-2024-0793",
+          "url": "https://doi.org/10.1590/1517-7076-rmat-2024-0793",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "Fiber reinforced self compacting concrete workability properties prediction and optimization of mix using machine learning modeling",
+          "autores": [
+            "Muthaiyan Periyasamy",
+            "Ramadevi Kanagaraj"
+          ],
+          "anio": 2024,
+          "doi": "10.1590/1517-7076-rmat-2023-0309",
+          "url": "https://doi.org/10.1590/1517-7076-rmat-2023-0309",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "Prediction of autoclaved aerated cement block masonry prism strength under compression using machine learning tools",
+          "autores": [
+            "Soundar Rajan Muthukumar",
+            "Jegatheeswaran"
+          ],
+          "anio": 2024,
+          "doi": "10.1590/1517-7076-rmat-2023-0247",
+          "url": "https://doi.org/10.1590/1517-7076-rmat-2023-0247",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "COVID-19 Severity Prediction Using Combined Machine Learning and Transfer Learning Approaches",
+          "autores": [
+            "Ame Rayan Rambola",
+            "Suruliandi Andavar",
+            "Raja Soosaimarian Peter Raj"
+          ],
+          "anio": 2024,
+          "doi": "10.1590/1678-4324-2024240297",
+          "url": "https://doi.org/10.1590/1678-4324-2024240297",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "An outbreak of dengue virus at Rio de Janeiro - 1986",
+          "autores": [
+            "Hermann G. Schatzmayr",
+            "Rita Maria R. Nogueira",
+            "Amélia P. A. Travassos da Rosa"
+          ],
+          "anio": 1986,
+          "doi": "10.1590/s0074-02761986000200019",
+          "url": "https://doi.org/10.1590/s0074-02761986000200019",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "Recent advances in machine learning and Bayesian modeling for tropical disease prediction, diagnosis, and risk analysis: a scoping review.",
+          "autores": [
+            "Jaya IGNM",
+            "Khan J"
+          ],
+          "anio": 2026,
+          "doi": "10.1186/s12879-026-13993-1",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13647516/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "An enhancement of machine learning model performance in disease prediction with synthetic data generation.",
+          "autores": [
+            "Kannan M",
+            "Umamaheswari D",
+            "Manimekala B",
+            "Mary IPS"
+          ],
+          "anio": 2025,
+          "doi": "10.1038/s41598-025-15019-3",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12480930/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "DENGUE OUTBREAK EARLY IDENTIFICATION BY RAIN AND HUMAN CASES EVOLUTION IN FORTALEZA/CE",
+          "autores": [
+            "Leonardo Neves",
+            "Marcos Negreiros"
+          ],
+          "anio": 2024,
+          "doi": "10.1590/0101-7438.2023.043.00271630",
+          "url": "https://doi.org/10.1590/0101-7438.2023.043.00271630",
+          "fuente": "SciELO",
+          "tipo": "articulo",
+          "universidad": "FapUNIFESP (SciELO)",
+          "es_peru": false
+        },
+        {
+          "titulo": "A machine learning approach for differential classification of chikungunya virus: an explainable AI study based on surveillance data.",
+          "autores": [
+            "Usanase N",
+            "Uzun B",
+            "Ozsahin DU"
+          ],
+          "anio": 2026,
+          "doi": "10.1007/s15010-026-02963-z",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42734738/",
+          "fuente": "PubMed",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "Spatiotemporal patterns of climate-sensitive vector-borne diseases in Bangladesh: leveraging machine learning and spatial regression for intervention strategies.",
+          "autores": [
+            "Rahman MS",
+            "Shiddik MAB",
+            "Chowdhury AH"
+          ],
+          "anio": 2026,
+          "doi": "10.1186/s12916-026-04857-1",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13185241/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": true
+        },
+        {
+          "titulo": "Forecasting and Early Warning Systems for Dengue Outbreaks: Updated Narrative Review.",
+          "autores": [
+            "Costa JMFD",
+            "Costa AC",
+            "Silveira CDS",
+            "Gonçalves STN"
+          ],
+          "anio": 2026,
+          "doi": "10.1590/0037-8682-0429-2025",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12810927/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "Reflections on explainable artificial intelligence for predicting dengue outbreaks in Bangladesh.",
+          "autores": [
+            "Rahman MS",
+            "Shiddik MAB"
+          ],
+          "anio": 2025,
+          "doi": "10.1016/j.gloepi.2025.100230",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12651776/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "DengueGNN: Graph-based deep learning for modeling disease spread dynamics and prediction.",
+          "autores": [
+            "GulMohamed RB",
+            "Hetany W",
+            "Almaimani HA",
+            "Khiery FAS"
+          ],
+          "anio": 2026,
+          "doi": "10.1038/s41598-026-43073-y",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13039421/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "District-Level Dengue Early Warning Prediction System in Bangladesh Using Hybrid Explainable AI and Bayesian Deep Learning.",
+          "autores": [
+            "Shiddik MAB",
+            "Toshi FZ",
+            "Yesmin S",
+            "Rahman MS"
+          ],
+          "anio": 2026,
+          "doi": "10.3390/tropicalmed11030073",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13030265/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "Dengue forecasting and outbreak detection in Brazil using LSTM: integrating human mobility and climate factors.",
+          "autores": [
+            "Chen X",
+            "Moraga P"
+          ],
+          "anio": 2026,
+          "doi": "10.1016/j.idm.2025.11.002",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12657288/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": true
+        },
+        {
+          "titulo": "Comparative estimation of the spread of acute diarrhea and dengue in India using statistical mathematical and deep learning models.",
+          "autores": [
+            "Singh A",
+            "Kumar Sharma K",
+            "Wamanrao Kalare K",
+            "Tripathi A"
+          ],
+          "anio": 2025,
+          "doi": "10.1038/s41598-025-00650-x",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12501317/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "Early individualized risk prediction using clinical data for children during the febrile phase of dengue in outpatient settings in Vietnam and Thailand.",
+          "autores": [
+            "Sangkaew S",
+            "Daniels BC",
+            "Ming DK",
+            "Hernandez B"
+          ],
+          "anio": 2026,
+          "doi": "10.1371/journal.pdig.0001171",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12885294/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "Innovative application of a traffic-prediction spatio-temporal graph convolutional network for dengue disease forecasting.",
+          "autores": [
+            "Siabi N",
+            "Son R",
+            "Thomas M",
+            "Irrgang C"
+          ],
+          "anio": 2026,
+          "doi": "10.1038/s41598-026-36225-7",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12820264/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "Tactical vs. strategic: An adaptable framework for horizon-dependent dengue forecasting using data-driven approaches with serotype and climate covariates in Bangladesh.",
+          "autores": [
+            "Fuad MM",
+            "Milki MS",
+            "Aziz RA"
+          ],
+          "anio": 2026,
+          "doi": "10.1371/journal.pone.0353069",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13496456/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": true
+        },
+        {
+          "titulo": "Global performance of predictive models for dengue severity, hospitalization and mortality: A systematic review and meta-analysis of 146 studies.",
+          "autores": [
+            "Delpino FM",
+            "Peres IT",
+            "Gusberti T",
+            "de Lima CJ"
+          ],
+          "anio": 2026,
+          "doi": "10.1016/j.ijid.2026.108879",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42303089/",
+          "fuente": "PubMed",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "Bridging ensemble model and public health practice: an approach for refining understanding of seasonal dengue transmission patterns in Bangladesh.",
+          "autores": [
+            "Akther S",
+            "Al-Mamun M",
+            "Hossain MK"
+          ],
+          "anio": 2026,
+          "doi": "10.1186/s12879-026-13573-3",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13366745/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "A novel model in predicting dengue fever considering spatial heterogeneity of nine impact factors and four AI algorithms in China.",
+          "autores": [
+            "Jiang T",
+            "Zhang Q",
+            "Chen M",
+            "Nazrullozoda S"
+          ],
+          "anio": 2026,
+          "doi": "10.1016/j.actatropica.2026.108114",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42069169/",
+          "fuente": "PubMed",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "Plasma proteomics identifies early markers of endothelial and inflammatory activation associated with dengue disease severity in children.",
+          "autores": [
+            "Shamorkina TM",
+            "Nteak SK",
+            "Lay S",
+            "Kallor AA"
+          ],
+          "anio": 2026,
+          "doi": "10.64898/2026.03.15.26348146",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13042146/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "A disease-agnostic approach to ensemble learning for infectious disease forecasting.",
+          "autores": [
+            "Murph AC",
+            "Beesley LJ",
+            "Gibson GC",
+            "Castro LA"
+          ],
+          "anio": 2026,
+          "doi": "10.1038/s41467-026-70937-8",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13168361/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "Fast and trustworthy nowcasting of dengue fever: A case study using attention-based probabilistic neural networks in São Paulo, Brazil.",
+          "autores": [
+            "Koemen S",
+            "Faria NR",
+            "Bastos LS",
+            "Ratmann O"
+          ],
+          "anio": 2026,
+          "doi": "10.1016/j.epidem.2025.100880",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41411852/",
+          "fuente": "PubMed",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "Wearable vital-sign sensors for early detection of severe dengue and sepsis: Clinical applications and implementation in resource-limited settings.",
+          "autores": [
+            "Ahmed MM",
+            "Othman ZK",
+            "Mahamed SM",
+            "Okesanya OJ"
+          ],
+          "anio": 2025,
+          "doi": "10.1177/20552076251396563",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12605882/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "An explainable covariate compartmental model for predicting the spatio-temporal patterns of dengue in Sri Lanka.",
+          "autores": [
+            "Liu Y",
+            "Fransson P",
+            "Heidecke J",
+            "Liyanage P"
+          ],
+          "anio": 2025,
+          "doi": "10.1371/journal.pcbi.1013540",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12500091/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "Entomological Surveillance and Arbovirus Screening in Mosquitoes from Central Morocco: First Detection of West Nile Virus in Culex pipiens from the Marrakech-Safi Region.",
+          "autores": [
+            "Outammassine A",
+            "Calzolari M",
+            "Daoudi M",
+            "Bonilauri P"
+          ],
+          "anio": 2026,
+          "doi": "10.1007/s11686-026-01320-2",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42283928/",
+          "fuente": "PubMed",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "Drug repurposing against viral infections (2020-2025): clinical trials, computational strategies, and therapeutic interventions.",
+          "autores": [
+            "Ashique S",
+            "Das J",
+            "Bhui U",
+            "Islam A"
+          ],
+          "anio": 2026,
+          "doi": "10.1007/s10787-026-02193-7",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41879902/",
+          "fuente": "PubMed",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        },
+        {
+          "titulo": "Managing and controlling diseases transmitted by Aedes mosquitoes: a review on best practices.",
+          "autores": [
+            "Ebrahimi R",
+            "Nejadghaderi SA",
+            "Khalili M",
+            "Haghdoost A"
+          ],
+          "anio": 2026,
+          "doi": "10.1186/s41182-025-00890-7",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12797487/pdf/",
+          "fuente": "PubMed (PMC)",
+          "tipo": "articulo",
+          "universidad": null,
+          "es_peru": false
+        }
+      ],
+      "enlaces_probados": 6,
+      "enlaces_que_abren": 4
+    }
+  ]
+}

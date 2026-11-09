@@ -1,0 +1,17 @@
+{
+  "_comment": "All sources (24 providers) — balanced penalties (default V18 values)",
+  "scoring": {
+    "MIN_RELEVANCE": 5,
+    "GEOCODE_LIMIT": 10
+  },
+  "penalties": {
+    "foreignMultiplier": 0.3,
+    "offTopicPenalty": -35,
+    "genericTitlePenalty": -20
+  },
+  "geoBoost": {
+    "foreign": {
+      "boost": -25
+    }
+  }
+}

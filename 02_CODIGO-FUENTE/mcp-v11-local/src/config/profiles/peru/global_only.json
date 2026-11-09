@@ -1,0 +1,18 @@
+{
+  "_comment": "Global sources (Crossref, Zenodo, SS, etc.) — high foreign content, needs strong penalties",
+  "scoring": {
+    "MIN_RELEVANCE": 15,
+    "GEOCODE_LIMIT": 10
+  },
+  "penalties": {
+    "foreignMultiplier": 0.2,
+    "offTopicPenalty": -10,
+    "noUniversityPenalty": -12,
+    "genericTitlePenalty": -20
+  },
+  "geoBoost": {
+    "foreign": {
+      "boost": -20
+    }
+  }
+}

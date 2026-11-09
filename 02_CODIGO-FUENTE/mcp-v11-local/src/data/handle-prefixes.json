@@ -1,0 +1,338 @@
+{
+  "10757": {
+    "base": "https://repositorioacademico.upc.edu.pe/handle",
+    "name": "Universidad Peruana de Ciencias Aplicadas"
+  },
+  "11042": {
+    "base": "https://pirhua.udep.edu.pe/handle",
+    "name": "Universidad de Piura"
+  },
+  "11354": {
+    "base": "https://repositorio.up.edu.pe/handle",
+    "name": "Universidad de Pacífico"
+  },
+  "11458": {
+    "base": "https://repositorio.unsm.edu.pe/handle",
+    "name": "Universidad Nacional de San Martín"
+  },
+  "11537": {
+    "base": "https://repositorio.upn.edu.pe/handle",
+    "name": "Universidad Privada del Norte"
+  },
+  "123456789": {
+    "base": "http://dspace.ipen.gob.pe/handle",
+    "name": "Instituto Peruano de Energía Nuclear"
+  },
+  "20.500.12672": {
+    "base": "https://cybertesis.unmsm.edu.pe/handle",
+    "name": "Universidad Nacional Mayor de San Marcos",
+    "isDSpace7": true,
+    "apiBase": "https://cybertesis.unmsm.edu.pe/backend/api"
+  },
+  "20.500.14076": {
+    "base": "https://cybertesis.uni.edu.pe/handle",
+    "name": "Universidad Nacional de Ingeniería"
+  },
+  "20.500.12996": {
+    "base": "https://repositorio.lamolina.edu.pe/handle",
+    "name": "Universidad Nacional Agraria La Molina",
+    "isDSpace7": true,
+    "apiBase": "https://repositorio.lamolina.edu.pe/server/api"
+  },
+  "20.500.12773": {
+    "base": "https://repositorio.unsa.edu.pe/handle",
+    "name": "Universidad Nacional de San Agustín de Arequipa"
+  },
+  "20.500.14414": {
+    "base": "https://dspace.unitru.edu.pe/handle",
+    "name": "Universidad Nacional de Trujillo"
+  },
+  "20.500.12918": {
+    "base": "https://repositorio.unsaac.edu.pe/handle",
+    "name": "Universidad Nacional de San Antonio Abad del Cusco"
+  },
+  "20.500.14278": {
+    "base": "https://repositorio.uns.edu.pe/handle",
+    "name": "Universidad Nacional del Santa"
+  },
+  "20.500.12894": {
+    "base": "https://repositorio.uncp.edu.pe/handle",
+    "name": "Universidad Nacional del Centro del Perú"
+  },
+  "20.500.12893": {
+    "base": "https://repositorio.unap.edu.pe/handle",
+    "name": "Universidad Nacional del Altiplano"
+  },
+  "20.500.12737": {
+    "base": "https://repositorio.unapiquitos.edu.pe/handle",
+    "name": "Universidad Nacional de la Amazonía Peruana"
+  },
+  "20.500.12958": {
+    "base": "https://repositorio.unsch.edu.pe/handle",
+    "name": "Universidad Nacional de San Cristóbal de Huamanga"
+  },
+  "20.500.13028": {
+    "base": "https://repositorio.unica.edu.pe/handle",
+    "name": "Universidad Nacional San Luis Gonzaga"
+  },
+  "20.500.14067": {
+    "base": "https://repositorio.unjfsc.edu.pe/handle",
+    "name": "Universidad Nacional José Faustino Sánchez Carrión"
+  },
+  "20.500.14139": {
+    "base": "https://repositorio.unasam.edu.pe/handle",
+    "name": "Universidad Nacional Santiago Antúnez de Mayolo"
+  },
+  "20.500.12952": {
+    "base": "https://repositorio.unac.edu.pe/handle",
+    "name": "Universidad Nacional del Callao"
+  },
+  "20.500.12897": {
+    "base": "https://repositorio.unp.edu.pe/handle",
+    "name": "Universidad Nacional de Piura"
+  },
+  "20.500.12819": {
+    "base": "https://repositorio.unjbg.edu.pe/handle",
+    "name": "Universidad Nacional Jorge Basadre Grohmann"
+  },
+  "20.500.12953": {
+    "base": "https://repositorio.unamba.edu.pe/handle",
+    "name": "Universidad Nacional Micaela Bastidas de Apurímac"
+  },
+  "20.500.13080": {
+    "base": "https://repositorio.unh.edu.pe/handle",
+    "name": "Universidad Nacional de Huancavelica"
+  },
+  "20.500.14077": {
+    "base": "http://repositorio.untrm.edu.pe/handle",
+    "name": "Universidad Nacional Toribio Rodríguez de Mendoza de Amazonas"
+  },
+  "20.500.13063": {
+    "base": "https://repositorio.undac.edu.pe/handle",
+    "name": "Universidad Nacional Daniel Alcides Carrión"
+  },
+  "20.500.14213": {
+    "base": "https://repositorio.unajma.edu.pe/handle",
+    "name": "Universidad Nacional José María Arguedas"
+  },
+  "20.500.14070": {
+    "base": "https://repositorio.unamad.edu.pe/handle",
+    "name": "Universidad Nacional Amazónica de Madre de Dios"
+  },
+  "20.500.14171": {
+    "base": "https://repositorio.undc.edu.pe/handle",
+    "name": "Universidad Nacional de Cañete"
+  },
+  "20.500.13084": {
+    "base": "https://repositorio.unfv.edu.pe/handle",
+    "name": "Universidad Nacional Federico Villarreal"
+  },
+  "20.500.14039": {
+    "base": "https://repositorio.une.edu.pe/handle",
+    "name": "Universidad Nacional de Educación Enrique Guzmán y Valle"
+  },
+  "20.500.14074": {
+    "base": "https://repositorio.unj.edu.pe/handle",
+    "name": "Universidad Nacional de Jaén"
+  },
+  "20.500.14229": {
+    "base": "https://repositorio.unia.edu.pe/handle",
+    "name": "Universidad Nacional Intercultural de la Amazonía"
+  },
+  "20.500.14073": {
+    "base": "https://repositorio.uniscjsa.edu.pe/handle",
+    "name": "Universidad Nacional Intercultural de la Selva Central Juan Santos Atahualpa"
+  },
+  "20.500.14253": {
+    "base": "https://repositorio.unaaa.edu.pe/handle",
+    "name": "Universidad Nacional Autónoma de Alto Amazonas"
+  },
+  "20.500.14235": {
+    "base": "https://repositorio.unfc.edu.pe/handle",
+    "name": "Universidad Nacional de Frontera"
+  },
+  "20.500.14287": {
+    "base": "https://repositorio.uniq.edu.pe/handle",
+    "name": "Universidad Nacional Intercultural de Quillabamba"
+  },
+  "20.500.14250": {
+    "base": "https://repositorio.unifslb.edu.pe/handle",
+    "name": "Universidad Nacional Intercultural Fabiola Salazar Leguía de Bagua"
+  },
+  "20.500.14288": {
+    "base": "https://repositorio.undc.edu.pe/handle",
+    "name": "Universidad Nacional Autónoma de Chota"
+  },
+  "20.500.14206": {
+    "base": "https://repositorio.unab.edu.pe/handle",
+    "name": "Universidad Nacional de Barranca"
+  },
+  "20.500.12404": {
+    "base": "https://tesis.pucp.edu.pe/repositorio/handle",
+    "name": "Pontificia Universidad Católica del Perú"
+  },
+  "20.500.12866": {
+    "base": "https://repositorio.upch.edu.pe/handle",
+    "name": "Universidad Peruana Cayetano Heredia"
+  },
+  "20.500.12724": {
+    "base": "https://repositorio.ulima.edu.pe/handle",
+    "name": "Universidad de Lima"
+  },
+  "20.500.12727": {
+    "base": "https://repositorio.usmp.edu.pe/handle",
+    "name": "Universidad de San Martín de Porres"
+  },
+  "20.500.12692": {
+    "base": "https://repositorio.ucv.edu.pe/handle",
+    "name": "Universidad César Vallejo"
+  },
+  "20.500.14138": {
+    "base": "https://repositorio.urp.edu.pe/handle",
+    "name": "Universidad Ricardo Palma"
+  },
+  "20.500.14005": {
+    "base": "https://repositorio.usil.edu.pe/handle",
+    "name": "Universidad San Ignacio de Loyola"
+  },
+  "20.500.12867": {
+    "base": "https://repositorio.utp.edu.pe/handle",
+    "name": "Universidad Tecnológica del Perú"
+  },
+  "20.500.12920": {
+    "base": "https://repositorio.ucsm.edu.pe/handle",
+    "name": "Universidad Católica de Santa María"
+  },
+  "20.500.12394": {
+    "base": "https://repositorio.continental.edu.pe/handle",
+    "name": "Universidad Continental"
+  },
+  "20.500.12759": {
+    "base": "https://repositorio.upao.edu.pe/handle",
+    "name": "Universidad Privada Antenor Orrego"
+  },
+  "20.500.12840": {
+    "base": "https://repositorio.upeu.edu.pe/handle",
+    "name": "Universidad Peruana Unión"
+  },
+  "20.500.12802": {
+    "base": "https://repositorio.uss.edu.pe/handle",
+    "name": "Universidad Señor de Sipán"
+  },
+  "20.500.12990": {
+    "base": "https://repositorio.uap.edu.pe/handle",
+    "name": "Universidad Alas Peruanas"
+  },
+  "20.500.13032": {
+    "base": "https://repositorio.uladech.edu.pe/handle",
+    "name": "Universidad Católica Los Ángeles de Chimbote"
+  },
+  "20.500.14257": {
+    "base": "https://repositorio.udh.edu.pe/handle",
+    "name": "Universidad de Huánuco"
+  },
+  "20.500.12557": {
+    "base": "https://repositorio.uandina.edu.pe/handle",
+    "name": "Universidad Andina del Cusco"
+  },
+  "20.500.12715": {
+    "base": "https://repositorio.cientifica.edu.pe/handle",
+    "name": "Universidad Científica del Sur"
+  },
+  "20.500.12640": {
+    "base": "https://repositorio.esan.edu.pe/handle",
+    "name": "Universidad ESAN"
+  },
+  "20.500.12590": {
+    "base": "https://repositorio.ucsp.edu.pe/handle",
+    "name": "Universidad Católica San Pablo"
+  },
+  "20.500.12815": {
+    "base": "https://repositorio.utec.edu.pe/handle",
+    "name": "Universidad de Ingeniería y Tecnología"
+  },
+  "20.500.14140": {
+    "base": "https://repositorio.ucss.edu.pe/handle",
+    "name": "Universidad Católica Sedes Sapientiae"
+  },
+  "20.500.12848": {
+    "base": "https://repositorio.upla.edu.pe/handle",
+    "name": "Universidad Peruana Los Andes"
+  },
+  "20.500.11955": {
+    "base": "https://repositorio.unife.edu.pe/handle",
+    "name": "Universidad de Sagrado Corazón"
+  },
+  "20.500.14308": {
+    "base": "https://repositorio.upsjb.edu.pe/handle",
+    "name": "Universidad Privada San Juan Bautista"
+  },
+  "20.500.12969": {
+    "base": "https://repositorio.upt.edu.pe/handle",
+    "name": "Universidad Privada de Tacna"
+  },
+  "20.500.13053": {
+    "base": "https://repositorio.uwiener.edu.pe/handle",
+    "name": "Universidad Norbert Wiener"
+  },
+  "20.500.14142": {
+    "base": "https://repositorio.upagu.edu.pe/handle",
+    "name": "Universidad Privada Antonio Guillermo Urrelo"
+  },
+  "20.500.14102": {
+    "base": "https://repositorio.unf.edu.pe/handle",
+    "name": "Universidad Nacional de Frontera"
+  },
+  "20.500.12935": {
+    "base": "https://repositorio.unab.edu.pe/handle",
+    "name": "Universidad Nacional de Barranca"
+  },
+  "20.500.11818": {
+    "base": "https://repositorio.uigv.edu.pe/handle",
+    "name": "Universidad Inca Garcilaso de la Vega"
+  },
+  "20.500.13067": {
+    "base": "https://repositorio.autonoma.edu.pe/handle",
+    "name": "Universidad Autónoma del Perú"
+  },
+  "20.500.14289": {
+    "base": "https://repositorio.upal.edu.pe/handle",
+    "name": "Universidad Privada de la Selva Peruana"
+  },
+  "20.500.14290": {
+    "base": "https://repositorio.ulasalle.edu.pe/handle",
+    "name": "Universidad La Salle"
+  },
+  "20.500.14291": {
+    "base": "https://repositorio.telesup.edu.pe/handle",
+    "name": "Universidad Telesup"
+  },
+  "20.500.12390": {
+    "base": "https://repositorio.concytec.gob.pe/handle",
+    "name": "CONCYTEC"
+  },
+  "20.500.12955": {
+    "base": "https://repositorio.inia.gob.pe/handle",
+    "name": "Instituto Nacional de Innovación Agraria"
+  },
+  "20.500.12816": {
+    "base": "https://repositorio.igp.gob.pe/handle",
+    "name": "Instituto Geofísico del Perú"
+  },
+  "20.500.14196": {
+    "base": "https://repositorio.ins.gob.pe/handle",
+    "name": "Instituto Nacional de Salud"
+  },
+  "20.500.12542": {
+    "base": "https://repositorio.senamhi.gob.pe/handle",
+    "name": "SENAMHI"
+  },
+  "20.500.12799": {
+    "base": "https://repositorio.minedu.gob.pe/handle",
+    "name": "Ministerio de Educación"
+  },
+  "20.500.12788": {
+    "base": "https://repositorio.oefa.gob.pe/handle",
+    "name": "OEFA"
+  }
+}

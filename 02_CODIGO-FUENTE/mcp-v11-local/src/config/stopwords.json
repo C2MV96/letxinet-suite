@@ -1,0 +1,51 @@
+{
+  "_comment": "Spanish/English/Portuguese stopwords for academic search. Excluded from key-term extraction.",
+  "es": [
+    "el", "la", "los", "las", "un", "una", "unos", "unas",
+    "de", "del", "al", "lo", "le", "les",
+    "y", "o", "u", "que", "se", "en", "con", "para", "por", "su", "sus",
+    "es", "son", "fue", "era", "sido", "haber", "hay", "hacer", "hace", "hecho",
+    "como", "sobre", "entre", "hasta", "desde", "sin", "tras",
+    "mas", "muy", "puede", "pueden", "tiene", "tienen",
+    "este", "esta", "esto", "estos", "estas", "ese", "esa", "esos", "esas",
+    "aquel", "aquella", "aquellos", "aquellas",
+    "todo", "toda", "todos", "todas", "otro", "otra", "otros", "otras",
+    "mismo", "misma", "mismos", "mismas",
+    "tal", "tales", "cada", "cierto", "cierta",
+    "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez",
+    "investigacion", "investigación", "estudio", "estudios", "analisis", "análisis",
+    "revision", "revisión", "acerca", "busca", "encuentra", "tipo", "tipos",
+    "parte", "forma", "modo", "caso", "casos", "dato", "datos", "resultado", "resultados",
+    "modelo", "proceso", "sistema", "metodo", "método", "enfoque", "objetivo", "objetivos",
+    "problema", "pregunta", "hipotesis", "hipótesis", "teoria", "teoría",
+    "conclusion", "conclusión", "recomendacion", "recomendación",
+    "nivel", "efecto", "impacto", "factor", "factores", "relacion", "relación",
+    "contexto", "scielo", "tesis", "trabajo", "autores", "autor"
+  ],
+  "en": [
+    "the", "a", "an", "of", "in", "on", "at", "by", "for", "with", "from", "to",
+    "and", "or", "but", "is", "are", "was", "were", "be", "been", "being",
+    "this", "that", "these", "those",
+    "study", "studies", "research", "review", "about", "using", "based",
+    "between", "their", "its", "his", "her", "they", "them", "we", "our",
+    "has", "have", "had", "not", "if", "as", "do", "did",
+    "which", "what", "when", "where", "who", "whom", "how",
+    "can", "could", "may", "might", "shall", "should", "will", "would",
+    "more", "most", "some", "any", "all", "each", "every", "no", "only",
+    "than", "then", "also", "just", "even", "still", "already",
+    "paper", "article", "journal", "volume", "issue", "pages", "doi",
+    "abstract", "introduction", "methodology", "methods", "results", "conclusion",
+    "figure", "table", "appendix", "references", "acknowledgments"
+  ],
+  "pt": [
+    "o", "a", "os", "as", "um", "uma", "de", "do", "da", "dos", "das",
+    "e", "ou", "que", "se", "em", "com", "para", "por", "como", "entre", "sobre",
+    "investigação", "estudo", "estudos", "análise", "revisão", "acerca",
+    "é", "são", "foi", "ser", "estar", "ter", "fazer", "pode", "podem",
+    "este", "esta", "isto", "estes", "estas", "esse", "essa", "esses", "essas",
+    "todo", "toda", "todos", "todas", "outro", "outra", "outros", "outras",
+    "mesmo", "mesma", "mesmos", "mesmas",
+    "dados", "resultado", "resultados", "metodo", "método",
+    "pesquisa", "analise", "análise", "revisao", "revisão"
+  ]
+}

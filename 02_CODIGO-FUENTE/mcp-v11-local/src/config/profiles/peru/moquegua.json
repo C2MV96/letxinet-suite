@@ -1,0 +1,5 @@
+{
+  "_comment": "Moquegua — Peru 67%. Small region, needs lower threshold.",
+  "scoring": { "MIN_RELEVANCE": 5 },
+  "penalties": { "foreignMultiplier": 0.2 }
+}

@@ -1,0 +1,10 @@
+{
+  "_comment": "Ica — problematic: only 34% Peru coincidence. Lower threshold to get more papers.",
+  "scoring": {
+    "MIN_RELEVANCE": 5
+  },
+  "penalties": {
+    "offTopicPenalty": -15,
+    "foreignMultiplier": 0.2
+  }
+}

@@ -1,0 +1,26 @@
+ARREGLO LETXINET SUITE 1.1.3
+============================
+
+Para laptops donde la prueba dice "MarkItDown no responde en 7860" o donde
+LetXipu Desktop HF muestra "The desktop backend did not start in time".
+
+COMO USARLO
+1. Descomprime este zip en cualquier carpeta (no lo abras desde dentro del zip).
+2. Doble clic en arreglar-letxinet.cmd y acepta el permiso de administrador.
+   Si Windows dice "Windows protegio su PC": Mas informacion > Ejecutar de todas formas.
+3. Espera a que termine (1 a 3 minutos). Deja un resumen en el Escritorio.
+4. Abre LetXinet Desktop. La primera vez puede tardar unos minutos.
+
+QUE HACE
+- MarkItDown usa PyMuPDF, que necesita msvcp140.dll (Microsoft Visual C++).
+  Si Windows no lo trae, se copia junto al Python de MarkItDown y se reinicia el servicio.
+- El Desktop esperaba solo 2 minutos a su backend; ahora espera hasta 10.
+  Se guarda una copia del archivo original (main.cjs.orig-1.1.3).
+- Si Claude Code esta instalado, vuelve a configurarlo. Si no, te dice como hacerlo.
+
+No toca tus claves ni el archivo LetXinet-Suite.env.
+msvcp140.dll es la libreria de Microsoft Visual C++ 2015-2022 (x64, 14.42).
+
+EN EL REPOSITORIO DE GITHUB
+msvcp140.dll no se incluye. Antes de armar el zip, copialo en esta carpeta desde
+02_CODIGO-FUENTE\runtime-extra\ (ver su LEEME.txt).

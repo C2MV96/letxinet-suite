@@ -1,0 +1,18 @@
+[
+  { "id": "Q1", "consulta": "Control vectorial de Aedes aegypti en el Perú", "terminos": "control vectorial Aedes aegypti Perú", "enfoque": "peru",
+    "pertinencia": ["aedes|aegypti|vector|dengue|zancudo|mosquito", "control|vigilancia|larv|insectic|fumig|nebuliz|entomol|criadero"] },
+  { "id": "Q2", "consulta": "Efectividad de la nebulización espacial con insecticidas para el control del dengue", "terminos": "nebulización espacial insecticida dengue efectividad", "enfoque": "global",
+    "pertinencia": ["nebuliz|fumig|ulv|space spray|spraying|rociado|ultra low|ultra-low|termonebul|adulticid", "dengue|aedes|aegypti|mosquito|vector"] },
+  { "id": "Q3", "consulta": "Dengue en Chimbote, Áncash: epidemiología y factores de riesgo", "terminos": "dengue Chimbote Áncash", "enfoque": "peru",
+    "pertinencia": ["dengue", "chimbote|ancash|santa|coishco|casma|huarmey"] },
+  { "id": "Q4", "consulta": "Resistencia a insecticidas piretroides en Aedes aegypti en Perú", "terminos": "resistencia piretroides Aedes aegypti Perú", "enfoque": "peru",
+    "pertinencia": ["resisten", "piretr|pyrethr|insectic|deltametrin|permetrin|cipermetrin|kdr|organofosf|temefos"] },
+  { "id": "Q5", "consulta": "Anemia infantil en el Perú: factores asociados", "terminos": "anemia infantil Perú factores asociados", "enfoque": "peru",
+    "pertinencia": ["anemia", "infantil|nino|child|infant|menores|preescolar|lactante|pediatr|meses"] },
+  { "id": "Q6", "consulta": "Stevia rebaudiana: actividad antioxidante y usos", "terminos": "Stevia rebaudiana actividad antioxidante", "enfoque": "global",
+    "pertinencia": ["stevia"] },
+  { "id": "Q7", "consulta": "Calidad del agua de consumo humano en Chimbote (tesis)", "terminos": "calidad del agua consumo humano Chimbote", "enfoque": "peru",
+    "pertinencia": ["agua|water", "calidad|consumo|potable|bacteriol|fisicoquim|microbiol|coliform", "chimbote|santa|ancash|coishco|nuevo chimbote"] },
+  { "id": "Q8", "consulta": "Machine learning for dengue outbreak prediction", "terminos": "machine learning dengue outbreak prediction", "enfoque": "global",
+    "pertinencia": ["dengue", "machine learning|deep learning|neural|predict|forecast|random forest|lstm|aprendizaje automatico|prediccion|pronostico"] }
+]

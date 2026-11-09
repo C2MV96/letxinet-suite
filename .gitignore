@@ -1,0 +1,42 @@
+# --- Claves y configuracion local: nunca subir ---
+.env
+.env.*
+!.env.example
+!02_CODIGO-FUENTE/instalador/variant-tokens/variantB-publico/.env
+*.env.local
+secrets.json
+mis-claves*/
+PRIVADO/
+*.key
+*.pem
+*.pfx
+
+# --- Instaladores y binarios: van en Releases o se consiguen aparte (ver README) ---
+01_INSTALADORES/*.exe
+01_INSTALADORES/*.bin
+*.exe
+!02_CODIGO-FUENTE/instalador/instalador/nssm/nssm.exe
+*.msi
+*.whl
+*.dll
+02_CODIGO-FUENTE/herramientas/pkg-cache/
+02_CODIGO-FUENTE/fuentes-addon-bridges-*.zip
+
+# --- Salidas de compilacion ---
+node_modules/
+dist/
+build/
+installer-output/
+__pycache__/
+*.pyc
+.cache/
+
+# --- Resultados de pruebas y registros ---
+*.log
+04_SCRIPTS-MANTENIMIENTO/harness/pool/resultados/
+02_CODIGO-FUENTE/mcp-v11-local/scripts/retest-backlog-results-*.json
+
+# --- Sistema ---
+Thumbs.db
+Desktop.ini
+.DS_Store

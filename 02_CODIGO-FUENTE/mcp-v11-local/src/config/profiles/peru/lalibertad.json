@@ -1,0 +1,5 @@
+{
+  "_comment": "La Libertad — Peru 52%, topic 33%. Needs lower threshold + stronger filters.",
+  "scoring": { "MIN_RELEVANCE": 0 },
+  "penalties": { "foreignMultiplier": 0.1, "offTopicPenalty": -35 }
+}

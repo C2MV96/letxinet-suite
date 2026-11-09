@@ -1,0 +1,18 @@
+{
+  "_comment": "Peru sources only (ALICIA, RENATI, laref_peru) — all results are Peruvian",
+  "scoring": {
+    "MIN_RELEVANCE": 5,
+    "GEOCODE_LIMIT": 5
+  },
+  "penalties": {
+    "foreignMultiplier": 1.0,
+    "offTopicPenalty": -30,
+    "nonPeruSourcePenalty": 0,
+    "genericTitlePenalty": -20
+  },
+  "geoBoost": {
+    "foreign": {
+      "boost": 0
+    }
+  }
+}

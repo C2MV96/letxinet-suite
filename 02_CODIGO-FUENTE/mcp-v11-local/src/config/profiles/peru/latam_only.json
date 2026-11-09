@@ -1,0 +1,11 @@
+{
+  "_comment": "LatAm sources (16 repos) — moderate foreign content",
+  "scoring": {
+    "MIN_RELEVANCE": 10,
+    "GEOCODE_LIMIT": 8
+  },
+  "penalties": {
+    "foreignMultiplier": 0.5,
+    "offTopicPenalty": -20
+  }
+}

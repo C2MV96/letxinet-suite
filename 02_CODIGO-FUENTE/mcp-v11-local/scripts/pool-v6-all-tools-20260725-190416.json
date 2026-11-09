@@ -1,0 +1,232 @@
+﻿[
+    {
+        "run":  1,
+        "tool":  "search",
+        "verdict":  "RPC_ERROR(-32600)",
+        "ms":  25,
+        "http":  200,
+        "expect":  "results",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32600,\"message\":\"Invalid Request: expected jsonrpc 2.0\"}}"
+    },
+    {
+        "run":  1,
+        "tool":  "batch_search",
+        "verdict":  "RPC_ERROR(-32600)",
+        "ms":  30,
+        "http":  200,
+        "expect":  "per_query",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32600,\"message\":\"Invalid Request: expected jsonrpc 2.0\"}}"
+    },
+    {
+        "run":  1,
+        "tool":  "list_sources",
+        "verdict":  "RPC_ERROR(-32600)",
+        "ms":  23,
+        "http":  200,
+        "expect":  "sources",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32600,\"message\":\"Invalid Request: expected jsonrpc 2.0\"}}"
+    },
+    {
+        "run":  1,
+        "tool":  "health_check",
+        "verdict":  "RPC_ERROR(-32600)",
+        "ms":  34,
+        "http":  200,
+        "expect":  "status",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32600,\"message\":\"Invalid Request: expected jsonrpc 2.0\"}}"
+    },
+    {
+        "run":  1,
+        "tool":  "coverage_report",
+        "verdict":  "RPC_ERROR(-32600)",
+        "ms":  36,
+        "http":  200,
+        "expect":  "countries",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32600,\"message\":\"Invalid Request: expected jsonrpc 2.0\"}}"
+    },
+    {
+        "run":  1,
+        "tool":  "help",
+        "verdict":  "RPC_ERROR(-32600)",
+        "ms":  23,
+        "http":  200,
+        "expect":  "tools",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32600,\"message\":\"Invalid Request: expected jsonrpc 2.0\"}}"
+    },
+    {
+        "run":  1,
+        "tool":  "search_paperswithcode",
+        "verdict":  "RPC_ERROR(-32600)",
+        "ms":  23,
+        "http":  200,
+        "expect":  "papers",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32600,\"message\":\"Invalid Request: expected jsonrpc 2.0\"}}"
+    },
+    {
+        "run":  1,
+        "tool":  "search_conferences",
+        "verdict":  "RPC_ERROR(-32600)",
+        "ms":  22,
+        "http":  200,
+        "expect":  "conferences",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32600,\"message\":\"Invalid Request: expected jsonrpc 2.0\"}}"
+    },
+    {
+        "run":  1,
+        "tool":  "trending_papers",
+        "verdict":  "RPC_ERROR(-32600)",
+        "ms":  33,
+        "http":  200,
+        "expect":  "papers",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32600,\"message\":\"Invalid Request: expected jsonrpc 2.0\"}}"
+    },
+    {
+        "run":  1,
+        "tool":  "enrich_metadata",
+        "verdict":  "RPC_ERROR(-32600)",
+        "ms":  99,
+        "http":  200,
+        "expect":  "enriched",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32600,\"message\":\"Invalid Request: expected jsonrpc 2.0\"}}"
+    },
+    {
+        "run":  1,
+        "tool":  "download_pdf",
+        "verdict":  "RPC_ERROR(-32600)",
+        "ms":  522,
+        "http":  200,
+        "expect":  "url",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32600,\"message\":\"Invalid Request: expected jsonrpc 2.0\"}}"
+    },
+    {
+        "run":  1,
+        "tool":  "resolve_pdf",
+        "verdict":  "RPC_ERROR(-32600)",
+        "ms":  93,
+        "http":  200,
+        "expect":  "resolved_url",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32600,\"message\":\"Invalid Request: expected jsonrpc 2.0\"}}"
+    },
+    {
+        "run":  1,
+        "tool":  "pdf_metadata",
+        "verdict":  "RPC_ERROR(-32600)",
+        "ms":  80,
+        "http":  200,
+        "expect":  "metadata",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32600,\"message\":\"Invalid Request: expected jsonrpc 2.0\"}}"
+    },
+    {
+        "run":  1,
+        "tool":  "pdf_citations",
+        "verdict":  "RPC_ERROR(-32600)",
+        "ms":  32,
+        "http":  200,
+        "expect":  "citations",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32600,\"message\":\"Invalid Request: expected jsonrpc 2.0\"}}"
+    },
+    {
+        "run":  1,
+        "tool":  "pdf_smart_summary",
+        "verdict":  "RPC_ERROR(-32600)",
+        "ms":  31,
+        "http":  200,
+        "expect":  "summary",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32600,\"message\":\"Invalid Request: expected jsonrpc 2.0\"}}"
+    },
+    {
+        "run":  1,
+        "tool":  "read_pdf",
+        "verdict":  "RPC_ERROR(-32600)",
+        "ms":  178,
+        "http":  200,
+        "expect":  "text",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32600,\"message\":\"Invalid Request: expected jsonrpc 2.0\"}}"
+    },
+    {
+        "run":  1,
+        "tool":  "read_pdf_markdown",
+        "verdict":  "RPC_ERROR(-32600)",
+        "ms":  131,
+        "http":  200,
+        "expect":  "markdown",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32600,\"message\":\"Invalid Request: expected jsonrpc 2.0\"}}"
+    },
+    {
+        "run":  1,
+        "tool":  "extract_section",
+        "verdict":  "RPC_ERROR(-32600)",
+        "ms":  35,
+        "http":  200,
+        "expect":  "section",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32600,\"message\":\"Invalid Request: expected jsonrpc 2.0\"}}"
+    },
+    {
+        "run":  1,
+        "tool":  "extract_tables",
+        "verdict":  "RPC_ERROR(-32600)",
+        "ms":  46,
+        "http":  200,
+        "expect":  "tables",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32600,\"message\":\"Invalid Request: expected jsonrpc 2.0\"}}"
+    },
+    {
+        "run":  1,
+        "tool":  "extract_formulas",
+        "verdict":  "RPC_ERROR(-32600)",
+        "ms":  145,
+        "http":  200,
+        "expect":  "formulas",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32600,\"message\":\"Invalid Request: expected jsonrpc 2.0\"}}"
+    },
+    {
+        "run":  1,
+        "tool":  "convert_document",
+        "verdict":  "RPC_ERROR(-32600)",
+        "ms":  48,
+        "http":  200,
+        "expect":  "markdown",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32600,\"message\":\"Invalid Request: expected jsonrpc 2.0\"}}"
+    },
+    {
+        "run":  1,
+        "tool":  "batch_convert",
+        "verdict":  "RPC_ERROR(-32600)",
+        "ms":  54,
+        "http":  200,
+        "expect":  "results",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32600,\"message\":\"Invalid Request: expected jsonrpc 2.0\"}}"
+    },
+    {
+        "run":  1,
+        "tool":  "analyze_academic",
+        "verdict":  "RPC_ERROR(-32600)",
+        "ms":  101,
+        "http":  200,
+        "expect":  "analysis",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32600,\"message\":\"Invalid Request: expected jsonrpc 2.0\"}}"
+    }
+]

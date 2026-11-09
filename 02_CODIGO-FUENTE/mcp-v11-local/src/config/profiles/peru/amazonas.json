@@ -1,0 +1,5 @@
+{
+  "_comment": "Amazonas — Peru 57%, topic 17%. Needs lower threshold + stronger topic penalty.",
+  "scoring": { "MIN_RELEVANCE": 0 },
+  "penalties": { "offTopicPenalty": -30, "foreignMultiplier": 0.2 }
+}

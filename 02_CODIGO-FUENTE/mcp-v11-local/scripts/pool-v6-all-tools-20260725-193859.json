@@ -1,0 +1,692 @@
+﻿[
+    {
+        "run":  1,
+        "tool":  "search",
+        "verdict":  "PASS",
+        "ms":  62401,
+        "http":  200,
+        "expect":  "results",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1001,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"sources\\\": [\\n      {\\n        \\\"id\\\": \\\"https://openalex.org/W2911892655\\\",\\n        \\\"title\\\": \\\"The role of renewable energy in the global energy transformation\\\",\\n        \\\"abstr"
+    },
+    {
+        "run":  1,
+        "tool":  "batch_search",
+        "verdict":  "PASS",
+        "ms":  27,
+        "http":  200,
+        "expect":  "per_query",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1002,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"results\\\": [\\n      {\\n        \\\"id\\\": \\\"USP_3be0f45aea3004199235dee02af8f511\\\",\\n        \\\"title\\\": \\\"Essays on renewable energy and development\\\",\\n        \\\"authors\\\": [\\n         "
+    },
+    {
+        "run":  1,
+        "tool":  "list_sources",
+        "verdict":  "PASS",
+        "ms":  34,
+        "http":  200,
+        "expect":  "sources",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1003,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"sources\\\": [\\n      {\\n        \\\"id\\\": \\\"semantic\\\",\\n        \\\"name\\\": \\\"Semantic Scholar\\\",\\n        \\\"country\\\": \\\"Global\\\",\\n        \\\"category\\\": \\\"free\\\",\\n        \\\"help\\\": \\\"A"
+    },
+    {
+        "run":  1,
+        "tool":  "health_check",
+        "verdict":  "PASS",
+        "ms":  5910,
+        "http":  200,
+        "expect":  "status",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1004,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"service\\\": \\\"letxipu-search-mcp\\\",\\n    \\\"version\\\": \\\"11.0.0\\\",\\n    \\\"tools\\\": 28,\\n    \\\"extraction\\\": {\\n      \\\"mode\\\": \\\"auto\\\",\\n      \\\"mineru\\\": {\\n "
+    },
+    {
+        "run":  1,
+        "tool":  "coverage_report",
+        "verdict":  "PASS",
+        "ms":  29,
+        "http":  200,
+        "expect":  "countries",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1005,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"timestamp\\\": \\\"2026-07-26T00:40:08.570Z\\\",\\n    \\\"last_test\\\": null,\\n    \\\"countries\\\": [],\\n    \\\"summary\\\": {\\n      \\\"peru_repos\\\": {\\n        \\\"working\\\": 0,\\n        \\\"total\\\": "
+    },
+    {
+        "run":  1,
+        "tool":  "help",
+        "verdict":  "PASS",
+        "ms":  29,
+        "http":  200,
+        "expect":  "tools",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1006,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"tools\\\": [\\n      {\\n        \\\"name\\\": \\\"batch_search\\\",\\n        \\\"description\\\": \\\"Preferred search tool in V5. Runs multiple queries in parallel across multiple source groups, then"
+    },
+    {
+        "run":  1,
+        "tool":  "search_paperswithcode",
+        "verdict":  "PASS",
+        "ms":  589,
+        "http":  200,
+        "expect":  "papers",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1007,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"sources\\\": [\\n      {\\n        \\\"id\\\": \\\"hf_2607.21553\\\",\\n        \\\"title\\\": \\\"SANA-Video 2.0: Hybrid Linear Attention with Attention Residuals for Efficient Video Generation\\\",\\n   "
+    },
+    {
+        "run":  1,
+        "tool":  "search_conferences",
+        "verdict":  "PASS",
+        "ms":  965,
+        "http":  200,
+        "expect":  "conferences",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1008,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"sources\\\": [\\n      {\\n        \\\"id\\\": \\\"openreview_ZxG9fTivjBH\\\",\\n        \\\"title\\\": \\\"AttentionCode: Ultra-Reliable Feedback Codes for Short-Packet Communications\\\",\\n        \\\"aut"
+    },
+    {
+        "run":  1,
+        "tool":  "trending_papers",
+        "verdict":  "PASS",
+        "ms":  244,
+        "http":  200,
+        "expect":  "papers",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1009,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"sources\\\": [\\n      {\\n        \\\"id\\\": \\\"hf_2607.21557\\\",\\n        \\\"title\\\": \\\"OpenForgeRL: Train Harness-native Agents in Any Environment\\\",\\n        \\\"authors\\\": [\\n          \\\"Xia"
+    },
+    {
+        "run":  1,
+        "tool":  "enrich_metadata",
+        "verdict":  "RPC_ERROR(-32001)",
+        "ms":  108352,
+        "http":  200,
+        "expect":  "enriched",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1010,\"error\":{\"code\":-32001,\"message\":\"Tool \\\"enrich_metadata\\\" exceeded its deadline of 108310ms\",\"data\":{\"tool\":\"enrich_metadata\",\"elapsed_ms\":108310,\"hint\":\"Consider narrowing the search or fetching in smaller pages\"}}}"
+    },
+    {
+        "run":  1,
+        "tool":  "download_pdf",
+        "verdict":  "PASS",
+        "ms":  471,
+        "http":  200,
+        "expect":  "url",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1011,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"pdfUrl\\\": \\\"https://arxiv.org/pdf/1304.1068\\\"\\n  }\\n}\"}]}}"
+    },
+    {
+        "run":  1,
+        "tool":  "resolve_pdf",
+        "verdict":  "PASS",
+        "ms":  194,
+        "http":  200,
+        "expect":  "resolved_url",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1012,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"pdfUrl\\\": \\\"https://arxiv.org/pdf/1304.1068\\\",\\n    \\\"resolvedFrom\\\": \\\"Unpaywall\\\",\\n    \\\"doi\\\": \\\"10.1038/nature12373\\\",\\n    \\\"steps\\\": [\\n      \\\"DOI detected: 10.1038/nature1237"
+    },
+    {
+        "run":  1,
+        "tool":  "pdf_metadata",
+        "verdict":  "PASS",
+        "ms":  1257,
+        "http":  200,
+        "expect":  "metadata",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1013,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"title\\\": \\\"\\\",\\n    \\\"author\\\": \\\"\\\",\\n    \\\"subject\\\": \\\"\\\",\\n    \\\"creator\\\": \\\"LaTeX with hyperref\\\",\\n    \\\"producer\\\": \\\"pdfTeX-1.40.25\\\",\\n    \\\"creationDate\\\": \\\"D:202404102111"
+    },
+    {
+        "run":  1,
+        "tool":  "pdf_citations",
+        "verdict":  "PASS",
+        "ms":  573,
+        "http":  200,
+        "expect":  "citations",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1014,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"citations\\\": [\\n      {\\n        \\\"index\\\": 1,\\n        \\\"text\\\": \\\"Jimmy Lei Ba, Jamie Ryan Kiros, and Geoffrey E Hinton. Layer normalization.arXiv preprint arXiv:1607.06450, 2016.\\\""
+    },
+    {
+        "run":  1,
+        "tool":  "pdf_smart_summary",
+        "verdict":  "PASS",
+        "ms":  5930,
+        "http":  200,
+        "expect":  "summary",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1015,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"documentType\\\": \\\"article\\\",\\n    \\\"language\\\": \\\"en\\\",\\n    \\\"pages\\\": 15,\\n    \\\"totalWords\\\": 5501,\\n    \\\"format\\\": \\\"markdown\\\",\\n    \\\"sections\\\": [\\n      {\\n        \\\"name\\\": "
+    },
+    {
+        "run":  1,
+        "tool":  "read_pdf",
+        "verdict":  "PASS",
+        "ms":  2641,
+        "http":  200,
+        "expect":  "text",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1016,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"text\\\": \\\"\\\\n\\\\nProvided proper attribution is provided, Google hereby grants permission to\\\\nreproduce the tables and figures in this paper solely for use in journalistic or\\\\nschola"
+    },
+    {
+        "run":  1,
+        "tool":  "read_pdf_markdown",
+        "verdict":  "PASS_TEXT_ONLY",
+        "ms":  1836,
+        "http":  200,
+        "expect":  "markdown",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1017,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"text\\\": \\\"\\\\n\\\\nProvided proper attribution is provided, Google hereby grants permission to\\\\nreproduce the tables and figures in this paper solely for use in journalistic or\\\\nschola"
+    },
+    {
+        "run":  1,
+        "tool":  "extract_section",
+        "verdict":  "PASS",
+        "ms":  320,
+        "http":  200,
+        "expect":  "section",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1018,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"found\\\": true,\\n    \\\"section\\\": {\\n      \\\"name\\\": \\\"Resumen / Abstract\\\",\\n      \\\"category\\\": \\\"front\\\",\\n      \\\"content\\\": \\\"Abstract\\\\nThe dominant sequence transduction models "
+    },
+    {
+        "run":  1,
+        "tool":  "extract_tables",
+        "verdict":  "EMPTY",
+        "ms":  1910,
+        "http":  200,
+        "expect":  "tables",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1019,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"tables\\\": [],\\n    \\\"count\\\": 0\\n  }\\n}\"}]}}"
+    },
+    {
+        "run":  1,
+        "tool":  "extract_formulas",
+        "verdict":  "EMPTY",
+        "ms":  24,
+        "http":  200,
+        "expect":  "formulas",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1020,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"formulas\\\": [],\\n    \\\"count\\\": 0\\n  }\\n}\"}]}}"
+    },
+    {
+        "run":  1,
+        "tool":  "convert_document",
+        "verdict":  "PASS_TEXT_ONLY",
+        "ms":  1500,
+        "http":  200,
+        "expect":  "markdown",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1021,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"text\\\": \\\"\\\\n\\\\nProvided proper attribution is provided, Google hereby grants permission to\\\\nreproduce the tables and figures in this paper solely for use in journalistic or\\\\nschola"
+    },
+    {
+        "run":  1,
+        "tool":  "batch_convert",
+        "verdict":  "WARN_NO_FIELDS",
+        "ms":  1791,
+        "http":  200,
+        "expect":  "results",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1022,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"results\\\": [\\n      {\\n        \\\"name\\\": \\\"1706.03762\\\",\\n        \\\"chars\\\": 39490,\\n        \\\"format\\\": \\\"pdf\\\",\\n        \\\"source\\\": \\\"pdf-parse\\\"\\n      }\\n    ],\\n    \\\"total\\\": 1"
+    },
+    {
+        "run":  1,
+        "tool":  "analyze_academic",
+        "verdict":  "PASS",
+        "ms":  431,
+        "http":  200,
+        "expect":  "analysis",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1023,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"documentType\\\": \\\"article\\\",\\n    \\\"language\\\": \\\"en\\\",\\n    \\\"pages\\\": 15,\\n    \\\"totalWords\\\": 5501,\\n    \\\"sections\\\": [\\n      {\\n        \\\"name\\\": \\\"Resumen / Abstract\\\",\\n      "
+    },
+    {
+        "run":  2,
+        "tool":  "search",
+        "verdict":  "PASS",
+        "ms":  60493,
+        "http":  200,
+        "expect":  "results",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1024,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"sources\\\": [\\n      {\\n        \\\"id\\\": \\\"https://openalex.org/W2911892655\\\",\\n        \\\"title\\\": \\\"The role of renewable energy in the global energy transformation\\\",\\n        \\\"abstr"
+    },
+    {
+        "run":  2,
+        "tool":  "batch_search",
+        "verdict":  "PASS",
+        "ms":  20,
+        "http":  200,
+        "expect":  "per_query",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1025,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"results\\\": [\\n      {\\n        \\\"id\\\": \\\"USP_3be0f45aea3004199235dee02af8f511\\\",\\n        \\\"title\\\": \\\"Essays on renewable energy and development\\\",\\n        \\\"authors\\\": [\\n         "
+    },
+    {
+        "run":  2,
+        "tool":  "list_sources",
+        "verdict":  "PASS",
+        "ms":  29,
+        "http":  200,
+        "expect":  "sources",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1026,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"sources\\\": [\\n      {\\n        \\\"id\\\": \\\"semantic\\\",\\n        \\\"name\\\": \\\"Semantic Scholar\\\",\\n        \\\"country\\\": \\\"Global\\\",\\n        \\\"category\\\": \\\"free\\\",\\n        \\\"help\\\": \\\"A"
+    },
+    {
+        "run":  2,
+        "tool":  "health_check",
+        "verdict":  "PASS",
+        "ms":  2669,
+        "http":  200,
+        "expect":  "status",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1027,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"service\\\": \\\"letxipu-search-mcp\\\",\\n    \\\"version\\\": \\\"11.0.0\\\",\\n    \\\"tools\\\": 28,\\n    \\\"extraction\\\": {\\n      \\\"mode\\\": \\\"auto\\\",\\n      \\\"mineru\\\": {\\n "
+    },
+    {
+        "run":  2,
+        "tool":  "coverage_report",
+        "verdict":  "PASS",
+        "ms":  28,
+        "http":  200,
+        "expect":  "countries",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1028,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"timestamp\\\": \\\"2026-07-26T00:43:21.155Z\\\",\\n    \\\"last_test\\\": null,\\n    \\\"countries\\\": [],\\n    \\\"summary\\\": {\\n      \\\"peru_repos\\\": {\\n        \\\"working\\\": 0,\\n        \\\"total\\\": "
+    },
+    {
+        "run":  2,
+        "tool":  "help",
+        "verdict":  "PASS",
+        "ms":  188,
+        "http":  200,
+        "expect":  "tools",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1029,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"tools\\\": [\\n      {\\n        \\\"name\\\": \\\"batch_search\\\",\\n        \\\"description\\\": \\\"Preferred search tool in V5. Runs multiple queries in parallel across multiple source groups, then"
+    },
+    {
+        "run":  2,
+        "tool":  "search_paperswithcode",
+        "verdict":  "PASS",
+        "ms":  617,
+        "http":  200,
+        "expect":  "papers",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1030,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"sources\\\": [\\n      {\\n        \\\"id\\\": \\\"hf_2607.21553\\\",\\n        \\\"title\\\": \\\"SANA-Video 2.0: Hybrid Linear Attention with Attention Residuals for Efficient Video Generation\\\",\\n   "
+    },
+    {
+        "run":  2,
+        "tool":  "search_conferences",
+        "verdict":  "PASS",
+        "ms":  524,
+        "http":  200,
+        "expect":  "conferences",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1031,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"sources\\\": [\\n      {\\n        \\\"id\\\": \\\"openreview_ZxG9fTivjBH\\\",\\n        \\\"title\\\": \\\"AttentionCode: Ultra-Reliable Feedback Codes for Short-Packet Communications\\\",\\n        \\\"aut"
+    },
+    {
+        "run":  2,
+        "tool":  "trending_papers",
+        "verdict":  "PASS",
+        "ms":  720,
+        "http":  200,
+        "expect":  "papers",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1032,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"sources\\\": [\\n      {\\n        \\\"id\\\": \\\"hf_2607.21557\\\",\\n        \\\"title\\\": \\\"OpenForgeRL: Train Harness-native Agents in Any Environment\\\",\\n        \\\"authors\\\": [\\n          \\\"Xia"
+    },
+    {
+        "run":  2,
+        "tool":  "enrich_metadata",
+        "verdict":  "RPC_ERROR(-32001)",
+        "ms":  108327,
+        "http":  200,
+        "expect":  "enriched",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1033,\"error\":{\"code\":-32001,\"message\":\"Tool \\\"enrich_metadata\\\" exceeded its deadline of 108303ms\",\"data\":{\"tool\":\"enrich_metadata\",\"elapsed_ms\":108303,\"hint\":\"Consider narrowing the search or fetching in smaller pages\"}}}"
+    },
+    {
+        "run":  2,
+        "tool":  "download_pdf",
+        "verdict":  "PASS",
+        "ms":  440,
+        "http":  200,
+        "expect":  "url",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1034,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"pdfUrl\\\": \\\"https://arxiv.org/pdf/1304.1068\\\"\\n  }\\n}\"}]}}"
+    },
+    {
+        "run":  2,
+        "tool":  "resolve_pdf",
+        "verdict":  "PASS",
+        "ms":  145,
+        "http":  200,
+        "expect":  "resolved_url",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1035,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"pdfUrl\\\": \\\"https://arxiv.org/pdf/1304.1068\\\",\\n    \\\"resolvedFrom\\\": \\\"Unpaywall\\\",\\n    \\\"doi\\\": \\\"10.1038/nature12373\\\",\\n    \\\"steps\\\": [\\n      \\\"DOI detected: 10.1038/nature1237"
+    },
+    {
+        "run":  2,
+        "tool":  "pdf_metadata",
+        "verdict":  "PASS",
+        "ms":  545,
+        "http":  200,
+        "expect":  "metadata",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1036,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"title\\\": \\\"\\\",\\n    \\\"author\\\": \\\"\\\",\\n    \\\"subject\\\": \\\"\\\",\\n    \\\"creator\\\": \\\"LaTeX with hyperref\\\",\\n    \\\"producer\\\": \\\"pdfTeX-1.40.25\\\",\\n    \\\"creationDate\\\": \\\"D:202404102111"
+    },
+    {
+        "run":  2,
+        "tool":  "pdf_citations",
+        "verdict":  "PASS",
+        "ms":  398,
+        "http":  200,
+        "expect":  "citations",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1037,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"citations\\\": [\\n      {\\n        \\\"index\\\": 1,\\n        \\\"text\\\": \\\"Jimmy Lei Ba, Jamie Ryan Kiros, and Geoffrey E Hinton. Layer normalization.arXiv preprint arXiv:1607.06450, 2016.\\\""
+    },
+    {
+        "run":  2,
+        "tool":  "pdf_smart_summary",
+        "verdict":  "PASS",
+        "ms":  3524,
+        "http":  200,
+        "expect":  "summary",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1038,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"documentType\\\": \\\"article\\\",\\n    \\\"language\\\": \\\"en\\\",\\n    \\\"pages\\\": 15,\\n    \\\"totalWords\\\": 5501,\\n    \\\"format\\\": \\\"markdown\\\",\\n    \\\"sections\\\": [\\n      {\\n        \\\"name\\\": "
+    },
+    {
+        "run":  2,
+        "tool":  "read_pdf",
+        "verdict":  "PASS",
+        "ms":  1769,
+        "http":  200,
+        "expect":  "text",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1039,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"text\\\": \\\"\\\\n\\\\nProvided proper attribution is provided, Google hereby grants permission to\\\\nreproduce the tables and figures in this paper solely for use in journalistic or\\\\nschola"
+    },
+    {
+        "run":  2,
+        "tool":  "read_pdf_markdown",
+        "verdict":  "PASS_TEXT_ONLY",
+        "ms":  1571,
+        "http":  200,
+        "expect":  "markdown",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1040,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"text\\\": \\\"\\\\n\\\\nProvided proper attribution is provided, Google hereby grants permission to\\\\nreproduce the tables and figures in this paper solely for use in journalistic or\\\\nschola"
+    },
+    {
+        "run":  2,
+        "tool":  "extract_section",
+        "verdict":  "PASS",
+        "ms":  322,
+        "http":  200,
+        "expect":  "section",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1041,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"found\\\": true,\\n    \\\"section\\\": {\\n      \\\"name\\\": \\\"Resumen / Abstract\\\",\\n      \\\"category\\\": \\\"front\\\",\\n      \\\"content\\\": \\\"Abstract\\\\nThe dominant sequence transduction models "
+    },
+    {
+        "run":  2,
+        "tool":  "extract_tables",
+        "verdict":  "EMPTY",
+        "ms":  18,
+        "http":  200,
+        "expect":  "tables",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1042,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"tables\\\": [],\\n    \\\"count\\\": 0\\n  }\\n}\"}]}}"
+    },
+    {
+        "run":  2,
+        "tool":  "extract_formulas",
+        "verdict":  "EMPTY",
+        "ms":  17,
+        "http":  200,
+        "expect":  "formulas",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1043,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"formulas\\\": [],\\n    \\\"count\\\": 0\\n  }\\n}\"}]}}"
+    },
+    {
+        "run":  2,
+        "tool":  "convert_document",
+        "verdict":  "PASS_TEXT_ONLY",
+        "ms":  1332,
+        "http":  200,
+        "expect":  "markdown",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1044,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"text\\\": \\\"\\\\n\\\\nProvided proper attribution is provided, Google hereby grants permission to\\\\nreproduce the tables and figures in this paper solely for use in journalistic or\\\\nschola"
+    },
+    {
+        "run":  2,
+        "tool":  "batch_convert",
+        "verdict":  "WARN_NO_FIELDS",
+        "ms":  20,
+        "http":  200,
+        "expect":  "results",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1045,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"results\\\": [\\n      {\\n        \\\"name\\\": \\\"1706.03762\\\",\\n        \\\"chars\\\": 39490,\\n        \\\"format\\\": \\\"pdf\\\",\\n        \\\"source\\\": \\\"pdf-parse\\\"\\n      }\\n    ],\\n    \\\"total\\\": 1"
+    },
+    {
+        "run":  2,
+        "tool":  "analyze_academic",
+        "verdict":  "PASS",
+        "ms":  384,
+        "http":  200,
+        "expect":  "analysis",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1046,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"documentType\\\": \\\"article\\\",\\n    \\\"language\\\": \\\"en\\\",\\n    \\\"pages\\\": 15,\\n    \\\"totalWords\\\": 5501,\\n    \\\"sections\\\": [\\n      {\\n        \\\"name\\\": \\\"Resumen / Abstract\\\",\\n      "
+    },
+    {
+        "run":  3,
+        "tool":  "search",
+        "verdict":  "PASS",
+        "ms":  60268,
+        "http":  200,
+        "expect":  "results",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1047,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"sources\\\": [\\n      {\\n        \\\"id\\\": \\\"scielo_10_1590_scielopreprints_15917\\\",\\n        \\\"title\\\": \\\"Green Finance, Digital Economic Infrastructure and India’s Renewable Energy Tran"
+    },
+    {
+        "run":  3,
+        "tool":  "batch_search",
+        "verdict":  "PASS",
+        "ms":  30,
+        "http":  200,
+        "expect":  "per_query",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1048,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"results\\\": [\\n      {\\n        \\\"id\\\": \\\"USP_3be0f45aea3004199235dee02af8f511\\\",\\n        \\\"title\\\": \\\"Essays on renewable energy and development\\\",\\n        \\\"authors\\\": [\\n         "
+    },
+    {
+        "run":  3,
+        "tool":  "list_sources",
+        "verdict":  "PASS",
+        "ms":  30,
+        "http":  200,
+        "expect":  "sources",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1049,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"sources\\\": [\\n      {\\n        \\\"id\\\": \\\"semantic\\\",\\n        \\\"name\\\": \\\"Semantic Scholar\\\",\\n        \\\"country\\\": \\\"Global\\\",\\n        \\\"category\\\": \\\"free\\\",\\n        \\\"help\\\": \\\"A"
+    },
+    {
+        "run":  3,
+        "tool":  "health_check",
+        "verdict":  "PASS",
+        "ms":  1810,
+        "http":  200,
+        "expect":  "status",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1050,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"service\\\": \\\"letxipu-search-mcp\\\",\\n    \\\"version\\\": \\\"11.0.0\\\",\\n    \\\"tools\\\": 28,\\n    \\\"extraction\\\": {\\n      \\\"mode\\\": \\\"auto\\\",\\n      \\\"mineru\\\": {\\n "
+    },
+    {
+        "run":  3,
+        "tool":  "coverage_report",
+        "verdict":  "PASS",
+        "ms":  22,
+        "http":  200,
+        "expect":  "countries",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1051,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"timestamp\\\": \\\"2026-07-26T00:46:24.310Z\\\",\\n    \\\"last_test\\\": null,\\n    \\\"countries\\\": [],\\n    \\\"summary\\\": {\\n      \\\"peru_repos\\\": {\\n        \\\"working\\\": 0,\\n        \\\"total\\\": "
+    },
+    {
+        "run":  3,
+        "tool":  "help",
+        "verdict":  "PASS",
+        "ms":  21,
+        "http":  200,
+        "expect":  "tools",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1052,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"tools\\\": [\\n      {\\n        \\\"name\\\": \\\"batch_search\\\",\\n        \\\"description\\\": \\\"Preferred search tool in V5. Runs multiple queries in parallel across multiple source groups, then"
+    },
+    {
+        "run":  3,
+        "tool":  "search_paperswithcode",
+        "verdict":  "PASS",
+        "ms":  689,
+        "http":  200,
+        "expect":  "papers",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1053,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"sources\\\": [\\n      {\\n        \\\"id\\\": \\\"hf_2607.21553\\\",\\n        \\\"title\\\": \\\"SANA-Video 2.0: Hybrid Linear Attention with Attention Residuals for Efficient Video Generation\\\",\\n   "
+    },
+    {
+        "run":  3,
+        "tool":  "search_conferences",
+        "verdict":  "PASS",
+        "ms":  853,
+        "http":  200,
+        "expect":  "conferences",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1054,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"sources\\\": [\\n      {\\n        \\\"id\\\": \\\"openreview_ZxG9fTivjBH\\\",\\n        \\\"title\\\": \\\"AttentionCode: Ultra-Reliable Feedback Codes for Short-Packet Communications\\\",\\n        \\\"aut"
+    },
+    {
+        "run":  3,
+        "tool":  "trending_papers",
+        "verdict":  "PASS",
+        "ms":  331,
+        "http":  200,
+        "expect":  "papers",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1055,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"sources\\\": [\\n      {\\n        \\\"id\\\": \\\"hf_2607.21557\\\",\\n        \\\"title\\\": \\\"OpenForgeRL: Train Harness-native Agents in Any Environment\\\",\\n        \\\"authors\\\": [\\n          \\\"Xia"
+    },
+    {
+        "run":  3,
+        "tool":  "enrich_metadata",
+        "verdict":  "RPC_ERROR(-32001)",
+        "ms":  108339,
+        "http":  200,
+        "expect":  "enriched",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1056,\"error\":{\"code\":-32001,\"message\":\"Tool \\\"enrich_metadata\\\" exceeded its deadline of 108305ms\",\"data\":{\"tool\":\"enrich_metadata\",\"elapsed_ms\":108305,\"hint\":\"Consider narrowing the search or fetching in smaller pages\"}}}"
+    },
+    {
+        "run":  3,
+        "tool":  "download_pdf",
+        "verdict":  "PASS",
+        "ms":  445,
+        "http":  200,
+        "expect":  "url",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1057,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"pdfUrl\\\": \\\"https://arxiv.org/pdf/1304.1068\\\"\\n  }\\n}\"}]}}"
+    },
+    {
+        "run":  3,
+        "tool":  "resolve_pdf",
+        "verdict":  "PASS",
+        "ms":  151,
+        "http":  200,
+        "expect":  "resolved_url",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1058,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"pdfUrl\\\": \\\"https://arxiv.org/pdf/1304.1068\\\",\\n    \\\"resolvedFrom\\\": \\\"Unpaywall\\\",\\n    \\\"doi\\\": \\\"10.1038/nature12373\\\",\\n    \\\"steps\\\": [\\n      \\\"DOI detected: 10.1038/nature1237"
+    },
+    {
+        "run":  3,
+        "tool":  "pdf_metadata",
+        "verdict":  "PASS",
+        "ms":  371,
+        "http":  200,
+        "expect":  "metadata",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1059,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"title\\\": \\\"\\\",\\n    \\\"author\\\": \\\"\\\",\\n    \\\"subject\\\": \\\"\\\",\\n    \\\"creator\\\": \\\"LaTeX with hyperref\\\",\\n    \\\"producer\\\": \\\"pdfTeX-1.40.25\\\",\\n    \\\"creationDate\\\": \\\"D:202404102111"
+    },
+    {
+        "run":  3,
+        "tool":  "pdf_citations",
+        "verdict":  "PASS",
+        "ms":  344,
+        "http":  200,
+        "expect":  "citations",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1060,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"citations\\\": [\\n      {\\n        \\\"index\\\": 1,\\n        \\\"text\\\": \\\"Jimmy Lei Ba, Jamie Ryan Kiros, and Geoffrey E Hinton. Layer normalization.arXiv preprint arXiv:1607.06450, 2016.\\\""
+    },
+    {
+        "run":  3,
+        "tool":  "pdf_smart_summary",
+        "verdict":  "PASS",
+        "ms":  3251,
+        "http":  200,
+        "expect":  "summary",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1061,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"documentType\\\": \\\"article\\\",\\n    \\\"language\\\": \\\"en\\\",\\n    \\\"pages\\\": 15,\\n    \\\"totalWords\\\": 5501,\\n    \\\"format\\\": \\\"markdown\\\",\\n    \\\"sections\\\": [\\n      {\\n        \\\"name\\\": "
+    },
+    {
+        "run":  3,
+        "tool":  "read_pdf",
+        "verdict":  "PASS",
+        "ms":  1402,
+        "http":  200,
+        "expect":  "text",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1062,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"text\\\": \\\"\\\\n\\\\nProvided proper attribution is provided, Google hereby grants permission to\\\\nreproduce the tables and figures in this paper solely for use in journalistic or\\\\nschola"
+    },
+    {
+        "run":  3,
+        "tool":  "read_pdf_markdown",
+        "verdict":  "PASS_TEXT_ONLY",
+        "ms":  1383,
+        "http":  200,
+        "expect":  "markdown",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1063,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"text\\\": \\\"\\\\n\\\\nProvided proper attribution is provided, Google hereby grants permission to\\\\nreproduce the tables and figures in this paper solely for use in journalistic or\\\\nschola"
+    },
+    {
+        "run":  3,
+        "tool":  "extract_section",
+        "verdict":  "PASS",
+        "ms":  297,
+        "http":  200,
+        "expect":  "section",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1064,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"found\\\": true,\\n    \\\"section\\\": {\\n      \\\"name\\\": \\\"Resumen / Abstract\\\",\\n      \\\"category\\\": \\\"front\\\",\\n      \\\"content\\\": \\\"Abstract\\\\nThe dominant sequence transduction models "
+    },
+    {
+        "run":  3,
+        "tool":  "extract_tables",
+        "verdict":  "EMPTY",
+        "ms":  22,
+        "http":  200,
+        "expect":  "tables",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1065,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"tables\\\": [],\\n    \\\"count\\\": 0\\n  }\\n}\"}]}}"
+    },
+    {
+        "run":  3,
+        "tool":  "extract_formulas",
+        "verdict":  "EMPTY",
+        "ms":  19,
+        "http":  200,
+        "expect":  "formulas",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1066,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"formulas\\\": [],\\n    \\\"count\\\": 0\\n  }\\n}\"}]}}"
+    },
+    {
+        "run":  3,
+        "tool":  "convert_document",
+        "verdict":  "PASS_TEXT_ONLY",
+        "ms":  1143,
+        "http":  200,
+        "expect":  "markdown",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1067,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"text\\\": \\\"\\\\n\\\\nProvided proper attribution is provided, Google hereby grants permission to\\\\nreproduce the tables and figures in this paper solely for use in journalistic or\\\\nschola"
+    },
+    {
+        "run":  3,
+        "tool":  "batch_convert",
+        "verdict":  "WARN_NO_FIELDS",
+        "ms":  14,
+        "http":  200,
+        "expect":  "results",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1068,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"results\\\": [\\n      {\\n        \\\"name\\\": \\\"1706.03762\\\",\\n        \\\"chars\\\": 39490,\\n        \\\"format\\\": \\\"pdf\\\",\\n        \\\"source\\\": \\\"pdf-parse\\\"\\n      }\\n    ],\\n    \\\"total\\\": 1"
+    },
+    {
+        "run":  3,
+        "tool":  "analyze_academic",
+        "verdict":  "PASS",
+        "ms":  274,
+        "http":  200,
+        "expect":  "analysis",
+        "error":  null,
+        "bodySample":  "{\"jsonrpc\":\"2.0\",\"id\":1069,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\n  \\\"success\\\": true,\\n  \\\"data\\\": {\\n    \\\"documentType\\\": \\\"article\\\",\\n    \\\"language\\\": \\\"en\\\",\\n    \\\"pages\\\": 15,\\n    \\\"totalWords\\\": 5501,\\n    \\\"sections\\\": [\\n      {\\n        \\\"name\\\": \\\"Resumen / Abstract\\\",\\n      "
+    }
+]

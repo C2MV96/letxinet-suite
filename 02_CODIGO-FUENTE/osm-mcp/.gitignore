@@ -1,0 +1,31 @@
+# Go build artifacts
+osmmcp.exe
+osmmcp.exe~
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+coverage.out
+
+# Logs
+*.log
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Opencode transient (if running agents here)
+.opencode/
+
+# Environment files (may contain secrets — never commit)
+.env
+.env.local
+.env.production

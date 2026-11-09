@@ -1,0 +1,9 @@
+{
+  "_comment": "Loreto — Amazonian region, 52% Peru. Lower threshold, moderate penalties.",
+  "scoring": {
+    "MIN_RELEVANCE": 5
+  },
+  "penalties": {
+    "offTopicPenalty": -15
+  }
+}

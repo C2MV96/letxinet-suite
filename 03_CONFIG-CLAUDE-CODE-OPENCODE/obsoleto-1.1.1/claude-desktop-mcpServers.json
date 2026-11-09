@@ -1,0 +1,42 @@
+{
+  "mcpServers": {
+    "codebase-memory": {
+      "command": "C:\\Users\\USER\\AppData\\Local\\Programs\\codebase-memory-mcp\\codebase-memory-mcp.exe",
+      "args": []
+    },
+    "letxinet-gateway": {
+      "command": "node",
+      "args": [
+        "C:/Program Files/LetXinet Addon/mcp-bridge/mcp-bridge.cjs"
+      ],
+      "env": {
+        "LETXINET_SUITE_URL": "http://127.0.0.1:43123",
+        "LETXINET_SERVER_SELECTION": "both"
+      }
+    },
+    "omni-word-mcp": {
+      "command": "C:/Program Files/LetXinet Addon/omni-word-mcp/.venv/Scripts/python.exe",
+      "args": [
+        "C:/Program Files/LetXinet Addon/omni-word-mcp/word_mcp_server.py"
+      ],
+      "env": {
+        "MCP_DEBUG": "1"
+      }
+    },
+    "markitdown-api": {
+      "command": "node",
+      "args": [
+        "C:/Program Files/LetXinet Suite/MarkItDown/API/mcp-adapter/markitdown-mcp.js"
+      ],
+      "env": {
+        "MARKITDOWN_API_URL": "http://127.0.0.1:7860"
+      }
+    },
+    "latex-mcp-local": {
+      "command": "node",
+      "args": [
+        "C:/Program Files/LetXinet Addon/latex-mcp-local/dist/index.js"
+      ]
+    }
+  }
+}

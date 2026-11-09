@@ -1,0 +1,15 @@
+{
+  "_comment": "Maps source name fragments to their country. Used for detecting result country from source field.",
+  "peru": ["alicia", "renati", "concytec", "sunedu", "lamolina", "unmsm", "unalm", "laref_peru", "scielo-peru"],
+  "argentina": ["snrd", "inta", "laref_argentina"],
+  "brasil": ["oasisbr", "bdtd", "laref_brasil"],
+  "chile": ["anid", "laref_chile"],
+  "colombia": ["minciencias", "laref_colombia"],
+  "mexico": ["conacyt", "conahcyt", "unam", "laref_mexico"],
+  "ecuador": ["rraae", "laref_ecuador"],
+  "espana": ["espana", "recolecta", "dialnet"],
+  "costarica": ["costarica", "kimuk"],
+  "elsalvador": ["elsalvador", "redicces"],
+  "uruguay": ["uruguay", "timbo"],
+  "latam_regional": ["scielo", "redalyc", "lareferencia"]
+}

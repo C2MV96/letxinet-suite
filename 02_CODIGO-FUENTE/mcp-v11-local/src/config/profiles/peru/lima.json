@@ -1,0 +1,6 @@
+{
+  "_comment": "Lima — Peru 40%, geo 10%. Big city, many foreign papers. Strong foreign filter.",
+  "scoring": { "MIN_RELEVANCE": 10 },
+  "penalties": { "foreignMultiplier": 0.1, "offTopicPenalty": -30 },
+  "geoBoost": { "city": { "boost": 70 }, "geoCityBoost": 30 }
+}

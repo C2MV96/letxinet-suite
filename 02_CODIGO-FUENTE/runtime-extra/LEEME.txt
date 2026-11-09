@@ -1,0 +1,11 @@
+﻿msvcp140.dll (Microsoft Visual C++ 2015-2022, x64, 14.42)
+
+recompilar-todo.ps1 lo copia dentro de los dos Python embebidos (MarkItDown y MCP-V11-Local).
+PyMuPDF (MarkItDown) y varias librerias del Python de V11 lo necesitan, y el Python embebido
+solo trae vcruntime140.dll. Sin este archivo, en laptops que no tienen Visual C++ instalado,
+MarkItDown se reiniciaba sin parar y nunca abria el puerto 7860 (LetXinet Suite 1.1.4).
+Es codigo redistribuible de Microsoft Visual C++.
+
+En el repositorio de GitHub no se incluye el .dll (es un binario de Microsoft). Antes de compilar,
+copialo aqui desde C:\Windows\System32\msvcp140.dll de un equipo con el redistribuible de
+Visual C++ 2015-2022 x64 instalado. recompilar-todo.ps1 se detiene si falta.

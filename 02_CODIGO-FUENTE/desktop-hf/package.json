@@ -1,0 +1,77 @@
+{
+  "name": "letxipu-desktop-hf",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "tsx server.ts",
+    "build": "vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs --define:process.env.NODE_ENV='\"production\"' && node scripts/install-deps.cjs",
+    "build:variant": "vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs --define:process.env.NODE_ENV='\"production\"' --define:process.env.BUILD_VARIANT=\\\"$BUILD_VARIANT\\\" && node scripts/install-deps.cjs",
+    "build:unified": "vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs --define:process.env.NODE_ENV='\"production\"' && node scripts/install-deps.cjs",
+    "start": "node dist/server.cjs",
+    "lint": "tsc --noEmit",
+    "desktop:start": "npm run build && electron .",
+    "desktop:dist": "npm run build && electron-builder --win nsis portable --config.win.signAndEditExecutable=false",
+    "desktop:win-unpacked": "npm run build:unified && electron-builder --win dir --config.win.signAndEditExecutable=false",
+    "desktop:dist:public": "cross-env BUILD_VARIANT=public node scripts/apply-variant.cjs && cross-env BUILD_VARIANT=public npm run build:variant && cross-env BUILD_VARIANT=public electron-builder --win nsis portable --config.appId=\"com.c2mv.letxipu.desktophf.public\" --config.productName=\"LetXipu Desktop HF\" --config.win.signAndEditExecutable=false",
+    "desktop:dist:private": "cross-env BUILD_VARIANT=private node scripts/apply-variant.cjs && cross-env BUILD_VARIANT=private npm run build:variant && cross-env BUILD_VARIANT=private electron-builder --win nsis portable --config.appId=\"com.c2mv.letxipu.desktophf.private\" --config.productName=\"LetXipu Desktop HF Pro\" --config=./electron-builder.private.json --config.win.signAndEditExecutable=false"
+  },
+  "dependencies": {
+    "@google/genai": "^2.4.0",
+    "@langchain/core": "^1.2.3",
+    "@langchain/langgraph": "^1.4.8",
+    "@mistralai/mistralai": "^2.2.5",
+    "@tailwindcss/vite": "^4.1.14",
+    "@vitejs/plugin-react": "^5.0.4",
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2",
+    "lucide-react": "^0.546.0",
+    "motion": "^12.23.24",
+    "pdf-parse": "^2.4.5",
+    "react": "^19.0.1",
+    "react-dom": "^19.0.1",
+    "react-markdown": "^10.1.0",
+    "recharts": "^3.9.2",
+    "remark-gfm": "^4.0.1",
+    "vite": "^6.2.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.14.0",
+    "@types/pdf-parse": "^1.1.5",
+    "autoprefixer": "^10.4.21",
+    "cross-env": "^7.0.3",
+    "electron": "^37.2.5",
+    "electron-builder": "^26.0.12",
+    "esbuild": "^0.25.0",
+    "tailwindcss": "^4.1.14",
+    "tsx": "^4.21.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.3"
+  },
+  "build": {
+    "appId": "com.c2mv.letxipu.desktophf",
+    "productName": "LetXipu Desktop HF",
+    "asar": false,
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "build/icon.ico",
+      "signAndEditExecutable": false,
+      "signExecutable": false,
+      "forceCodeSigning": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}

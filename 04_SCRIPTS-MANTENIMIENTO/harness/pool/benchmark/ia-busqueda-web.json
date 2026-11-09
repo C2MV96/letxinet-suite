@@ -1,0 +1,571 @@
+{
+  "lado": "ia-busqueda-web",
+  "modelo": "claude-sonnet-5-5",
+  "fecha": "2026-11-08",
+  "consultas": [
+    {
+      "id": "Q1",
+      "busquedas": 2,
+      "segundos": 25,
+      "referencias": [
+        {
+          "titulo": "Estimating the impact of city-wide Aedes aegypti population control: An observational study in Iquitos, Peru",
+          "autores": ["Reiner et al."],
+          "anio": 2019,
+          "doi": null,
+          "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6542505/",
+          "tipo": "articulo",
+          "es_peru": true,
+          "dominio": "www.ncbi.nlm.nih.gov"
+        },
+        {
+          "titulo": "Costos del control del vector en Loreto durante la implementacion de un plan regional de vigilancia y control (Rev Peru Med Exp Salud Publica; titulo aproximado, el resultado solo mostro el dominio)",
+          "autores": [],
+          "anio": 2024,
+          "doi": null,
+          "url": "https://scielosp.org/pdf/rpmesp/2024.v41n1/46-53/es",
+          "tipo": "articulo",
+          "es_peru": true,
+          "dominio": "scielosp.org"
+        },
+        {
+          "titulo": "Carta al editor sobre propuestas innovadoras de biotecnologia molecular para el control vectorial de Aedes aegypti (Rev Med Hered; titulo aproximado)",
+          "autores": [],
+          "anio": 2026,
+          "doi": null,
+          "url": "https://revistas.upch.edu.pe/index.php/RMH/article/download/7152/6996/39778",
+          "tipo": "articulo",
+          "es_peru": true,
+          "dominio": "revistas.upch.edu.pe"
+        },
+        {
+          "titulo": "Tesis sobre control del vector en el distrito de Yurimaguas (archivo DelAguila_TCA; titulo no visible en el resultado)",
+          "autores": ["DelAguila TCA"],
+          "anio": 2016,
+          "doi": null,
+          "url": "https://repositorio.ucv.edu.pe/bitstream/handle/20.500.12692/20631/DelAguila_TCA.pdf",
+          "tipo": "tesis",
+          "es_peru": true,
+          "dominio": "repositorio.ucv.edu.pe"
+        },
+        {
+          "titulo": "Respuesta conductual de Aedes aegypti a piretroides de uso en salud publica con el sistema HITTS (Rev Peru Med Exp Salud Publica; titulo aproximado)",
+          "autores": [],
+          "anio": 2008,
+          "doi": null,
+          "url": "https://www.redalyc.org/pdf/363/36338592028.pdf",
+          "tipo": "articulo",
+          "es_peru": true,
+          "dominio": "www.redalyc.org"
+        },
+        {
+          "titulo": "Cepas nativas de Bacillus thuringiensis de la costa peruana con actividad larvicida sobre Aedes (Stegomyia) aegypti (tesis de Biologia; titulo aproximado)",
+          "autores": [],
+          "anio": null,
+          "doi": null,
+          "url": "https://core.ac.uk/download/323353387.pdf",
+          "tipo": "tesis",
+          "es_peru": true,
+          "dominio": "core.ac.uk"
+        },
+        {
+          "titulo": "Eficacia y residualidad del piriproxifen en larvas de Aedes aegypti de Mazan y Nauta, Loreto (tesis UNAP; titulo aproximado)",
+          "autores": [],
+          "anio": 2025,
+          "doi": null,
+          "url": "https://alicia.concytec.gob.pe/vufind/Record/UNAP_d925ced6e41ca43e2cbf5d9359688420",
+          "tipo": "tesis",
+          "es_peru": true,
+          "dominio": "alicia.concytec.gob.pe"
+        },
+        {
+          "titulo": "Percepcion de efectividad del producto y renuencia de los hogares a actividades de control vectorial en distritos endemicos de Piura y Loreto (titulo aproximado)",
+          "autores": ["Paz-Soldan Parlette, Valerie Andrea"],
+          "anio": null,
+          "doi": null,
+          "url": "https://repositorioslatinoamericanos.uchile.cl/handle/2250/9232099?show=full",
+          "tipo": "articulo",
+          "es_peru": true,
+          "dominio": "repositorioslatinoamericanos.uchile.cl"
+        },
+        {
+          "titulo": "Presentacion CNSP-INS: resistencia de Aedes aegypti a insecticidas en distritos del Peru (teleconferencia DGE-Minsa, SE04 2024; titulo aproximado)",
+          "autores": ["Palomino"],
+          "anio": 2024,
+          "doi": null,
+          "url": "https://www.dge.gob.pe/portal/docs/tools/teleconferencia/2024/SE042024/03.pdf",
+          "tipo": "informe",
+          "es_peru": true,
+          "dominio": "www.dge.gob.pe"
+        }
+      ],
+      "notas": "Resultados utiles pero casi sin metadatos: muchos titulos aparecieron solo como dominio y se infirieron del resumen del buscador (marcados como aproximados); autores y anio casi nunca aparecen. El estudio de Iquitos salio repetido en 4 enlaces (PMC, bioRxiv, eScholarship, DOAJ) y se conto una sola vez. El resumen del buscador no aclara cual de dos enlaces corresponde a la tesis de Yurimaguas (UCV vs core.ac.uk); se eligio UCV con incertidumbre."
+    },
+    {
+      "id": "Q2",
+      "busquedas": 2,
+      "segundos": 25,
+      "referencias": [
+        {
+          "titulo": "Pyrethroid Resistance Reduces the Efficacy of Space Sprays for Dengue Control on the Island of Martinique (Caribbean)",
+          "autores": [],
+          "anio": 2011,
+          "doi": null,
+          "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3119637/",
+          "tipo": "articulo",
+          "es_peru": false,
+          "dominio": "www.ncbi.nlm.nih.gov"
+        },
+        {
+          "titulo": "Outdoor spatial spraying against dengue: A false sense of security among inhabitants of Hermosillo, Mexico",
+          "autores": [],
+          "anio": null,
+          "doi": null,
+          "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5448801/",
+          "tipo": "articulo",
+          "es_peru": false,
+          "dominio": "www.ncbi.nlm.nih.gov"
+        },
+        {
+          "titulo": "Termonebulizacion intradomiciliar con mezcla de flupyradifurona y transflutrina contra Aedes en el sur de Mexico (Salud Publica de Mexico; titulo aproximado)",
+          "autores": [],
+          "anio": 2020,
+          "doi": null,
+          "url": "https://www.medigraphic.com/pdfs/salpubmex/sal-2020/sal204l.pdf",
+          "tipo": "articulo",
+          "es_peru": false,
+          "dominio": "www.medigraphic.com"
+        },
+        {
+          "titulo": "Guidelines for assessing the efficacy of insecticidal space sprays for control of the dengue vector: Aedes aegypti",
+          "autores": ["OMS/WHO"],
+          "anio": 2001,
+          "doi": null,
+          "url": "https://www.who.int/publications/i/item/who-cds-cpe-pvc-2001.1",
+          "tipo": "informe",
+          "es_peru": false,
+          "dominio": "www.who.int"
+        },
+        {
+          "titulo": "False sense of security effect of outdoor spatial spraying against dengue: a household survey in endemic area Indonesia",
+          "autores": [],
+          "anio": null,
+          "doi": null,
+          "url": "https://sinelitabmas.unsoed.ac.id/scopus-doc/85068092485/false-sense-security-effect-of-outdoor-spatial-spraying-against-dengue-a-household-survey-in-endemic-area-indonesia",
+          "tipo": "articulo",
+          "es_peru": false,
+          "dominio": "sinelitabmas.unsoed.ac.id"
+        },
+        {
+          "titulo": "Control of dengue fever with active surveillance and the use of insecticidal aerosol cans",
+          "autores": ["Osaka et al."],
+          "anio": null,
+          "doi": null,
+          "url": "https://www.bibliotecadigital.unicamp.br/bd/index.php/detalhes-material/?code=76635",
+          "tipo": "articulo",
+          "es_peru": false,
+          "dominio": "www.bibliotecadigital.unicamp.br"
+        },
+        {
+          "titulo": "Bioensayos de formulaciones de insecticidas en nebulizacion en frio y termonebulizacion en cepas de Aedes de Ciudad de La Habana (BVS Cuba; titulo aproximado)",
+          "autores": [],
+          "anio": null,
+          "doi": null,
+          "url": "https://search.bvsalud.org/gim/resource/en/lil-584957",
+          "tipo": "articulo",
+          "es_peru": false,
+          "dominio": "search.bvsalud.org"
+        },
+        {
+          "titulo": "Effectiveness of peridomestic space spraying with insecticide on dengue transmission; systematic review",
+          "autores": ["Esu et al."],
+          "anio": 2010,
+          "doi": null,
+          "url": "https://www.gov.uk/research-for-development-outputs/effectiveness-of-peridomestic-space-spraying-with-insecticide-on-dengue-transmission-systematic-review",
+          "tipo": "articulo",
+          "es_peru": false,
+          "dominio": "www.gov.uk"
+        },
+        {
+          "titulo": "Space treatments of insecticide for control of dengue virus vector",
+          "autores": ["Arredondo-Jimenez", "Rivero"],
+          "anio": 2006,
+          "doi": "10.2987/8756-971X(2006)22[301:STOIFC]2.0.CO;2",
+          "url": "https://bioone.org/journals/journal-of-the-american-mosquito-control-association/volume-22/issue-2/8756-971X(2006)22[301:STOIFC]2.0.CO;2/SPACE-TREATMENTS-OF-INSECTICIDE-FOR-CONTROL-OF-DENGUE-VIRUS-VECTOR/10.2987/8756-971X(2006)22[301:STOIFC]2.0.CO;2.full",
+          "tipo": "articulo",
+          "es_peru": false,
+          "dominio": "bioone.org"
+        }
+      ],
+      "notas": "Buena cobertura global pero casi ninguna referencia mostro autores ni anio; el DOI solo aparecio en la URL de BioOne. Se descartaron notas de prensa (La Voz de San Justo) y resultados cuyo titulo era ilegible (documentation.ird.fr, PMC4795802, PMC5906025, Gaceta INSP). Titulos aproximados: salpubmex 2020 y BVS Cuba (inferidos del resumen). Ningun resultado es peruano: la busqueda no priorizo literatura de Peru ni de LatAm sobre nebulizacion."
+    },
+    {
+      "id": "Q3",
+      "busquedas": 2,
+      "segundos": 35,
+      "referencias": [
+        {
+          "titulo": "Tesis Universidad San Pedro sobre dengue en Chimbote (repositorio.usanpedro.edu.pe; titulo no visible en el resultado, bitstream eba48816)",
+          "autores": [],
+          "anio": null,
+          "doi": null,
+          "url": "https://repositorio.usanpedro.edu.pe/bitstreams/eba48816-beca-4bc0-8308-e11526e4d50e/download",
+          "tipo": "tesis",
+          "es_peru": true,
+          "dominio": "repositorio.usanpedro.edu.pe"
+        },
+        {
+          "titulo": "Tesis Universidad San Pedro sobre dengue en Chimbote (repositorio.usanpedro.edu.pe; titulo no visible en el resultado, bitstream ec6597b8)",
+          "autores": [],
+          "anio": null,
+          "doi": null,
+          "url": "https://repositorio.usanpedro.edu.pe/bitstreams/ec6597b8-30a2-4133-9ccf-2867cc92de46/download",
+          "tipo": "tesis",
+          "es_peru": true,
+          "dominio": "repositorio.usanpedro.edu.pe"
+        }
+      ],
+      "notas": "Consulta pobre: de 19 resultados (una busqueda standard y una extended) casi todos son notas de prensa (Gestion, Andina, Exitosa, Infobae, El Peruano, Ancash Noticias), excluidas por no ser academicas. Solo 2 tesis de la Universidad San Pedro; el resumen del buscador cita una tesis del Centro de Salud Progreso (dengue con signos de alarma: infeccion secundaria OR 3.23, diabetes OR 2.88, enfermedad renal OR 4.54) pero no se puede saber a cual de los dos enlaces corresponde. No aparecio ningun articulo revisado por pares sobre dengue en Chimbote."
+    },
+    {
+      "id": "Q4",
+      "busquedas": 2,
+      "segundos": 25,
+      "referencias": [
+        {
+          "titulo": "Susceptibility to insecticides and resistance mechanisms in three populations of Aedes aegypti from Peru",
+          "autores": ["Pinto et al."],
+          "anio": 2019,
+          "doi": "10.1186/s13071-019-3739-6",
+          "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6805503/",
+          "tipo": "articulo",
+          "es_peru": true,
+          "dominio": "www.ncbi.nlm.nih.gov"
+        },
+        {
+          "titulo": "Resistencia fenotipica de poblaciones de Aedes aegypti a piretroides (alfacipermetrina y deltametrina), Iquitos - Peru",
+          "autores": [],
+          "anio": null,
+          "doi": null,
+          "url": "https://repositorio.unapiquitos.edu.pe/handle/20.500.12737/5026",
+          "tipo": "tesis",
+          "es_peru": true,
+          "dominio": "repositorio.unapiquitos.edu.pe"
+        },
+        {
+          "titulo": "Levels of resistance to two insecticides in populations of Aedes aegypti (Diptera: Culicidae) from Peru",
+          "autores": [],
+          "anio": null,
+          "doi": null,
+          "url": "https://revistacolombianaentomologia.univalle.edu.co/index.php/SOCOLEN/article/view/9420",
+          "tipo": "articulo",
+          "es_peru": true,
+          "dominio": "revistacolombianaentomologia.univalle.edu.co"
+        },
+        {
+          "titulo": "Presentacion CNSP-INS: mapas de distritos con poblaciones de Aedes aegypti resistentes a piretroides 2015 y 2023 (teleconferencia DGE-Minsa, SE04 2024; titulo aproximado)",
+          "autores": ["Palomino"],
+          "anio": 2024,
+          "doi": null,
+          "url": "https://www.dge.gob.pe/portal/docs/tools/teleconferencia/2024/SE042024/03.pdf",
+          "tipo": "informe",
+          "es_peru": true,
+          "dominio": "www.dge.gob.pe"
+        },
+        {
+          "titulo": "Primera evaluacion nacional de resistencia al temefos en Aedes aegypti en Peru, con seguimiento espacial y temporal (Parasites & Vectors; titulo aproximado)",
+          "autores": ["Palomino et al."],
+          "anio": 2022,
+          "doi": "10.1186/s13071-022-05310-x",
+          "url": "https://link.springer.com/10.1186/s13071-022-05310-x",
+          "tipo": "articulo",
+          "es_peru": true,
+          "dominio": "link.springer.com"
+        },
+        {
+          "titulo": "Resistencia de Aedes aegypti (Diptera: Culicidae) a los insecticidas deltametrina y temefos (poblaciones de Trujillo)",
+          "autores": ["Sanchez Tamayo, Luis"],
+          "anio": null,
+          "doi": null,
+          "url": "https://repositorio.upao.edu.pe/bitstream/handle/20.500.12759/10297/12-REP_LUIS.S%C3%81NCHEZ_RESISTENCIA.DE.AEDES.AEGYPTI.(D%C3%8DPTERA.CULICIDAE).A.LOS.INSECTICIDAS.DELTAMETRINA.Y.TEMEFOS.pdf?sequence=1",
+          "tipo": "tesis",
+          "es_peru": true,
+          "dominio": "repositorio.upao.edu.pe"
+        },
+        {
+          "titulo": "Resistencia a deltametrina en dos poblaciones de Aedes aegypti del norte peruano (nota cientifica, Rev Peru Biol; titulo aproximado, correspondencia URL-resumen inferida)",
+          "autores": ["Chavez et al."],
+          "anio": 2005,
+          "doi": null,
+          "url": "https://www.redalyc.org/pdf/1950/195018466017.pdf",
+          "tipo": "articulo",
+          "es_peru": true,
+          "dominio": "www.redalyc.org"
+        },
+        {
+          "titulo": "Perfiles enzimaticos de fenotipos resistentes a insecticidas en poblaciones de Aedes aegypti de Bagua, Peru (titulo aproximado, correspondencia URL-resumen inferida)",
+          "autores": [],
+          "anio": 2023,
+          "doi": null,
+          "url": "https://informaticsjournals.com/index.php/jbc/article/download/33923/22621/66727",
+          "tipo": "articulo",
+          "es_peru": true,
+          "dominio": "informaticsjournals.com"
+        }
+      ],
+      "notas": "Resultados pertinentes y mayormente peruanos. Varios titulos aparecieron solo como dominio o nombre de archivo y se infirieron del resumen del buscador; para redalyc 195018466017 y informaticsjournals 33923 la correspondencia URL-descripcion es probable pero no segura. El DOI de Pinto 2019 se tomo de una URL de BMC del mismo articulo. Se omitieron duplicados (pubmed 31640810, agris, DOAJ, descarga PDF de Rev Col Entomol) y enlaces de titulo ilegible (redalyc 37966108, PMC9397858)."
+    },
+    {
+      "id": "Q5",
+      "busquedas": 2,
+      "segundos": 25,
+      "referencias": [
+        {
+          "titulo": "Factores asociados con la anemia en ninos peruanos menores de tres anos: analisis de la ENDES 2007-2013 (Biomedica 2016; titulo aproximado)",
+          "autores": ["Velasquez-Hurtado et al."],
+          "anio": 2016,
+          "doi": null,
+          "url": "https://www.redalyc.org/pdf/843/84345718008.pdf",
+          "tipo": "articulo",
+          "es_peru": true,
+          "dominio": "www.redalyc.org"
+        },
+        {
+          "titulo": "Childhood anemia in populations residing at different geographica... (titulo truncado en la URL del repositorio de la UPC)",
+          "autores": [],
+          "anio": null,
+          "doi": null,
+          "url": "https://cris.upc.edu.pe/es/publications/childhood-anemia-in-populations-residing-at-different-geographica/",
+          "tipo": "articulo",
+          "es_peru": true,
+          "dominio": "cris.upc.edu.pe"
+        },
+        {
+          "titulo": "Tesis USAT (archivo TL_SanchezNunezElizet; titulo no visible, tema anemia infantil no confirmado)",
+          "autores": ["Sanchez Nunez, Elizet"],
+          "anio": null,
+          "doi": null,
+          "url": "https://tesis.usat.edu.pe/bitstream/20.500.12423/7078/1/TL_SanchezNu%c3%b1ezElizet.pdf",
+          "tipo": "tesis",
+          "es_peru": true,
+          "dominio": "tesis.usat.edu.pe"
+        },
+        {
+          "titulo": "Tesis URP sobre anemia infantil con datos de la ENDES (archivo VILCA HUANACARI; titulo no visible)",
+          "autores": ["Vilca Huanacari"],
+          "anio": null,
+          "doi": null,
+          "url": "https://repositorio.urp.edu.pe/bitstream/handle/20.500.14138/3822/VILCA%20HUA%C3%91ACARI.pdf?sequence=1",
+          "tipo": "tesis",
+          "es_peru": true,
+          "dominio": "repositorio.urp.edu.pe"
+        },
+        {
+          "titulo": "Documento de la Universidad Nacional de Tumbes sobre anemia en ninos de 6 a 35 meses (prevalencia 43,1% en 2023 segun INEI; titulo no visible)",
+          "autores": [],
+          "anio": null,
+          "doi": null,
+          "url": "https://repositorio.untumbes.edu.pe/bitstreams/bb81d724-da38-4e8c-b407-6da243843ed5/download",
+          "tipo": "tesis",
+          "es_peru": true,
+          "dominio": "repositorio.untumbes.edu.pe"
+        }
+      ],
+      "notas": "Hay mucha literatura pero el buscador devolvio casi todo con titulo igual al dominio (dialnet, revpediatria.sld.cu, redalyc, renc.es, scielo.ve, unj.edu.pe, etc.). Solo se incluyeron los 5 resultados que se pudieron identificar con razonable certeza; el resto (unos 12) se descarto por no poder verificar titulo ni pertinencia. Los resumenes del buscador citan estudios (Solano Davila ENDES 2022, Larrea-Monteza ENDES 2019, Coronel Durand tesis ENDES 2021) que no se pudieron asociar a una URL concreta, por lo que no se listan. Ninguna referencia mostro DOI."
+    },
+    {
+      "id": "Q6",
+      "busquedas": 2,
+      "segundos": 25,
+      "referencias": [
+        {
+          "titulo": "Stevia Rebaudiana Bert. Leaf Extracts as a Multifunctional Source of Natural Antioxidants",
+          "autores": [],
+          "anio": null,
+          "doi": null,
+          "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6272195/",
+          "tipo": "articulo",
+          "es_peru": false,
+          "dominio": "www.ncbi.nlm.nih.gov"
+        },
+        {
+          "titulo": "Actividad antioxidante de extractos de hojas frente a tallos de Stevia rebaudiana por ORAC y ensayo antioxidante celular (Int J Food Sci Nutr; titulo aproximado, correspondencia con el resumen inferida)",
+          "autores": ["Bender et al."],
+          "anio": 2015,
+          "doi": "10.3109/09637486.2015.1038223",
+          "url": "https://informahealthcare.com/doi/abs/10.3109/09637486.2015.1038223",
+          "tipo": "articulo",
+          "es_peru": false,
+          "dominio": "informahealthcare.com"
+        },
+        {
+          "titulo": "Antioxidant activity of leaf extracts from Stevia rebaudiana Bertoni exerts attenuating effect on diseased experimental rats: a systematic review and meta-analysis",
+          "autores": ["Papaefthimiou et al."],
+          "anio": 2023,
+          "doi": "10.3390/nu15153325",
+          "url": "https://www.citedrive.com/en/discovery/antioxidant-activity-of-leaf-extracts-from-stevia-rebaudiana-bertoni-exerts-attenuating-effect-on-diseased-experimental-rats-a-systematic-review-and-/",
+          "tipo": "articulo",
+          "es_peru": false,
+          "dominio": "www.citedrive.com"
+        },
+        {
+          "titulo": "Integration of Antioxidant Activity Assays Data of Stevia Leaf Extracts: A Systematic Review and Meta-Analysis",
+          "autores": ["Papaefthimiou et al."],
+          "anio": null,
+          "doi": null,
+          "url": "https://oalib-perpustakaan.upi.edu/Record/doaj_0aba9ea67a2c430abcf475c3697ee097",
+          "tipo": "articulo",
+          "es_peru": false,
+          "dominio": "oalib-perpustakaan.upi.edu"
+        },
+        {
+          "titulo": "Stevia rebaudiana: revision de uso tradicional, etnobotanica, fitoquimica, actividades biologicas y seguridad (Frontiers in Pharmacology; titulo aproximado)",
+          "autores": ["Wang et al."],
+          "anio": 2025,
+          "doi": "10.3389/fphar.2025.1638147",
+          "url": "https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2025.1638147/pdf",
+          "tipo": "articulo",
+          "es_peru": false,
+          "dominio": "www.frontiersin.org"
+        },
+        {
+          "titulo": "Stevia rebaudiana Bertoni'nin Antioksidan, Antimikrobiyal ve Antidiyabetik Ozellikleri: Sistematik Derleme",
+          "autores": ["Kalayci et al."],
+          "anio": null,
+          "doi": null,
+          "url": "https://turkiyeklinikleri.com/article/en-stevia-rebaudiana-bertoninin-antioksidan-antimikrobiyal-ve-antidiyabetik-ozellikleri-sistematik-derleme-92445.html",
+          "tipo": "articulo",
+          "es_peru": false,
+          "dominio": "turkiyeklinikleri.com"
+        },
+        {
+          "titulo": "biological activity of stevia rebaudiana bertoni and their relationship to health",
+          "autores": [],
+          "anio": 2018,
+          "doi": null,
+          "url": "https://nutrition-evidence.com/article/302987/biological-activity-of-stevia-rebaudiana-bertoni-and-their-relationship-to-health",
+          "tipo": "articulo",
+          "es_peru": false,
+          "dominio": "nutrition-evidence.com"
+        }
+      ],
+      "notas": "Buena cobertura de revisiones, pero varios resultados son agregadores o paginas sin metadatos (citedrive, oalib, nutrition-evidence, turkiyeklinikleri). Anio 2018 de nutrition-evidence y atribucion de Bender a la URL de informahealthcare se infirieron del resumen del buscador. Se excluyeron paginas divulgativas (encolombia.com), indices (science.gov) y resultados sin titulo identificable (dialnet 7545429, ngdc OLB-PM, DOAJ Scientifica y BIO Web of Conferences 2024, corescholar Wright State, katalog.lib.cas.cz). Ninguna referencia peruana ni latinoamericana, pese a la consulta en espanol."
+    },
+    {
+      "id": "Q7",
+      "busquedas": 2,
+      "segundos": 35,
+      "referencias": [
+        {
+          "titulo": "Sistema de abastecimiento de agua potable en el AA.HH. Los Conquistadores, Nuevo Chimbote, con evaluacion de la calidad del agua para consumo humano (tesis UCV de Ingenieria Civil; titulo aproximado)",
+          "autores": ["Revilla"],
+          "anio": 2017,
+          "doi": null,
+          "url": "https://repositorio.ucv.edu.pe/bitstream/handle/20.500.12692/10232/revilla_ll.pdf?sequence=1",
+          "tipo": "tesis",
+          "es_peru": true,
+          "dominio": "repositorio.ucv.edu.pe"
+        },
+        {
+          "titulo": "Evaluacion del Funcionamiento del Sistema de Agua Potable en el Pueblo Joven San Pedro, Distrito de Chimbote - Propuesta de Solucion - Ancash",
+          "autores": ["Huete"],
+          "anio": null,
+          "doi": null,
+          "url": "https://repositorio.ucv.edu.pe/bitstream/handle/20.500.12692/12202/huete_hd.pdf?sequence=1&isAllowed=y",
+          "tipo": "tesis",
+          "es_peru": true,
+          "dominio": "repositorio.ucv.edu.pe"
+        },
+        {
+          "titulo": "Condicion sanitaria (tesis ULADECH; titulo y lugar de estudio no visibles, relacion con Chimbote no confirmada)",
+          "autores": ["Victorio Ambrocio, Jesus Gliden"],
+          "anio": null,
+          "doi": null,
+          "url": "https://repositorio.uladech.edu.pe/bitstream/handle/20.500.13032/29891/CONDICION_SANITARIA_VICTORIO_%20AMBROCIO_JESUS_%20GLIDEN.pdf?sequence=1",
+          "tipo": "tesis",
+          "es_peru": true,
+          "dominio": "repositorio.uladech.edu.pe"
+        },
+        {
+          "titulo": "Tesis Universidad San Pedro (Chimbote) devuelta para calidad de agua en Chimbote (titulo y tema no visibles en el resultado)",
+          "autores": [],
+          "anio": null,
+          "doi": null,
+          "url": "https://repositorio.usanpedro.edu.pe/server/api/core/bitstreams/365168eb-3ae5-49a7-9101-a58903c28f33/content",
+          "tipo": "tesis",
+          "es_peru": true,
+          "dominio": "repositorio.usanpedro.edu.pe"
+        }
+      ],
+      "notas": "Consulta poco fructifera: de ~20 resultados, la mayoria no es de Chimbote (UNSM Tarapoto, UNACH Chota, UTPL Ecuador, UNCP Huancayo, UNTumbes, UPT Tacna, UNJBG). Solo 2 tesis UCV claramente sobre Chimbote/Nuevo Chimbote, y ninguna centrada en analisis fisicoquimico/bacteriologico del agua de consumo. Las dos ultimas son inciertas en tema. Se excluyo la tesis ULADECH de Satipo (no es Chimbote), humedales de Villa Maria (no es agua de consumo) y comunicados de Sedachimbote (anepssaperu, chimboteonline: notas institucionales, no academicas)."
+    },
+    {
+      "id": "Q8",
+      "busquedas": 2,
+      "segundos": 25,
+      "referencias": [
+        {
+          "titulo": "Prediction of dengue outbreak in Selangor Malaysia using machine learning techniques",
+          "autores": [],
+          "anio": null,
+          "doi": null,
+          "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7806812/",
+          "tipo": "articulo",
+          "es_peru": false,
+          "dominio": "www.ncbi.nlm.nih.gov"
+        },
+        {
+          "titulo": "Machine learning for dengue outbreak prediction: A performance evaluation of different prominent classifiers",
+          "autores": [],
+          "anio": null,
+          "doi": "10.31449/inf.v43i3.1548",
+          "url": "https://informatica.si/index.php/informatica/article/view/1548",
+          "tipo": "articulo",
+          "es_peru": false,
+          "dominio": "informatica.si"
+        },
+        {
+          "titulo": "Dengue disease prediction using machine learning algorithms: a review",
+          "autores": [],
+          "anio": null,
+          "doi": null,
+          "url": "https://jati.apu.edu.my/index.php/JATI/article/view/242",
+          "tipo": "articulo",
+          "es_peru": false,
+          "dominio": "jati.apu.edu.my"
+        },
+        {
+          "titulo": "Neural networks for dengue forecasting: a systematic review",
+          "autores": ["Roster", "Rodrigues"],
+          "anio": 2025,
+          "doi": "10.1101/2025.10.14.25338016",
+          "url": "https://www.medrxiv.org/content/10.1101/2025.10.14.25338016.full.pdf",
+          "tipo": "articulo",
+          "es_peru": false,
+          "dominio": "www.medrxiv.org"
+        },
+        {
+          "titulo": "Neural Networks for Dengue Prediction: A Systematic Review",
+          "autores": ["Roster", "Rodrigues"],
+          "anio": 2021,
+          "doi": null,
+          "url": "https://arxiv.org/abs/2106.12905",
+          "tipo": "articulo",
+          "es_peru": false,
+          "dominio": "arxiv.org"
+        },
+        {
+          "titulo": "Global forecasting models for dengue outbreaks in endemic regions: a systematic review",
+          "autores": ["Sutriyawan et al."],
+          "anio": 2025,
+          "doi": null,
+          "url": "https://microbiol.crie.ru/jour/article/view/18837",
+          "tipo": "articulo",
+          "es_peru": false,
+          "dominio": "microbiol.crie.ru"
+        }
+      ],
+      "notas": "Resultados pertinentes en ingles. Anio de arXiv (2021) deducido del ID 2106; el resumen del buscador dijo que el articulo de Informatica era de 2025 pero el DOI (vol. 43 no. 3) no lo confirma, por eso anio es null. La version medRxiv y la de arXiv de Roster y Rodrigues pueden ser el mismo trabajo en dos servidores de preprints; se listan por separado porque los resumenes del buscador las trataron como distintas. Se excluyeron noticias (Northeastern, ICT Health), preprints.org 202404.1847 (titulo no visible) y duplicados (busca.umc.cl, Mahidol, ar5iv, catalyzex)."
+    }
+  ]
+}

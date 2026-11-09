@@ -1,0 +1,2809 @@
+{
+  "institutions": [
+    {
+      "id": "UCV",
+      "fullName": "Universidad César Vallejo",
+      "type": "Universidad",
+      "searchUrl": "http://revistas.ucv.edu.pe",
+      "handlePrefixes": [
+        "20.500.12692"
+      ],
+      "acronyms": [
+        "RUCV",
+        "UCV",
+        "UCVV"
+      ]
+    },
+    {
+      "id": "PUCP",
+      "fullName": "Pontificia Universidad Católica del Perú",
+      "type": "Universidad",
+      "searchUrl": "https://tesis.pucp.edu.pe",
+      "handlePrefixes": [
+        "20.500.12404"
+      ],
+      "acronyms": [
+        "PUCP",
+        "REVPUCP",
+        "RPUC"
+      ]
+    },
+    {
+      "id": "UNMSM",
+      "fullName": "UNMSM",
+      "type": "Universidad",
+      "searchUrl": "https://revistasinvestigacion.unmsm.edu.pe",
+      "handlePrefixes": [
+        "20.500.12672"
+      ],
+      "acronyms": [
+        "UNMSM"
+      ]
+    },
+    {
+      "id": "ULADECH",
+      "fullName": "ULADECH",
+      "type": "Universidad",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [],
+      "acronyms": [
+        "ULADECH"
+      ]
+    },
+    {
+      "id": "USMP",
+      "fullName": "Universidad de San Martín de Porres",
+      "type": "Universidad",
+      "searchUrl": "http://ojs.revistaturismoypatrimonio.com",
+      "handlePrefixes": [
+        "20.500.12727"
+      ],
+      "acronyms": [
+        "REVUSMP",
+        "USMP"
+      ]
+    },
+    {
+      "id": "UNSA",
+      "fullName": "Universidad Nacional de San Agustín",
+      "type": "Universidad",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [
+        "20.500.12773"
+      ],
+      "acronyms": [
+        "UNSA"
+      ]
+    },
+    {
+      "id": "UPN",
+      "fullName": "UPN",
+      "type": "Universidad",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UPN"
+      ]
+    },
+    {
+      "id": "UPC",
+      "fullName": "Universidad Peruana de Ciencias Aplicadas (UPC)",
+      "type": "Universidad",
+      "searchUrl": "https://revistas.upc.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UUPC",
+        "UPC"
+      ]
+    },
+    {
+      "id": "ULIMA",
+      "fullName": "ULIMA",
+      "type": "Universidad",
+      "searchUrl": "https://revistas.ulima.edu.pe",
+      "handlePrefixes": [
+        "20.500.12724"
+      ],
+      "acronyms": [
+        "ULIMA"
+      ]
+    },
+    {
+      "id": "USS",
+      "fullName": "USS",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.uss.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "USS"
+      ]
+    },
+    {
+      "id": "USIL",
+      "fullName": "Universidad San Ignacio de Loyola",
+      "type": "Universidad",
+      "searchUrl": "https://revistas.usil.edu.pe",
+      "handlePrefixes": [
+        "20.500.14005"
+      ],
+      "acronyms": [
+        "USIL",
+        "RUSIL"
+      ]
+    },
+    {
+      "id": "UNAP",
+      "fullName": "Universidad Nacional del Altiplano",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.unap.edu.pe",
+      "handlePrefixes": [
+        "20.500.14082",
+        "20.500.12893"
+      ],
+      "acronyms": [
+        "UNAP",
+        "UNAL"
+      ]
+    },
+    {
+      "id": "UWIENER",
+      "fullName": "UWIENER",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.uwiener.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UWIENER"
+      ]
+    },
+    {
+      "id": "UNHEVAL",
+      "fullName": "UNHEVAL",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.unheval.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNHEVAL"
+      ]
+    },
+    {
+      "id": "URP",
+      "fullName": "Universidad Ricardo Palma",
+      "type": "Universidad",
+      "searchUrl": "http://revistas.urp.edu.pe",
+      "handlePrefixes": [
+        "20.500.14138"
+      ],
+      "acronyms": [
+        "REVURP",
+        "URP"
+      ]
+    },
+    {
+      "id": "UPAO",
+      "fullName": "Universidad Privada Antenor Orrego",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.upao.edu.pe",
+      "handlePrefixes": [
+        "20.500.12759"
+      ],
+      "acronyms": [
+        "UPAO"
+      ]
+    },
+    {
+      "id": "UNCP",
+      "fullName": "Universidad Nacional del Centro del Perú",
+      "type": "Universidad",
+      "searchUrl": "http://revistas.uncp.edu.pe",
+      "handlePrefixes": [
+        "20.500.12894"
+      ],
+      "acronyms": [
+        "UNCP"
+      ]
+    },
+    {
+      "id": "UAP",
+      "fullName": "UAP",
+      "type": "Universidad",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UAP"
+      ]
+    },
+    {
+      "id": "UTP",
+      "fullName": "UTP",
+      "type": "Universidad",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UTP"
+      ]
+    },
+    {
+      "id": "UNFV",
+      "fullName": "UNFV",
+      "type": "Universidad",
+      "searchUrl": "https://revistas.unfv.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNFV"
+      ]
+    },
+    {
+      "id": "UPLA",
+      "fullName": "Universidad Peruana Los Andes",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.upla.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UPLA"
+      ]
+    },
+    {
+      "id": "UPEU",
+      "fullName": "Universidad Peruana Unión",
+      "type": "Universidad",
+      "searchUrl": "https://revistas.upeu.edu.pe",
+      "handlePrefixes": [
+        "20.500.12840"
+      ],
+      "acronyms": [
+        "RUPEU",
+        "UPEU"
+      ]
+    },
+    {
+      "id": "UNAPIquitos",
+      "fullName": "UNAPIquitos",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.unapiquitos.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNAPIquitos"
+      ]
+    },
+    {
+      "id": "UNC",
+      "fullName": "UNC",
+      "type": "Universidad",
+      "searchUrl": "http://hdl.handle.net",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNC"
+      ]
+    },
+    {
+      "id": "UNAC",
+      "fullName": "Universidad Nacional del Callao",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.unac.edu.pe",
+      "handlePrefixes": [
+        "20.500.12952"
+      ],
+      "acronyms": [
+        "RUNC",
+        "UNAC"
+      ]
+    },
+    {
+      "id": "UNJFSC",
+      "fullName": "UNJFSC",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.unjfsc.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNJFSC"
+      ]
+    },
+    {
+      "id": "UCSM",
+      "fullName": "Universidad Católica de Santa María",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.ucsm.edu.pe",
+      "handlePrefixes": [
+        "20.500.12920"
+      ],
+      "acronyms": [
+        "UCSM",
+        "USUR"
+      ]
+    },
+    {
+      "id": "UNITRU",
+      "fullName": "UNITRU",
+      "type": "Universidad",
+      "searchUrl": "https://revistas.unitru.edu.pe",
+      "handlePrefixes": [
+        "20.500.26426"
+      ],
+      "acronyms": [
+        "UNITRU"
+      ]
+    },
+    {
+      "id": "USAT",
+      "fullName": "Universidad Católica Santo Toribio de Mogrovejo",
+      "type": "Universidad",
+      "searchUrl": "https://revistas.usat.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "USAT"
+      ]
+    },
+    {
+      "id": "UNE",
+      "fullName": "UNE",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.une.edu.pe",
+      "handlePrefixes": [
+        "20.500.14039"
+      ],
+      "acronyms": [
+        "UNE"
+      ]
+    },
+    {
+      "id": "UNPRG",
+      "fullName": "UNPRG",
+      "type": "Universidad",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [
+        "20.500.12893"
+      ],
+      "acronyms": [
+        "UNPRG"
+      ]
+    },
+    {
+      "id": "CONTINENTAL",
+      "fullName": "Universidad Continental",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.continental.edu.pe",
+      "handlePrefixes": [
+        "20.500.12394"
+      ],
+      "acronyms": [
+        "RCONT",
+        "UCON",
+        "CONTINENTAL"
+      ]
+    },
+    {
+      "id": "UNSAAC",
+      "fullName": "Universidad Nacional de San Antonio Abad del Cusco",
+      "type": "Universidad",
+      "searchUrl": "https://revistas.unsaac.edu.pe",
+      "handlePrefixes": [
+        "20.500.12918"
+      ],
+      "acronyms": [
+        "UNSAAC"
+      ]
+    },
+    {
+      "id": "UIGV",
+      "fullName": "Universidad Inca Garcilaso de la Vega",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.uigv.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UIGV"
+      ]
+    },
+    {
+      "id": "UNH",
+      "fullName": "UNH",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.unh.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNH"
+      ]
+    },
+    {
+      "id": "UNALM",
+      "fullName": "Universidad Nacional Agraria La Molina",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.lamolina.edu.pe",
+      "handlePrefixes": [
+        "20.500.12996"
+      ],
+      "acronyms": [
+        "UNALM",
+        "REVUNALM"
+      ]
+    },
+    {
+      "id": "IMARPE",
+      "fullName": "IMARPE",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.imarpe.gob.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "IMARPE"
+      ]
+    },
+    {
+      "id": "UNSJ",
+      "fullName": "UNSJ",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.unsch.edu.pe",
+      "handlePrefixes": [
+        "20.500.14612"
+      ],
+      "acronyms": [
+        "UNSJ"
+      ]
+    },
+    {
+      "id": "UNJBG",
+      "fullName": "UNJBG",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.unjbg.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNJBG"
+      ]
+    },
+    {
+      "id": "SPOG",
+      "fullName": "SPOG",
+      "type": "Entidad / Institución",
+      "searchUrl": "http://www.spog.org.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "SPOG"
+      ]
+    },
+    {
+      "id": "UPT",
+      "fullName": "UPT",
+      "type": "Universidad",
+      "searchUrl": "https://revistas.upt.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UPT"
+      ]
+    },
+    {
+      "id": "INDECOPI",
+      "fullName": "INDECOPI",
+      "type": "Entidad / Institución",
+      "searchUrl": "http://hdl.handle.net",
+      "handlePrefixes": [],
+      "acronyms": [
+        "INDECOPI"
+      ]
+    },
+    {
+      "id": "USANPEDRO",
+      "fullName": "USANPEDRO",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.usanpedro.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "USANPEDRO"
+      ]
+    },
+    {
+      "id": "UNU",
+      "fullName": "UNU",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.unu.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNU"
+      ]
+    },
+    {
+      "id": "UDEP",
+      "fullName": "Universidad de Piura",
+      "type": "Universidad",
+      "searchUrl": "https://pirhua.udep.edu.pe",
+      "handlePrefixes": [
+        "11042"
+      ],
+      "acronyms": [
+        "UDEP"
+      ]
+    },
+    {
+      "id": "ESSALUD",
+      "fullName": "ESSALUD",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.essalud.gob.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "ESSALUD"
+      ]
+    },
+    {
+      "id": "UP",
+      "fullName": "Universidad Peruana de Ciencias Aplicadas (UPC)",
+      "type": "Universidad",
+      "searchUrl": "https://revistas.up.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UUPC",
+        "UP"
+      ]
+    },
+    {
+      "id": "UNI",
+      "fullName": "Universidad Nacional de Ingeniería",
+      "type": "Universidad",
+      "searchUrl": "https://revistas.uni.edu.pe",
+      "handlePrefixes": [
+        "20.500.14076"
+      ],
+      "acronyms": [
+        "UNI"
+      ]
+    },
+    {
+      "id": "UCT",
+      "fullName": "UCT",
+      "type": "Universidad",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [
+        "123456789",
+        "20.500.14520"
+      ],
+      "acronyms": [
+        "UCT"
+      ]
+    },
+    {
+      "id": "UNICA",
+      "fullName": "UNICA",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.unica.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNICA"
+      ]
+    },
+    {
+      "id": "UNASAM",
+      "fullName": "UNASAM",
+      "type": "Universidad",
+      "searchUrl": "http://revistas.unasam.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNASAM"
+      ]
+    },
+    {
+      "id": "INGEMMET",
+      "fullName": "INGEMMET",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.ingemmet.gob.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "INGEMMET"
+      ]
+    },
+    {
+      "id": "UNDAC",
+      "fullName": "UNDAC",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.undac.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNDAC"
+      ]
+    },
+    {
+      "id": "UNP",
+      "fullName": "UNP",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.unp.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNP"
+      ]
+    },
+    {
+      "id": "SENAMHI",
+      "fullName": "SENAMHI",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [],
+      "acronyms": [
+        "SENAMHI"
+      ]
+    },
+    {
+      "id": "UDH",
+      "fullName": "UDH",
+      "type": "Universidad",
+      "searchUrl": "http://revistas.udh.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UDH"
+      ]
+    },
+    {
+      "id": "UJCM",
+      "fullName": "Universidad José Carlos Mariátegui",
+      "type": "Universidad",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [
+        "20.500.12819"
+      ],
+      "acronyms": [
+        "UJCM"
+      ]
+    },
+    {
+      "id": "ANA",
+      "fullName": "Universidad Peruana de Ciencias Aplicadas (UPC)",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UUPC",
+        "ANA"
+      ]
+    },
+    {
+      "id": "UNTUMBES",
+      "fullName": "UNTUMBES",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.untumbes.edu.pe",
+      "handlePrefixes": [
+        "20.500.12874"
+      ],
+      "acronyms": [
+        "UNTUMBES"
+      ]
+    },
+    {
+      "id": "UNTRM",
+      "fullName": "UNTRM",
+      "type": "Universidad",
+      "searchUrl": "http://revistas.untrm.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNTRM"
+      ]
+    },
+    {
+      "id": "UNSM",
+      "fullName": "Universidad Nacional de San Martín",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.unsm.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNSM"
+      ]
+    },
+    {
+      "id": "UANCV",
+      "fullName": "UANCV",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.uancv.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UANCV"
+      ]
+    },
+    {
+      "id": "UAC",
+      "fullName": "UAC",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.uandina.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UAC"
+      ]
+    },
+    {
+      "id": "UPCH",
+      "fullName": "UPCH",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.upch.edu.pe",
+      "handlePrefixes": [
+        "20.500.12866"
+      ],
+      "acronyms": [
+        "UPCH"
+      ]
+    },
+    {
+      "id": "UMCH",
+      "fullName": "UMCH",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.umch.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UMCH"
+      ]
+    },
+    {
+      "id": "AUTONOMA",
+      "fullName": "AUTONOMA",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.autonoma.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "AUTONOMA"
+      ]
+    },
+    {
+      "id": "UCSUR",
+      "fullName": "UCSUR",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.cientifica.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UCSUR"
+      ]
+    },
+    {
+      "id": "CULTURA",
+      "fullName": "CULTURA",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.cultura.gob.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "CULTURA"
+      ]
+    },
+    {
+      "id": "ESAN",
+      "fullName": "Universidad ESAN",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [
+        "20.500.12640"
+      ],
+      "acronyms": [
+        "ESAN"
+      ]
+    },
+    {
+      "id": "UMA",
+      "fullName": "UMA",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.uma.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UMA"
+      ]
+    },
+    {
+      "id": "UCP",
+      "fullName": "UCP",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.ucp.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UCP"
+      ]
+    },
+    {
+      "id": "MINEDU",
+      "fullName": "MINEDU",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.minedu.gob.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "MINEDU"
+      ]
+    },
+    {
+      "id": "UNAS",
+      "fullName": "Universidad Nacional Agraria de la Selva",
+      "type": "Universidad",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNAS"
+      ]
+    },
+    {
+      "id": "CONCYTEC",
+      "fullName": "CONCYTEC",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.concytec.gob.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "CONCYTEC"
+      ]
+    },
+    {
+      "id": "UPSJB",
+      "fullName": "UPSJB",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.upsjb.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UPSJB"
+      ]
+    },
+    {
+      "id": "UCSP",
+      "fullName": "Universidad Católica San Pablo",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.ucsp.edu.pe",
+      "handlePrefixes": [
+        "20.500.12423",
+        "20.500.12590"
+      ],
+      "acronyms": [
+        "UCSP"
+      ]
+    },
+    {
+      "id": "ROOSEVELT",
+      "fullName": "ROOSEVELT",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://revistas.uroosevelt.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "ROOSEVELT"
+      ]
+    },
+    {
+      "id": "AUTONOMADEICA",
+      "fullName": "AUTONOMADEICA",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.autonomadeica.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "AUTONOMADEICA"
+      ]
+    },
+    {
+      "id": "UCSS",
+      "fullName": "UCSS",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.ucss.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UCSS"
+      ]
+    },
+    {
+      "id": "SUNEDU",
+      "fullName": "SUNEDU",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.sunedu.gob.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "SUNEDU"
+      ]
+    },
+    {
+      "id": "UNS",
+      "fullName": "UNS",
+      "type": "Universidad",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [
+        "20.500.14082"
+      ],
+      "acronyms": [
+        "UNS"
+      ]
+    },
+    {
+      "id": "EESTPTL",
+      "fullName": "EESTPTL",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [],
+      "acronyms": [
+        "EESTPTL"
+      ]
+    },
+    {
+      "id": "INIA",
+      "fullName": "INIA",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.inia.gob.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "INIA"
+      ]
+    },
+    {
+      "id": "ULASAMERICAS",
+      "fullName": "ULASAMERICAS",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.ulasamericas.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "ULASAMERICAS"
+      ]
+    },
+    {
+      "id": "UARM",
+      "fullName": "UARM",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.uarm.edu.pe",
+      "handlePrefixes": [
+        "20.500.12833"
+      ],
+      "acronyms": [
+        "UARM"
+      ]
+    },
+    {
+      "id": "UNIFE",
+      "fullName": "UNIFE",
+      "type": "Universidad",
+      "searchUrl": "https://revistas.unife.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNIFE"
+      ]
+    },
+    {
+      "id": "HNAAA",
+      "fullName": "HNAAA",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://cmhnaaa.org.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "HNAAA"
+      ]
+    },
+    {
+      "id": "EESPPM",
+      "fullName": "EESPPM",
+      "type": "Entidad / Institución",
+      "searchUrl": "http://repositorio.ipnm.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "EESPPM"
+      ]
+    },
+    {
+      "id": "NEWMAN",
+      "fullName": "NEWMAN",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [
+        "20.500.14039"
+      ],
+      "acronyms": [
+        "NEWMAN"
+      ]
+    },
+    {
+      "id": "IIAP",
+      "fullName": "IIAP",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.iiap.gob.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "IIAP"
+      ]
+    },
+    {
+      "id": "EMC",
+      "fullName": "EMC",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.escuelamilitar.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "EMC"
+      ]
+    },
+    {
+      "id": "INS",
+      "fullName": "INS",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.ins.gob.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "INS"
+      ]
+    },
+    {
+      "id": "UNAMBA",
+      "fullName": "UNAMBA",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.unamba.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNAMBA"
+      ]
+    },
+    {
+      "id": "UTEA",
+      "fullName": "UTEA",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.utea.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UTEA"
+      ]
+    },
+    {
+      "id": "UNJ",
+      "fullName": "UNJ",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.unj.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNJ"
+      ]
+    },
+    {
+      "id": "UPAGU",
+      "fullName": "UPAGU",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.upagu.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UPAGU"
+      ]
+    },
+    {
+      "id": "CMP",
+      "fullName": "CMP",
+      "type": "Entidad / Institución",
+      "searchUrl": "http://repositorio.cmp.org.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "CMP"
+      ]
+    },
+    {
+      "id": "SOCIOGASTRO",
+      "fullName": "SOCIOGASTRO",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://revistagastroperu.com",
+      "handlePrefixes": [],
+      "acronyms": [
+        "SOCIOGASTRO"
+      ]
+    },
+    {
+      "id": "ESGE",
+      "fullName": "ESGE",
+      "type": "Entidad / Institución",
+      "searchUrl": "http://repositorio.esge.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "ESGE"
+      ]
+    },
+    {
+      "id": "UCH",
+      "fullName": "UCH",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.uch.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UCH"
+      ]
+    },
+    {
+      "id": "UTELESUP",
+      "fullName": "UTELESUP",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.utelesup.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UTELESUP"
+      ]
+    },
+    {
+      "id": "ULCB",
+      "fullName": "ULCB",
+      "type": "Universidad",
+      "searchUrl": "https://revistas.ulcb.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "ULCB"
+      ]
+    },
+    {
+      "id": "MIDAGRI",
+      "fullName": "MIDAGRI",
+      "type": "Entidad / Institución",
+      "searchUrl": "http://repositorio.minagri.gob.pe:80",
+      "handlePrefixes": [
+        "20.500.13036"
+      ],
+      "acronyms": [
+        "MIDAGRI"
+      ]
+    },
+    {
+      "id": "UPSC",
+      "fullName": "UPSC",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.upsc.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UPSC"
+      ]
+    },
+    {
+      "id": "CIENTÍFICA",
+      "fullName": "Universidad Científica del Perú",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://revistas.cientifica.edu.pe",
+      "handlePrefixes": [
+        "20.500.14503"
+      ],
+      "acronyms": [
+        "UCPI",
+        "CIENTÍFICA"
+      ]
+    },
+    {
+      "id": "ONPE",
+      "fullName": "ONPE",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [
+        "20.500.14130"
+      ],
+      "acronyms": [
+        "ONPE"
+      ]
+    },
+    {
+      "id": "UNAM",
+      "fullName": "UNAM",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.unam.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNAM"
+      ]
+    },
+    {
+      "id": "UNACH",
+      "fullName": "UNACH",
+      "type": "Universidad",
+      "searchUrl": "http://hdl.handle.net",
+      "handlePrefixes": [
+        "20.500.14142"
+      ],
+      "acronyms": [
+        "UNACH"
+      ]
+    },
+    {
+      "id": "OSIPTEL",
+      "fullName": "OSIPTEL",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [],
+      "acronyms": [
+        "OSIPTEL"
+      ]
+    },
+    {
+      "id": "UNAMAD",
+      "fullName": "UNAMAD",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.unamad.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNAMAD"
+      ]
+    },
+    {
+      "id": "APL",
+      "fullName": "Universidad Peruana de Ciencias Aplicadas (UPC)",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://revistas.apl.org.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UUPC",
+        "APL"
+      ]
+    },
+    {
+      "id": "IEP",
+      "fullName": "IEP",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.iep.org.pe",
+      "handlePrefixes": [
+        "20.500.14039",
+        "123456789"
+      ],
+      "acronyms": [
+        "IEP"
+      ]
+    },
+    {
+      "id": "UNAJMA",
+      "fullName": "UNAJMA",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.unajma.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNAJMA"
+      ]
+    },
+    {
+      "id": "UASF",
+      "fullName": "UASF",
+      "type": "Universidad",
+      "searchUrl": "http://hdl.handle.net",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UASF"
+      ]
+    },
+    {
+      "id": "IPEN",
+      "fullName": "IPEN",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.ipen.gob.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "IPEN"
+      ]
+    },
+    {
+      "id": "GRADE",
+      "fullName": "GRADE",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.grade.org.pe",
+      "handlePrefixes": [
+        "20.500.14039"
+      ],
+      "acronyms": [
+        "GRADE"
+      ]
+    },
+    {
+      "id": "UPCI",
+      "fullName": "UPCI",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.upci.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UPCI"
+      ]
+    },
+    {
+      "id": "SPDI",
+      "fullName": "SPDI",
+      "type": "Entidad / Institución",
+      "searchUrl": "http://spdiojs.org",
+      "handlePrefixes": [],
+      "acronyms": [
+        "SPDI"
+      ]
+    },
+    {
+      "id": "PJ",
+      "fullName": "PJ",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://revistas.pj.gob.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "PJ"
+      ]
+    },
+    {
+      "id": "SINEACE",
+      "fullName": "SINEACE",
+      "type": "Entidad / Institución",
+      "searchUrl": "http://repositorio.sineace.gob.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "SINEACE"
+      ]
+    },
+    {
+      "id": "FIHU",
+      "fullName": "FIHU",
+      "type": "Universidad",
+      "searchUrl": "https://revistadiagnostico.fihu.org.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "FIHU"
+      ]
+    },
+    {
+      "id": "UNTELS",
+      "fullName": "UNTELS",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.untels.edu.pe",
+      "handlePrefixes": [
+        "123456789"
+      ],
+      "acronyms": [
+        "UNTELS"
+      ]
+    },
+    {
+      "id": "SPMI",
+      "fullName": "SPMI",
+      "type": "Entidad / Institución",
+      "searchUrl": "http://revistamedicinainterna.net",
+      "handlePrefixes": [],
+      "acronyms": [
+        "SPMI"
+      ]
+    },
+    {
+      "id": "UNAT",
+      "fullName": "UNAT",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.unat.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNAT"
+      ]
+    },
+    {
+      "id": "UNAB",
+      "fullName": "UNAB",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.unab.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNAB"
+      ]
+    },
+    {
+      "id": "ZEGEL",
+      "fullName": "ZEGEL",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [],
+      "acronyms": [
+        "ZEGEL"
+      ]
+    },
+    {
+      "id": "SERFOR",
+      "fullName": "SERFOR",
+      "type": "Entidad / Institución",
+      "searchUrl": "http://repositorio.serfor.gob.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "SERFOR"
+      ]
+    },
+    {
+      "id": "UPICA",
+      "fullName": "UPICA",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.upica.edu.pe",
+      "handlePrefixes": [
+        "123456789"
+      ],
+      "acronyms": [
+        "UPICA"
+      ]
+    },
+    {
+      "id": "CSJ",
+      "fullName": "CSJ",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://revistas.pj.gob.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "CSJ"
+      ]
+    },
+    {
+      "id": "SQP",
+      "fullName": "SQP",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://revistas.sqperu.org.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "SQP"
+      ]
+    },
+    {
+      "id": "IGOB",
+      "fullName": "IGOB",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://www.igobernanza.org",
+      "handlePrefixes": [],
+      "acronyms": [
+        "IGOB"
+      ]
+    },
+    {
+      "id": "UPP",
+      "fullName": "UPP",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.upp.edu.pe",
+      "handlePrefixes": [
+        "123456789"
+      ],
+      "acronyms": [
+        "UPP"
+      ]
+    },
+    {
+      "id": "INMP",
+      "fullName": "INMP",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://investigacionmaternoperinatal.inmp.gob.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "INMP"
+      ]
+    },
+    {
+      "id": "ITS",
+      "fullName": "ITS",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.its.edu.pe:443",
+      "handlePrefixes": [],
+      "acronyms": [
+        "ITS"
+      ]
+    },
+    {
+      "id": "INEN",
+      "fullName": "Universidad Continental",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://",
+      "handlePrefixes": [
+        "20.500.12394"
+      ],
+      "acronyms": [
+        "INEN",
+        "RCONT",
+        "UCON"
+      ]
+    },
+    {
+      "id": "UTEC",
+      "fullName": "Universidad de Ingeniería y Tecnología",
+      "type": "Universidad",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [
+        "20.500.12816"
+      ],
+      "acronyms": [
+        "UTEC"
+      ]
+    },
+    {
+      "id": "UNAH",
+      "fullName": "UNAH",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.unah.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNAH"
+      ]
+    },
+    {
+      "id": "RISMF",
+      "fullName": "RISMF",
+      "type": "Entidad / Institución",
+      "searchUrl": "http://ojs.revistamaternofetal.com",
+      "handlePrefixes": [],
+      "acronyms": [
+        "RISMF"
+      ]
+    },
+    {
+      "id": "EESPLI",
+      "fullName": "EESPLI",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.eespli.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "EESPLI"
+      ]
+    },
+    {
+      "id": "UDL",
+      "fullName": "UDL",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.udl.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UDL"
+      ]
+    },
+    {
+      "id": "UPECEN",
+      "fullName": "UPECEN",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.upecen.edu.pe",
+      "handlePrefixes": [
+        "20.500.14127"
+      ],
+      "acronyms": [
+        "UPECEN"
+      ]
+    },
+    {
+      "id": "AURORA",
+      "fullName": "AURORA",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.warminan.gob.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "AURORA"
+      ]
+    },
+    {
+      "id": "UNID",
+      "fullName": "UNID",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.unid.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNID"
+      ]
+    },
+    {
+      "id": "INUDI",
+      "fullName": "INUDI",
+      "type": "Universidad",
+      "searchUrl": "https://revistainnovaeducacion.com",
+      "handlePrefixes": [],
+      "acronyms": [
+        "INUDI"
+      ]
+    },
+    {
+      "id": "CEPRECYT",
+      "fullName": "CEPRECYT",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://revistas.eciperu.net",
+      "handlePrefixes": [],
+      "acronyms": [
+        "CEPRECYT"
+      ]
+    },
+    {
+      "id": "UNFS",
+      "fullName": "UNFS",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.unf.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNFS"
+      ]
+    },
+    {
+      "id": "EESPPAMM",
+      "fullName": "EESPPAMM",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.eesppamm.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "EESPPAMM"
+      ]
+    },
+    {
+      "id": "FTPCL",
+      "fullName": "FTPCL",
+      "type": "Entidad / Institución",
+      "searchUrl": "http://repositorio.ftpcl.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "FTPCL"
+      ]
+    },
+    {
+      "id": "INCOR",
+      "fullName": "INCOR",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://apcyccv.org.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "INCOR"
+      ]
+    },
+    {
+      "id": "GERENS",
+      "fullName": "GERENS",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.gerens.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "GERENS"
+      ]
+    },
+    {
+      "id": "APR",
+      "fullName": "APR",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://www.metaforarevista.com",
+      "handlePrefixes": [],
+      "acronyms": [
+        "APR"
+      ]
+    },
+    {
+      "id": "UCAL",
+      "fullName": "UCAL",
+      "type": "Universidad",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UCAL"
+      ]
+    },
+    {
+      "id": "ESGN",
+      "fullName": "ESGN",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.esup.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "ESGN"
+      ]
+    },
+    {
+      "id": "EESPPUKLLASUNCHIS",
+      "fullName": "EESPPUKLLASUNCHIS",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.pukllasunchis.org",
+      "handlePrefixes": [],
+      "acronyms": [
+        "EESPPUKLLASUNCHIS"
+      ]
+    },
+    {
+      "id": "UAUSTRAL",
+      "fullName": "UAUSTRAL",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.uaustral.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UAUSTRAL"
+      ]
+    },
+    {
+      "id": "UPS",
+      "fullName": "UPS",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.ups.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UPS"
+      ]
+    },
+    {
+      "id": "UNAJ",
+      "fullName": "UNAJ",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.unaj.edu.pe:8080",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNAJ"
+      ]
+    },
+    {
+      "id": "SPO",
+      "fullName": "SPO",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://op.spo.com.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "SPO"
+      ]
+    },
+    {
+      "id": "EESPJJB",
+      "fullName": "EESPJJB",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.eesppjjbtacna.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "EESPJJB"
+      ]
+    },
+    {
+      "id": "UPRIT",
+      "fullName": "UPRIT",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.uprit.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UPRIT"
+      ]
+    },
+    {
+      "id": "UNM",
+      "fullName": "UNM",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.unm.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNM"
+      ]
+    },
+    {
+      "id": "HOSPITALTACNA",
+      "fullName": "HOSPITALTACNA",
+      "type": "Entidad / Institución",
+      "searchUrl": "http://revista.hospitaltacna.gob.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "HOSPITALTACNA"
+      ]
+    },
+    {
+      "id": "UNIA",
+      "fullName": "UNIA",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.unia.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNIA"
+      ]
+    },
+    {
+      "id": "IPOPS",
+      "fullName": "IPOPS",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://revistainteracciones.com",
+      "handlePrefixes": [],
+      "acronyms": [
+        "IPOPS"
+      ]
+    },
+    {
+      "id": "UPSB",
+      "fullName": "UPSB",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.upsb.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UPSB"
+      ]
+    },
+    {
+      "id": "ULASALLE",
+      "fullName": "ULASALLE",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.ulasalle.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "ULASALLE"
+      ]
+    },
+    {
+      "id": "CAEN",
+      "fullName": "CAEN",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.caen.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "CAEN"
+      ]
+    },
+    {
+      "id": "UNISDG",
+      "fullName": "UNISDG",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.usdg.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNISDG"
+      ]
+    },
+    {
+      "id": "ADP",
+      "fullName": "ADP",
+      "type": "Entidad / Institución",
+      "searchUrl": "http://repositorio.adp.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "ADP"
+      ]
+    },
+    {
+      "id": "UMB",
+      "fullName": "Universidad Nacional de Tumbes",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.umb.edu.pe",
+      "handlePrefixes": [
+        "20.500.12955"
+      ],
+      "acronyms": [
+        "UMB",
+        "UNTU"
+      ]
+    },
+    {
+      "id": "INAIGEM",
+      "fullName": "INAIGEM",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.inaigem.gob.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "INAIGEM"
+      ]
+    },
+    {
+      "id": "UNIBAGUA",
+      "fullName": "UNIBAGUA",
+      "type": "Universidad",
+      "searchUrl": "https://revistas.unitru.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNIBAGUA"
+      ]
+    },
+    {
+      "id": "UDAFF",
+      "fullName": "UDAFF",
+      "type": "Universidad",
+      "searchUrl": "http://hdl.handle.net",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UDAFF"
+      ]
+    },
+    {
+      "id": "USALLE",
+      "fullName": "USALLE",
+      "type": "Universidad",
+      "searchUrl": "https://revistas.ulasalle.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "USALLE"
+      ]
+    },
+    {
+      "id": "SENASA",
+      "fullName": "SENASA",
+      "type": "Entidad / Institución",
+      "searchUrl": "http://repositorio.senasa.gob.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "SENASA"
+      ]
+    },
+    {
+      "id": "ENSFJMA",
+      "fullName": "ENSFJMA",
+      "type": "Entidad / Institución",
+      "searchUrl": "http://repositorio.escuelafolklore.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "ENSFJMA"
+      ]
+    },
+    {
+      "id": "USAN",
+      "fullName": "USAN",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.usan.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "USAN"
+      ]
+    },
+    {
+      "id": "ENSAD",
+      "fullName": "ENSAD",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.ensad.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "ENSAD"
+      ]
+    },
+    {
+      "id": "CEDRO",
+      "fullName": "CEDRO",
+      "type": "Entidad / Institución",
+      "searchUrl": "http://www.repositorio.cedro.org.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "CEDRO"
+      ]
+    },
+    {
+      "id": "ITP",
+      "fullName": "ITP",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [],
+      "acronyms": [
+        "ITP"
+      ]
+    },
+    {
+      "id": "SMV",
+      "fullName": "SMV",
+      "type": "Entidad / Institución",
+      "searchUrl": "http://repositorio.smv.gob.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "SMV"
+      ]
+    },
+    {
+      "id": "ICTE",
+      "fullName": "ICTE",
+      "type": "Entidad / Institución",
+      "searchUrl": "http://repositorio.icte.ejercito.mil.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "ICTE"
+      ]
+    },
+    {
+      "id": "PNIPA",
+      "fullName": "PNIPA",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [],
+      "acronyms": [
+        "PNIPA"
+      ]
+    },
+    {
+      "id": "UNADQTC",
+      "fullName": "UNADQTC",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.unadqtc.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNADQTC"
+      ]
+    },
+    {
+      "id": "NEUMANN",
+      "fullName": "NEUMANN",
+      "type": "Universidad",
+      "searchUrl": "https://journaltop.com",
+      "handlePrefixes": [],
+      "acronyms": [
+        "NEUMANN"
+      ]
+    },
+    {
+      "id": "EESPPI",
+      "fullName": "EESPPI",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.eesppindoamerica.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "EESPPI"
+      ]
+    },
+    {
+      "id": "INSNS",
+      "fullName": "INSNS",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://investigacionpediatrica.insnsb.gob.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "INSNS"
+      ]
+    },
+    {
+      "id": "UNDAR",
+      "fullName": "UNDAR",
+      "type": "Universidad",
+      "searchUrl": "http://hdl.handle.net",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNDAR"
+      ]
+    },
+    {
+      "id": "UDEA",
+      "fullName": "UDEA",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.udea.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UDEA"
+      ]
+    },
+    {
+      "id": "UJBM",
+      "fullName": "UJBM",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.bausate.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UJBM"
+      ]
+    },
+    {
+      "id": "SUNAT",
+      "fullName": "SUNAT",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.sunat.gob.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "SUNAT"
+      ]
+    },
+    {
+      "id": "UDCH",
+      "fullName": "UDCH",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.udch.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UDCH"
+      ]
+    },
+    {
+      "id": "ENAMM",
+      "fullName": "ENAMM",
+      "type": "Entidad / Institución",
+      "searchUrl": "http://repositorio.enamm.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "ENAMM"
+      ]
+    },
+    {
+      "id": "EESPPMM",
+      "fullName": "EESPPMM",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [],
+      "acronyms": [
+        "EESPPMM"
+      ]
+    },
+    {
+      "id": "UNSCH",
+      "fullName": "UNSCH",
+      "type": "Universidad",
+      "searchUrl": "http://revistas.unsch.edu.pe",
+      "handlePrefixes": [
+        "20.500.14612"
+      ],
+      "acronyms": [
+        "UNSCH"
+      ]
+    },
+    {
+      "id": "EESTPKHIPU",
+      "fullName": "EESTPKHIPU",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.escuelakhipu.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "EESTPKHIPU"
+      ]
+    },
+    {
+      "id": "USEL",
+      "fullName": "USEL",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.usel.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "USEL"
+      ]
+    },
+    {
+      "id": "JSCO",
+      "fullName": "JSCO",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [],
+      "acronyms": [
+        "JSCO"
+      ]
+    },
+    {
+      "id": "ENC",
+      "fullName": "Universidad Peruana de Ciencias Aplicadas (UPC)",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.contraloria.gob.pe",
+      "handlePrefixes": [
+        "20.500.14612"
+      ],
+      "acronyms": [
+        "UUPC",
+        "ENC"
+      ]
+    },
+    {
+      "id": "IESPPTRM",
+      "fullName": "IESPPTRM",
+      "type": "Entidad / Institución",
+      "searchUrl": "http://hdl.handle.net",
+      "handlePrefixes": [],
+      "acronyms": [
+        "IESPPTRM"
+      ]
+    },
+    {
+      "id": "EESPPSM",
+      "fullName": "EESPPSM",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.eesppsanmarcos.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "EESPPSM"
+      ]
+    },
+    {
+      "id": "CLAM",
+      "fullName": "CLAM",
+      "type": "Entidad / Institución",
+      "searchUrl": "http://161.132.56.50:4000",
+      "handlePrefixes": [],
+      "acronyms": [
+        "CLAM"
+      ]
+    },
+    {
+      "id": "UPD",
+      "fullName": "UPD",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.upd.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UPD"
+      ]
+    },
+    {
+      "id": "UPADS",
+      "fullName": "UPADS",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.upads.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UPADS"
+      ]
+    },
+    {
+      "id": "EESPPL",
+      "fullName": "EESPPL",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.eespploreto.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "EESPPL"
+      ]
+    },
+    {
+      "id": "ENP",
+      "fullName": "ENP",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [],
+      "acronyms": [
+        "ENP"
+      ]
+    },
+    {
+      "id": "ENSABAP",
+      "fullName": "ENSABAP",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.ensabap.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "ENSABAP"
+      ]
+    },
+    {
+      "id": "IESPPSCHILLERGOETHE",
+      "fullName": "IESPPSCHILLERGOETHE",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.schillergoethe.com",
+      "handlePrefixes": [],
+      "acronyms": [
+        "IESPPSCHILLERGOETHE"
+      ]
+    },
+    {
+      "id": "UPAL",
+      "fullName": "UPAL",
+      "type": "Universidad",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UPAL"
+      ]
+    },
+    {
+      "id": "EESPPC",
+      "fullName": "EESPPC",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.pedagogicochimbote.edu.pe",
+      "handlePrefixes": [
+        "123456789"
+      ],
+      "acronyms": [
+        "EESPPC"
+      ]
+    },
+    {
+      "id": "USB",
+      "fullName": "USB",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.usb.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "USB"
+      ]
+    },
+    {
+      "id": "UPA",
+      "fullName": "UPA",
+      "type": "Universidad",
+      "searchUrl": "http://hdl.handle.net",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UPA"
+      ]
+    },
+    {
+      "id": "ENSABAB",
+      "fullName": "ENSABAB",
+      "type": "Entidad / Institución",
+      "searchUrl": "http://repositorio.ensabap.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "ENSABAB"
+      ]
+    },
+    {
+      "id": "OEFA",
+      "fullName": "OEFA",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.oefa.gob.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "OEFA"
+      ]
+    },
+    {
+      "id": "ULC",
+      "fullName": "ULC",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.ulc.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "ULC"
+      ]
+    },
+    {
+      "id": "UPEIN",
+      "fullName": "UPEIN",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.upein.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UPEIN"
+      ]
+    },
+    {
+      "id": "SIS",
+      "fullName": "SIS",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.sis.gob.pe",
+      "handlePrefixes": [
+        "20.500.14612"
+      ],
+      "acronyms": [
+        "SIS"
+      ]
+    },
+    {
+      "id": "UST",
+      "fullName": "Universidad Nacional de San Agustín",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.ust.edu.pe",
+      "handlePrefixes": [
+        "20.500.12773"
+      ],
+      "acronyms": [
+        "UST",
+        "UNSA"
+      ]
+    },
+    {
+      "id": "EIPOSGRADO",
+      "fullName": "EIPOSGRADO",
+      "type": "Entidad / Institución",
+      "searchUrl": "http://repositorio.eiposgrado.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "EIPOSGRADO"
+      ]
+    },
+    {
+      "id": "SUNASS",
+      "fullName": "SUNASS",
+      "type": "Universidad",
+      "searchUrl": "http://repositorio.sunass.gob.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "SUNASS"
+      ]
+    },
+    {
+      "id": "EESPPVAB",
+      "fullName": "EESPPVAB",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.eesppvab.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "EESPPVAB"
+      ]
+    },
+    {
+      "id": "AVANSYS",
+      "fullName": "AVANSYS",
+      "type": "Entidad / Institución",
+      "searchUrl": "http://repositorio.avansys.edu.pe",
+      "handlePrefixes": [
+        "20.500.14039"
+      ],
+      "acronyms": [
+        "AVANSYS"
+      ]
+    },
+    {
+      "id": "SFX",
+      "fullName": "SFX",
+      "type": "Entidad / Institución",
+      "searchUrl": "http://repositorio.sfx.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "SFX"
+      ]
+    },
+    {
+      "id": "UNDC",
+      "fullName": "UNDC",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.undc.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNDC"
+      ]
+    },
+    {
+      "id": "CERTUS",
+      "fullName": "CERTUS",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.certus.edu.pe",
+      "handlePrefixes": [
+        "20.500.14039"
+      ],
+      "acronyms": [
+        "CERTUS"
+      ]
+    },
+    {
+      "id": "UNISCJSA",
+      "fullName": "UNISCJSA",
+      "type": "Universidad",
+      "searchUrl": "https://repositorio.uniscjsa.edu.pe",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNISCJSA"
+      ]
+    },
+    {
+      "id": "UNCA",
+      "fullName": "UNCA",
+      "type": "Universidad",
+      "searchUrl": "https://hdl.handle.net",
+      "handlePrefixes": [
+        "20.500.14082"
+      ],
+      "acronyms": [
+        "UNCA"
+      ]
+    },
+    {
+      "id": "APN",
+      "fullName": "APN",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio.apn.gob.pe",
+      "handlePrefixes": [
+        "20.500.12737",
+        "20.500.14260"
+      ],
+      "acronyms": [
+        "APN"
+      ]
+    },
+    {
+      "id": "DIGEMID",
+      "fullName": "DIGEMID",
+      "type": "Entidad / Institución",
+      "searchUrl": "https://repositorio-digemid.minsa.gob.pe",
+      "handlePrefixes": [
+        "123456789"
+      ],
+      "acronyms": [
+        "DIGEMID"
+      ]
+    },
+    {
+      "id": "Universidad Nacional Mayor de San Marcos",
+      "fullName": "Universidad Nacional Mayor de San Marcos",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad Nacional Mayor de San Marcos&type=Institution",
+      "handlePrefixes": [
+        "20.500.12672"
+      ],
+      "acronyms": [
+        "RUNM",
+        "UNMS",
+        "REVUNMSM"
+      ]
+    },
+    {
+      "id": "Universidad Peruana de Ciencias Aplicadas",
+      "fullName": "Universidad Peruana de Ciencias Aplicadas",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad Peruana de Ciencias Aplicadas&type=Institution",
+      "handlePrefixes": [
+        "10757"
+      ],
+      "acronyms": []
+    },
+    {
+      "id": "Universidad Privada del Norte",
+      "fullName": "Universidad Privada del Norte",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad Privada del Norte&type=Institution",
+      "handlePrefixes": [
+        "11537"
+      ],
+      "acronyms": [
+        "RUPN",
+        "UUPN",
+        "UUPP"
+      ]
+    },
+    {
+      "id": "Universidad Nacional de Trujillo",
+      "fullName": "Universidad Nacional de Trujillo",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad Nacional de Trujillo&type=Institution",
+      "handlePrefixes": [
+        "20.500.14414"
+      ],
+      "acronyms": []
+    },
+    {
+      "id": "Universidad Nacional de la Amazonía Peruana",
+      "fullName": "Universidad Nacional de la Amazonía Peruana",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad Nacional de la Amazonía Peruana&type=Institution",
+      "handlePrefixes": [
+        "20.500.12737"
+      ],
+      "acronyms": []
+    },
+    {
+      "id": "Universidad Nacional de Cajamarca",
+      "fullName": "Universidad Nacional de Cajamarca",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad Nacional de Cajamarca&type=Institution",
+      "handlePrefixes": [
+        "20.500.14074"
+      ],
+      "acronyms": []
+    },
+    {
+      "id": "Universidad Nacional Federico Villarreal",
+      "fullName": "Universidad Nacional Federico Villarreal",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad Nacional Federico Villarreal&type=Institution",
+      "handlePrefixes": [
+        "20.500.13084"
+      ],
+      "acronyms": [
+        "RNUF",
+        "RUNF"
+      ]
+    },
+    {
+      "id": "Universidad Nacional del Santa",
+      "fullName": "Universidad Nacional del Santa",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad Nacional del Santa&type=Institution",
+      "handlePrefixes": [
+        "20.500.14278"
+      ],
+      "acronyms": [
+        "RUNS"
+      ]
+    },
+    {
+      "id": "Universidad Nacional Hermilio Valdizán",
+      "fullName": "Universidad Nacional Hermilio Valdizán",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad Nacional Hermilio Valdizán&type=Institution",
+      "handlePrefixes": [
+        "20.500.12599"
+      ],
+      "acronyms": [
+        "RUNH"
+      ]
+    },
+    {
+      "id": "Universidad Nacional de Piura",
+      "fullName": "Universidad Nacional de Piura",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad Nacional de Piura&type=Institution",
+      "handlePrefixes": [
+        "20.500.12848"
+      ],
+      "acronyms": [
+        "RNAP"
+      ]
+    },
+    {
+      "id": "Universidad Nacional de Huancavelica",
+      "fullName": "Universidad Nacional de Huancavelica",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad Nacional de Huancavelica&type=Institution",
+      "handlePrefixes": [
+        "20.500.13080"
+      ],
+      "acronyms": []
+    },
+    {
+      "id": "Essalud",
+      "fullName": "Essalud",
+      "type": "Institución",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Essalud&type=Institution",
+      "handlePrefixes": [
+        "20.500.12959"
+      ],
+      "acronyms": []
+    },
+    {
+      "id": "Universidad Nacional de Ucayali",
+      "fullName": "Universidad Nacional de Ucayali",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad Nacional de Ucayali&type=Institution",
+      "handlePrefixes": [
+        "20.500.12845"
+      ],
+      "acronyms": [
+        "RUNU"
+      ]
+    },
+    {
+      "id": "Universidad Nacional Toribio Rodríguez de Mendoza",
+      "fullName": "Universidad Nacional Toribio Rodríguez de Mendoza",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad Nacional Toribio Rodríguez de Mendoza&type=Institution",
+      "handlePrefixes": [
+        "20.500.14077"
+      ],
+      "acronyms": []
+    },
+    {
+      "id": "Universidad Científica del Sur",
+      "fullName": "Universidad Científica del Sur",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad Científica del Sur&type=Institution",
+      "handlePrefixes": [
+        "20.500.12805"
+      ],
+      "acronyms": []
+    },
+    {
+      "id": "Universidad de Lima",
+      "fullName": "Universidad de Lima",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad de Lima&type=Institution",
+      "handlePrefixes": [
+        "20.500.12724"
+      ],
+      "acronyms": [
+        "RULI"
+      ]
+    },
+    {
+      "id": "Universidad del Pacífico",
+      "fullName": "Universidad del Pacífico",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad del Pacífico&type=Institution",
+      "handlePrefixes": [
+        "11354"
+      ],
+      "acronyms": []
+    },
+    {
+      "id": "Universidad Peruana Cayetano Heredia",
+      "fullName": "Universidad Peruana Cayetano Heredia",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad Peruana Cayetano Heredia&type=Institution",
+      "handlePrefixes": [
+        "20.500.12866"
+      ],
+      "acronyms": [
+        "RUPCH",
+        "RPCH"
+      ]
+    },
+    {
+      "id": "Universidad Andina del Cusco",
+      "fullName": "Universidad Andina del Cusco",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad Andina del Cusco&type=Institution",
+      "handlePrefixes": [
+        "20.500.12557"
+      ],
+      "acronyms": []
+    },
+    {
+      "id": "Universidad Señor de Sipán",
+      "fullName": "Universidad Señor de Sipán",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad Señor de Sipán&type=Institution",
+      "handlePrefixes": [
+        "20.500.12802"
+      ],
+      "acronyms": [
+        "RUSS",
+        "USSS"
+      ]
+    },
+    {
+      "id": "Universidad Antonio Ruiz de Montoya",
+      "fullName": "Universidad Antonio Ruiz de Montoya",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad Antonio Ruiz de Montoya&type=Institution",
+      "handlePrefixes": [
+        "20.500.12833"
+      ],
+      "acronyms": []
+    },
+    {
+      "id": "Universidad Tecnológica del Perú",
+      "fullName": "Universidad Tecnológica del Perú",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad Tecnológica del Perú&type=Institution",
+      "handlePrefixes": [
+        "20.500.12867"
+      ],
+      "acronyms": [
+        "RUTP",
+        "UTPD"
+      ]
+    },
+    {
+      "id": "Universidad Católica Sedes Sapientiae",
+      "fullName": "Universidad Católica Sedes Sapientiae",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad Católica Sedes Sapientiae&type=Institution",
+      "handlePrefixes": [
+        "20.500.14095"
+      ],
+      "acronyms": []
+    },
+    {
+      "id": "Universidad Autónoma del Perú",
+      "fullName": "Universidad Autónoma del Perú",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad Autónoma del Perú&type=Institution",
+      "handlePrefixes": [
+        "20.500.13067"
+      ],
+      "acronyms": []
+    },
+    {
+      "id": "Universidad Femenina del Sagrado Corazón",
+      "fullName": "Universidad Femenina del Sagrado Corazón",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad Femenina del Sagrado Corazón&type=Institution",
+      "handlePrefixes": [
+        "20.500.12508"
+      ],
+      "acronyms": []
+    },
+    {
+      "id": "Universidad Católica Los Ángeles de Chimbote",
+      "fullName": "Universidad Católica Los Ángeles de Chimbote",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad Católica Los Ángeles de Chimbote&type=Institution",
+      "handlePrefixes": [
+        "20.500.12979"
+      ],
+      "acronyms": []
+    },
+    {
+      "id": "Universidad Alas Peruanas",
+      "fullName": "Universidad Alas Peruanas",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad Alas Peruanas&type=Institution",
+      "handlePrefixes": [
+        "20.500.12428"
+      ],
+      "acronyms": []
+    },
+    {
+      "id": "Universidad San Pedro",
+      "fullName": "Universidad San Pedro",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad San Pedro&type=Institution",
+      "handlePrefixes": [
+        "20.500.12892"
+      ],
+      "acronyms": [
+        "USPE"
+      ]
+    },
+    {
+      "id": "Universidad Privada San Juan Bautista",
+      "fullName": "Universidad Privada San Juan Bautista",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad Privada San Juan Bautista&type=Institution",
+      "handlePrefixes": [
+        "20.500.12899"
+      ],
+      "acronyms": []
+    },
+    {
+      "id": "Universidad Norbert Wiener",
+      "fullName": "Universidad Norbert Wiener",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=Universidad Norbert Wiener&type=Institution",
+      "handlePrefixes": [
+        "20.500.12545"
+      ],
+      "acronyms": [
+        "REWIEN",
+        "UWIE"
+      ]
+    },
+    {
+      "id": "UNJF",
+      "fullName": "Universidad Nacional José Faustino Sánchez Carrión",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=UNJF&type=Institution",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNJF"
+      ]
+    },
+    {
+      "id": "REVUNJBG",
+      "fullName": "Universidad Nacional Jorge Basadre Grohmann",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=REVUNJBG&type=Institution",
+      "handlePrefixes": [],
+      "acronyms": [
+        "REVUNJBG",
+        "UNJB"
+      ]
+    },
+    {
+      "id": "UPRG",
+      "fullName": "Universidad Nacional Pedro Ruíz Gallo",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=UPRG&type=Institution",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UPRG"
+      ]
+    },
+    {
+      "id": "UNEI",
+      "fullName": "Universidad Nacional de Educación Enrique Guzmán y Valle",
+      "type": "Universidad",
+      "searchUrl": "https://alicia.concytec.gob.pe/vufind/Search/Results?lookfor=UNEI&type=Institution",
+      "handlePrefixes": [],
+      "acronyms": [
+        "UNEI"
+      ]
+    }
+  ]
+}

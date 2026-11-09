@@ -1,0 +1,25 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "letxipu-v11-local": {
+      "type": "remote",
+      "url": "http://127.0.0.1:4003/api/mcp",
+      "enabled": true
+    },
+    "letxinet-gateway": {
+      "type": "local",
+      "command": ["node", "D:/OTROS/LETXINET-MCP-AGENT-GUI/LETXINET-MCP-AGENT-GUI-V2-main/gateway-mcp-bridge.cjs"],
+      "env": {
+        "GATEWAY_URL": "http://127.0.0.1:3000",
+        "LETXIPU_LOCAL_URL": "http://127.0.0.1:4003",
+        "JOBS_DIR": "D:/OTROS/LETXINET-MCP-AGENT-GUI/jobs"
+      },
+      "enabled": true
+    },
+    "latex-mcp-local": {
+      "type": "local",
+      "command": ["node", "D:/OTROS/MCP_CLIENTE_LATEX_V3/dist/index.js"],
+      "enabled": true
+    }
+  }
+}

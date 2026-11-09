@@ -1,0 +1,23 @@
+{
+  "_comment": "University quality tiers for LatAm. Tier 1 = top research (+6), Tier 2 = strong research (+4), Tier 3 = recognized (+3).",
+  "tier1": {
+    "peru": ["pucp", "san marcos", "unmsm", "cayetano heredia", "upch", "universidad nacional de ingenieria", "uni"],
+    "chile": ["uchile", "usach", "uc", "puc", "uch", "utfsm", "utfsma"],
+    "brasil": ["unicamp", "usp", "ufrj", "ufmg"],
+    "mexico": ["unam", "ipn", "itesm", "tec de monterrey"],
+    "argentina": ["uba", "unc", "unlp", "utn"],
+    "colombia": ["unal", "andes", "javeriana", "eafit", "del rosario"],
+    "global": ["harvard", "mit", "stanford", "oxford", "cambridge", "yale", "princeton", "columbia"]
+  },
+  "tier2": {
+    "peru": ["unsa", "untrujillo", "trujillo", "udep", "usmp", "ucsm", "unitru", "ulima", "usil", "esan", "utec", "uarm", "ucsp", "unfv", "ucv", "upao", "unprg", "uns"],
+    "chile": ["udec", "ucm", "uv", "ude", "usm"],
+    "brasil": ["ufrgs", "ufsc", "ufpr", "ufba", "ufpe", "ufpa"],
+    "mexico": ["uam", "cinvestav", "colmex"],
+    "argentina": ["uns", "unr", "unsj", "unq"],
+    "colombia": ["udea", "unicauca", "utp", "usco", "umariana"],
+    "ecuador": ["espol", "epn", "usfq", "ucsg"],
+    "bolivia": ["umsa", "uto", "usfb"]
+  },
+  "tier3_patterns": ["universidad", "univ", ".pe", "college", "instituto", "facultad", "escuela"]
+}

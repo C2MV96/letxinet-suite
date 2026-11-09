@@ -1,0 +1,14 @@
+{
+  "_comment": "V18 Peru country profile — overrides global defaults for Peru-specific queries",
+  "scoring": {
+    "MIN_RELEVANCE": 15
+  },
+  "penalties": {
+    "foreignMultiplier": 0.3,
+    "offTopicPenalty": -25,
+    "noUniversityPenalty": -8
+  },
+  "geoBoost": {
+    "foreign": { "boost": -30 }
+  }
+}

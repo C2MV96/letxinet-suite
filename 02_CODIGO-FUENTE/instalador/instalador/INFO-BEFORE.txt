@@ -1,0 +1,78 @@
+LetXinet Suite v1.1.0 - Instalador unificado (Dual Build)
+=========================================================
+
+NOVEDADES v1.1.0 (Dual Build):
+  - LetXinet Desktop HF reconstruido sin --define BUILD_VARIANT. Un solo
+    payload server.cjs unificado sirve para ambos variants; BUILD_VARIANT
+    se lee en runtime desde process.env (default: private).
+  - Nuevo layout Electron: resources\app\ (no app.asar.unpacked\).
+  - secrets.json embebido SOLO en VariantA (interno) con 3 IA provider
+    keys (Nebius, OpenRouter, DeepSeek). VariantB no lo incluye.
+  - Al primer arranque, main.cjs ejecuta seedSecretsFromBundle() y copia
+    resources\secrets.json a %APPDATA%\LetXipu-Desktop-HF\secrets.json
+    (userData), preservando las claves existentes.
+  - LaDyn build modifica ProgramData env solo si no existe (preserva config
+    de Versiones previas).
+
+ESTE INSTALADOR REQUIERE PRIVILEGIOS DE ADMINISTRADOR.
+Razon: registra 3 servicios Windows via NSSM en el Service Control Manager.
+
+Lo que va a instalar:
+====================
+
+4 componentes en {progfiles}\LetXinet Suite\ (~2 GB en disco):
+
+  1. OSM-MCP              Servicio Windows (puerto 7082) -> geocoding + routing
+  2. MarkItDown API       Servicio Windows (puerto 7860) -> motor PyMuPDF4LLM
+  3. MCP-V11-Local        Servicio Windows (puerto 4003) -> busqueda academica
+                          + sidecar spaCy (puerto 4002)
+  4. LetXinet Desktop HF  Electron GUI (atajo escritorio + menu inicio, puerto
+                          43123)
+
+3 servicios Windows creados:
+  - LetXinetSuiteOSMMCP      (auto-start)
+  - LetXinetSuiteMarkitDown  (auto-start)
+  - LetXinetSuiteMCPV11      (delayed auto-start) -> arranque tras MarkItDown
+
+Logs centralizados:
+  %PROGRAMDATA%\LetXinet Suite\Logs\
+    osm-mcp.stdout.log        osm-mcp.stderr.log
+    markitdown-api.stdout.log markitdown-api.stderr.log
+    mcp-v11-local.stdout.log  mcp-v11-local.stderr.log
+
+Archivo de configuracion editable:
+  %PROGRAMDATA%\LetXinet Suite\LetXinet-Suite.env
+  -> define puertos locales, endpoints remotos HF, tokens IA,
+     mirrors sci-hub, OSM user-agent, modo desktop, BUILD_VARIANT, etc.
+  Edita con cualquier editor de texto (UTF-8) y reinicia los servicios
+  desde Services.msc o reiniciando el equipo.
+
+IA Providers soportados (v1.1.0):
+  Nebius, OpenRouter, DeepSeek -> claves en secrets.json (VariantA) o
+  %APPDATA%\LetXipu-Desktop-HF\secrets.json (usuario). VariantB debe
+  rellenarlas manualmente.
+
+VARIANTS de instalador:
+  VariantA (interno): incluye secrets.json + 9 tokens academicos en .env.
+  VariantB (publico): plantilla vacia de secrets.json, sin tokens.
+  Default BUILD_VARIANT=private si no esta seteado en .env.
+
+Desinstalacion:
+  Panel de control -> Desinstalar LetXinet Suite
+  o ejecutar el uninstaller desde {app}\unins000.exe
+  Los 3 servicios se detendran y eliminaran automaticamente.
+  Los logs en %PROGRAMDATA% NO se borran (diagnostico post-mortem).
+
+Puertos TCP usados por defecto:
+  43123  LetXinet Desktop HF (Electron app)
+  4003   MCP-V11-Local HTTP+SSE
+  4002   spaCy sidecar (internamente por V11)
+  7082   OSM-MCP HTTP+SSE
+  19090  OSM-MCP monitoring/Prometheus
+  7860   MarkItDown API
+
+Si hay conflictos con otros servicios en estos puertos, edita
+LetXinet-Suite.env DESPUES de instalar y cambia los valores *_PORT antes
+del primer arranque de los servicios.
+
+Continua el instalador para aceptar la licencia y elegir componentes.

@@ -1,0 +1,4 @@
+{
+  "_comment": "Ancash — Peru 80%, topic 33%. Needs stronger topic filter.",
+  "penalties": { "offTopicPenalty": -35, "genericTitlePenalty": -20 }
+}

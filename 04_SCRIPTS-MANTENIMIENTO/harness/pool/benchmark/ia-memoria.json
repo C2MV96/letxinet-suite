@@ -1,0 +1,616 @@
+{
+  "lado": "ia-memoria",
+  "modelo": "claude-sonnet-5-5",
+  "fecha": "2026-11-08",
+  "consultas": [
+    {
+      "id": "Q1",
+      "referencias": [
+        {
+          "titulo": "Patterns of geographic expansion of Aedes aegypti in the Peruvian Amazon",
+          "autores": ["Guagliardo SAJ", "Morrison AC", "Barboza JL", "Requena E", "Astete H", "Vazquez-Prokopec G", "Kitron U"],
+          "anio": 2014,
+          "revista_o_institucion": "PLoS Neglected Tropical Diseases",
+          "doi": "10.1371/journal.pntd.0003033",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": true,
+          "confianza": "media"
+        },
+        {
+          "titulo": "Efficacy of Aedes aegypti control by indoor Ultra Low Volume (ULV) insecticide spraying in Iquitos, Peru",
+          "autores": ["Gunning CE", "Okamoto KW", "Astete H", "Vasquez GM", "Erhardt E", "Del Aguila C", "Pinedo R", "Cardenas R", "Pacheco C", "Chalco E", "Rodriguez-Ferruci H", "Scott TW", "Lloyd AL", "Gould F", "Morrison AC"],
+          "anio": 2018,
+          "revista_o_institucion": "PLoS Neglected Tropical Diseases",
+          "doi": "10.1371/journal.pntd.0006378",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": true,
+          "confianza": "alta"
+        },
+        {
+          "titulo": "Dengue en el Perú: a 25 años de su reemergencia",
+          "autores": ["Cabezas C", "Fiestas V", "García-Mendoza M", "Palomino M", "Mamani E", "Donaires F"],
+          "anio": 2015,
+          "revista_o_institucion": "Revista Peruana de Medicina Experimental y Salud Pública",
+          "doi": null,
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": true,
+          "confianza": "alta"
+        },
+        {
+          "titulo": "Dengue knowledge and preventive practices in Iquitos, Peru",
+          "autores": ["Paz-Soldan VA", "Plasai V", "Morrison AC", "Rios-Lopez EJ", "Guedez-Gonzales S", "Grieco JP", "Mundal K", "Chareonviriyaphap T", "Achee NL"],
+          "anio": 2011,
+          "revista_o_institucion": "American Journal of Tropical Medicine and Hygiene",
+          "doi": null,
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": true,
+          "confianza": "media"
+        },
+        {
+          "titulo": "Aedes aegypti (Diptera: Culicidae) production from non-residential sites in the Amazonian city of Iquitos, Peru",
+          "autores": ["Morrison AC", "Sihuincha M", "Stancil JD", "Zamora E", "Astete H", "Olson JG", "Vidal-Ore C", "Scott TW"],
+          "anio": 2006,
+          "revista_o_institucion": "Annals of Tropical Medicine and Parasitology",
+          "doi": null,
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": true,
+          "confianza": "media"
+        },
+        {
+          "titulo": "Evaluation of a sampling methodology for rapid assessment of Aedes aegypti infestation levels in Iquitos, Peru",
+          "autores": ["Morrison AC", "Astete H", "Chapilliquen F", "Ramirez-Prada C", "Diaz G", "Getis A", "Gray K", "Scott TW"],
+          "anio": 2004,
+          "revista_o_institucion": "Journal of Medical Entomology",
+          "doi": null,
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": true,
+          "confianza": "media"
+        },
+        {
+          "titulo": "Dengue en el Perú: aspectos históricos y su diseminación en los últimos 20 años",
+          "autores": ["Cabezas C"],
+          "anio": 2005,
+          "revista_o_institucion": "Revista Peruana de Medicina Experimental y Salud Pública",
+          "doi": null,
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": true,
+          "confianza": "media"
+        },
+        {
+          "titulo": "Norma técnica de salud para la vigilancia entomológica y control de Aedes aegypti, vector del dengue en el territorio nacional (NTS N° 125-MINSA/2016/CDC-INS)",
+          "autores": ["Ministerio de Salud del Perú"],
+          "anio": 2016,
+          "revista_o_institucion": "Ministerio de Salud del Perú (MINSA)",
+          "doi": null,
+          "url": null,
+          "tipo": "informe",
+          "es_peru": true,
+          "confianza": "media"
+        }
+      ],
+      "notas": "Referencias de memoria; no recuerdo tesis peruanas concretas sobre control vectorial con titulo exacto, por eso no incluyo ninguna. La mayoria del conocimiento recordado proviene del grupo de Iquitos (Morrison, Scott, Gunning). DOIs solo donde creo conocerlos."
+    },
+    {
+      "id": "Q2",
+      "referencias": [
+        {
+          "titulo": "Effectiveness of peridomestic space spraying with insecticide on dengue transmission; systematic review",
+          "autores": ["Esu E", "Lenhart A", "Smith L", "Horstick O"],
+          "anio": 2010,
+          "revista_o_institucion": "Tropical Medicine and International Health",
+          "doi": "10.1111/j.1365-3156.2010.02489.x",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "alta"
+        },
+        {
+          "titulo": "Is dengue vector control deficient in effectiveness or evidence?: Systematic review and meta-analysis",
+          "autores": ["Bowman LR", "Donegan S", "McCall PJ"],
+          "anio": 2016,
+          "revista_o_institucion": "PLoS Neglected Tropical Diseases",
+          "doi": "10.1371/journal.pntd.0004551",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "alta"
+        },
+        {
+          "titulo": "Dengue vector-control services: how do they work? A systematic literature review and country case studies",
+          "autores": ["Horstick O", "Runge-Ranzinger S", "Nathan MB", "Kroeger A"],
+          "anio": 2010,
+          "revista_o_institucion": "Transactions of the Royal Society of Tropical Medicine and Hygiene",
+          "doi": "10.1016/j.trstmh.2009.07.027",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "media"
+        },
+        {
+          "titulo": "Efficacy of Aedes aegypti control by indoor Ultra Low Volume (ULV) insecticide spraying in Iquitos, Peru",
+          "autores": ["Gunning CE", "Okamoto KW", "Astete H", "Vasquez GM", "Erhardt E", "Del Aguila C", "Pinedo R", "Cardenas R", "Pacheco C", "Chalco E", "Rodriguez-Ferruci H", "Scott TW", "Lloyd AL", "Gould F", "Morrison AC"],
+          "anio": 2018,
+          "revista_o_institucion": "PLoS Neglected Tropical Diseases",
+          "doi": "10.1371/journal.pntd.0006378",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": true,
+          "confianza": "alta"
+        },
+        {
+          "titulo": "Defining challenges and proposing solutions for control of the virus vector Aedes aegypti",
+          "autores": ["Morrison AC", "Zielinski-Gutierrez E", "Scott TW", "Rosenberg R"],
+          "anio": 2008,
+          "revista_o_institucion": "PLoS Medicine",
+          "doi": "10.1371/journal.pmed.0050068",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "alta"
+        },
+        {
+          "titulo": "Behavior of resting Aedes aegypti (Culicidae: Diptera) and its relation to ultra-low volume adulticide efficacy in Panama City, Panama",
+          "autores": ["Perich MJ", "Davila G", "Turner A", "Garcia A", "Nelson M"],
+          "anio": 2000,
+          "revista_o_institucion": "Journal of Medical Entomology",
+          "doi": null,
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "media"
+        },
+        {
+          "titulo": "Proactive vector control strategies and improved monitoring and evaluation practices for dengue prevention",
+          "autores": ["Eisen L", "Beaty BJ", "Morrison AC", "Scott TW"],
+          "anio": 2009,
+          "revista_o_institucion": "Journal of Medical Entomology",
+          "doi": null,
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "media"
+        }
+      ],
+      "notas": "Revisiones sistematicas principales recordadas con buena seguridad (Esu 2010, Bowman 2016). Los DOIs de Horstick 2010 los recuerdo con menos certeza."
+    },
+    {
+      "id": "Q3",
+      "referencias": [
+        {
+          "titulo": "Dengue en el Perú: a 25 años de su reemergencia",
+          "autores": ["Cabezas C", "Fiestas V", "García-Mendoza M", "Palomino M", "Mamani E", "Donaires F"],
+          "anio": 2015,
+          "revista_o_institucion": "Revista Peruana de Medicina Experimental y Salud Pública",
+          "doi": null,
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": true,
+          "confianza": "alta"
+        },
+        {
+          "titulo": "Dengue en el Perú: aspectos históricos y su diseminación en los últimos 20 años",
+          "autores": ["Cabezas C"],
+          "anio": 2005,
+          "revista_o_institucion": "Revista Peruana de Medicina Experimental y Salud Pública",
+          "doi": null,
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": true,
+          "confianza": "media"
+        },
+        {
+          "titulo": "Boletín Epidemiológico del Perú (CDC-MINSA): reportes y sala situacional de dengue",
+          "autores": ["Centro Nacional de Epidemiología, Prevención y Control de Enfermedades (CDC-Perú)"],
+          "anio": null,
+          "revista_o_institucion": "Ministerio de Salud del Perú",
+          "doi": null,
+          "url": null,
+          "tipo": "informe",
+          "es_peru": true,
+          "confianza": "baja"
+        }
+      ],
+      "notas": "No recuerdo ningun articulo ni tesis especifico sobre dengue en Chimbote o Ancash con titulo y autores confiables; solo doy literatura nacional de contexto y la fuente institucional de vigilancia (referencia generica, no un documento puntual). No invento tesis locales."
+    },
+    {
+      "id": "Q4",
+      "referencias": [
+        {
+          "titulo": "A mutation in the voltage-gated sodium channel gene associated with pyrethroid resistance in Latin American Aedes aegypti",
+          "autores": ["Saavedra-Rodriguez K", "Urdaneta-Marquez L", "Rajatileka S", "Moulton M", "Flores AE", "Fernandez-Salas I", "Bisset J", "Rodriguez M", "McCall PJ", "Donnelly MJ", "Ranson H", "Hemingway J", "Black WC"],
+          "anio": 2007,
+          "revista_o_institucion": "Insect Molecular Biology",
+          "doi": "10.1111/j.1365-2583.2007.00774.x",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "media"
+        },
+        {
+          "titulo": "Contemporary status of insecticide resistance in the major Aedes vectors of arboviruses infecting humans",
+          "autores": ["Moyes CL", "Vontas J", "Martins AJ", "Ng LC", "Koou SY", "Dusfour I", "Raghavendra K", "Pinto J", "Corbel V", "David JP", "Weetman D"],
+          "anio": 2017,
+          "revista_o_institucion": "PLoS Neglected Tropical Diseases",
+          "doi": "10.1371/journal.pntd.0005625",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "alta"
+        },
+        {
+          "titulo": "Management of insecticide resistance in the major Aedes vectors of arboviruses: Advances and challenges",
+          "autores": ["Dusfour I", "Vontas J", "David JP", "Weetman D", "Fonseca DM", "Corbel V", "Raghavendra K", "Coulibaly MB", "Martins AJ", "Kasai S", "Chandre F"],
+          "anio": 2019,
+          "revista_o_institucion": "PLoS Neglected Tropical Diseases",
+          "doi": "10.1371/journal.pntd.0007615",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "media"
+        },
+        {
+          "titulo": "Insecticide resistance in the major dengue vectors Aedes albopictus and Aedes aegypti",
+          "autores": ["Vontas J", "Kioulos E", "Pavlidi N", "Morou E", "Della Torre A", "Ranson H"],
+          "anio": 2012,
+          "revista_o_institucion": "Pesticide Biochemistry and Physiology",
+          "doi": "10.1016/j.pestbp.2012.05.008",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "media"
+        },
+        {
+          "titulo": "Recent rapid rise of a permethrin knock down resistance allele in Aedes aegypti in México",
+          "autores": ["Garcia GP", "Flores AE", "Fernández-Salas I", "Saavedra-Rodríguez K", "Reyes-Solis G", "Lozano-Fuentes S", "Guillermo Bond J", "Casas-Martínez M", "Ramsey JM", "García-Rejón J", "Domínguez-Galera M", "Ranson H", "Hemingway J", "Eisen L", "Black WC"],
+          "anio": 2009,
+          "revista_o_institucion": "PLoS Neglected Tropical Diseases",
+          "doi": "10.1371/journal.pntd.0000531",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "media"
+        },
+        {
+          "titulo": "Insecticide resistance in mosquitoes: impact, mechanisms, and research directions",
+          "autores": ["Liu N"],
+          "anio": 2015,
+          "revista_o_institucion": "Annual Review of Entomology",
+          "doi": "10.1146/annurev-ento-010814-020828",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "media"
+        },
+        {
+          "titulo": "Vigilancia de la resistencia a insecticidas en Aedes aegypti en el Perú",
+          "autores": ["Instituto Nacional de Salud (Perú)"],
+          "anio": null,
+          "revista_o_institucion": "Instituto Nacional de Salud (Perú)",
+          "doi": null,
+          "url": null,
+          "tipo": "informe",
+          "es_peru": true,
+          "confianza": "baja"
+        }
+      ],
+      "notas": "No logro recordar con certeza un articulo revisado por pares centrado especificamente en resistencia a piretroides de Aedes aegypti en Peru; las referencias solidas son regionales o globales. El ultimo item (INS) es una referencia generica a la existencia de vigilancia institucional, titulo aproximado, probablemente no exacto."
+    },
+    {
+      "id": "Q5",
+      "referencias": [
+        {
+          "titulo": "Impacto económico de la anemia en el Perú",
+          "autores": ["Alcázar L"],
+          "anio": 2012,
+          "revista_o_institucion": "GRADE / Acción contra el Hambre",
+          "doi": null,
+          "url": null,
+          "tipo": "informe",
+          "es_peru": true,
+          "confianza": "media"
+        },
+        {
+          "titulo": "Caracterización de la anemia en niños menores de cinco años de zonas urbanas de Huancavelica y Ucayali en el Perú",
+          "autores": ["Gonzales E", "Huamán-Espino L", "Gutiérrez C", "Aparco JP", "Pillaca J"],
+          "anio": 2015,
+          "revista_o_institucion": "Revista Peruana de Medicina Experimental y Salud Pública",
+          "doi": null,
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": true,
+          "confianza": "media"
+        },
+        {
+          "titulo": "Consumo de suplementos con multimicronutrientes Chispitas y anemia en niños de 6 a 35 meses, Apurímac, Perú",
+          "autores": ["Huamán-Espino L", "Aparco JP", "Nuñez-Robles E", "Gonzáles E", "Pillaca J", "Mayta-Tristán P"],
+          "anio": 2012,
+          "revista_o_institucion": "Revista Peruana de Medicina Experimental y Salud Pública",
+          "doi": null,
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": true,
+          "confianza": "media"
+        },
+        {
+          "titulo": "Hemoglobin concentration in children at different altitudes in Peru: proposal for [Hb] correction for altitude to diagnose anemia and polycythemia",
+          "autores": ["Ocas-Córdova S", "Tapia V", "Gonzales GF"],
+          "anio": 2018,
+          "revista_o_institucion": "High Altitude Medicine & Biology",
+          "doi": null,
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": true,
+          "confianza": "media"
+        },
+        {
+          "titulo": "Encuesta Demográfica y de Salud Familiar (ENDES)",
+          "autores": ["Instituto Nacional de Estadística e Informática (INEI)"],
+          "anio": null,
+          "revista_o_institucion": "Instituto Nacional de Estadística e Informática (INEI)",
+          "doi": null,
+          "url": "https://proyectos.inei.gob.pe/endes/",
+          "tipo": "informe",
+          "es_peru": true,
+          "confianza": "alta"
+        },
+        {
+          "titulo": "Factores asociados con la anemia en niños menores de tres años en Perú: análisis de la ENDES",
+          "autores": ["Velásquez-Hurtado JE", "Rodríguez W"],
+          "anio": 2016,
+          "revista_o_institucion": "Revista Peruana de Medicina Experimental y Salud Pública",
+          "doi": null,
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": true,
+          "confianza": "baja"
+        },
+        {
+          "titulo": "Evolución de la anemia en niños menores de cinco años en el Perú",
+          "autores": ["Munayco CV", "Ulloa-Rea ME", "Medina-Osis J"],
+          "anio": 2013,
+          "revista_o_institucion": "Revista Peruana de Medicina Experimental y Salud Pública",
+          "doi": null,
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": true,
+          "confianza": "baja"
+        }
+      ],
+      "notas": "Hay abundante literatura peruana sobre el tema (INS, INEI, Rev Peru Med Exp Salud Publica). Recuerdo autores y revistas con mas seguridad que titulos exactos y anios; los dos ultimos items son aproximaciones de titulo/anio y podrian no coincidir tal cual. No recuerdo DOIs peruanos con seguridad."
+    },
+    {
+      "id": "Q6",
+      "referencias": [
+        {
+          "titulo": "The antioxidant activity and the bioactive compound content of Stevia rebaudiana water extracts",
+          "autores": ["Kim IS", "Yang M", "Lee OH", "Kang SN"],
+          "anio": 2011,
+          "revista_o_institucion": "LWT - Food Science and Technology",
+          "doi": "10.1016/j.lwt.2010.12.003",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "media"
+        },
+        {
+          "titulo": "In vitro antioxidant activity and total phenolic content of ethanolic leaf extract of Stevia rebaudiana Bert.",
+          "autores": ["Shukla S", "Mehta A", "Bajpai VK", "Shukla S"],
+          "anio": 2009,
+          "revista_o_institucion": "Food and Chemical Toxicology",
+          "doi": "10.1016/j.fct.2009.06.024",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "media"
+        },
+        {
+          "titulo": "In vitro antioxidant activities of Stevia rebaudiana leaves and callus",
+          "autores": ["Tadhani MB", "Patel VH", "Subhash R"],
+          "anio": 2007,
+          "revista_o_institucion": "Journal of Food Composition and Analysis",
+          "doi": "10.1016/j.jfca.2006.08.004",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "media"
+        },
+        {
+          "titulo": "Stevia rebaudiana Bertoni, source of a high-potency natural sweetener: A comprehensive review on the biochemical, nutritional and functional aspects",
+          "autores": ["Lemus-Mondaca R", "Vega-Gálvez A", "Zura-Bravo L", "Ah-Hen K"],
+          "anio": 2012,
+          "revista_o_institucion": "Food Chemistry",
+          "doi": "10.1016/j.foodchem.2011.11.140",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "alta"
+        },
+        {
+          "titulo": "Stevia (Stevia rebaudiana) a bio-sweetener: a review",
+          "autores": ["Goyal SK", "Samsher", "Goyal RK"],
+          "anio": 2010,
+          "revista_o_institucion": "International Journal of Food Sciences and Nutrition",
+          "doi": "10.3109/09637480903193049",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "media"
+        },
+        {
+          "titulo": "Oxidative DNA damage preventive activity and antioxidant potential of Stevia rebaudiana (Bertoni) Bertoni, a natural sweetener",
+          "autores": ["Ghanta S", "Banerjee A", "Poddar A", "Chattopadhyay S"],
+          "anio": 2007,
+          "revista_o_institucion": "Journal of Agricultural and Food Chemistry",
+          "doi": "10.1021/jf071892+",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "media"
+        },
+        {
+          "titulo": "Stevia rebaudiana: its agricultural, biological, and chemical properties",
+          "autores": ["Brandle JE", "Starratt AN", "Gijzen M"],
+          "anio": 1998,
+          "revista_o_institucion": "Canadian Journal of Plant Science",
+          "doi": "10.4141/P97-114",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "media"
+        },
+        {
+          "titulo": "Study on chemical composition and biological activities of essential oil and extracts from Stevia rebaudiana Bertoni leaves",
+          "autores": ["Muanda F", "Soulimani R", "Diop B", "Dicko A"],
+          "anio": 2011,
+          "revista_o_institucion": "LWT - Food Science and Technology",
+          "doi": null,
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "baja"
+        }
+      ],
+      "notas": "Tema global con literatura abundante; los articulos de Kim 2011, Shukla 2009, Tadhani 2007 y la revision de Lemus-Mondaca 2012 son los que recuerdo con mas seguridad. No incluyo literatura peruana especifica porque no recuerdo titulos concretos."
+    },
+    {
+      "id": "Q7",
+      "referencias": [
+        {
+          "titulo": "Reglamento de la Calidad del Agua para Consumo Humano (D.S. N° 031-2010-SA)",
+          "autores": ["Ministerio de Salud del Perú (DIGESA)"],
+          "anio": 2010,
+          "revista_o_institucion": "Ministerio de Salud del Perú",
+          "doi": null,
+          "url": null,
+          "tipo": "otro",
+          "es_peru": true,
+          "confianza": "alta"
+        },
+        {
+          "titulo": "Evaluación de la calidad del agua de consumo humano en Chimbote (título aproximado, reconstruido de memoria)",
+          "autores": [],
+          "anio": null,
+          "revista_o_institucion": "Universidad Nacional del Santa",
+          "doi": null,
+          "url": null,
+          "tipo": "tesis",
+          "es_peru": true,
+          "confianza": "baja"
+        },
+        {
+          "titulo": "Calidad fisicoquímica y bacteriológica del agua potable en Nuevo Chimbote (título aproximado, reconstruido de memoria)",
+          "autores": [],
+          "anio": null,
+          "revista_o_institucion": "Universidad Nacional del Santa / Universidad César Vallejo (Chimbote)",
+          "doi": null,
+          "url": null,
+          "tipo": "tesis",
+          "es_peru": true,
+          "confianza": "baja"
+        }
+      ],
+      "notas": "No recuerdo ninguna tesis concreta (autor, año, título exacto) sobre calidad del agua en Chimbote. Los dos items de tipo tesis son marcadores de posición plausibles (instituciones que suelen producir este tipo de tesis: UNS, UCV, ULADECH) y probablemente NO existen tal cual; no deben citarse sin verificar. El reglamento D.S. 031-2010-SA si existe y es el marco normativo."
+    },
+    {
+      "id": "Q8",
+      "referencias": [
+        {
+          "titulo": "Developing a dengue forecast model using machine learning: A case study in China",
+          "autores": ["Guo P", "Liu T", "Zhang Q", "Wang L", "Xiao J", "Zhang Q", "Luo G", "Li Z", "He J", "Zhang Y", "Ma W"],
+          "anio": 2017,
+          "revista_o_institucion": "PLoS Neglected Tropical Diseases",
+          "doi": "10.1371/journal.pntd.0005973",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "alta"
+        },
+        {
+          "titulo": "Dengue models based on machine learning techniques: A systematic literature review",
+          "autores": ["Hoyos W", "Aguilar J", "Toro M"],
+          "anio": 2021,
+          "revista_o_institucion": "Artificial Intelligence in Medicine",
+          "doi": "10.1016/j.artmed.2021.102157",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "media"
+        },
+        {
+          "titulo": "An open challenge to advance probabilistic forecasting for dengue epidemics",
+          "autores": ["Johansson MA", "Apfeldorf KM", "Dobson S", "Devita J", "Buczak AL", "et al."],
+          "anio": 2019,
+          "revista_o_institucion": "Proceedings of the National Academy of Sciences (PNAS)",
+          "doi": "10.1073/pnas.1909865116",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "alta"
+        },
+        {
+          "titulo": "Evaluating the performance of infectious disease forecasts: A comparison of climate-driven and seasonal dengue forecasts for Mexico",
+          "autores": ["Johansson MA", "Reich NG", "Hota A", "Brownstein JS", "Santillana M"],
+          "anio": 2016,
+          "revista_o_institucion": "Scientific Reports",
+          "doi": "10.1038/srep33707",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "media"
+        },
+        {
+          "titulo": "Neighbourhood level real-time forecasting of dengue cases in tropical urban Singapore",
+          "autores": ["Chen Y", "Ong JHY", "Rajarethinam J", "Yap G", "Ng LC", "Cook AR"],
+          "anio": 2018,
+          "revista_o_institucion": "BMC Medicine",
+          "doi": "10.1186/s12916-018-1108-5",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "media"
+        },
+        {
+          "titulo": "Mapping dengue risk in Singapore using Random Forest",
+          "autores": ["Ong J", "Liu X", "Rajarethinam J", "Kok SY", "Liang S", "Tang CS", "Cook AR", "Ng LC", "Yap G"],
+          "anio": 2018,
+          "revista_o_institucion": "PLoS Neglected Tropical Diseases",
+          "doi": "10.1371/journal.pntd.0006587",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "media"
+        },
+        {
+          "titulo": "Analysis of significant factors for dengue fever incidence prediction",
+          "autores": ["Siriyasatien P", "Phumee A", "Ongruk P", "Jampachaisri K", "Kesorn K"],
+          "anio": 2016,
+          "revista_o_institucion": "BMC Bioinformatics",
+          "doi": "10.1186/s12859-016-1034-5",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "media"
+        },
+        {
+          "titulo": "Modeling dengue vector population using remotely sensed data and machine learning",
+          "autores": ["Scavuzzo JM", "Trucco F", "Espinosa M", "Tauro CB", "Abril M", "Scavuzzo CM", "Frery AC"],
+          "anio": 2018,
+          "revista_o_institucion": "Acta Tropica",
+          "doi": "10.1016/j.actatropica.2018.05.003",
+          "url": null,
+          "tipo": "articulo",
+          "es_peru": false,
+          "confianza": "media"
+        }
+      ],
+      "notas": "Consulta global en ingles; recuerdo bien Guo 2017 y la competencia de pronostico de Johansson 2019 (PNAS). Los demas DOIs y listas de autores los reconstruyo de memoria con seguridad media; la lista de autores de Johansson 2019 es muy larga, solo recuerdo los primeros."
+    }
+  ]
+}

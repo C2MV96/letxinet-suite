@@ -1,0 +1,1 @@
+Instalador oficial de Node.js LTS (node-v22.23.4-x64.msi), descargado de https://nodejs.org/dist/latest-v22.x/ el 07/11/2026. SHA-256: ca9303d3a12e8bec6de829fcb7812fc776930e0ce5c030328a24984ef928427e. El instalador de LetXinet Suite lo instala solo si Node.js no esta presente.

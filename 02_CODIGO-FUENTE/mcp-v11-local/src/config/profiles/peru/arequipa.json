@@ -1,0 +1,4 @@
+{
+  "_comment": "Arequipa — Peru 73%, geo 13%. Needs higher geo boost.",
+  "geoBoost": { "city": { "boost": 70 }, "geoCityBoost": 30 }
+}
