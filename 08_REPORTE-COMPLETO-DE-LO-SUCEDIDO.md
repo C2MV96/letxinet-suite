@@ -310,6 +310,33 @@ SHA-256 del instalador:
 
 **Sin probar todavía:** la instalación de la 1.1.4 encima de la 1.1.3, tanto en esta PC (pide aceptar el permiso de administrador en pantalla) como en la otra laptop.
 
+### 3.15 Versión 1.1.5: arreglos tras las pruebas de búsqueda (09/11)
+
+**Origen de los arreglos:**
+- **Otra laptop:** con el arreglo de la 1.1.3, MarkItDown pasó a fallar por otra causa: «DLL load failed while importing _multiarray_umath».
+- **Pruebas de búsqueda:** tres agentes probaron `search`, `batch_search`, OSM y `letxinet-jobs` (`06_INFORMES-Y-PRUEBAS\pruebas-busqueda-2026-11-09.md`).
+
+| Falla | Causa | Arreglo en la 1.1.5 | Comprobado sin instalar |
+|---|---|---|---|
+| MarkItDown no arranca en algunos procesadores | numpy 2.5.1 exige SSE4.2 (x86-64-v2) | numpy 2.3.5 (base SSE3) en el Python de MarkItDown; `recompilar-todo.ps1` lo cambia y comprueba que cargue | El Python del instalador carga numpy 2.3.5 (base SSE, SSE2, SSE3) con PyMuPDF4LLM y convierte un PDF |
+| `letxinet-jobs` corta las búsquedas largas a los 114 s | Las tareas se presentaban como `opencode/1.0` y V11 les aplicaba el límite de OpenCode | Las tareas se presentan como `letxinet-jobs-bridge/1.1.5`, y V11 1.1.5 les da el límite de 600 s | Contra la V11 1.1.3 instalada: un `batch_search` de 3 consultas terminó en 150 s con 20 resultados (antes, corte a 114 s). La V11 1.1.5 registra estas llamadas como `client="cli"` |
+| `gateway_poll` dice «todavía no listo» aunque la tarea falló o no existe | Solo distinguía DONE de lo demás | `PENDING`, `DONE`, `ERROR` (con el motivo), `LOST`, `NOT_FOUND` e `INVALID`, con `isError` en los cuatro últimos | Tarea con datos inválidos: `ERROR` con «queries array cannot be empty»; tarea inexistente: `NOT_FOUND` |
+| `gateway_poll` puede leer archivos fuera de la carpeta de tareas | No validaba el `task_id` | Valida el formato del `task_id` | `..\..\Windows\win`: `INVALID` |
+| Cada tarea deja 5 archivos para siempre | Nadie los borraba | Se borran los de más de 24 h, solo con el nombre exacto que crea el puente | Borró una tarea de hace 2 días y dejó intacto un archivo ajeno |
+| La ubicación de una búsqueda pasa a todas las siguientes | Se guardaba en `globalThis.__osmGeoResult` y no se borraba hasta reiniciar | Contexto por petición con AsyncLocalStorage (`src\utils\geo-context.ts`) | Dos `batch_search` seguidas: Huaraz (región Áncash) y luego Arequipa (región Arequipa), cada una con su ubicación |
+| `maxSources` no limita los resultados de `search` | La ruta solo lee `maxResults` | `search` anuncia `maxResults`, y `maxSources` es un alias | Con Crossref: sin límite 8, con `maxSources=5` 5, con `maxResults=7` 7 |
+| El skill recomendaba `batch_search` como herramienta principal | Texto antiguo | Recomienda `search` y varias `search` seguidas | — |
+
+**Compilación:** recompilación completa con `recompilar-todo.ps1` en 22,4 minutos, sin claves, con `msvcp140.dll` en los dos Python y numpy 2.3.5 en MarkItDown.
+
+SHA-256 del instalador:
+- `LetXinet-Suite-1.1.5-VariantB-Setup.exe`: `F50E60093407C0957351B932F78DA2227A636BCACCC89A084E88FBBF4A3B5B54`
+- `LetXinet-Suite-1.1.5-VariantB-Setup-1.bin`: `BBBF28FAFAB2C8685A0AE1BF37E7A55503594C7B45B0E7C83A9F3430D3EB7CF2`
+
+**Sin probar todavía:**
+- La instalación de la 1.1.5 encima de una versión anterior: pide aceptar el permiso de administrador en pantalla.
+- MarkItDown en un procesador sin SSE4.2. Solo se comprobó la base de numpy (SSE3); además, onnxruntime 1.28, que también usa PyMuPDF4LLM, no se probó en un procesador así.
+
 ---
 
 ## 4. Estado final de LetXinet Suite (02/11/2026)

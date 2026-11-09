@@ -7,6 +7,7 @@
  */
 
 import stopwordsData from '../config/stopwords.json';
+import { getGeoContext, setGeoContext } from './geo-context';
 import synonymsData from '../config/academic-synonyms.json';
 import countryData from '../config/country-keywords.json';
 import sourceCountryData from '../config/source-country.json';
@@ -577,7 +578,7 @@ async function detectQueryCountriesSmart(queries: string[]): Promise<Set<string>
         }
         // Store OSM metadata on global for region scoring
         if (osmResult) {
-            (globalThis as any).__osmGeoResult = osmResult;
+            setGeoContext(osmResult);
         }
     } catch {
         // Ignore OSM errors
@@ -937,7 +938,7 @@ async function scoreDistanceBoost(queryLat: number, queryLon: number, university
     else                                             boost = P('geoBoost.foreign.boost', -30);
 
     // V14: Extra bonus if university name contains the geocoded city
-    const osmGeo = (globalThis as any).__osmGeoResult as { city?: string | null; state?: string | null } | undefined;
+    const osmGeo = getGeoContext() as { city?: string | null; state?: string | null } | undefined;
     const uniLower = (university || '').toLowerCase();
     const geoCity = (osmGeo?.city || '').toLowerCase();
     const geoState = (osmGeo?.state || '').toLowerCase();
@@ -972,7 +973,7 @@ async function textScoreSmart(result: any, queries: string[], skipSpacy: boolean
     const queryCountries = skipSpacy ? detectQueryCountries(queries) : await detectQueryCountriesSmart(queries);
     if (nerCountry) queryCountries.add(nerCountry);
 
-    const osmGeo = (globalThis as any).__osmGeoResult as { city?: string | null; state?: string | null } | undefined;
+    const osmGeo = getGeoContext() as { city?: string | null; state?: string | null } | undefined;
     if (osmGeo?.city) requiredRegions.add(normalizeForDedup(osmGeo.city));
     if (osmGeo?.state) requiredRegions.add(normalizeForDedup(osmGeo.state));
 
@@ -1037,7 +1038,7 @@ async function textScoreSmart(result: any, queries: string[], skipSpacy: boolean
 }
 
 export async function geoScoreSmart(result: any): Promise<number> {
-    const osmCoords = (globalThis as any).__osmGeoResult as { lat?: number | null; lon?: number | null } | undefined;
+    const osmCoords = getGeoContext() as { lat?: number | null; lon?: number | null } | undefined;
     if (osmCoords?.lat != null && osmCoords?.lon != null) {
         if (result.university) {
             return scoreDistanceBoost(osmCoords.lat, osmCoords.lon, result.university);
@@ -1070,7 +1071,7 @@ export async function rerankByRelevanceSmart(
     skipSpacy: boolean = false
 ): Promise<any[]> {
     // V14: Check if OSM geo boost is active — if so, ALWAYS recalculate with distance
-    const osmCoords = (globalThis as any).__osmGeoResult as { lat?: number | null; lon?: number | null } | undefined;
+    const osmCoords = getGeoContext() as { lat?: number | null; lon?: number | null } | undefined;
     const hasGeoBoost = osmCoords?.lat != null && osmCoords?.lon != null;
 
     // V18: Profile-based weights and limits
@@ -1123,7 +1124,7 @@ export async function rerankByRelevanceSmart(
 
     // V18: Stronger Peru hard filter — when geo context is Peru, deprioritize foreign papers
     if (hasGeoBoost) {
-        const osmGeo = (globalThis as any).__osmGeoResult as { countryNorm?: string | null } | undefined;
+        const osmGeo = getGeoContext() as { countryNorm?: string | null } | undefined;
         const isPeruContext = osmGeo?.countryNorm === 'peru' || !osmGeo?.countryNorm;
         
         if (isPeruContext) {

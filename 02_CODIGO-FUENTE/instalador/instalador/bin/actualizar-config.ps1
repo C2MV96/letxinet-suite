@@ -1,4 +1,4 @@
-# Actualiza LetXinet-Suite.env a la 1.1.4 sin tocar los valores que eligio el usuario.
+# Actualiza LetXinet-Suite.env a la 1.1.5 sin tocar los valores que eligio el usuario.
 # Lo ejecuta el instalador (como administrador). Tambien sirve a mano para fijar el contacto de OpenStreetMap:
 #   powershell -ExecutionPolicy Bypass -File actualizar-config.ps1 -Contacto tu@correo.com
 param(
@@ -6,7 +6,7 @@ param(
   [string]$Contacto = ''
 )
 $ErrorActionPreference = 'Stop'
-$Version = '1.1.4'
+$Version = '1.1.5'
 if (-not (Test-Path $EnvFile)) { Write-Host "No existe $EnvFile"; exit 1 }
 
 $lineas = [System.Collections.Generic.List[string]]([IO.File]::ReadAllLines($EnvFile))

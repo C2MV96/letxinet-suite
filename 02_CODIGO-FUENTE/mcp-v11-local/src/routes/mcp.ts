@@ -17,6 +17,7 @@ import { analyzeText, wordSimilarity, batchWordSimilarity, mostSimilar } from '.
 import { validateToolInput } from '../utils/validators';
 import { withToolTimeout, getToolTimeoutMs, TOOL_TIMEOUTS } from '../utils/tool-timeouts';
 import { detectMcpClient, deriveTimeouts, deriveBatchCaps, applyEnvUpperBound, McpClient, DerivedTimeouts } from '../utils/client-detection';
+import { getGeoContext, setGeoContext } from '../utils/geo-context';
 import { metrics } from '../utils/metrics';
 import { log } from '../utils/logger';
 import { urlInternaEnArgumentos } from '../utils/url-segura';
@@ -247,7 +248,8 @@ const MCP_TOOLS = [
             properties: {
                 query: { type: 'string', description: 'Search query' },
                 sources: { type: 'array', items: { type: 'string' }, description: 'Source IDs or groups: "latam", "global", "tesis", "iberoamerica", "peru", "peru_fast" (ALICIA+LAREF_PE only, ~3-5s), "all", or specific IDs.' },
-                maxSources: { type: 'number', description: 'Max results to return (default 50)' },
+                maxResults: { type: 'number', description: 'Max results to return (default 50, max 120)' },
+                maxSources: { type: 'number', description: 'Deprecated alias of maxResults (used only when maxResults is not given)' },
                 yearStart: { type: 'string', description: 'Filter by start year (e.g. "2020")' },
                 yearEnd: { type: 'string', description: 'Filter by end year (e.g. "2024")' },
                 university: { type: 'string', description: 'Adds this term to the search query - does NOT filter results structurally. Combine with the query text for best effect.' },
@@ -1590,12 +1592,12 @@ async function handleBatchSearch(body: any, baseUrl: string): Promise<any> {
     const overFetch = deduplicated.slice(0, Math.min(deduplicated.length, maxResults * 3));
 
     // V17: Set geo context from location parameter if not already set by coordinate expansion
-    if (location && !(globalThis as any).__osmGeoResult) {
+    if (location && !getGeoContext()) {
         const { geocodeWithOSM } = await import('../utils/osm-geocoder');
         try {
             const geoResult = await geocodeWithOSM(String(location));
             if (geoResult) {
-                (globalThis as any).__osmGeoResult = geoResult;
+                setGeoContext(geoResult);
                 console.log(`[BATCH] Geocoded location="${location}" â†’ city=${geoResult.city}, state=${geoResult.state}`);
             }
         } catch (e: any) {
@@ -1604,7 +1606,7 @@ async function handleBatchSearch(body: any, baseUrl: string): Promise<any> {
     }
 
     // V18: Load active profile based on geo context + source combo
-    const osmGeoForProfile = (globalThis as any).__osmGeoResult as { countryNorm?: string; city?: string; state?: string } | undefined;
+    const osmGeoForProfile = getGeoContext() as { countryNorm?: string; city?: string; state?: string } | undefined;
     const sourceCombo = detectSourceCombo(sources);
     const country = osmGeoForProfile?.countryNorm || undefined;
     
@@ -1640,7 +1642,7 @@ async function handleBatchSearch(body: any, baseUrl: string): Promise<any> {
     let reranked = await rerankByRelevanceSmart(overFetch, queries, textWeight, geoWeight);
 
     // V15: Warn if top result has geoScore=0 despite location being set
-    const osmGeo = (globalThis as any).__osmGeoResult;
+    const osmGeo = getGeoContext();
     if (osmGeo?.city && reranked.length > 0) {
         const top = reranked[0];
         const { geoScoreSmart } = await import('../utils/reranking');
@@ -1813,7 +1815,7 @@ async function handleSmartSearch(body: any, baseUrl: string): Promise<any> {
         let reranked = await rerankByRelevanceSmart(deduplicated, variations, textWeight, geoWeight);
 
         // V15: Warn if top result has geoScore=0 despite location being set
-        const osmGeoSmart = (globalThis as any).__osmGeoResult;
+        const osmGeoSmart = getGeoContext();
         if (osmGeoSmart?.city && reranked.length > 0) {
             const top = reranked[0];
             const { geoScoreSmart } = await import('../utils/reranking');
@@ -2151,6 +2153,10 @@ router.post('/', async (req: Request, res: Response) => {
             }
 
             const args = validation.data;
+            // 1.1.5: maxSources nunca limito los resultados de search (la ruta solo lee maxResults).
+            if (toolName === 'search' && (args as any)?.maxResults == null && (args as any)?.maxSources != null) {
+                (args as any).maxResults = (args as any).maxSources;
+            }
 
             // Log performance warnings (non-blocking)
             if ('warnings' in validation && validation.warnings.length > 0) {

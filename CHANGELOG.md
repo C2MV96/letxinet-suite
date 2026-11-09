@@ -2,12 +2,22 @@
 
 Las versiones anteriores a la 1.1.2 están en `07_DOCUMENTACION-ORIGINAL/PLAN-Y-PROGRESO-suite/CHANGELOG.md`. El detalle de cada versión está en `08_REPORTE-COMPLETO-DE-LO-SUCEDIDO.md`.
 
-## Sin publicar
+## 1.1.5 (09/11/2026)
 
-- `04_SCRIPTS-MANTENIMIENTO/arreglo-2-markitdown`: MarkItDown en procesadores sin SSE4.2. Cambia numpy 2.5.1 por 2.3.5 y guarda el original. Probado sobre una copia del runtime; falta probarlo en una laptop con procesador antiguo.
-- **Pruebas de búsqueda del 08–09/11/2026** (`06_INFORMES-Y-PRUEBAS/pruebas-busqueda-2026-11-09.md`): `search` es la mejor opción por defecto; varias `search` seguidas superan a `batch_search`; `letxinet-jobs` corta las búsquedas a los 114 s; V11 guarda la primera ubicación detectada y se traba con varias llamadas a la vez.
-- Skill `letxinet-investigacion-academica`: recomienda `search` y varias `search` seguidas en lugar de `batch_search`, y deja de recomendar `letxinet-jobs` para búsquedas.
-- README: tiempos y pertinencia medidos, aviso sobre `letxinet-jobs` y lista de problemas conocidos.
+Arregla lo que encontraron las pruebas de búsqueda del 08–09/11/2026 (`06_INFORMES-Y-PRUEBAS/pruebas-busqueda-2026-11-09.md`).
+
+- **MarkItDown funciona en procesadores sin SSE4.2.** El instalador trae numpy 2.3.5 en lugar de 2.5.1, y `recompilar-todo.ps1` comprueba que cargue con PyMuPDF4LLM. Para laptops con la 1.1.3 o la 1.1.4 sigue disponible `04_SCRIPTS-MANTENIMIENTO/arreglo-2-markitdown`.
+- **`letxinet-jobs`:**
+  - las tareas se presentan como `letxinet-jobs-bridge/1.1.5`, y V11 ya no las corta a los 114 s;
+  - `gateway_poll` informa `ERROR`, `LOST`, `NOT_FOUND` e `INVALID` con `isError` y valida el `task_id`;
+  - se borran las tareas de más de 24 h;
+  - `gateway_call` y `gateway_chat` marcan los errores del gateway.
+- **V11:**
+  - la ubicación detectada vale solo para la petición en curso (antes quedaba guardada para todas las búsquedas siguientes);
+  - el User-Agent `letxinet-jobs` recibe el límite de 600 s;
+  - `search` acepta `maxResults`, y `maxSources` es un alias.
+- **Skill `letxinet-investigacion-academica`:** recomienda `search` y varias `search` seguidas en lugar de `batch_search`.
+- **README:** tiempos y pertinencia medidos, problemas corregidos y pendientes.
 
 ## 1.1.4 (08/11/2026)
 

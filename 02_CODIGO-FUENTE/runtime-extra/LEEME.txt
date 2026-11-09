@@ -9,3 +9,10 @@ Es codigo redistribuible de Microsoft Visual C++.
 En el repositorio de GitHub no se incluye el .dll (es un binario de Microsoft). Antes de compilar,
 copialo aqui desde C:\Windows\System32\msvcp140.dll de un equipo con el redistribuible de
 Visual C++ 2015-2022 x64 instalado. recompilar-todo.ps1 se detiene si falta.
+
+numpy-2.3.5-cp312-cp312-win_amd64.whl (desde la 1.1.5)
+recompilar-todo.ps1 lo pone en el Python de MarkItDown en lugar de numpy 2.5.1, que exige un
+procesador con SSE4.2; numpy 2.3.5 funciona desde SSE3. En el repositorio de GitHub no se incluye:
+descargalo en esta carpeta con
+  pip download numpy==2.3.5 --only-binary=:all: --platform win_amd64 --python-version 3.12 --no-deps -d .
+SHA-256 del archivo usado en la 1.1.5: 86945F2EE6D10CDFD67BCB4069C1662DD711F7E2A4343DB5CECEC06B87CF31AA

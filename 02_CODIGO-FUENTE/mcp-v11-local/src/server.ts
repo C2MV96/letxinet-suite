@@ -10,6 +10,7 @@ dotenv.config();
 
 import express from 'express';
 import cors from 'cors';
+import { runWithGeoContext } from './utils/geo-context';
 
 import searchRouter from './routes/search';
 import metadataRouter from './routes/metadata';
@@ -28,6 +29,8 @@ const VERSION_LOCAL = '11.0.0-local';
 // Middleware
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));
+// 1.1.5: cada peticion tiene su propio contexto geografico (antes era global y se contaminaba)
+app.use((_req, _res, next) => runWithGeoContext(() => next()));
 
 // Local-only lightweight health endpoint used by the LetXipu Desktop HF
 // Electron main process to probe readiness quickly (timeout 2s). Avoids

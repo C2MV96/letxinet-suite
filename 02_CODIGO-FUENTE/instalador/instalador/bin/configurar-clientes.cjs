@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// configurar-clientes.cjs (LetXinet Suite 1.1.4)
+// configurar-clientes.cjs (LetXinet Suite 1.1.5)
 // Configura LetXinet Suite en Claude Code, Claude Desktop y OpenCode para el usuario actual.
 //
 // Uso:  node configurar-clientes.cjs [--modo separados|juntos|ambos] [--clientes claude-code,claude-desktop,opencode]
@@ -219,7 +219,7 @@ async function preguntar(texto) {
 
 (async () => {
   log(`LetXinet Suite: configuracion de clientes (instalacion en ${APP})`);
-  if (!fs.existsSync(PUENTE)) { aviso(`no se encuentra ${PUENTE}; instala o repara LetXinet Suite 1.1.4`); process.exit(1); }
+  if (!fs.existsSync(PUENTE)) { aviso(`no se encuentra ${PUENTE}; instala o repara LetXinet Suite 1.1.5`); process.exit(1); }
   if (modo && !['separados', 'juntos', 'ambos'].includes(modo)) {
     aviso(`modo no valido: "${modo}" (usa separados, juntos o ambos)`);
     process.exit(2);

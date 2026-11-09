@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// letxinet-mcp-bridge.cjs (LetXinet Suite 1.1.4)
+// letxinet-mcp-bridge.cjs (LetXinet Suite 1.1.5)
 // Puente MCP por stdio hacia los servicios de la Suite, sin pasar por la app Desktop:
 //   V11 (busqueda academica y PDF)  http://127.0.0.1:4003/api/mcp
 //   OSM (mapas y rutas)             http://127.0.0.1:7082/mcp
@@ -65,7 +65,7 @@ async function iniciar(servidor) {
   sesiones.delete(servidor.id);
   await postar(servidor, {
     jsonrpc: '2.0', id: idInterno++, method: 'initialize',
-    params: { protocolVersion: '2025-03-26', capabilities: {}, clientInfo: { name: 'letxinet-mcp-bridge', version: '1.1.4' } },
+    params: { protocolVersion: '2025-03-26', capabilities: {}, clientInfo: { name: 'letxinet-mcp-bridge', version: '1.1.5' } },
   }, 30000);
   try { await postar(servidor, { jsonrpc: '2.0', method: 'notifications/initialized' }, 10000); } catch { /* opcional */ }
   servidor.listo = true;
@@ -122,7 +122,7 @@ async function atender(msg) {
       return ok(id, {
         protocolVersion: (params && params.protocolVersion) || '2025-03-26',
         capabilities: { tools: { listChanged: false } },
-        serverInfo: { name: `letxinet-${SELECCION === 'both' || SELECCION === 'juntos' ? 'ambos' : SELECCION}`, version: '1.1.4' },
+        serverInfo: { name: `letxinet-${SELECCION === 'both' || SELECCION === 'juntos' ? 'ambos' : SELECCION}`, version: '1.1.5' },
         instructions: 'Herramientas de LetXinet Suite: busqueda academica y PDF (V11) y mapas y rutas de OpenStreetMap (OSM). En las busquedas indica siempre las fuentes (por ejemplo sources: ["renati"]).',
       });
     }

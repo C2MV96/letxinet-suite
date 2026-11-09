@@ -129,6 +129,8 @@ export function detectMcpClient(userAgent: string | undefined | null): McpClient
     // Order matters: most-specific first (claude-code before claude)
     if (ua.includes('claude-code') || ua.includes('anthropic-cli')) return 'claude-code';
     if (ua.includes('claude') || ua.includes('anthropic')) return 'claude';
+    // 1.1.5: las tareas en segundo plano del puente letxinet-jobs no tienen el corte de 120 s de OpenCode
+    if (ua.includes('letxinet-jobs')) return 'cli';
     if (ua.includes('opencode')) return 'opencode';
     if (ua.includes('cursor')) return 'cursor';
     if (

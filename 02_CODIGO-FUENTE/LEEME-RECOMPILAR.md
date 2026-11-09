@@ -1,6 +1,23 @@
-# Código fuente de LetXinet Suite 1.1.4 (recompilación del 08/11/2026)
+# Código fuente de LetXinet Suite 1.1.5 (recompilación del 09/11/2026)
 
 Este es el código con el que se compiló el instalador de `01_INSTALADORES`. No contiene claves.
+
+**Cambios de la 1.1.5** (arreglan lo que encontraron las pruebas del 08–09/11/2026; detalle en `06_INFORMES-Y-PRUEBAS\pruebas-busqueda-2026-11-09.md`):
+- `runtime-extra\numpy-2.3.5-cp312-cp312-win_amd64.whl` (nuevo): `recompilar-todo.ps1` lo pone en el Python de MarkItDown en lugar de numpy 2.5.1, que exige un procesador con SSE4.2. En procesadores anteriores MarkItDown no arrancaba («DLL load failed while importing _multiarray_umath»). El paso 8 comprueba que el Python de MarkItDown cargue numpy 2.3.5 con PyMuPDF4LLM.
+- `instalador\instalador\bin\mcp\letxinet-jobs-bridge.cjs`:
+  - las tareas en segundo plano se presentan como `letxinet-jobs-bridge/1.1.5`. Antes decían `opencode/1.0` y V11 las cortaba a los 114 s;
+  - `gateway_poll` informa `ERROR` (con el motivo), `LOST` (el proceso terminó sin resultado), `NOT_FOUND` e `INVALID` con `isError`, en vez de responder siempre «todavía no listo»;
+  - valida el `task_id`, que antes permitía leer archivos fuera de la carpeta de tareas;
+  - borra las tareas de más de 24 h;
+  - `gateway_call` y `gateway_chat` marcan como error las respuestas fallidas del gateway.
+- `mcp-v11-local\src`:
+  - `utils\client-detection.ts`: el User-Agent `letxinet-jobs` recibe el límite de un cliente sin corte corto (600 s);
+  - `utils\geo-context.ts` (nuevo), `server.ts`, `routes\mcp.ts` y `utils\reranking.ts`: la ubicación detectada vale solo para la petición en curso. Antes se guardaba en `globalThis.__osmGeoResult` y se aplicaba a todas las búsquedas siguientes hasta reiniciar el servicio;
+  - `routes\mcp.ts`: `search` acepta `maxResults`, y `maxSources` (que nunca limitó nada) pasa a ser un alias de `maxResults`.
+- Skill `letxinet-investigacion-academica`: recomienda `search` y varias `search` seguidas en lugar de `batch_search`.
+- Versión 1.1.5 en el `.iss`, el `.env`, los puentes, el configurador y `actualizar-config.ps1`.
+
+En una laptop que ya tiene la 1.1.3 o la 1.1.4, basta con instalar la 1.1.5 encima. Si MarkItDown no arranca por el procesador y no se quiere reinstalar, sirve `04_SCRIPTS-MANTENIMIENTO\arreglo-2-markitdown`.
 
 **Cambios de la 1.1.4** (arreglan lo que falló al instalar en otra laptop):
 - `runtime-extra\msvcp140.dll` (nuevo): `recompilar-todo.ps1` lo copia dentro de los dos Python embebidos (MarkItDown y MCP-V11-Local). PyMuPDF lo necesita y el Python embebido solo trae `vcruntime140.dll`. En una laptop sin Visual C++, MarkItDown se reiniciaba sin parar: el servicio figuraba «Running», pero nunca abría el puerto 7860.

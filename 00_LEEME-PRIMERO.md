@@ -1,7 +1,15 @@
-# LetXinet Suite 1.1.4 — Paquete completo (instalar, configurar, modificar)
+# LetXinet Suite 1.1.5 — Paquete completo (instalar, configurar, modificar)
 
-Versión vigente: **Suite 1.1.4, Variante B** (sin claves, 08/11/2026) y **Addon Bridges 1.0.0**. El instalador se compiló con el código fuente de `02_CODIGO-FUENTE`.
+Versión vigente: **Suite 1.1.5, Variante B** (sin claves, 09/11/2026) y **Addon Bridges 1.0.0**. El instalador se compiló con el código fuente de `02_CODIGO-FUENTE`.
 
+> **Novedades de la 1.1.5** (detalle en `08_REPORTE…`, §3.15, y en `06_INFORMES-Y-PRUEBAS\pruebas-busqueda-2026-11-09.md`). Arreglan lo que encontraron las pruebas de búsqueda:
+> - **MarkItDown funciona en procesadores antiguos.** Trae numpy 2.3.5 en lugar de 2.5.1, que exigía SSE4.2.
+> - **`letxinet-jobs` ya no corta las búsquedas a los 114 s.** Además, `gateway_poll` avisa cuando una tarea falló o no existe, valida el número de tarea y borra las tareas viejas.
+> - **V11 ya no arrastra la ubicación de una búsqueda a las siguientes.** Antes, la primera ubicación detectada quedaba guardada hasta reiniciar el servicio.
+> - **`search` respeta el límite de resultados** con `maxResults`, y también con `maxSources`.
+> - **El skill de investigación recomienda `search`** y varias `search` seguidas en lugar de `batch_search`, que en las pruebas fue más lento y menos pertinente.
+> - **Laptops con la 1.1.3 o la 1.1.4:** basta con instalar la 1.1.5 encima.
+>
 > **Novedades de la 1.1.4** (detalle en `08_REPORTE…`, §3.14). Arreglan lo que falló al instalar en otra laptop:
 > - **MarkItDown arranca en cualquier laptop.** El instalador ya incluye `msvcp140.dll` de Visual C++. Sin ese archivo, MarkItDown figuraba «Running» pero nunca respondía en el puerto 7860.
 > - **LetXinet Desktop espera hasta 10 minutos a su backend** (antes eran 2) y muestra «Iniciando...». Así ya no sale «The desktop backend did not start in time» en laptops lentas ni la primera vez.
@@ -37,10 +45,10 @@ Versión vigente: **Suite 1.1.4, Variante B** (sin claves, 08/11/2026) y **Addon
 ## Contenido
 | Carpeta | Qué hay |
 |---|---|
-| `01_INSTALADORES` | `LetXinet-Suite-1.1.4-VariantB-Setup.exe` **más su `-1.bin`** (deben ir juntos en la misma carpeta), `LetXinet-Addon-Bridges-v1.0.0.exe` y los hashes SHA-256 |
+| `01_INSTALADORES` | `LetXinet-Suite-1.1.5-VariantB-Setup.exe` **más su `-1.bin`** (deben ir juntos en la misma carpeta), `LetXinet-Addon-Bridges-v1.0.0.exe` y los hashes SHA-256 |
 | `02_CODIGO-FUENTE` | El código con el que se compiló el instalador, con los parches y sin claves. Incluye `recompilar-todo.cmd` y `LEEME-RECOMPILAR.md` |
 | `03_CONFIG-CLAUDE-CODE-OPENCODE` | `configurar-clientes.cmd` (configura de nuevo los clientes o cambia de modo), `LEEME-CLIENTES.md`, skills, la plantilla de `LetXinet-Suite.env` y `LetXinet-Suite.env.ejemplo` (todas las variables, con las claves vacías para llenar) |
-| `04_SCRIPTS-MANTENIMIENTO` | Arreglo para laptops con la 1.1.3 (`arreglo-1.1.3\arreglar-letxinet.cmd`), harness rápido (`harness\probar-letxinet.cmd`) y pool de pruebas completas con comparativo frente a IA (`harness\pool\ejecutar-pool.cmd`), además de `verificar-instalacion.ps1`, activar o desactivar spaCy y limpiar logs |
+| `04_SCRIPTS-MANTENIMIENTO` | Arreglos para laptops con la 1.1.3 o la 1.1.4 (`arreglo-1.1.3\arreglar-letxinet.cmd` y `arreglo-2-markitdown\arreglar-markitdown.cmd`), harness rápido (`harness\probar-letxinet.cmd`) y pool de pruebas completas con comparativo frente a IA (`harness\pool\ejecutar-pool.cmd`), además de `verificar-instalacion.ps1`, activar o desactivar spaCy y limpiar logs |
 | `05_GUIA-MODIFICAR-COMPILAR-INSTALAR.md` | Guía técnica de cada componente |
 | `06_INFORMES-Y-PRUEBAS` | Informes y logs de pruebas |
 | `07_DOCUMENTACION-ORIGINAL` | Planes, línea de tiempo y documentación original del proyecto |
@@ -49,7 +57,7 @@ Versión vigente: **Suite 1.1.4, Variante B** (sin claves, 08/11/2026) y **Addon
 
 ## Instalación en otra laptop (Windows 10/11 x64)
 1. Copia el zip a la laptop y usa «Extraer todo». Necesitas unos 3 GB libres y permisos de administrador.
-2. Ejecuta `01_INSTALADORES\LetXinet-Suite-1.1.4-VariantB-Setup.exe` como administrador, con el `.bin` en la misma carpeta.
+2. Ejecuta `01_INSTALADORES\LetXinet-Suite-1.1.5-VariantB-Setup.exe` como administrador, con el `.bin` en la misma carpeta.
    - Si falta Node.js, el instalador lo instala.
    - Te pedirá un correo opcional para OpenStreetMap.
    - Al final deja marcada la casilla para configurar Claude Code, Claude Desktop y OpenCode.

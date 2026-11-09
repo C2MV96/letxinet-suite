@@ -1,5 +1,9 @@
 #!/usr/bin/env node
-// letxinet-jobs-bridge.cjs (LetXinet Suite 1.1.2; antes gateway-mcp-bridge.cjs)
+// letxinet-jobs-bridge.cjs (LetXinet Suite 1.1.5; antes gateway-mcp-bridge.cjs)
+// 1.1.5: las tareas en segundo plano ya no se presentan como OpenCode (V11 las cortaba
+// a los 114 s); gateway_poll informa ERROR, LOST, NOT_FOUND e INVALID con isError;
+// valida el task_id; borra las tareas de mas de 24 h; gateway_call y gateway_chat
+// marcan como error las respuestas fallidas del gateway.
 // Puente MCP stdio <-> gateway de LetXinet Desktop (http://127.0.0.1:43123)
 //
 // - Para tools RAPIDAS: llama sync a /api/mcp/call y devuelve el resultado
@@ -24,6 +28,17 @@ const readline = require('readline');
 const GATEWAY_URL = process.env.GATEWAY_URL || 'http://127.0.0.1:43123';
 const JOBS_DIR = process.env.JOBS_DIR || path.join(process.env.LOCALAPPDATA || require('os').homedir(), 'LetXinet', 'jobs');
 const LETXIPU_LOCAL_URL = process.env.LETXIPU_LOCAL_URL || 'http://127.0.0.1:4003';
+
+// 1.1.5: los procesos que ejecutan tareas en segundo plano se identifican como
+// letxinet-jobs. Antes decian "opencode/1.0" y V11 les aplicaba el limite de
+// OpenCode (114 s), justo lo que el puente debia evitar. V11 1.1.5 trata este
+// User-Agent como cliente sin limite corto (600 s); una V11 anterior lo trata
+// como desconocido (228 s).
+const JOB_USER_AGENT = 'letxinet-jobs-bridge/1.1.5';
+// Archivos de tareas: <fecha>_<hora>Z_<azar>_{req.json,out.json,status.txt,runner.cjs,pid.txt}
+const TASK_ID_RE = /^\d{4}-\d{2}-\d{2}_\d{9}Z_[a-z0-9]{1,12}$/;
+const JOB_FILE_RE = /^(\d{4}-\d{2}-\d{2}_\d{9}Z_[a-z0-9]{1,12})_(req\.json|out\.json|status\.txt|runner\.cjs|pid\.txt)$/;
+const JOB_MAX_AGE_MS = 24 * 60 * 60 * 1000;
 
 // El harness de OpenCode corta las llamadas síncronas cerca de 120 s.  search
 // puede terminar dentro de esa ventana si dejamos margen; las operaciones que
@@ -52,6 +67,22 @@ const LONG_RUNNING_TOOLS = new Set([
 if (!fs.existsSync(JOBS_DIR)) {
   fs.mkdirSync(JOBS_DIR, { recursive: true });
 }
+
+// 1.1.5: borra los archivos de tareas de mas de 24 h (antes se acumulaban sin limite).
+// Solo toca archivos con el nombre exacto que crea este puente.
+function limpiarTareasViejas() {
+  try {
+    const ahora = Date.now();
+    for (const nombre of fs.readdirSync(JOBS_DIR)) {
+      if (!JOB_FILE_RE.test(nombre)) continue;
+      const ruta = path.join(JOBS_DIR, nombre);
+      try {
+        if (ahora - fs.statSync(ruta).mtimeMs > JOB_MAX_AGE_MS) fs.unlinkSync(ruta);
+      } catch (_) { /* archivo en uso o ya borrado */ }
+    }
+  } catch (_) { /* carpeta no legible: no es critico */ }
+}
+limpiarTareasViejas();
 
 // ============================================================
 // HTTP helpers
@@ -153,6 +184,7 @@ function httpGet(targetPath, timeoutMs) {
 // Job async en background
 // ============================================================
 function launchLongJob(toolName, argsObj) {
+  limpiarTareasViejas();
   const id = new Date().toISOString().replace(/[:.]/g, '').replace('T', '_') + '_' + Math.random().toString(36).slice(2, 8);
   const reqPath = path.join(JOBS_DIR, `${id}_req.json`);
   const outPath = path.join(JOBS_DIR, `${id}_out.json`);
@@ -171,9 +203,13 @@ const outPath = ${JSON.stringify(outPath)};
 const statusPath = ${JSON.stringify(statusPath)};
 const url = new URL('/api/mcp/call', ${JSON.stringify(GATEWAY_URL)});
 const body = fs.readFileSync(reqPath, 'utf8');
-const req = http.request({hostname:url.hostname,port:url.port,path:url.pathname,method:'POST',headers:{'Content-Type':'application/json','Content-Length':Buffer.byteLength(body)}},(res)=>{
+const req = http.request({hostname:url.hostname,port:url.port,path:url.pathname,method:'POST',headers:{'Content-Type':'application/json','Content-Length':Buffer.byteLength(body),'User-Agent':${JSON.stringify(JOB_USER_AGENT)}}},(res)=>{
   let d='';res.setEncoding('utf8');res.on('data',c=>d+=c);
-  res.on('end',()=>{fs.writeFileSync(outPath,d);fs.writeFileSync(statusPath,res.statusCode>=200&&res.statusCode<300?'DONE':'ERROR','ascii');process.exit(0);});
+  res.on('end',()=>{
+    let ok=res.statusCode>=200&&res.statusCode<300;
+    try{const j=JSON.parse(d);if(j&&(j.error||(j.response&&j.response.error)||(j.response&&j.response.result&&j.response.result.isError)))ok=false;}catch(_){}
+    fs.writeFileSync(outPath,d);fs.writeFileSync(statusPath,ok?'DONE':'ERROR','ascii');process.exit(0);
+  });
 });
 req.on('error',e=>{fs.writeFileSync(outPath,JSON.stringify({error:e.message}));fs.writeFileSync(statusPath,'ERROR','ascii');process.exit(1);});
 req.setTimeout(1800000,()=>req.destroy(new Error('timeout 30min')));
@@ -199,6 +235,7 @@ req.write(body);req.end();
 // Job equivalente para LetXipu V11 local. No pasa por /api/mcp/call del
 // gateway remoto: inicializa y llama directamente al MCP que escucha en 4003.
 function launchLetxipuLocalJob(toolName, argsObj) {
+  limpiarTareasViejas();
   const id = new Date().toISOString().replace(/[:.]/g, '').replace('T', '_') + '_' + Math.random().toString(36).slice(2, 8);
   const reqPath = path.join(JOBS_DIR, `${id}_req.json`);
   const outPath = path.join(JOBS_DIR, `${id}_out.json`);
@@ -221,7 +258,7 @@ function post(payload, timeoutMs) {
   return new Promise((resolve, reject) => {
     const url = new URL('/api/mcp', baseUrl);
     const body = JSON.stringify(payload);
-    const req = http.request({hostname:url.hostname,port:url.port,path:url.pathname,method:'POST',headers:{'Content-Type':'application/json','Content-Length':Buffer.byteLength(body),'User-Agent':'opencode/1.0'}}, res => {
+    const req = http.request({hostname:url.hostname,port:url.port,path:url.pathname,method:'POST',headers:{'Content-Type':'application/json','Content-Length':Buffer.byteLength(body),'User-Agent':${JSON.stringify(JOB_USER_AGENT)}}}, res => {
       let data=''; res.setEncoding('utf8'); res.on('data', c => data += c);
       res.on('end', () => {
         if (res.statusCode >= 200 && res.statusCode < 300) {
@@ -235,10 +272,11 @@ function post(payload, timeoutMs) {
 }
 (async () => {
   const rpcId = Date.now();
-  const init = await post({jsonrpc:'2.0',id:rpcId,method:'initialize',params:{protocolVersion:'2024-11-05',capabilities:{},clientInfo:{name:'opencode',version:'1.0.0'}}}, 15000);
+  const init = await post({jsonrpc:'2.0',id:rpcId,method:'initialize',params:{protocolVersion:'2024-11-05',capabilities:{},clientInfo:{name:'letxinet-jobs',version:'1.1.5'}}}, 15000);
   if (!init || !init.result) throw new Error('initialize returned no result');
   const result = await post({jsonrpc:'2.0',id:rpcId+1,method:'tools/call',params:{name:input.tool,arguments:input.arguments}}, 1800000);
-  fs.writeFileSync(outPath, JSON.stringify(result)); fs.writeFileSync(statusPath, 'DONE', 'ascii');
+  const fallo = !!(result && (result.error || (result.result && result.result.isError)));
+  fs.writeFileSync(outPath, JSON.stringify(result)); fs.writeFileSync(statusPath, fallo ? 'ERROR' : 'DONE', 'ascii');
 })().catch(e => { fs.writeFileSync(outPath, JSON.stringify({error:e.message})); fs.writeFileSync(statusPath, 'ERROR', 'ascii'); process.exitCode=1; });
 `;
   fs.writeFileSync(runnerPath, runnerCode);
@@ -248,23 +286,66 @@ function post(payload, timeoutMs) {
   return { task_id: id, tool: toolName, pid: child.pid };
 }
 
+// 1.1.5: valida el task_id (antes se podia leer cualquier *_status.txt / *_out.json
+// fuera de la carpeta de tareas) y distingue tareas terminadas con error, perdidas
+// (el proceso murio sin resultado) e inexistentes.
+function procesoVivo(pid) {
+  if (!pid) return false;
+  try { process.kill(pid, 0); return true; } catch (e) { return e.code === 'EPERM'; }
+}
+
+function mensajeDeError(texto) {
+  try {
+    const j = JSON.parse(texto);
+    const e = j.error || (j.response && j.response.error);
+    if (e) return typeof e === 'string' ? e : (e.message || JSON.stringify(e)).toString();
+    const r = j.result || (j.response && j.response.result);
+    if (r && r.isError) {
+      const t = r.content && r.content[0] && r.content[0].text;
+      return t ? String(t).substring(0, 1000) : 'la herramienta devolvio isError=true';
+    }
+  } catch (_) { /* no es JSON */ }
+  return texto ? String(texto).substring(0, 1000) : 'sin detalle';
+}
+
 function pollJob(taskId) {
-  const jobsDir = JOBS_DIR;
-  const statusPath = path.join(jobsDir, `${taskId}_status.txt`);
-  const outPath = path.join(jobsDir, `${taskId}_out.json`);
-  const pidPath = path.join(jobsDir, `${taskId}_pid.txt`);
+  if (!TASK_ID_RE.test(String(taskId))) {
+    return { task_id: taskId, status: 'INVALID' };
+  }
+  const statusPath = path.join(JOBS_DIR, `${taskId}_status.txt`);
+  const outPath = path.join(JOBS_DIR, `${taskId}_out.json`);
+  const pidPath = path.join(JOBS_DIR, `${taskId}_pid.txt`);
+  const reqPath = path.join(JOBS_DIR, `${taskId}_req.json`);
 
   if (!fs.existsSync(statusPath)) {
     return { task_id: taskId, status: 'NOT_FOUND', exists: false };
   }
-  const status = fs.readFileSync(statusPath, 'ascii').trim();
+  let status = fs.readFileSync(statusPath, 'ascii').trim();
   let result = null;
   let resultLen = 0;
   if (fs.existsSync(outPath) && fs.statSync(outPath).size > 0) {
     result = fs.readFileSync(outPath, 'utf8');
     resultLen = result.length;
   }
-  return { task_id: taskId, status, result_len: resultLen, result };
+  let elapsedMs = null;
+  try { elapsedMs = Date.now() - fs.statSync(reqPath).mtimeMs; } catch (_) { /* sin req */ }
+  if (status === 'PENDING') {
+    let pid = null;
+    try { pid = Number(fs.readFileSync(pidPath, 'ascii').trim()); } catch (_) { /* sin pid */ }
+    if (pid && !procesoVivo(pid)) {
+      // El proceso pudo terminar justo ahora: se vuelve a leer el estado antes de declararla perdida
+      status = fs.readFileSync(statusPath, 'ascii').trim();
+      if (status === 'PENDING') status = 'LOST';
+    }
+  }
+  // Compatibilidad con tareas lanzadas por puentes anteriores: DONE con error dentro
+  if (status === 'DONE' && result) {
+    try {
+      const j = JSON.parse(result);
+      if (j && (j.error || (j.result && j.result.isError) || (j.response && j.response.error))) status = 'ERROR';
+    } catch (_) { /* resultado no JSON */ }
+  }
+  return { task_id: taskId, status, result_len: resultLen, result, elapsed_ms: elapsedMs };
 }
 
 // Coerce arguments to numeric when expected (some MCP clients wrap numbers as JSON strings).
@@ -349,7 +430,7 @@ const TOOLS_SCHEMA = [
   },
   {
     name: 'gateway_poll',
-    description: 'Sondea el estado de un job largo lanzado por gateway_call. Devuelve {status, result} cuando done. Llamar repetidamente cada 30-60s.',
+    description: 'Estado y resultado de una tarea larga lanzada por letxipu_local_call o gateway_call. STATUS=PENDING: vuelve a sondear en 30-60 s. STATUS=DONE: trae el resultado. STATUS=ERROR, LOST, NOT_FOUND o INVALID: la tarea fallo o no existe (isError=true); no sigas sondeando.',
     inputSchema: {
       type: 'object',
       properties: { task_id: { type: 'string' } },
@@ -426,7 +507,7 @@ async function callTool(name, args) {
       return {
         content: [{
           type: 'text',
-          text: `Gateway tiene ${gatewayTools.length} tools. Wrapper ofrece 4 meta-tools: gateway_call (dispatch), gateway_poll (sondeo jobs largos), gateway_list_tools (este), gateway_chat (LangGraph streaming).\n\nTools gateway remotos:\n${gatewayTools.join('\n')}`
+          text: `Gateway tiene ${gatewayTools.length} tools. Este puente ofrece 5 herramientas: letxipu_local_call (V11 local, sin Desktop), gateway_call (herramientas del gateway del Desktop), gateway_poll (estado y resultado de tareas largas), gateway_list_tools (esta) y gateway_chat (chat del gateway).\n\nTools del gateway:\n${gatewayTools.join('\n')}`
         }]
       };
     } catch (e) {
@@ -438,10 +519,23 @@ async function callTool(name, args) {
     const taskId = args.task_id;
     if (!taskId) return { content: [{ type: 'text', text: 'task_id requerido' }], isError: true };
     const job = pollJob(taskId);
-    const text = job.status === 'DONE'
-      ? `STATUS=DONE\nLEN=${job.result_len}\n\n=== RESULT (JSON) ===\n${job.result || ''}`
-      : `STATUS=${job.status}\nresult_len=0 (todavia no listo, sondea en 30s)`;
-    return { content: [{ type: 'text', text }] };
+    const seg = job.elapsed_ms != null ? ` (${Math.round(job.elapsed_ms / 1000)} s desde que se lanzo)` : '';
+    if (job.status === 'DONE') {
+      return { content: [{ type: 'text', text: `STATUS=DONE${seg}\nLEN=${job.result_len}\n\n=== RESULT (JSON) ===\n${job.result || ''}` }] };
+    }
+    if (job.status === 'PENDING') {
+      return { content: [{ type: 'text', text: `STATUS=PENDING${seg}\nTodavia no termina: vuelve a sondear en 30 s.` }] };
+    }
+    if (job.status === 'ERROR') {
+      return { content: [{ type: 'text', text: `STATUS=ERROR${seg}\nLa tarea termino con error: ${mensajeDeError(job.result)}\nNo vuelvas a sondear esta tarea.` }], isError: true };
+    }
+    if (job.status === 'LOST') {
+      return { content: [{ type: 'text', text: `STATUS=LOST${seg}\nEl proceso de la tarea termino sin dejar resultado. Lanzala de nuevo.` }], isError: true };
+    }
+    if (job.status === 'INVALID') {
+      return { content: [{ type: 'text', text: 'STATUS=INVALID\nEl task_id no tiene el formato de este puente (ejemplo: 2026-11-09_140105181Z_g1m224).' }], isError: true };
+    }
+    return { content: [{ type: 'text', text: `STATUS=NOT_FOUND\nNo existe una tarea con task_id="${taskId}" (o se borro por tener mas de 24 h).` }], isError: true };
   }
 
   if (name === 'gateway_chat') {
@@ -456,7 +550,11 @@ async function callTool(name, args) {
     };
     try {
       const r = await httpPost('/api/chat', payload, 120000);
-      return { content: [{ type: 'text', text: typeof r === 'string' ? r : JSON.stringify(r).substring(0, 8000) }] };
+      const texto = typeof r === 'string' ? r : JSON.stringify(r).substring(0, 8000);
+      // 1.1.5: el gateway responde 200 aunque el modelo falle (p. ej. clave no valida)
+      const fallo = /"type"\s*:\s*"error"|API key not valid|"error"\s*:\s*\{/i.test(texto);
+      return fallo ? { content: [{ type: 'text', text: `chat error: ${texto.substring(0, 2000)}` }], isError: true }
+                   : { content: [{ type: 'text', text: texto }] };
     } catch (e) {
       return { content: [{ type: 'text', text: `chat error: ${e.message}` }], isError: true };
     }
@@ -491,7 +589,10 @@ async function callTool(name, args) {
       const r = await httpPost('/api/mcp/call', { tool: toolName, arguments: argsObj }, 100000);
       const text = (r && r.response && r.response.result && r.response.result.content && r.response.result.content[0] && r.response.result.content[0].text)
         || JSON.stringify(r);
-      return { content: [{ type: 'text', text }] };
+      // 1.1.5: una herramienta inexistente o un error del gateway se marcan como error
+      const fallo = !!(r && (r.error || (r.response && (r.response.error || (r.response.result && r.response.result.isError)))));
+      return fallo ? { content: [{ type: 'text', text: `gateway_call error: ${mensajeDeError(JSON.stringify(r))}` }], isError: true }
+                   : { content: [{ type: 'text', text }] };
     } catch (e) {
       return { content: [{ type: 'text', text: `gateway_call error: ${e.message}${/ECONNREFUSED/.test(e.message) ? ' (LetXinet Desktop esta cerrado: abrelo, o usa letxipu_local_call o el servidor letxinet-ambos, que no lo necesitan)' : ''}` }], isError: true };
     }
@@ -534,7 +635,7 @@ rl.on('line', async (line) => {
       result: {
         protocolVersion: '2024-11-05',
         capabilities: { tools: {} },
-        serverInfo: { name: 'letxinet-gateway-bridge', version: '1.0.0' }
+        serverInfo: { name: 'letxinet-gateway-bridge', version: '1.1.5' }
       }
     });
     return;

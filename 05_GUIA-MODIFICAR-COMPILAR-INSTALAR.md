@@ -29,6 +29,13 @@
 > - LetXinet Desktop espera hasta 10 minutos a su backend (`LETXIPU_BACKEND_TIMEOUT_MS`) y muestra una ventana de «Iniciando...».
 > - Arreglo para instalaciones 1.1.3: `04_SCRIPTS-MANTENIMIENTO\arreglo-1.1.3\arreglar-letxinet.cmd`.
 > - Detalle en `08_REPORTE…` §3.14.
+>
+> **Actualización del 09/11/2026 (Suite 1.1.5):**
+> - El Python de MarkItDown lleva numpy 2.3.5 (`02_CODIGO-FUENTE\runtime-extra\numpy-2.3.5-cp312-cp312-win_amd64.whl`) en lugar de 2.5.1, que exigía SSE4.2. `recompilar-todo.ps1` lo cambia en el payload y comprueba que cargue.
+> - `letxinet-jobs-bridge.cjs`: las tareas se presentan como `letxinet-jobs-bridge/1.1.5` (V11 les da 600 s en vez de 114 s); `gateway_poll` informa los errores y valida el `task_id`; se borran las tareas de más de 24 h.
+> - V11: la ubicación detectada vale solo para la petición en curso (`src\utils\geo-context.ts`); `search` acepta `maxResults` y `maxSources` es un alias.
+> - Skill `letxinet-investigacion-academica`: recomienda `search` y varias `search` seguidas en lugar de `batch_search`.
+> - Detalle en `08_REPORTE…` §3.15 y en `06_INFORMES-Y-PRUEBAS\pruebas-busqueda-2026-11-09.md`.
 
 > **Disco D: lleno (100 %).** Todas las rutas de origen están en `D:\OTROS\`. Antes de compilar, lee la sección 5.4: hay que mandar la salida y las copias de trabajo a otro disco (C: u otro), porque los builds escriben cientos de MB.
 

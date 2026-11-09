@@ -177,6 +177,18 @@ if (-not $SoloInstalador) {
   $vc = Join-Path $Fuente 'runtime-extra\msvcp140.dll'
   if (-not (Test-Path $vc)) { Falla "falta $vc" }
   foreach ($rt in "$md\python-runtime", "$d11\python-runtime") { Copy-Item $vc $rt -Force }
+  # 1.1.5: numpy 2.5.1 exige SSE4.2 (x86-64-v2). En procesadores anteriores MarkItDown no arrancaba
+  # ("DLL load failed while importing _multiarray_umath"). Se usa numpy 2.3.5, que funciona desde SSE3.
+  $whl = Join-Path $Fuente 'runtime-extra\numpy-2.3.5-cp312-cp312-win_amd64.whl'
+  if (-not (Test-Path $whl)) { Falla "falta $whl (ver runtime-extra\LEEME.txt)" }
+  $spk = "$md\python-runtime\Lib\site-packages"
+  $npActual = (Get-ChildItem $spk -Directory -Filter 'numpy-*.dist-info' | Select-Object -First 1).Name
+  if ($npActual -ne 'numpy-2.3.5.dist-info') {
+    Get-ChildItem $spk -Directory | Where-Object { $_.Name -eq 'numpy' -or $_.Name -eq 'numpy.libs' -or $_.Name -like 'numpy-*.dist-info' } | Remove-Item -Recurse -Force
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+    [IO.Compression.ZipFile]::ExtractToDirectory($whl, $spk)
+    Write-Host "numpy de MarkItDown: $npActual -> numpy-2.3.5"
+  }
 
   Paso '8. Comprobar que no queden claves'
   $patron = 'sk-or-v1-[A-Za-z0-9]{20,}|sk-ant-[A-Za-z0-9_-]{20,}|sk-[A-Za-z0-9_-]{24,}|AIza[0-9A-Za-z_-]{30,}|gsk_[A-Za-z0-9]{20,}|nvapi-[A-Za-z0-9_-]{20,}|hf_[A-Za-z0-9]{20,}'
@@ -194,6 +206,13 @@ if (-not $SoloInstalador) {
   Write-Host 'Sin claves.'
   foreach ($rt in "$md\python-runtime", "$d11\python-runtime") { if (-not (Test-Path "$rt\msvcp140.dll")) { Falla "falta msvcp140.dll en $rt" } }
   Write-Host 'msvcp140.dll incluido en los dos Python.'
+  if (-not (Test-Path "$md\python-runtime\Lib\site-packages\numpy-2.3.5.dist-info")) { Falla 'MarkItDown no tiene numpy 2.3.5' }
+  # Con 'Stop', PowerShell 5.1 toma como error cualquier aviso que Python escriba en stderr
+  $eap = $ErrorActionPreference; $ErrorActionPreference = 'Continue'
+  $prueba = & "$md\python-runtime\python.exe" -I -c "import numpy, pymupdf4llm; print('NUMPY', numpy.__version__)" 2>&1 | Out-String
+  $ErrorActionPreference = $eap
+  if ($prueba -notmatch 'NUMPY 2\.3\.5') { Falla "el Python de MarkItDown no carga numpy 2.3.5 con PyMuPDF4LLM: $($prueba.Trim())" }
+  Write-Host 'MarkItDown carga numpy 2.3.5 y PyMuPDF4LLM.'
 }
 
 if ($SinInstalador) { Write-Host "`nPayload listo en $pl"; exit 0 }
