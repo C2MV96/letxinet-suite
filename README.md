@@ -111,15 +111,29 @@ Servidor MCP `letxinet-v11` (también dentro de `letxinet-ambos`). El asterisco 
 
 | Herramienta | Qué hace | Parámetros |
 |---|---|---|
-| `batch_search` | Herramienta de búsqueda recomendada. Lanza varias consultas en paralelo en varios grupos de fuentes y quita duplicados. La mejor para revisar literatura y cubrir Latinoamérica | `queries`, `query`, `sources`, `maxResults`, `yearStart`, `yearEnd`, `university`, `location`, `fastMode`, `filterFalsePositives` |
-| `search` | Una sola consulta en todas las fuentes elegidas | `query`*, `sources`, `maxSources`, `yearStart`, `yearEnd`, `university`, `location`, `fastMode`, `filterFalsePositives` |
-| `smart_search` | Genera variantes de la consulta (sinónimos, traducciones ES/EN/PT, términos más amplios o específicos), busca con todas y quita duplicados | `query`*, `sources`, `maxResults`, `yearStart`, `yearEnd`, `location`, `fastMode`, `filterFalsePositives` |
+| `search` | Una sola consulta en las fuentes elegidas. La más rápida: de 1 a 4 segundos con fuentes indicadas. Úsala por defecto | `query`*, `sources`, `maxSources`, `yearStart`, `yearEnd`, `university`, `location`, `fastMode`, `filterFalsePositives` |
+| `batch_search` | Varias consultas en paralelo en varios grupos de fuentes, sin duplicados. Sirve para barridos amplios, pero tarda de 90 a 200 segundos: lánzala con `letxinet-jobs` | `queries`, `query`, `sources`, `maxResults`, `yearStart`, `yearEnd`, `university`, `location`, `fastMode`, `filterFalsePositives` |
+| `smart_search` | Genera variantes de la consulta (sinónimos, traducciones ES/EN/PT, términos más amplios o específicos), busca con todas y quita duplicados. Tarda de 90 a 170 segundos: lánzala con `letxinet-jobs` | `query`*, `sources`, `maxResults`, `yearStart`, `yearEnd`, `location`, `fastMode`, `filterFalsePositives` |
 | `search_dblp` | Busca en DBLP (informática): publicaciones, autores y eventos, listo para BibTeX | `query`*, `maxResults` |
 | `search_paperswithcode` | Papers con código, benchmarks, datasets y métodos | `query`*, `maxResults` |
 | `search_conferences` | Papers de conferencias en OpenReview (ICLR, NeurIPS, ICML…) | `query`*, `maxResults` |
 | `trending_papers` | Papers de IA del día en HuggingFace, con filtro opcional por tema | `query`, `maxResults` |
 
+**Qué dicen las pruebas (pool de la 1.1.3, 08/11/2026):**
+
+| Llamada | Resultados | Tiempo |
+|---|---|---|
+| `search`, PubMed, 1 consulta | 40 | 1,4 a 3,6 s |
+| `search`, La Referencia Perú, 1 consulta | 4 a 5 | 1,1 a 1,4 s |
+| `batch_search`, 2 consultas en La Referencia Perú y RENATI | 20 | 88 a 92 s |
+| `smart_search`, 1 consulta con variantes | 8 | 93 a 169 s |
+
+- En pruebas anteriores, `batch_search` con 4 consultas superaba el tiempo de espera del cliente, y otra prueba tardó unos 200 s con una sola consulta.
+- Gran parte del tiempo se va en RENATI y en las variantes de cada consulta.
+- No se ha comparado la calidad de `batch_search` y `search` con las mismas consultas: el comparativo frente a IA usó solo `search`.
+
 Notas de uso:
+- Indica siempre `sources`: sin fuentes, `search` puede superar su límite de 114 s.
 - `sources` acepta identificadores de fuente o grupos: `latam`, `global`, `tesis`, `iberoamerica`, `peru`, `peru_fast` o `all` (ver [Fuentes académicas](#fuentes-académicas)).
 - `university` y `location` agregan términos a la consulta; no filtran los resultados.
 - `fastMode` salta el enriquecimiento lento de metadatos.
