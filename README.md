@@ -111,29 +111,32 @@ Servidor MCP `letxinet-v11` (también dentro de `letxinet-ambos`). El asterisco 
 
 | Herramienta | Qué hace | Parámetros |
 |---|---|---|
-| `search` | Una sola consulta en las fuentes elegidas. La más rápida: de 1 a 4 segundos con fuentes indicadas. Úsala por defecto | `query`*, `sources`, `maxSources`, `yearStart`, `yearEnd`, `university`, `location`, `fastMode`, `filterFalsePositives` |
-| `batch_search` | Varias consultas en paralelo en varios grupos de fuentes, sin duplicados. Sirve para barridos amplios, pero tarda de 90 a 200 segundos: lánzala con `letxinet-jobs` | `queries`, `query`, `sources`, `maxResults`, `yearStart`, `yearEnd`, `university`, `location`, `fastMode`, `filterFalsePositives` |
-| `smart_search` | Genera variantes de la consulta (sinónimos, traducciones ES/EN/PT, términos más amplios o específicos), busca con todas y quita duplicados. Tarda de 90 a 170 segundos: lánzala con `letxinet-jobs` | `query`*, `sources`, `maxResults`, `yearStart`, `yearEnd`, `location`, `fastMode`, `filterFalsePositives` |
+| `search` | Una sola consulta en las fuentes elegidas. La más rápida: unos 5 a 9 s con `peru_fast`, unos 30 s si incluye RENATI. Úsala por defecto | `query`*, `sources`, `maxSources` (se ignora: usa `maxResults`), `yearStart`, `yearEnd`, `university`, `location`, `fastMode`, `filterFalsePositives` |
+| `batch_search` | Varias consultas en paralelo en varios grupos de fuentes, sin duplicados. Tarda de 1 a 3 minutos y no aplica el filtro de pertinencia de repositorios. Llámala directo, no con `letxinet-jobs` (ver [Puentes](#puentes-mcp-de-la-suite)) | `queries`, `query`, `sources`, `maxResults`, `yearStart`, `yearEnd`, `university`, `location`, `fastMode`, `filterFalsePositives` |
+| `smart_search` | Genera variantes de la consulta (sinónimos, traducciones ES/EN/PT, términos más amplios o específicos), busca con todas y quita duplicados. Tarda de 1,5 a 3 minutos y a veces devuelve éxito con 0 resultados | `query`*, `sources`, `maxResults`, `yearStart`, `yearEnd`, `location`, `fastMode`, `filterFalsePositives` |
 | `search_dblp` | Busca en DBLP (informática): publicaciones, autores y eventos, listo para BibTeX | `query`*, `maxResults` |
 | `search_paperswithcode` | Papers con código, benchmarks, datasets y métodos | `query`*, `maxResults` |
 | `search_conferences` | Papers de conferencias en OpenReview (ICLR, NeurIPS, ICML…) | `query`*, `maxResults` |
 | `trending_papers` | Papers de IA del día en HuggingFace, con filtro opcional por tema | `query`, `maxResults` |
 
-**Qué dicen las pruebas (pool de la 1.1.3, 08/11/2026):**
+**Qué conviene, según las pruebas del 09/11/2026** (tres agentes con las mismas consultas, solas y combinadas con OSM; detalle en [`06_INFORMES-Y-PRUEBAS/pruebas-busqueda-2026-11-09.md`](06_INFORMES-Y-PRUEBAS/pruebas-busqueda-2026-11-09.md)):
 
-| Llamada | Resultados | Tiempo |
+| Forma de buscar | Tiempo mediano | Pertinentes en los 10 primeros |
 |---|---|---|
-| `search`, PubMed, 1 consulta | 40 | 1,4 a 3,6 s |
-| `search`, La Referencia Perú, 1 consulta | 4 a 5 | 1,1 a 1,4 s |
-| `batch_search`, 2 consultas en La Referencia Perú y RENATI | 20 | 88 a 92 s |
-| `smart_search`, 1 consulta con variantes | 8 | 93 a 169 s |
+| `search`, 1 consulta | 31 s (5 a 9 s con `peru_fast`) | 68 % |
+| `batch_search` con 1 consulta | 77 s | 52 % |
+| `batch_search` con 3 variantes | 95 s | 73 % |
+| 3 `search` seguidas con las mismas 3 variantes, fusionadas | De 2 a 5 veces menos que `batch_search` | Más pertinentes que `batch_search` en 2 de 3 temas |
 
-- En pruebas anteriores, `batch_search` con 4 consultas superaba el tiempo de espera del cliente, y otra prueba tardó unos 200 s con una sola consulta.
-- Gran parte del tiempo se va en RENATI y en las variantes de cada consulta.
-- No se ha comparado la calidad de `batch_search` y `search` con las mismas consultas: el comparativo frente a IA usó solo `search`.
+- **Usa `search` por defecto**, siempre con `sources`.
+- **Para varias variantes**, lanza varias `search` seguidas y fusiona los resultados. `batch_search` solo compensa cuando el filtro de `search` recorta demasiado los sinónimos.
+- **`batch_search` con una sola consulta no conviene nunca:** tarda más y trae menos.
+- **No lances varias llamadas a V11 a la vez.** V11 no cancela el trabajo vencido, así que con tres clientes a la vez la cola creció hasta que todas las búsquedas se cortaron.
+- **Para un lugar**, usa OSM para ubicarlo y sacar nombres de instituciones, y pon el lugar dentro de la consulta. Pasar `location` o `university` redujo los resultados. Verifica lo local en ALICIA: V11 se perdió tesis locales que existen.
 
 Notas de uso:
 - Indica siempre `sources`: sin fuentes, `search` puede superar su límite de 114 s.
+- Para limitar resultados usa `maxResults`; `maxSources` se ignora.
 - `sources` acepta identificadores de fuente o grupos: `latam`, `global`, `tesis`, `iberoamerica`, `peru`, `peru_fast` o `all` (ver [Fuentes académicas](#fuentes-académicas)).
 - `university` y `location` agregan términos a la consulta; no filtran los resultados.
 - `fastMode` salta el enriquecimiento lento de metadatos.
@@ -302,6 +305,11 @@ El configurador lo registra como `letxinet-v11`, `letxinet-osm` o `letxinet-ambo
 
 ### `letxinet-jobs-bridge.cjs` (servidor `letxinet-jobs`)
 Sirve para tareas largas que superarían el tiempo de espera del cliente. Las lanza en segundo plano y devuelve un `task_id` para consultar después.
+
+> **Problema conocido en la 1.1.3 y la 1.1.4:** el proceso que ejecuta cada tarea se presenta ante V11 como OpenCode (`User-Agent: opencode/1.0`), y V11 le da solo 114 s. En las pruebas, 7 de 8 búsquedas largas por el puente se cortaron a los 114 s, mientras que las mismas llamadas directas tienen 228 s. Además, `gateway_poll` responde «todavía no listo» aunque la tarea haya fallado o no exista. Mientras no se corrija:
+> - Desde Claude Code o Claude Desktop, llama `batch_search` y `smart_search` directo.
+> - Usa el puente solo con clientes que cortan a unos 120 s, como OpenCode, sabiendo que la búsqueda tiene el mismo tope de 114 s.
+> - `gateway_call` sí funciona bien para resumir PDF largos.
 
 | Herramienta | Qué hace | Parámetros |
 |---|---|---|
@@ -659,12 +667,27 @@ El script se detiene si encuentra una clave en lo que va a empaquetar o si falta
 | MarkItDown figura «Running» pero no responde en 7860 (versión 1.1.3) | Falta `msvcp140.dll` de Visual C++ | Instalar la 1.1.4 o correr `arreglo-1.1.3` |
 | MarkItDown no arranca: «DLL load failed while importing _multiarray_umath» | El procesador no tiene SSE4.2 y numpy 2.5.1 lo exige | Correr `arreglo-2-markitdown` |
 | «The desktop backend did not start in time» | El backend tardó más de 2 minutos (versión 1.1.3) | Instalar la 1.1.4 o correr `arreglo-1.1.3`. Ahora espera 10 minutos |
-| Una herramienta larga se corta en el cliente | Tiempo de espera del cliente | Usar `letxinet-jobs` (`letxipu_local_call` y `gateway_poll`) o volver a correr el configurador, que fija `MCP_TOOL_TIMEOUT` |
+| Una herramienta larga se corta en el cliente | Tiempo de espera del cliente | Volver a correr el configurador, que fija `MCP_TOOL_TIMEOUT`, y llamar la herramienta directo. Por `letxinet-jobs` se corta a los 114 s (ver [Puentes](#puentes-mcp-de-la-suite)) |
+| Todas las búsquedas se cortan por tiempo aunque `/api/health` responde | Muchas llamadas a V11 a la vez: el trabajo vencido no se cancela y la cola crece | Esperar a que termine la cola o reiniciar el servicio `LetXinetSuiteMCPV11`. Hacer las búsquedas de a una |
+| Los resultados priorizan un lugar que no se pidió | V11 guarda la primera ubicación que detecta y no la borra hasta reiniciarse | Reiniciar el servicio `LetXinetSuiteMCPV11` |
+| `find_nearby_places`, `explore_area` o `polygon_from_admin` fallan | Overpass u OSRM no responden desde la red | `osm_health` lo confirma. `geocode_address` (Nominatim) sigue funcionando |
 | `convert_document`, `extract_tables` o `extract_formulas` fallan | Falta `MINERU_API_KEY` | Cargar la clave o usar `markitdown_convert` para PDF |
 | OSM responde lento o con errores de Overpass | Servidor público saturado | Se prueban servidores espejo solos; se pueden fijar con `OVERPASS_FALLBACK_URLS` |
 | Claude Code no ve las herramientas | No se configuró, o se instaló después de la Suite | Menú Inicio → «Configurar Claude Code, Claude Desktop y OpenCode» |
 
 Los registros de cada servicio están en `C:\ProgramData\LetXinet Suite\Logs`, por ejemplo `markitdown-api.stderr.log` y `mcp-v11-local.stdout.log`.
+
+### Problemas conocidos (pendientes para la próxima versión)
+- **MarkItDown en procesadores sin SSE4.2:** numpy 2.5.1 no carga. Mientras tanto, usa `arreglo-2-markitdown`.
+- **`letxinet-jobs` corta las búsquedas a los 114 s** y `gateway_poll` no informa los errores (ver [Puentes](#puentes-mcp-de-la-suite)). Además, `gateway_poll` no valida el `task_id` y cada tarea deja 5 archivos en `%LOCALAPPDATA%\LetXinet\jobs`.
+- **V11 guarda la primera ubicación que detecta** (`globalThis.__osmGeoResult` en `routes/mcp.ts` y `utils/reranking.ts`) y la usa en todas las búsquedas siguientes hasta reiniciarse.
+- **V11 no cancela el trabajo que ya venció**, así que varias llamadas a la vez pueden trabar el servicio durante minutos.
+- **`batch_search`:** no aplica el filtro de pertinencia de repositorios, usa spaCy aunque se pida `fastMode` y consulta como máximo 12 fuentes por consulta.
+- **`search`:** ignora `maxSources` y nunca se guarda en caché.
+- **Metadatos:**
+  - ningún resultado trae enlace directo al PDF (`pdfUrl` es un handle o la página del ítem);
+  - en La Referencia el país sale como `_version`;
+  - algunas fuentes ponen un valor genérico o equivocado en la universidad.
 
 ## Estructura del repositorio
 

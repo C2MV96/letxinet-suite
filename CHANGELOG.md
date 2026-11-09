@@ -5,6 +5,9 @@ Las versiones anteriores a la 1.1.2 están en `07_DOCUMENTACION-ORIGINAL/PLAN-Y-
 ## Sin publicar
 
 - `04_SCRIPTS-MANTENIMIENTO/arreglo-2-markitdown`: MarkItDown en procesadores sin SSE4.2. Cambia numpy 2.5.1 por 2.3.5 y guarda el original. Probado sobre una copia del runtime; falta probarlo en una laptop con procesador antiguo.
+- **Pruebas de búsqueda del 08–09/11/2026** (`06_INFORMES-Y-PRUEBAS/pruebas-busqueda-2026-11-09.md`): `search` es la mejor opción por defecto; varias `search` seguidas superan a `batch_search`; `letxinet-jobs` corta las búsquedas a los 114 s; V11 guarda la primera ubicación detectada y se traba con varias llamadas a la vez.
+- Skill `letxinet-investigacion-academica`: recomienda `search` y varias `search` seguidas en lugar de `batch_search`, y deja de recomendar `letxinet-jobs` para búsquedas.
+- README: tiempos y pertinencia medidos, aviso sobre `letxinet-jobs` y lista de problemas conocidos.
 
 ## 1.1.4 (08/11/2026)
 

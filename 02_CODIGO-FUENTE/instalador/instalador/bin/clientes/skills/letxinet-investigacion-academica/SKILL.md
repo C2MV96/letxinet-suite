@@ -6,12 +6,20 @@ description: "Investigación académica profunda con LetXinet Suite: buscar pape
 > **Adaptación a Claude Code (01/11/2026).** Esta skill viene de OpenCode (escrita para letxipu v7/v8). En esta máquina:
 >
 > - **Nombres de herramientas:** `letxipu-search:<tool>` / `letxipu-v11-local` → `mcp__letxinet-v11__<tool>`; `letxipu-osm:<tool>` → `mcp__letxinet-osm__<tool>`; conversión → `mcp__letxinet-markitdown__markitdown_convert`. Son *deferred*: cárgalas con ToolSearch (`select:...`) antes de llamarlas.
-> - **Tareas largas:** para `smart_search` y `batch_search` usa `mcp__letxinet-jobs__letxipu_local_call` (lanza un job en segundo plano) y recoge el resultado con `mcp__letxinet-jobs__gateway_poll` a los 30–60 s. `gateway_call` requiere el gateway en :3000, que normalmente está apagado.
-> - **Estado verificado el 01/11/2026** (V11 v11.0.0, 28 tools, 39 fuentes):
->   - Funcionan: `search` con `sources:["crossref"]`/`["laref_peru"]`/`["renati"]` + `fastMode:true`, `fetch_metadata`, `recover_metadata`, `list_sources`, `resolve_pdf`, `read_pdf`, `extract_section`, `extract_tables`, `pdf_smart_summary`, `pdf_metadata`.
->   - **ALICIA falla** (timeout de 90 s, aunque el portal esté en línea): no la uses; el grupo `peru_fast` incluye ALICIA y tarda 90 s. Para Perú usa `["laref_peru","renati"]` (grupo `peru`). RENATI tarda ~30 s.
->   - **spaCy está DESACTIVADO** (interruptor `MCP-V11-Local\SPACY_DISABLED`, V11 en modo JSON-only). Con eso `filterFalsePositives:true` funciona (~11 s) y `smart_search` funciona pero tarda ~90 s: lánzalo con `letxinet-jobs`.
->   - `batch_search` funciona pero tarda ~200 s incluso con 1 consulta y fuentes rápidas: úsalo SIEMPRE vía `letxinet-jobs`. `search` sin `sources` supera su límite de 114 s: indica siempre las fuentes.
+> - **Cómo buscar (medido el 09/11/2026 con tres agentes de prueba, V11 de la Suite 1.1.3).** Esto manda sobre cualquier tabla o ejemplo de más abajo que recomiende `batch_search` o `smart_search`:
+>   - Usa **`search` por defecto**, siempre con `sources`. Con `["peru_fast"]` (ALICIA + La Referencia Perú) tarda unos 5–9 s; con `["peru"]` o `["latam"]` unos 30 s, porque RENATI tarda ~30 s. Sin `sources` puede superar su límite de 114 s.
+>   - Para varias variantes de una consulta (sinónimos, inglés), lanza **varias `search` seguidas, no en paralelo**, y fusiona tú los resultados quitando duplicados. En las pruebas fue de 2 a 5 veces más rápido que `batch_search` y dio más resultados pertinentes en 2 de 3 temas.
+>   - **`batch_search` es lento (1–3 min)** y no aplica el filtro de pertinencia de repositorios: úsalo solo si `search` recorta demasiado los sinónimos (pasó con «hipertensión en ancianos»). Con una sola consulta no conviene nunca: tarda más y trae menos.
+>   - `smart_search` tarda 1,5–3 min y a veces devuelve `success:true` con 0 resultados.
+>   - Para limitar resultados usa `maxResults`: `maxSources` se ignora.
+>   - **No lances varias llamadas a V11 a la vez:** V11 no cancela el trabajo vencido, la cola crece y todas las búsquedas terminan cortándose.
+>   - **Para investigar un lugar:** usa OSM (`geocode_address`) para ubicarlo y sacar nombres de instituciones, pero pon el lugar dentro de la consulta: pasar `location` o `university` a `search` redujo los resultados. V11 se pierde tesis locales que sí existen: verifica con una búsqueda por título en ALICIA.
+> - **Tareas largas:** llama `batch_search` y `smart_search` directo con `mcp__letxinet-v11__*`: Claude Code espera hasta 300 s y V11 le da 228 s. **No uses `letxinet-jobs` para búsquedas en la 1.1.3:** su ejecutor se presenta como OpenCode y V11 corta sus tareas a los 114 s; además `gateway_poll` responde «todavía no listo» aunque la tarea haya fallado o no exista. `gateway_call` (gateway del Desktop en :43123, con el Desktop abierto) sí sirve para resumir PDFs largos.
+> - **Estado verificado el 01/11/2026** (V11 v11.0.0, 28 tools, 39 fuentes), actualizado el 09/11/2026:
+>   - Funcionan: `search` con `sources:["crossref"]`/`["laref_peru"]`/`["renati"]`/`["peru_fast"]` + `fastMode:true`, `fetch_metadata`, `recover_metadata`, `list_sources`, `resolve_pdf`, `read_pdf`, `extract_section`, `extract_tables`, `pdf_smart_summary`, `pdf_metadata`.
+>   - **ALICIA responde de nuevo** (09/11/2026), pero a ratos V11 abre su *circuit breaker* y contesta solo con La Referencia. RENATI tarda ~30 s.
+>   - **spaCy está DESACTIVADO** (interruptor `MCP-V11-Local\SPACY_DISABLED`, V11 en modo JSON-only). Con eso `filterFalsePositives:true` funciona (~11 s).
+>   - Metadatos: ningún resultado trae enlace directo al PDF (`pdfUrl` es un handle o la página del ítem: usa `resolve_pdf`); en La Referencia el campo `country` sale como `_version`; el campo de universidad a veces es genérico o equivocado: revísalo antes de citar.
 >   - **No uses `enrich_metadata` sin revisar el resultado:** puede adjuntar abstracts de otros artículos a referencias inexistentes. Verifica los DOI con `fetch_metadata` (Crossref).
 >   - `download_pdf` no guarda el archivo (solo devuelve el enlace): descarga con curl desde la URL que da `resolve_pdf`. Ninguna herramienta de conversión acepta .docx.
 >   - `search_dblp`, `search_paperswithcode` y `coverage_report` no funcionan. `health_check` dice «ok» sin revisar las fuentes.
@@ -70,7 +78,7 @@ fetch_metadata     → data.{id,title,authors,year,abstract,pdfUrl,...,completen
 ### 🔍 BÚSQUEDA ACADÉMICA (verificadas en producción)
 
 ```
-letxipu:batch_search          ✅ HERRAMIENTA PRINCIPAL — paralela, hasta 6 queries
+letxipu:batch_search          ⚠️ LENTA (1–3 min) — paralela, hasta 6 queries. Prefiere varias search (ver arriba)
   queries: string[]           ← REQUERIDO. Hasta 6 en paralelo.
   sources?: string[]          ← Ver grupos abajo. Default: global
   university?: string         ← Filtrar por institución
@@ -80,13 +88,13 @@ letxipu:batch_search          ✅ HERRAMIENTA PRINCIPAL — paralela, hasta 6 qu
   → Campos por resultado: id, title, authors[], year, abstract, pdfUrl,
     handleUrl, source, type, university, citationCount, doi, matchedQueries[]
 
-letxipu:search                ✅ Búsqueda single-query
+letxipu:search                ✅ HERRAMIENTA PRINCIPAL — single-query, la más rápida
   query: string               ← REQUERIDO
   sources?: string[] / university?: string / yearStart?: string / maxSources?: number
   → data.sources[] (NO data.results)
 
-letxipu:smart_search          ❌ TIMEOUT SIEMPRE — NO USAR
-  → Reemplazar siempre con: batch_search(queries=[variante1, variante2,...])
+letxipu:smart_search          ⚠️ LENTA (1,5–3 min) y a veces devuelve 0 resultados
+  → Prefiere: varias search seguidas con tus variantes, fusionadas sin duplicados
 
 letxipu:search_dblp           ❌ OFFLINE PERMANENTE — NO USAR
   → Retorna data.sources[] vacío siempre. Verificar con health_check antes de reintentar.

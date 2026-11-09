@@ -1,0 +1,28 @@
+﻿inicio_iso,fin_iso,consulta,variante,herramienta,fuentes,ms,n_resultados,pertinentes_top10_juicio,pertinentes_top10_palabras,duplicados,con_doi_o_handle,con_pdf,cache_probable,error
+2026-11-09T00:46:24.451Z,2026-11-09T00:46:33.351Z,Q1: anemia infantil factores asociados,a,search,peru_fast,8900,12,5/10,8/10,0,11,0,no,
+2026-11-09T00:46:33.353Z,2026-11-09T00:47:50.439Z,Q1: anemia infantil factores asociados,b,batch_search,peru_fast,77086,7,2/7,4/7,0,6,0,no,
+2026-11-09T00:47:50.442Z,2026-11-09T00:47:57.393Z,Q1: anemia infantil factores asociados,d1,search,peru_fast,6950,12,5/10,8/10,0,11,0,no,
+2026-11-09T00:47:57.395Z,2026-11-09T00:48:01.785Z,Q1: factores de riesgo de anemia en niños,d2,search,peru_fast,4390,10,9/10,10/10,0,9,0,no,
+2026-11-09T00:48:01.788Z,2026-11-09T00:48:06.041Z,Q1: childhood anemia associated factors,d3,search,peru_fast,4253,3,3/3,3/3,0,1,0,no,
+2026-11-09T00:48:06.044Z,2026-11-09T00:49:28.567Z,Q1: anemia infantil factores asociados || factores de riesgo de anemia en niños || childhood anemia associated factors,c,batch_search,peru_fast,82523,20,7/10,10/10,1,15,0,no,
+2026-11-09T13:37:47.302Z,2026-11-09T13:38:43.931Z,Q2: hipertensión arterial adulto mayor,b,batch_search,peru,56628,0,,,0,0,0,no,
+2026-11-09T13:38:43.934Z,2026-11-09T13:39:23.506Z,Q2: hipertensión arterial adulto mayor,a,search,peru,39572,7,7/7,7/7,0,6,0,no,
+2026-11-09T13:39:23.515Z,2026-11-09T13:40:58.325Z,Q2: hipertensión arterial adulto mayor || hipertensión en ancianos || hypertension in older adults,c,batch_search,peru,94810,20,10/10,10/10,0,14,0,no,
+2026-11-09T13:40:58.328Z,2026-11-09T13:41:29.928Z,Q2: hipertensión arterial adulto mayor,d1,search,peru,31600,7,7/7,7/7,0,6,0,no,
+2026-11-09T13:41:29.930Z,2026-11-09T13:41:40.769Z,Q2: hipertensión en ancianos,d2,search,peru,10839,1,0/1,0/1,0,0,0,no,
+2026-11-09T13:41:40.770Z,2026-11-09T13:42:12.791Z,Q2: hypertension in older adults,d3,search,peru,32021,4,4/4,4/4,0,2,0,no,
+2026-11-09T13:42:12.793Z,2026-11-09T13:42:43.953Z,Q3: dengue control vectorial,a,search,latam,31160,20,5/10,6/10,0,12,0,no,
+2026-11-09T13:42:43.955Z,2026-11-09T13:45:01.410Z,Q3: dengue control vectorial,b,batch_search,latam,137455,8,6/8,7/8,0,1,0,no,
+2026-11-09T13:45:01.411Z,2026-11-09T13:45:32.824Z,Q3: dengue control vectorial,d1,search,latam,31412,20,5/10,6/10,0,12,0,no,
+2026-11-09T13:45:32.827Z,2026-11-09T13:46:04.274Z,Q3: control del mosquito Aedes aegypti,d2,search,latam,31447,20,5/10,9/10,0,15,0,no,
+2026-11-09T13:46:04.278Z,2026-11-09T13:46:35.652Z,Q3: dengue vector control,d3,search,latam,31373,20,8/10,9/10,0,12,0,no,
+2026-11-09T13:46:35.654Z,2026-11-09T13:49:39.838Z,Q3: dengue control vectorial || control del mosquito Aedes aegypti || dengue vector control,c,batch_search,latam,184183,20,5/10,10/10,2,15,0,no,
+2026-11-09T13:49:39.839Z,2026-11-09T13:53:27.855Z,Q4: machine learning crop yield prediction,b,batch_search,global,228016,0,,,0,0,0,no,"Tool ""batch_search"" exceeded its deadline of 228009ms"
+2026-11-09T13:53:27.857Z,2026-11-09T13:55:21.870Z,Q4: machine learning crop yield prediction,a,search,global,114013,0,,,0,0,0,no,"Tool ""search"" exceeded its deadline of 113994ms"
+2026-11-09T13:55:21.872Z,2026-11-09T13:59:09.879Z,Q4: machine learning crop yield prediction || predicción del rendimiento de cultivos con aprendizaje automático || crop yield forecasting with artificial intelligence,c,batch_search,global,228007,0,,,0,0,0,no,"Tool ""batch_search"" exceeded its deadline of 228012ms"
+2026-11-09T13:59:09.880Z,2026-11-09T14:01:03.895Z,Q4: machine learning crop yield prediction,d1,search,global,114015,0,,,0,0,0,no,"Tool ""search"" exceeded its deadline of 114011ms"
+2026-11-09T14:01:03.897Z,2026-11-09T14:02:57.912Z,Q4: predicción del rendimiento de cultivos con aprendizaje automático,d2,search,global,114015,0,,,0,0,0,no,"Tool ""search"" exceeded its deadline of 114011ms"
+2026-11-09T14:02:57.914Z,2026-11-09T14:04:51.925Z,Q4: crop yield forecasting with artificial intelligence,d3,search,global,114011,0,,,0,0,0,no,"Tool ""search"" exceeded its deadline of 114006ms"
+2026-11-09T14:04:51.926Z,2026-11-09T14:06:45.933Z,Q1: anemia infantil factores asociados,a_rep2,search,peru_fast,114007,0,,,0,0,0,no,"Tool ""search"" exceeded its deadline of 114002ms"
+2026-11-09T14:06:45.934Z,2026-11-09T14:06:45.939Z,Q1: anemia infantil factores asociados,b_rep2,batch_search,peru_fast,5,7,2/7,4/7,0,6,0,si,
+2026-11-09T14:12:27.299Z,2026-11-09T14:14:21.407Z,Q1: anemia infantil factores asociados,a_rep3,search,peru_fast,114108,0,,,0,0,0,no,"Tool ""search"" exceeded its deadline of 114002ms"
