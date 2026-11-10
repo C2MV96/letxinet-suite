@@ -10,7 +10,7 @@ dotenv.config();
 
 import express from 'express';
 import cors from 'cors';
-import { runWithGeoContext } from './utils/geo-context';
+import { runWithGeoContext, getRequestAbortController } from './utils/geo-context';
 
 import searchRouter from './routes/search';
 import metadataRouter from './routes/metadata';
@@ -30,7 +30,13 @@ const VERSION_LOCAL = '11.0.0-local';
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 // 1.1.5: cada peticion tiene su propio contexto geografico (antes era global y se contaminaba)
-app.use((_req, _res, next) => runWithGeoContext(() => next()));
+// 1.1.6: el mismo contexto lleva la cancelacion. Si el cliente cierra la conexion antes de la
+// respuesta (o el despachador MCP corta su llamada interna al vencer el plazo), el trabajo se cancela.
+app.use((_req, res, next) => runWithGeoContext(() => {
+    const cancelar = getRequestAbortController();
+    res.on('close', () => { if (!res.writableFinished) cancelar?.abort(); });
+    next();
+}));
 
 // Local-only lightweight health endpoint used by the LetXipu Desktop HF
 // Electron main process to probe readiness quickly (timeout 2s). Avoids

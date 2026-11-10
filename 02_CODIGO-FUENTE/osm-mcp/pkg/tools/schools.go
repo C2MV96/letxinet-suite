@@ -123,7 +123,7 @@ func HandleFindSchoolsNearby(ctx context.Context, req mcp.CallToolRequest) (*mcp
 	resp, err := client.Do(httpReq)
 	if err != nil {
 		logger.Error("failed to execute request", "error", err)
-		return ErrorResponse("Failed to communicate with OSM service"), nil
+		return ErrorResponse(OverpassNoResponde), nil
 	}
 	defer resp.Body.Close()
 

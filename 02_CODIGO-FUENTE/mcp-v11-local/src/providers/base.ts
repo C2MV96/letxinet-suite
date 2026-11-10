@@ -6,6 +6,7 @@
 import { generateRecordId } from '../utils/data-mining-config';
 import { SearchResult, SearchOptions } from '../types/search';
 import { acquireSlot, recordSuccess, recordFailure, CircuitOpenError } from '../utils/inter-process-provider-limiter';
+import { getRequestSignal, PeticionCancelada } from '../utils/geo-context';
 
 export { generateRecordId };
 export type { SearchResult, SearchOptions };
@@ -57,13 +58,16 @@ export const DEFAULT_TIMEOUT = 25000;
  * LetXinet 1.1.3: espera una promesa de turno como maximo `ms`. Si el turno llega tarde,
  * se libera enseguida para que la cola no quede ocupada por una peticion que ya se rindio.
  */
-function turnoConPlazo<T>(turno: Promise<T>, ms: number, liberarTarde: (v: T) => void, cola: string): Promise<T> {
+function turnoConPlazo<T>(turno: Promise<T>, ms: number, liberarTarde: (v: T) => void, cola: string, cancelar?: AbortSignal): Promise<T> {
     return new Promise<T>((resolve, reject) => {
         let vencido = false;
-        const t = setTimeout(() => { vencido = true; reject(new Error(`Tiempo agotado esperando turno en la cola de ${cola}`)); }, ms);
+        const salir = (e: Error) => { if (vencido) return; vencido = true; clearTimeout(t); cancelar?.removeEventListener('abort', alCancelar); reject(e); };
+        const alCancelar = () => salir(new PeticionCancelada());
+        const t = setTimeout(() => salir(new Error(`Tiempo agotado esperando turno en la cola de ${cola}`)), ms);
+        cancelar?.addEventListener('abort', alCancelar, { once: true });
         turno.then(
-            (v) => { if (vencido) liberarTarde(v); else { clearTimeout(t); resolve(v); } },
-            (e) => { clearTimeout(t); if (!vencido) reject(e); },
+            (v) => { if (vencido) liberarTarde(v); else { clearTimeout(t); cancelar?.removeEventListener('abort', alCancelar); resolve(v); } },
+            (e) => { clearTimeout(t); cancelar?.removeEventListener('abort', alCancelar); if (!vencido) reject(e); },
         );
     });
 }
@@ -77,13 +81,19 @@ export async function fetchWithTimeout(url: string, options: any = {}, timeout =
     let dominio = 'conexiones';
     try { dominio = new URL(url).hostname; } catch { /* URL rara: el fetch fallara solo */ }
 
+    // LetXinet 1.1.6: si la peticion que pidio esta descarga ya se cancelo (vencio el plazo de la
+    // herramienta o el cliente se fue), no se consulta la fuente ni se espera turno. Antes el
+    // trabajo vencido seguia ocupando las colas y, con varios clientes, V11 se atascaba minutos.
+    const cancelar = getRequestSignal();
+    if (cancelar?.aborted) throw new PeticionCancelada();
+
     // Inter-process gate: rate-limit + circuit-breaker for critical domains.
     // For non-critical domains this is a noop (returns immediately + noop release).
     // CircuitOpenError propagates without hitting the upstream; callers
     // (search.ts Promise.allSettled) record the source as failed with a clear reason.
-    const slot = await turnoConPlazo(acquireSlot(url), restante(), (s) => s.release(), dominio);
+    const slot = await turnoConPlazo(acquireSlot(url, cancelar), restante(), (s) => s.release(), dominio, cancelar);
     try {
-        await turnoConPlazo(globalFetchLimiter.acquire(), restante(), () => globalFetchLimiter.release(), 'conexiones salientes');
+        await turnoConPlazo(globalFetchLimiter.acquire(), restante(), () => globalFetchLimiter.release(), 'conexiones salientes', cancelar);
     } catch (e) {
         slot.release();
         throw e;
@@ -91,8 +101,11 @@ export async function fetchWithTimeout(url: string, options: any = {}, timeout =
     const controller = new AbortController();
     const id = setTimeout(() => controller.abort(), restante());
     (id as any).unref?.();
+    // Sin quitar el aviso al terminar: la misma cancelacion corta la lectura del cuerpo
+    cancelar?.addEventListener('abort', () => controller.abort(), { once: true });
 
     try {
+        if (cancelar?.aborted) throw new PeticionCancelada();
         const response = await fetch(url, {
             ...options,
             signal: controller.signal
@@ -111,10 +124,9 @@ export async function fetchWithTimeout(url: string, options: any = {}, timeout =
         return response;
     } catch (e) {
         clearTimeout(id);
+        // 1.1.6: una cancelacion nuestra no es un fallo de la fuente; no debe abrir su circuit breaker
+        if (cancelar?.aborted) throw new PeticionCancelada();
         // Network error / timeout — also counts as a failure for the breaker.
-        // We DON'T record for AbortError on normal client cancellation, but
-        // fetchWithTimeout's AbortController only fires on timeout, so it's
-        // safe to record here.
         recordFailure(url);
         throw e;
     } finally {

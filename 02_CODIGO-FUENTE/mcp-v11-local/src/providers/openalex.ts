@@ -76,7 +76,8 @@ export async function searchOpenAlex(query: string, options?: SearchOptions): Pr
         let filterStr = 'has_abstract:true';
         if (options?.yearStart) filterStr += `,publication_year:>${parseInt(options.yearStart) - 1}`;
         if (options?.yearEnd) filterStr += `,publication_year:<${parseInt(options.yearEnd) + 1}`;
-        if (options?.university) filterStr += `,authorships.institutions.display_name.search:${encodeURIComponent(options.university)}`;
+        // 1.1.6: `university` ya no restringe la busqueda (reducia los resultados); el orden final
+        // pone primero los de esa institucion (priorizarLocales).
 
         const defaultLimit = Math.min(options?.limit || 25, SEARCH_LIMITS.OPENALEX);
         // Parche 9 (2026-08-15): override per-page desde maxPagesBySource["openalex"] o env OPENALEX_MAXPAGES.

@@ -10,7 +10,9 @@ import { rerankByRelevanceSmart, extractKeyTerms, conceptMatchesWithSynonyms, no
 import { applyEnvUpperBound } from '../utils/client-detection';
 import { withPromiseTimeout } from '../providers/base';
 import { SEARCH_LIMITS } from '../utils/search-limits';
-import { filtrarRepositorios } from '../utils/pertinencia-repositorios';
+import { filtrarRepositorios, priorizarLocales } from '../utils/pertinencia-repositorios';
+import { requestAborted } from '../utils/geo-context';
+import { corregirUniversidades, resolverPdfDirectos } from '../utils/acabado-resultados';
 
 const router = Router();
 
@@ -308,6 +310,14 @@ router.post('/', async (req: Request, res: Response) => {
 
         await Promise.allSettled(promises);
 
+        // 1.1.6: si la peticion se cancelo (vencio el plazo o el cliente se fue), no se ordena ni
+        // se filtra: nadie va a leer la respuesta y ese trabajo retrasaba a las busquedas siguientes.
+        if (requestAborted()) {
+            console.warn(`[SEARCH] Cancelada: "${String(query).substring(0, 60)}" (se descarta el posproceso)`);
+            if (!res.headersSent) res.status(499).json({ success: false, error: 'Busqueda cancelada: vencio su plazo o el cliente cerro la conexion' });
+            return;
+        }
+
         // V11.1 R2: per-source cap to prevent UCV-Callao (rec_nmuenh) overflow
         const cappedResults = capPerSource(allResults, 8);
         let deduplicated = deduplicateResults(cappedResults);
@@ -346,13 +356,21 @@ router.post('/', async (req: Request, res: Response) => {
         // se desactiva con filtroRepositorios=false o LETXINET_FILTRO_REPOSITORIOS=false)
         let filtroPertinencia: { quitados: number; regla: string | null } | undefined;
         if (req.body.filtroRepositorios !== false && process.env.LETXINET_FILTRO_REPOSITORIOS !== 'false') {
-            const f = filtrarRepositorios(reranked, String(query || ''));
+            const f = filtrarRepositorios(reranked, String(query || ''), location);
             reranked = f.resultados;
             if (f.quitados) {
                 filtroPertinencia = { quitados: f.quitados, regla: f.regla };
                 console.log(`[SEARCH] Filtro de repositorios: quitados ${f.quitados} (${f.regla})`);
             }
         }
+
+        // LetXinet 1.1.6: lo local primero. Si la consulta nombra un lugar (palabra con mayuscula)
+        // o llegan `location` / `university`, los resultados que los mencionan suben al inicio,
+        // sin quitar ninguno. Antes `location` y `university` recortaban la lista (Huaraz de 6 a 0)
+        // y las tesis del lugar quedaban fuera de los primeros puestos.
+        const prioridad = priorizarLocales(reranked, String(query || ''), location, university, Math.max(5, Math.ceil(maxResults / 2)));
+        reranked = prioridad.resultados;
+        if (prioridad.lugares.length) console.log(`[SEARCH] Prioridad local (${prioridad.lugares.join(', ')}): ${prioridad.locales} de ${reranked.length} al inicio`);
 
         // V10: Optional false positive filter
         console.log(`[SEARCH] filterFalsePositives=${filterFalsePositives}, query="${query}"`);
@@ -389,6 +407,14 @@ router.post('/', async (req: Request, res: Response) => {
         const endIndex = startIndex + maxResults;
         const sliced = reranked.slice(startIndex, endIndex);
 
+        // LetXinet 1.1.6: universidad segun el repositorio y enlace directo al PDF de los primeros.
+        // El PDF se resuelve por defecto, salvo en fastMode (ahi solo con resolverPdf=true) porque
+        // puede sumar hasta 6 s cuando los repositorios responden lento.
+        corregirUniversidades(sliced);
+        let pdfDirectos = 0;
+        const quierePdf = req.body.resolverPdf === true || (req.body.resolverPdf !== false && !fastMode);
+        if (quierePdf && !requestAborted()) pdfDirectos = await resolverPdfDirectos(sliced, 5, 6000);
+
         console.log(`[SEARCH] Total: ${allResults.length} → Deduplicated: ${deduplicated.length} → Reranked → Page ${pageNum}: ${sliced.length}`);
         res.json({
             success: true,
@@ -397,7 +423,9 @@ router.post('/', async (req: Request, res: Response) => {
                 stats,
                 total: sliced.length,
                 totalBeforeDedup: allResults.length,
-                ...(filtroPertinencia ? { filtroPertinencia } : {})
+                ...(filtroPertinencia ? { filtroPertinencia } : {}),
+                ...(quierePdf ? { pdfDirectos } : {}),
+                ...(prioridad.lugares.length ? { prioridadLocal: { terminos: prioridad.lugares, locales: prioridad.locales } } : {})
             }
         });
     } catch (e: any) {

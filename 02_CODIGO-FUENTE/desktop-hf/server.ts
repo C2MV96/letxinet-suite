@@ -3534,6 +3534,38 @@ app.get("/api/keys", (req, res) => {
   }
 });
 
+// LetXinet Suite 1.1.6: comprueba con el proveedor si las claves guardadas son validas.
+// Antes una clave de Gemini rechazada solo se notaba al fallar el chat, sin explicacion en la
+// pantalla de claves. La clave viaja solo a su propio proveedor y en una cabecera, nunca en la URL.
+app.get("/api/keys/verify", async (_req, res) => {
+  type Estado = { estado: "ok" | "invalida" | "sin_clave" | "no_verificada"; detalle: string };
+  const probar = async (clave: string, url: string, cabeceras: Record<string, string>, nombre: string): Promise<Estado> => {
+    if (!clave) return { estado: "sin_clave", detalle: "" };
+    try {
+      const r = await fetch(url, { headers: cabeceras, signal: AbortSignal.timeout(8000) });
+      if (r.ok) return { estado: "ok", detalle: `${nombre} acepto la clave.` };
+      if (r.status === 400 || r.status === 401 || r.status === 403) {
+        let motivo = "";
+        try { const j: any = await r.json(); motivo = String(j?.error?.message || j?.message || "").slice(0, 160); } catch { /* sin detalle */ }
+        return { estado: "invalida", detalle: `${nombre} rechazo la clave (HTTP ${r.status})${motivo ? `: ${motivo}` : ""}` };
+      }
+      return { estado: "no_verificada", detalle: `${nombre} respondio HTTP ${r.status}; no se pudo comprobar la clave.` };
+    } catch (e: any) {
+      return { estado: "no_verificada", detalle: `No se pudo contactar a ${nombre} (${e?.name === "TimeoutError" ? "sin respuesta en 8 s" : e?.message || e}).` };
+    }
+  };
+  try {
+    const coreKey = process.env.CORE_API_KEY || "";
+    const [gemini, core] = await Promise.all([
+      probar(geminiApiKey, "https://generativelanguage.googleapis.com/v1beta/models?pageSize=1", { "x-goog-api-key": geminiApiKey }, "Google (Gemini)"),
+      probar(coreKey, "https://api.core.ac.uk/v3/search/works?q=test&limit=1", { Authorization: `Bearer ${coreKey}` }, "CORE"),
+    ]);
+    res.json({ geminiApiKey: gemini, coreApiKey: core });
+  } catch (err: any) {
+    res.status(500).json({ error: err.message || String(err) });
+  }
+});
+
 // Helper: update one env var + track in newKeys.
 app.post("/api/keys", (req, res) => {
   try {

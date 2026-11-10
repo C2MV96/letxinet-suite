@@ -18,7 +18,8 @@ import {
 } from './base';
 import { VuFindRecord } from '../types/search';
 import { centralizedOpenAlexFallback } from './openalex';
-import { consultaConservandoTema } from '../utils/pertinencia-repositorios';
+import { consultaConservandoTema, planConsultasAlicia, esDeInstitucion, temaYLugar } from '../utils/pertinencia-repositorios';
+import { requestAborted } from '../utils/geo-context';
 import { executeFallback } from './fallback-manager';
 import { SEARCH_LIMITS } from '../utils/search-limits';
 import { solveAnubisChallenge } from '../scraping/anubis-solver';
@@ -592,8 +593,8 @@ function parseAliciaResponse(text: string): any {
     }
 }
 
-async function executeAliciaSearchWithFallbacks(cleanQuery: string, effectiveQuery: string, limit: number, options?: SearchOptions): Promise<{ records: any[], isFallback: boolean }> {
-    let url = `https://alicia.concytec.gob.pe/vufind/api/v1/search?lookfor=${encodeURIComponent(effectiveQuery)}&type=AllFields&limit=${limit}`;
+async function executeAliciaSearchWithFallbacks(cleanQuery: string, effectiveQuery: string, limit: number, options?: SearchOptions, tipo: 'AllFields' | 'Title' = 'AllFields'): Promise<{ records: any[], isFallback: boolean }> {
+    let url = `https://alicia.concytec.gob.pe/vufind/api/v1/search?lookfor=${encodeURIComponent(effectiveQuery)}&type=${tipo}&limit=${limit}`;
     if (options?.yearStart && options?.yearEnd) {
         url += `&filter[]=publishDate:[${options.yearStart} TO ${options.yearEnd}]`;
     }
@@ -610,7 +611,8 @@ async function executeAliciaSearchWithFallbacks(cleanQuery: string, effectiveQue
     // el outer race. Si autoSkipDME, retorno inmediatamente con
     // empty/few records keeps el provider en 10-20s total.
     const raceMsOpt = (options as any)?.__timeouts?.raceMs as number | undefined;
-    const skipFallbacks = typeof raceMsOpt === 'number' && raceMsOpt < 180_000;
+    // 1.1.6: las consultas del plan no se recortan (el recorte quitaba el tema o el lugar)
+    const skipFallbacks = (typeof raceMsOpt === 'number' && raceMsOpt < 180_000) || !!(options as any)?.__sinRecorte;
 
     const res = await fetchWithTimeout(url, { headers: { 'Accept': 'application/json', 'User-Agent': 'LaTeX-Editor-Academic-Search/1.0' } }, latamTimeout(options));
     let bodyText = '';
@@ -846,7 +848,10 @@ async function enhanceAliciaResults(mappedResults: SearchResult[], options?: Sea
 export async function searchAlicia(query: string, options?: SearchOptions): Promise<{ results: SearchResult[], metadata?: { isFallback: boolean } }> {
     try {
         const sanitizedQuery = sanitizeQueryForSearch(query);
-        const shortQuery = simplifyQuery(sanitizedQuery, 6, options?.location);
+        // 1.1.6: `location` ya no se antepone a la consulta (traia "calidad de servicio en Huaraz"
+        // para "calidad del agua ... Huaraz"); ahora entra como lugar en el plan de consultas.
+        const plan = planConsultasAlicia(sanitizedQuery, options?.location);
+        const shortQuery = simplifyQuery(sanitizedQuery, 6);
         let cleanQuery = shortQuery
             .replace(/\b(investiga|investigación|estudio|busca|encuentra|analiza|revisión|acerca|sobre|el|la|los|las|un|una|de|del|y|o|con|para)\b/gi, '')
             .replace(/["()]/g, ' ')
@@ -866,7 +871,31 @@ export async function searchAlicia(query: string, options?: SearchOptions): Prom
         const effWords = effectiveQuery.split(/\s+/).filter(w => w.length > 0);
         let records: any[] = [];
         let isFallback = false;
-        if (effWords.length >= 4) {
+        if (plan) {
+            // LetXinet 1.1.6: plan de consultas con el lugar. Sustituye al corte en pares y trio de
+            // las primeras palabras, que dejaba fuera el lugar (va al final de la consulta) y por
+            // eso no encontraba las tesis locales que ALICIA si tiene. Las consultas van en
+            // paralelo y los registros quedan en el orden del plan: primero "tema y lugar", luego
+            // los titulos locales y al final el tema sin lugar.
+            console.log(`[ALICIA] Plan 1.1.6: ${plan.map(p => `${p.etiqueta}="${p.lookfor}"${p.type === 'Title' ? ' (titulo)' : ''}`).join(' | ')}`);
+            const subOpts = { ...(options || {}), __skipDME: true, __sinRecorte: true } as SearchOptions;
+            const porConsulta = await Promise.allSettled(
+                plan.map(p => executeAliciaSearchWithFallbacks(p.lookfor, p.lookfor, limit, subOpts, p.type))
+            );
+            const seenIds = new Set<string>();
+            porConsulta.forEach((r, i) => {
+                const n = r.status === 'fulfilled' ? r.value.records.length : 0;
+                console.log(`[ALICIA] Plan "${plan[i].etiqueta}": ${r.status === 'fulfilled' ? n + ' registros' : 'fallo: ' + (r.reason?.message || r.reason)}`);
+                if (r.status !== 'fulfilled') return;
+                for (const rec of r.value.records) {
+                    const id = rec.id || rec.recordId || JSON.stringify(rec).substring(0, 60);
+                    if (!seenIds.has(id)) { seenIds.add(id); records.push(rec); }
+                }
+            });
+            // Si todas las consultas fallaron (fuente caida o circuito abierto), se informa el error
+            // en vez de devolver "0 resultados" como si ALICIA no tuviera nada
+            if (porConsulta.every(r => r.status === 'rejected')) throw (porConsulta[0] as PromiseRejectedResult).reason;
+        } else if (effWords.length >= 4) {
             // Patch J8a (2026-07-27): Limit A2-split to 2 pairs + 1 triplet
             // (3 sub-queries total) instead of 5 pairs + 1 triplet (6 sub-queries).
             // The 5+1 sub-queries × 30s timeout floor = ~72s wall-clock alone,
@@ -930,7 +959,7 @@ export async function searchAlicia(query: string, options?: SearchOptions): Prom
         // enough for batch_search recall. Top-level DME only runs for simple
         // 1-3 keyword queries (slow path unlikely).
         const effWordsCount = effectiveQuery.split(/\s+/).filter(w => w.length > 0).length;
-        const wasA2Split = effWordsCount >= 4;
+        const wasA2Split = effWordsCount >= 4 || !!plan; // 1.1.6: el plan de consultas tampoco hace DME
         // Patch B1 (2026-07-29): batch_skip_dme flag set by mcp.ts handleBatchSearch
         // to skip DME en batch_search path (DME cascade tarda 320s+).
         // Patch B2 (2026-07-30): fastMode flag from search.ts/smart_search also
@@ -972,12 +1001,14 @@ export async function searchAlicia(query: string, options?: SearchOptions): Prom
             await enhanceAliciaResults(mappedResults, options);
         }
 
+        // 1.1.6: `university` ya no descarta resultados; solo pone primero los de esa institucion.
+        // Antes exigia el nombre completo en el registro, y como en modo rapido ALICIA no trae la
+        // universidad, la lista quedaba vacia (Huaraz paso de 6 resultados a 0).
         const filteredResults = options?.university
-            ? mappedResults.filter((result: SearchResult) => {
-                const needle = options.university!.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-                const haystack = `${result.university || ''} ${result.title || ''} ${result.abstract || ''}`.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-                return haystack.includes(needle);
-            })
+            ? [
+                ...mappedResults.filter(r => esDeInstitucion(r, options.university)),
+                ...mappedResults.filter(r => !esDeInstitucion(r, options.university)),
+            ]
             : mappedResults;
 
         let finalResults = filteredResults;
@@ -1016,6 +1047,9 @@ export async function searchAlicia(query: string, options?: SearchOptions): Prom
         return { results: finalResults, metadata: { isFallback: resultsWasFallback } };
     } catch (e: any) {
         console.warn(`[ALICIA] Master Exception: ${e.message}`);
+        // 1.1.6: si ALICIA esta en pausa (circuit breaker) o la peticion se cancelo, se informa el
+        // motivo. Antes devolvia 0 resultados en 1 ms y nada avisaba de que faltaba la fuente.
+        if (e?.name === 'CircuitOpenError' || e?.name === 'PeticionCancelada') throw e;
         return { results: [], metadata: { isFallback: false } };
     }
 }
@@ -1024,6 +1058,13 @@ export async function searchAlicia(query: string, options?: SearchOptions): Prom
  * RENATI (Peru - SUNEDU) - Uses ALICIA with independent fallback
  * CRITICAL: This is the primary source for national thesis antecedents
  */
+// 1.1.6: pausa de la cosecha OAI-PMH cuando vence su plazo varias veces seguidas (ver searchRenati)
+const RENATI_OAI_TIMEOUT_MS = (() => { const n = parseInt(process.env.RENATI_OAI_TIMEOUT_MS || '', 10); return n > 0 ? n : 12_000; })();
+const OAI_FALLOS_PARA_PAUSA = 2;
+const OAI_PAUSA_MS = 10 * 60 * 1000;
+let oaiFallosSeguidos = 0;
+let oaiPausadaHasta = 0;
+
 export async function searchRenati(query: string, options?: SearchOptions): Promise<{ results: SearchResult[], metadata?: { isFallback: boolean } }> {
     // Phase 6 (2026-07-23): per-attempt timeout auto-derived from the calling
     // MCP client's ceiling via options.__timeouts.tryMs (race Ã— 0.67).
@@ -1040,20 +1081,47 @@ export async function searchRenati(query: string, options?: SearchOptions): Prom
         if (options?.onProgress) options.onProgress({ message: 'Consultando RENATI (SUNEDU)...' });
         console.log(`[RENATI] Searching: "${query.substring(0, 50)}..."`);
 
-        // First attempt: Run ALICIA + OAI-PMH in PARALLEL (was sequential)
-        const { searchOaiPmhAll } = await import('./oai-pmh');
-        const [aliciaResult, oaiResult] = await Promise.allSettled([
+        // LetXinet 1.1.6: la cosecha OAI-PMH pasa a ser un respaldo de verdad.
+        // Antes corria SIEMPRE en paralelo con ALICIA y la respuesta esperaba a las dos. La cosecha
+        // descarga paginas enteras de varios repositorios (hasta 22 s la primera) y casi nunca
+        // termina a tiempo, asi que RENATI tardaba unos 30 s fijos aunque ALICIA contestara en 3 s
+        // (prueba del 09/11/2026: `search` con "peru" o "latam" en 31 s frente a 5-9 s con
+        // "peru_fast"). Ahora:
+        //   - si ALICIA trae 5 resultados o mas, no se cosecha;
+        //   - si trae menos, la cosecha tiene un plazo corto (RENATI_OAI_TIMEOUT_MS, 12 s);
+        //   - si vence ese plazo 2 veces seguidas, se deja de intentar durante 10 minutos.
+        const [aliciaResult] = await Promise.allSettled([
             withPromiseTimeout(
                 searchAlicia(query, { ...options, limit: options?.limit || SEARCH_LIMITS.RENATI }),
                 RENATI_ATTEMPT_TIMEOUT,
                 'ALICIA timeout'
             ),
-            withPromiseTimeout(
-                searchOaiPmhAll(query, options),
-                RENATI_ATTEMPT_TIMEOUT,
-                'OAI-PMH timeout'
-            )
         ]);
+        const nAlicia = aliciaResult.status === 'fulfilled' ? aliciaResult.value.results.length : 0;
+        let oaiResult: PromiseSettledResult<{ results: SearchResult[] }> = { status: 'fulfilled', value: { results: [] } };
+        if (nAlicia >= 5) {
+            console.log(`[RENATI] ALICIA trajo ${nAlicia}: no hace falta la cosecha OAI-PMH`);
+        } else if (requestAborted()) {
+            console.log('[RENATI] Peticion cancelada: no se cosecha OAI-PMH');
+        } else if (Date.now() < oaiPausadaHasta) {
+            console.log(`[RENATI] Cosecha OAI-PMH en pausa ${Math.ceil((oaiPausadaHasta - Date.now()) / 1000)} s mas (vencio su plazo ${OAI_FALLOS_PARA_PAUSA} veces seguidas)`);
+        } else {
+            const plazoOai = Math.min(RENATI_ATTEMPT_TIMEOUT, RENATI_OAI_TIMEOUT_MS);
+            const { searchOaiPmhAll } = await import('./oai-pmh');
+            [oaiResult] = await Promise.allSettled([
+                withPromiseTimeout(searchOaiPmhAll(query, options), plazoOai, 'OAI-PMH timeout'),
+            ]);
+            if (oaiResult.status === 'rejected') {
+                oaiFallosSeguidos++;
+                if (oaiFallosSeguidos >= OAI_FALLOS_PARA_PAUSA) {
+                    oaiPausadaHasta = Date.now() + OAI_PAUSA_MS;
+                    oaiFallosSeguidos = 0;
+                    console.warn(`[RENATI] La cosecha OAI-PMH no termino en ${plazoOai} ms ${OAI_FALLOS_PARA_PAUSA} veces seguidas: en pausa ${OAI_PAUSA_MS / 60000} min`);
+                }
+            } else {
+                oaiFallosSeguidos = 0;
+            }
+        }
 
         let results: SearchResult[] = [];
         let isFallback = false;
@@ -1144,7 +1212,8 @@ export async function searchRenati(query: string, options?: SearchOptions): Prom
         // coherente con C9d/C9e. Para fallback completo usar batch_search con
         // raceMs alto o PROVIDER_TIMEOUT_MS=180000.
         const raceMsRenati = (options as any)?.__timeouts?.raceMs as number | undefined;
-        const skipRenatiFallbacks = typeof raceMsRenati === 'number' && raceMsRenati < 180_000;
+        // 1.1.6: tampoco se reintenta si la peticion ya se cancelo
+        const skipRenatiFallbacks = (typeof raceMsRenati === 'number' && raceMsRenati < 180_000) || requestAborted();
 
         // FALLBACK: If no results, try with simplified query directly
         if (!skipRenatiFallbacks && results.length === 0) {
@@ -1181,6 +1250,11 @@ export async function searchRenati(query: string, options?: SearchOptions): Prom
             }
         }
 
+        // 1.1.6: si no hay nada porque ALICIA esta en pausa, se informa en vez de devolver 0 en silencio
+        if (results.length === 0 && aliciaResult.status === 'rejected' && aliciaResult.reason?.name === 'CircuitOpenError') {
+            throw aliciaResult.reason;
+        }
+
         console.log(`[RENATI] Final results: ${results.length} documents`);
         return {
             results: results.map(r => ({ ...r, source: 'RENATI (SUNEDU)', type: r.type || 'Tesis' })),
@@ -1188,8 +1262,10 @@ export async function searchRenati(query: string, options?: SearchOptions): Prom
         };
     } catch (e: any) {
         console.error(`[RENATI] Exception: ${e.message}, attempting Fallback...`);
+        if (e?.name === 'PeticionCancelada') throw e;
         const fallbackRes = await executeFallback(query, options, 'Renati');
         if (fallbackRes) return fallbackRes;
+        if (e?.name === 'CircuitOpenError') throw e;
         return { results: [] };
     }
 }
@@ -1873,10 +1949,22 @@ function createLaReferenciaCountrySearch(
             if (options?.onProgress) options.onProgress({ message: `Consultando ${sourceName}...` });
             console.log(`${logPrefix} Searching via La Referencia [${countryCode}]: "${cleanQuery.substring(0, 50)}..."`);
 
-            const firstAttempt = await searchLaReferencia(cleanQuery, { ...options, limit, countryFilter: countryCode });
-            if (firstAttempt.results.length > 0) {
+            // 1.1.6: con un lugar en la consulta (o `location`) se pide ademas "tema + lugar", para
+            // traer los trabajos locales que no tienen todas las palabras. Van primero.
+            const { tema, lugar } = temaYLugar(cleanQuery, options?.location);
+            const consultaLocal = lugar.length && tema.length ? `${tema.slice(0, tema.length > 2 ? 2 : tema.length).join(' ')} ${lugar[0]}` : '';
+            const pedirLocal = consultaLocal && consultaLocal !== cleanQuery.toLowerCase() && (tema.length > 2 || !!options?.location);
+            const [firstAttempt, locales] = await Promise.all([
+                searchLaReferencia(cleanQuery, { ...options, limit, countryFilter: countryCode }),
+                pedirLocal
+                    ? searchLaReferencia(consultaLocal, { ...options, limit, countryFilter: countryCode }).catch(() => ({ results: [] as SearchResult[] }))
+                    : Promise.resolve({ results: [] as SearchResult[] }),
+            ]);
+            if (firstAttempt.results.length > 0 || locales.results.length > 0) {
+                const vistos = new Set<string>();
+                const juntos = [...locales.results, ...firstAttempt.results].filter(r => !vistos.has(r.id) && !!vistos.add(r.id));
                 return {
-                    results: firstAttempt.results.map(r => ({ ...r, source: sourceName })),
+                    results: juntos.map(r => ({ ...r, source: sourceName })),
                     metadata: { isFallback: false }
                 };
             }

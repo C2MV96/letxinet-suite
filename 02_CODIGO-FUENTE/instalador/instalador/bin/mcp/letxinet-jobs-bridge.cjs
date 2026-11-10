@@ -34,7 +34,7 @@ const LETXIPU_LOCAL_URL = process.env.LETXIPU_LOCAL_URL || 'http://127.0.0.1:400
 // OpenCode (114 s), justo lo que el puente debia evitar. V11 1.1.5 trata este
 // User-Agent como cliente sin limite corto (600 s); una V11 anterior lo trata
 // como desconocido (228 s).
-const JOB_USER_AGENT = 'letxinet-jobs-bridge/1.1.5';
+const JOB_USER_AGENT = 'letxinet-jobs-bridge/1.1.6';
 // Archivos de tareas: <fecha>_<hora>Z_<azar>_{req.json,out.json,status.txt,runner.cjs,pid.txt}
 const TASK_ID_RE = /^\d{4}-\d{2}-\d{2}_\d{9}Z_[a-z0-9]{1,12}$/;
 const JOB_FILE_RE = /^(\d{4}-\d{2}-\d{2}_\d{9}Z_[a-z0-9]{1,12})_(req\.json|out\.json|status\.txt|runner\.cjs|pid\.txt)$/;
@@ -635,7 +635,7 @@ rl.on('line', async (line) => {
       result: {
         protocolVersion: '2024-11-05',
         capabilities: { tools: {} },
-        serverInfo: { name: 'letxinet-gateway-bridge', version: '1.1.5' }
+        serverInfo: { name: 'letxinet-gateway-bridge', version: '1.1.6' }
       }
     });
     return;

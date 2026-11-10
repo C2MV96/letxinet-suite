@@ -60,7 +60,10 @@ export const STOPWORDS = new Set([
  * Maps country ID → array of detection words (normalized, no accents).
  */
 const COUNTRY_KEYWORDS: Record<string, string[]> = Object.fromEntries(
-    Object.entries(countryData).filter(([k]) => k !== '_comment')
+    // 1.1.6: se saltan todas las claves de metadatos ("_comment", "_version"...). "_version" es un
+    // texto ("R3-v2") y se recorria letra a letra como si fueran palabras clave, asi que cualquier
+    // resultado con un "3" o un "2" en la universidad o el titulo quedaba con pais "_version".
+    Object.entries(countryData).filter(([k, v]) => !k.startsWith('_') && Array.isArray(v))
 ) as any;
 
 /**

@@ -31,7 +31,7 @@ call "%INSTALL_DIR%\bin\suite-env-loader.cmd"
 REM --- Defaults si el .env no las define ---
 if not defined OSM_MCP_PORT set "OSM_MCP_PORT=7082"
 if not defined OSM_METRICS_PORT set "OSM_METRICS_PORT=9090"
-if not defined OSM_USER_AGENT set "OSM_USER_AGENT=LetXinet-Suite/1.1.5"
+if not defined OSM_USER_AGENT set "OSM_USER_AGENT=LetXinet-Suite/1.1.6"
 REM LetXinet Suite 1.1.2: solo escucha en este equipo (para la red local: LETXINET_BIND_HOST=0.0.0.0)
 if not defined LETXINET_BIND_HOST set "LETXINET_BIND_HOST=127.0.0.1"
 

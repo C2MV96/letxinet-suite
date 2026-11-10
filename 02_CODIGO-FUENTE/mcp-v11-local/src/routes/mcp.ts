@@ -17,7 +17,10 @@ import { analyzeText, wordSimilarity, batchWordSimilarity, mostSimilar } from '.
 import { validateToolInput } from '../utils/validators';
 import { withToolTimeout, getToolTimeoutMs, TOOL_TIMEOUTS } from '../utils/tool-timeouts';
 import { detectMcpClient, deriveTimeouts, deriveBatchCaps, applyEnvUpperBound, McpClient, DerivedTimeouts } from '../utils/client-detection';
-import { getGeoContext, setGeoContext } from '../utils/geo-context';
+import { getGeoContext, setGeoContext, getRequestAbortController, requestAborted, senalConPlazo, PeticionCancelada } from '../utils/geo-context';
+import { tomarTurnoBusqueda, estadoTurnosBusqueda, ServidorOcupado } from '../utils/turnos-busqueda';
+import { filtrarRepositorios, priorizarLocales, temaYLugar } from '../utils/pertinencia-repositorios';
+import { corregirUniversidades, resolverPdfDirectos } from '../utils/acabado-resultados';
 import { metrics } from '../utils/metrics';
 import { log } from '../utils/logger';
 import { urlInternaEnArgumentos } from '../utils/url-segura';
@@ -222,7 +225,7 @@ const MCP_SERVER_INFO = {
 const MCP_TOOLS = [
     {
         name: 'batch_search',
-        description: 'Preferred search tool in V5. Runs multiple queries in parallel across multiple source groups, then globally deduplicates results. Best for broad literature discovery and LatAm coverage.',
+        description: 'Runs several queries in one call across multiple source groups and deduplicates. Slower than calling search several times and without the repository relevance filter: use search by default and batch_search only when one combined, deduplicated list is needed.',
         inputSchema: {
             type: 'object',
             properties: {
@@ -242,7 +245,7 @@ const MCP_TOOLS = [
     },
     {
         name: 'search',
-        description: 'Single-query academic search across 32+ sources. For best recall use batch_search, which queries multiple variants and sources in parallel.',
+        description: 'Recommended default search: one query across 32+ sources, with the repository relevance filter and local results first when the query names a place. For several variants, call search several times in sequence (faster and more relevant than batch_search). Run searches one after another, not in parallel.',
         inputSchema: {
             type: 'object',
             properties: {
@@ -252,8 +255,8 @@ const MCP_TOOLS = [
                 maxSources: { type: 'number', description: 'Deprecated alias of maxResults (used only when maxResults is not given)' },
                 yearStart: { type: 'string', description: 'Filter by start year (e.g. "2020")' },
                 yearEnd: { type: 'string', description: 'Filter by end year (e.g. "2024")' },
-                university: { type: 'string', description: 'Adds this term to the search query - does NOT filter results structurally. Combine with the query text for best effect.' },
-                location: { type: 'string', description: 'Adds explicit geographic location to search query. Does NOT filter results structurally.' },
+                university: { type: 'string', description: 'Institution to put first (e.g. "Universidad Nacional Santiago Antunez de Mayolo"). It only reorders: results from that institution go first and none is removed.' },
+                location: { type: 'string', description: 'City or region to put first (e.g. "Huaraz"). ALICIA/RENATI are also queried with topic + place, and results that mention the place go first. It never removes results. A place written in the query with a capital letter ("dengue Chimbote") has the same effect.' },
                 fastMode: { type: 'boolean', description: 'Skip slow DME metadata enhancement for faster results (default false). Use when speed > completeness.' },
                 filterFalsePositives: { type: 'boolean', description: 'Filter out papers that do not match query tokens/concepts. Default: false.' },
             },
@@ -1341,6 +1344,52 @@ function deduplicateBatchResults(results: any[]): any[] {
     });
 }
 
+/**
+ * LetXinet 1.1.6: junta los duplicados que deduplicateBatchResults deja pasar. Su clave es
+ * "titulo + año", asi que el mismo trabajo llegaba dos veces cuando una fuente traia el año y la
+ * otra no (ALICIA y La Referencia, 7 de 60 en la prueba del 09/11/2026). Aqui se comparan ademas
+ * la direccion (handle o URL) y el titulo sin año; se conserva el registro mas completo.
+ */
+function colapsarDuplicados(results: any[]): any[] {
+    const claveUrl = (r: any): string => {
+        const u = String(r.handleUrl || r.pdfUrl || r.url || '').toLowerCase().trim();
+        if (!u || /alicia\.concytec|lareferencia\.info/.test(u)) return '';
+        const handle = u.match(/handle(?:\.net)?\/([\d.]+\/[\w.-]+)/);
+        return handle ? `h:${handle[1]}` : `u:${u.replace(/^https?:\/\//, '').replace(/[/?#]+$/, '')}`;
+    };
+    const claveTitulo = (r: any): string => {
+        const t = typeof r.title === 'string' ? normalizeForDedup(r.title) : '';
+        return t.length > 25 ? `t:${t.substring(0, 90)}` : '';
+    };
+    const porClave = new Map<string, number>();
+    const salida: any[] = [];
+    for (const r of results) {
+        const claves = [claveUrl(r), claveTitulo(r)].filter(Boolean);
+        const i = claves.map(k => porClave.get(k)).find(x => x !== undefined);
+        if (i === undefined) {
+            claves.forEach(k => porClave.set(k, salida.length));
+            salida.push(r);
+            continue;
+        }
+        const previo = salida[i];
+        const mejor = resultQualityScore(r) > resultQualityScore(previo) ? r : previo;
+        const otro = mejor === r ? previo : r;
+        const fuentes = Array.from(new Set([...(previo.sourcesFound || [previo.source]), ...(r.sourcesFound || [r.source])].filter(Boolean)));
+        const consultas = Array.from(new Set([...(previo.matchedQueries || []), ...(r.matchedQueries || [])]));
+        salida[i] = {
+            ...mejor,
+            year: mejor.year || otro.year,
+            doi: mejor.doi || otro.doi,
+            abstract: mejor.abstract || otro.abstract,
+            sourcesFound: fuentes,
+            sourceCount: fuentes.length,
+            ...(consultas.length ? { matchedQueries: consultas } : {}),
+        };
+        claves.forEach(k => porClave.set(k, i));
+    }
+    return salida;
+}
+
 // V15: Shared coverage floor â€” prevents 0 results when score filter is too aggressive
 function applyCoverageFloor(
     filtered: any[],
@@ -1433,6 +1482,7 @@ async function handleBatchSearch(body: any, baseUrl: string): Promise<any> {
 
     const allResults: any[] = [];
     const sourceStats: Record<string, { found: number; time: number; errors: number }> = {};
+    const sourceErrors: Record<string, string> = {};
     const queryReports: Array<{ query: string; returned: number; beforeDedup: number; error?: string }> = [];
     const perQueryCounts = new Map<string, number>();
 
@@ -1440,7 +1490,10 @@ async function handleBatchSearch(body: any, baseUrl: string): Promise<any> {
         try {
             const { expandSources, PROVIDER_MAP } = await import('./search');
             // Phase 6: cap expanded sources per query based on detected client
-            const expanded = expandSources(srcs, batchCaps?.sourcesPerQuery);
+            let expanded = expandSources(srcs, batchCaps?.sourcesPerQuery);
+            // 1.1.6: igual que `search`: RENATI ya consulta ALICIA por dentro; con las dos se
+            // duplicaba la carga sobre ALICIA y los resultados salian repetidos.
+            if (expanded.includes('renati') && expanded.includes('alicia')) expanded = expanded.filter((s: string) => s !== 'alicia');
 
             console.log(`[BATCH-${label}] Searching "${q}" sources=${expanded.join(',')} limit=${limit}`);
 
@@ -1511,6 +1564,7 @@ async function handleBatchSearch(body: any, baseUrl: string): Promise<any> {
                     localResults.push(...results);
                 } catch (e: any) {
                     localStats[sourceId] = { found: 0, time: Date.now() - pStart };
+                    if (e?.name !== 'PeticionCancelada') sourceErrors[sourceId] = String(e?.message || e).substring(0, 160);
                 }
             });
 
@@ -1567,18 +1621,36 @@ async function handleBatchSearch(body: any, baseUrl: string): Promise<any> {
     let idx = 0;
     async function runNext(): Promise<void> {
         while (idx < searchTasks.length) {
+            if (requestAborted()) return; // 1.1.6: no empezar consultas de un batch ya cancelado
             const i = idx++;
             await searchTasks[i]();
         }
     }
     await Promise.all(Array.from({ length: Math.min(MAX_CONCURRENT, searchTasks.length) }, () => runNext()));
+    if (requestAborted()) throw new PeticionCancelada();
 
     for (const q of queries) {
         const count = perQueryCounts.get(q) || 0;
         queryReports.push({ query: q, returned: count, beforeDedup: count });
     }
 
-    let deduplicated = deduplicateBatchResults(allResults);
+    let deduplicated = colapsarDuplicados(deduplicateBatchResults(allResults));
+
+    // LetXinet 1.1.6: el mismo filtro de pertinencia de `search` para los repositorios de tesis.
+    // Un resultado se conserva si pasa el filtro con al menos una de las consultas del batch.
+    // Antes batch_search no lo aplicaba: "calidad del agua ... Huaraz" devolvia 20 de 20 sobre
+    // "calidad de servicio".
+    let filtroPertinencia: { quitados: number } | undefined;
+    if (body.filtroRepositorios !== false && process.env.LETXINET_FILTRO_REPOSITORIOS !== 'false') {
+        const pasan = new Set<any>();
+        for (const q of queries) for (const r of filtrarRepositorios(deduplicated, q, location).resultados) pasan.add(r);
+        const antes = deduplicated.length;
+        deduplicated = deduplicated.filter(r => pasan.has(r));
+        if (antes > deduplicated.length) {
+            filtroPertinencia = { quitados: antes - deduplicated.length };
+            console.log(`[BATCH] Filtro de repositorios: quitados ${antes - deduplicated.length} de ${antes}`);
+        }
+    }
 
     if (yearStart) {
         const minYear = parseInt(String(yearStart), 10);
@@ -1639,7 +1711,9 @@ async function handleBatchSearch(body: any, baseUrl: string): Promise<any> {
 
     // V10: Rerank FIRST (with OSM MCP geocoding), THEN filter by score
     // This fixes batch_search returning 0 for relative locations (Chivay, Huancayo, etc.)
-    let reranked = await rerankByRelevanceSmart(overFetch, queries, textWeight, geoWeight);
+    // 1.1.6: fastMode tambien se respeta al reordenar (antes se ignoraba aqui)
+    let reranked = await rerankByRelevanceSmart(overFetch, queries, textWeight, geoWeight, fastMode);
+    if (requestAborted()) throw new PeticionCancelada();
 
     // V15: Warn if top result has geoScore=0 despite location being set
     const osmGeo = getGeoContext();
@@ -1694,14 +1768,30 @@ async function handleBatchSearch(body: any, baseUrl: string): Promise<any> {
         console.log(`[BATCH] Reranked ${filtered.length} results by relevance. Top: "${(filtered[0].title||'').substring(0,60)}" (rel=${filtered[0].relevanceScore}, q=${filtered[0].qualityScore})`);
     }
 
+    // 1.1.6: lo local primero, como en `search` (lugar de cualquiera de las consultas o `location`)
+    const consultaConLugar = queries.find(q => temaYLugar(q, location).lugar.length > 0) || queries[0];
+    const prioridad = priorizarLocales(filtered, consultaConLugar, location, university, Math.max(5, Math.ceil(maxResults / 2)));
+    filtered = prioridad.resultados;
+
     const finalResults = filtered.slice(0, maxResults);
+    // 1.1.6: universidad segun el repositorio y PDF directo de los primeros (como en `search`)
+    corregirUniversidades(finalResults);
+    const quierePdf = body.resolverPdf === true || (body.resolverPdf !== false && !fastMode);
+    const pdfDirectos = quierePdf && !requestAborted() ? await resolverPdfDirectos(finalResults, 5, 6000) : 0;
 
     // V18: Clear active profile to prevent state leakage between requests
     clearActiveProfile();
 
+    // 1.1.6: avisa de las fuentes que no respondieron, para que 0 resultados no parezca "no hay nada"
+    const fuentesConError = Object.entries(sourceErrors).map(([fuente, error]) => ({ fuente, error }));
+
     return {
         success: true,
         data: {
+            ...(filtroPertinencia ? { filtroPertinencia } : {}),
+            ...(prioridad.lugares.length ? { prioridadLocal: { terminos: prioridad.lugares, locales: prioridad.locales } } : {}),
+            ...(fuentesConError.length ? { fuentesConError } : {}),
+            ...(quierePdf ? { pdfDirectos } : {}),
             results: finalResults,
             total: finalResults.length,
             totalBeforeDedup: allResults.length,
@@ -1737,6 +1827,10 @@ async function handleSmartSearch(body: any, baseUrl: string): Promise<any> {
 
         const allResults: any[] = [];
         const searchSources = Array.isArray(sources) ? sources : [sources];
+        // 1.1.6: cuenta de variantes que respondieron, para no devolver "exito" con 0 resultados
+        // cuando en realidad todas las consultas fallaron o se quedaron sin tiempo
+        let variantesOk = 0;
+        const fallosVariantes: string[] = [];
 
         // Concurrency limiter: max 3 parallel requests (same as batch_search)
         const MAX_CONCURRENT = 3;
@@ -1773,7 +1867,7 @@ async function handleSmartSearch(body: any, baseUrl: string): Promise<any> {
                             body: JSON.stringify(searchBody),
                             // FIX smart_search timeout: 60s no sirve para latam+global con maxSources:30 (~63s real).
                             // Subido a 120s — sigue bajo el total timeout de 150s del handler.
-                            signal: AbortSignal.timeout(120000),
+                            signal: senalConPlazo(120000),
                         });
                         data = await res.json() as any;
                     }
@@ -1781,19 +1875,28 @@ async function handleSmartSearch(body: any, baseUrl: string): Promise<any> {
                     // `sources`. Aceptamos ambos formatos para que
                     // smart_search no termine en éxito vacío.
                     const results = data?.data?.results || data?.data?.sources || [];
-                    if (data.success && Array.isArray(results)) allResults.push(...results);
-                } catch (e: any) { console.error(`[SMART_SEARCH] Variation "${variant}" failed: ${e.message}`); }
+                    if (data.success && Array.isArray(results)) { allResults.push(...results); variantesOk++; }
+                    else fallosVariantes.push(`${variant}: ${String(data?.error || 'sin respuesta').substring(0, 120)}`);
+                } catch (e: any) {
+                    console.error(`[SMART_SEARCH] Variation "${variant}" failed: ${e.message}`);
+                    fallosVariantes.push(`${variant}: ${String(e.message).substring(0, 120)}`);
+                }
             });
         }
 
         let idx = 0;
         async function runNext(): Promise<void> {
             while (idx < searchTasks.length) {
+                if (requestAborted()) return; // 1.1.6
                 const i = idx++;
                 await searchTasks[i]();
             }
         }
         await Promise.all(Array.from({ length: Math.min(MAX_CONCURRENT, searchTasks.length) }, () => runNext()));
+        if (requestAborted()) throw new PeticionCancelada();
+        if (variantesOk === 0 && fallosVariantes.length > 0) {
+            return { success: false, error: `smart_search no obtuvo respuesta de ninguna de sus ${fallosVariantes.length} consultas. Primer fallo: ${fallosVariantes[0]}. Prueba con search.`, data: { queriesUsed: variations, fallos: fallosVariantes } };
+        }
 
         const seen = new Map<string, any>();
         for (const r of allResults) {
@@ -1812,7 +1915,8 @@ async function handleSmartSearch(body: any, baseUrl: string): Promise<any> {
             if (!isNaN(maxYear)) deduplicated = deduplicated.filter(r => !r.year || parseInt(String(r.year), 10) <= maxYear);
         }
 
-        let reranked = await rerankByRelevanceSmart(deduplicated, variations, textWeight, geoWeight);
+        let reranked = await rerankByRelevanceSmart(deduplicated, variations, textWeight, geoWeight, fastMode === true);
+        if (requestAborted()) throw new PeticionCancelada();
 
         // V15: Warn if top result has geoScore=0 despite location being set
         const osmGeoSmart = getGeoContext();
@@ -1883,9 +1987,11 @@ async function handleSmartSearch(body: any, baseUrl: string): Promise<any> {
             console.log(`[SMART] Coverage floor: added ${backfill.length} results to avoid empty response`);
         }
 
-        reranked = reranked.slice(0, maxResults);
+        // 1.1.6: lo local primero (el reordenamiento de arriba deshace el orden que traia cada search)
+        const prioridadSmart = priorizarLocales(colapsarDuplicados(reranked), String(query || ''), location, university, Math.max(5, Math.ceil(maxResults / 2)));
+        reranked = prioridadSmart.resultados.slice(0, maxResults);
 
-        return { success: true, data: { sources: reranked, total: reranked.length, totalBeforeDedup: allResults.length, queriesUsed: variations } };
+        return { success: true, data: { sources: reranked, total: reranked.length, totalBeforeDedup: allResults.length, queriesUsed: variations, ...(fallosVariantes.length ? { aviso: `${fallosVariantes.length} de ${variations.length} consultas no respondieron; el resultado es parcial`, fallos: fallosVariantes } : {}) } };
     };
 
     try {
@@ -1924,7 +2030,7 @@ async function handleSpecializedSearch(method: string, body: any, baseUrl: strin
     if (process.env.VERCEL === '1' || process.env.VERCEL) {
         return dispatchInProcess('POST', '/api/search', searchBody);
     }
-    const res = await fetch(`${baseUrl}/api/search`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(searchBody), signal: AbortSignal.timeout(120000) });
+    const res = await fetch(`${baseUrl}/api/search`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(searchBody), signal: senalConPlazo(120000) });
     if (!res.ok) throw new Error(`HTTP Error ${res.status}`);
     return res.json();
 }
@@ -2024,6 +2130,50 @@ async function handlePdfTool(method: string, args: any): Promise<any> {
     return handler(args);
 }
 
+/**
+ * LetXinet 1.1.6: sondea las fuentes principales con una consulta minima (5 s cada una, todas a la
+ * vez) y suma el estado de los circuit breakers. El resultado se guarda 60 s para que llamar a
+ * health_check varias veces no cargue a las fuentes.
+ */
+let _fuentesCache: { ts: number; datos: Array<{ fuente: string; estado: string; detalle: string; ms?: number }> } | null = null;
+async function estadoDeFuentes(): Promise<Array<{ fuente: string; estado: string; detalle: string; ms?: number }>> {
+    if (_fuentesCache && Date.now() - _fuentesCache.ts < 60_000) return _fuentesCache.datos;
+    const { getGateSnapshot } = await import('../utils/inter-process-provider-limiter');
+    const abiertos = new Map(getGateSnapshot().filter(d => d.circuitOpen).map(d => [d.domain, d.cooldownRemainingSeconds]));
+    const sondas: Array<{ fuente: string; url: string; clave?: string; cabeceras?: Record<string, string> }> = [
+        { fuente: 'ALICIA', url: 'https://alicia.concytec.gob.pe/vufind/api/v1/search?lookfor=salud&type=AllFields&limit=1' },
+        { fuente: 'La Referencia', url: 'https://www.lareferencia.info/vufind/api/v1/search?lookfor=salud&type=AllFields&limit=1&format=json' },
+        { fuente: 'OpenAlex', url: 'https://api.openalex.org/works?search=health&per-page=1' },
+        { fuente: 'Crossref', url: 'https://api.crossref.org/works?query=health&rows=1' },
+        { fuente: 'PubMed', url: 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=health&retmax=1&retmode=json' },
+        { fuente: 'Semantic Scholar', url: 'https://api.semanticscholar.org/graph/v1/paper/search?query=health&limit=1', clave: 'SEMANTIC_SCHOLAR_API_KEY', cabeceras: process.env.SEMANTIC_SCHOLAR_API_KEY ? { 'x-api-key': process.env.SEMANTIC_SCHOLAR_API_KEY } : undefined },
+        { fuente: 'CORE', url: 'https://api.core.ac.uk/v3/search/works?q=health&limit=1', clave: 'CORE_API_KEY', cabeceras: process.env.CORE_API_KEY ? { Authorization: `Bearer ${process.env.CORE_API_KEY}` } : undefined },
+    ];
+    const datos = await Promise.all(sondas.map(async s => {
+        const dominio = new URL(s.url).hostname;
+        if (abiertos.has(dominio)) return { fuente: s.fuente, estado: 'en pausa', detalle: `fallo varias veces seguidas; V11 vuelve a intentarlo en ${abiertos.get(dominio)} s` };
+        const t0 = Date.now();
+        try {
+            // fetch directo: una sonda no debe contar como fallo en el circuit breaker de la fuente
+            const r = await fetch(s.url, { headers: { 'User-Agent': 'Mozilla/5.0 LetXinet-Suite health_check', Accept: 'application/json', ...(s.cabeceras || {}) }, signal: senalConPlazo(5000) });
+            const ms = Date.now() - t0;
+            if (r.ok) return { fuente: s.fuente, estado: 'ok', detalle: `responde en ${ms} ms`, ms };
+            const sinClave = !!s.clave && !process.env[s.clave];
+            if ((r.status === 401 || r.status === 403) && sinClave) {
+                return { fuente: s.fuente, estado: 'sin clave', detalle: `no hay clave configurada (${s.clave}); la fuente es opcional`, ms };
+            }
+            const detalle = r.status === 429 ? 'demasiadas peticiones (HTTP 429): limite de uso alcanzado'
+                : (r.status === 401 || r.status === 403) ? `clave rechazada o sin permiso (HTTP ${r.status})${s.clave ? `; revisa ${s.clave}` : ''}`
+                : `HTTP ${r.status}`;
+            return { fuente: s.fuente, estado: r.status === 429 ? 'limitada' : 'con error', detalle, ms };
+        } catch (e: any) {
+            return { fuente: s.fuente, estado: 'sin respuesta', detalle: /abort|timeout/i.test(String(e?.name) + String(e?.message)) ? 'no respondio en 5 s' : String(e?.message || e).substring(0, 80), ms: Date.now() - t0 };
+        }
+    }));
+    _fuentesCache = { ts: Date.now(), datos };
+    return datos;
+}
+
 async function handleHealthCheck(baseUrl: string): Promise<any> {
     const extractionHealth = await getExtractionHealth();
     const mdCacheStats = getMarkdownCacheStats();
@@ -2035,6 +2185,17 @@ async function handleHealthCheck(baseUrl: string): Promise<any> {
         const res = await fetch(`${baseUrl}/health`, { signal: AbortSignal.timeout(10000) });
         healthData = await res.json() as any;
     }
+    // LetXinet 1.1.6: estado real de las fuentes. Antes health_check decia "ok" aunque ALICIA
+    // estuviera en pausa o OpenAlex y PubMed respondieran "demasiadas peticiones".
+    const fuentes = await estadoDeFuentes();
+    const conProblema = fuentes.filter(f => f.estado !== 'ok' && f.estado !== 'sin clave');
+    healthData = {
+        ...healthData,
+        status: conProblema.length ? 'degradado' : (healthData?.status || 'ok'),
+        fuentes,
+        ...(conProblema.length ? { aviso: `Fuentes con problemas: ${conProblema.map(f => `${f.fuente} (${f.detalle})`).join('; ')}` } : {}),
+        busquedas: estadoTurnosBusqueda(),
+    };
     return { success: true, data: { ...healthData, extraction: { mode: extractionHealth.mode, mineru: { available: extractionHealth.mineru.available, mode: extractionHealth.mineru.mode, engine: 'MinerU AI Cloud API', apiUrl: extractionHealth.mineru.apiUrl, supportedFormats: extractionHealth.mineru.supportedFormats }, markitdown: { available: extractionHealth.markitdown.available, engine: 'MarkItDown (pymupdf4llm)', pythonCmd: extractionHealth.markitdown.pythonCmd, error: extractionHealth.markitdown.error }, pdfParse: extractionHealth.pdfParse, supported_formats: extractionHealth.supported_formats, allow_remote: extractionHealth.allow_remote, recommendation: extractionHealth.recommendation, cacheEntries: mdCacheStats.entries } } };
 }
 
@@ -2075,7 +2236,9 @@ async function callInternalApi(method: string, body: any, baseUrl: string, timeo
     // Antes: body sin __timeouts → search.ts/latam-repositories.ts caían a default 60s.
     // Después: raceMs/tryMs derivados del cliente viajan al handler search.ts.
     const bodyWithTimeouts: any = isGet ? undefined : { ...body, __timeouts: timeouts };
-    const res = await fetch(`${baseUrl}${endpoint}`, { method: isGet ? 'GET' : 'POST', headers: { 'Content-Type': 'application/json' }, body: isGet ? undefined : JSON.stringify(bodyWithTimeouts), signal: AbortSignal.timeout(innerMs) });
+    // 1.1.6: senalConPlazo corta tambien esta llamada interna cuando la peticion se cancela;
+    // la ruta interna lo nota (conexion cerrada) y cancela su propio trabajo.
+    const res = await fetch(`${baseUrl}${endpoint}`, { method: isGet ? 'GET' : 'POST', headers: { 'Content-Type': 'application/json' }, body: isGet ? undefined : JSON.stringify(bodyWithTimeouts), signal: senalConPlazo(innerMs) });
     return res.json();
 }
 
@@ -2244,12 +2407,43 @@ router.post('/', async (req: Request, res: Response) => {
 
             const t0Tool = Date.now();
             let result: any;
+            // 1.1.6: al vencer el plazo se cancela de verdad el trabajo de esta peticion (las
+            // descargas en curso y las que esperan turno). Antes seguia corriendo minutos despues
+            // de devolver el error y la cola crecia con cada llamada nueva.
+            const cancelarPeticion = getRequestAbortController();
+            const esBusqueda = toolName === 'search' || toolName === 'batch_search' || toolName === 'smart_search';
+            const turno: { soltar?: () => void } = {};
             try {
-                result = await withToolTimeout(toolName, (_signal) =>
-                    callInternalApi(toolName, args, baseUrl, derived)
-                , derived.outerMs);
+                result = await withToolTimeout(toolName, async (signal) => {
+                    signal.addEventListener('abort', () => cancelarPeticion?.abort(), { once: true });
+                    if (esBusqueda) {
+                        // Como maximo un tercio del plazo (y 45 s) esperando turno
+                        turno.soltar = await tomarTurnoBusqueda(Math.min(45_000, Math.floor(derived.outerMs / 3)), signal);
+                    }
+                    try {
+                        return await callInternalApi(toolName, args, baseUrl, derived);
+                    } finally {
+                        turno.soltar?.();
+                    }
+                }, derived.outerMs);
             } catch (e: any) {
+                turno.soltar?.();
+                if (e instanceof ServidorOcupado) {
+                    const ms = Date.now() - t0Tool;
+                    log.warn({ tool: toolName, ms, enCurso: e.enCurso, enFila: e.enFila }, 'tool_busy');
+                    metrics.toolCalls.inc({ tool: toolName, client, status: 'busy' });
+                    metrics.toolLatency.labels(toolName).observe(ms);
+                    return res.json({
+                        jsonrpc: '2.0', id,
+                        error: {
+                            code: -32002,
+                            message: e.message,
+                            data: { tool: toolName, elapsed_ms: ms, ...estadoTurnosBusqueda(), hint: 'Reintenta en unos segundos; lanza las busquedas una tras otra.' },
+                        },
+                    });
+                }
                 if (e?.name === 'AbortError' || /deadline|timeout/i.test(e?.message || '')) {
+                    cancelarPeticion?.abort();
                     const ms = Date.now() - t0Tool;
                     log.warn({ tool: toolName, ms, budget: toolName }, 'tool_deadline_exceeded');
                     metrics.toolCalls.inc({ tool: toolName, client, status: 'timeout' });
@@ -2276,7 +2470,13 @@ router.post('/', async (req: Request, res: Response) => {
             // Cache the result if cacheable â€” use persistent TTL (24h) for search tools
             // V17: Don't cache empty results (stale cache blocks real data)
             // V20: Don't cache when geo context is active (profile changes â†’ different results)
-            if (CACHEABLE_TOOLS.has(toolName) && result?.data?.results?.length > 0 && !hasGeoContext) {
+            // 1.1.6: `search` y `smart_search` devuelven `data.sources`, no `data.results`, asi que
+            // nunca entraban en la cache. No se guarda una respuesta a la que le falto alguna fuente
+            // (error o circuit breaker): quedaria incompleta durante 24 h.
+            const listaCache = result?.data?.results || result?.data?.sources;
+            const faltoFuente = Object.values(result?.data?.stats || {}).some((s: any) => s?.error)
+                || (result?.data?.fuentesConError?.length > 0) || !!result?.data?.aviso;
+            if (CACHEABLE_TOOLS.has(toolName) && Array.isArray(listaCache) && listaCache.length > 0 && !hasGeoContext && !faltoFuente) {
                 setCache(cacheKey(toolName, args), result, PERSISTENT_TTL_MS);
             }
 

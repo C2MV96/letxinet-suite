@@ -65,7 +65,7 @@ async function iniciar(servidor) {
   sesiones.delete(servidor.id);
   await postar(servidor, {
     jsonrpc: '2.0', id: idInterno++, method: 'initialize',
-    params: { protocolVersion: '2025-03-26', capabilities: {}, clientInfo: { name: 'letxinet-mcp-bridge', version: '1.1.5' } },
+    params: { protocolVersion: '2025-03-26', capabilities: {}, clientInfo: { name: 'letxinet-mcp-bridge', version: '1.1.6' } },
   }, 30000);
   try { await postar(servidor, { jsonrpc: '2.0', method: 'notifications/initialized' }, 10000); } catch { /* opcional */ }
   servidor.listo = true;

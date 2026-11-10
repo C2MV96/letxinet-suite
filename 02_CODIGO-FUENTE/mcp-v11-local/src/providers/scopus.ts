@@ -16,7 +16,7 @@ export async function searchScopus(query: string, options?: SearchOptions & { sc
         console.log(`[SCOPUS] Searching: "${cleanQuery.substring(0, 50)}..."`);
 
         let scopusQuery = cleanQuery;
-        if (options?.university) scopusQuery = `(${cleanQuery}) AND AFFIL("${options.university}")`;
+        // 1.1.6: `university` ya no restringe por afiliacion (reducia los resultados); solo ordena.
         if (options?.yearStart || options?.yearEnd) {
             scopusQuery = `(${scopusQuery}) AND PUBYEAR > ${parseInt(options?.yearStart || '1950') - 1} AND PUBYEAR < ${parseInt(options?.yearEnd || new Date().getFullYear().toString()) + 1}`;
         }

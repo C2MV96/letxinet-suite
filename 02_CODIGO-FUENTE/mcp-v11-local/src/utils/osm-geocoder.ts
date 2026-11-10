@@ -373,7 +373,21 @@ async function reverseGeocodeWithOSM(lat: number, lon: number): Promise<OsmGeoco
     return null;
 }
 
-export async function geocodeWithOSM(query: string): Promise<OsmGeocodeResult | null> {
+// LetXinet 1.1.6: una sola geocodificacion por consulta aunque la pidan muchos a la vez.
+// El reordenamiento de batch_search y smart_search llamaba a geocodeWithOSM una vez por resultado
+// con la misma consulta; como la cache aun estaba vacia, cada llamada hacia fila en el limite de
+// 1 peticion por segundo y 60 resultados tardaban cerca de 60 s (ALICIA respondia en 9 s).
+const geocodeEnCurso = new Map<string, Promise<OsmGeocodeResult | null>>();
+export function geocodeWithOSM(query: string): Promise<OsmGeocodeResult | null> {
+    const clave = String(query || '').toLowerCase().trim();
+    const enCurso = geocodeEnCurso.get(clave);
+    if (enCurso) return enCurso;
+    const p = geocodeWithOSMUnaVez(query).finally(() => geocodeEnCurso.delete(clave));
+    geocodeEnCurso.set(clave, p);
+    return p;
+}
+
+async function geocodeWithOSMUnaVez(query: string): Promise<OsmGeocodeResult | null> {
     const coords = isCoordinateQuery(query);
     if (coords) {
         return reverseGeocodeWithOSM(coords.lat, coords.lon);

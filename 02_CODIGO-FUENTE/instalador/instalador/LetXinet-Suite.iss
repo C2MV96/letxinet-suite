@@ -19,7 +19,7 @@
 ; ============================================================
 
 #define MyAppName         "LetXinet Suite"
-#define MyAppVersion      "1.1.5"
+#define MyAppVersion      "1.1.6"
 ; Requisito incluido: Node.js LTS (lo usan el adaptador de MarkItDown y los puentes MCP de bin\mcp)
 #define NodeMsi           "node-v22.23.4-x64.msi"
 #define MyAppPublisher    "C2MV / LetXipu"

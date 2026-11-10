@@ -122,7 +122,7 @@ func HandleFindNearbyPlaces(ctx context.Context, req mcp.CallToolRequest) (*mcp.
 	if err != nil {
 		logger.Error("failed to execute request", "error", err)
 		return core.ServiceError("Overpass", http.StatusServiceUnavailable,
-			"Failed to communicate with places service").ToMCPResult(), nil
+			OverpassNoResponde).ToMCPResult(), nil
 	}
 	defer resp.Body.Close()
 
@@ -506,7 +506,7 @@ func HandleSearchCategory(ctx context.Context, rawInput mcp.CallToolRequest) (*m
 	resp, err := osm.DoRequest(ctx, req)
 	if err != nil {
 		logger.Error("failed to execute request", "error", err)
-		return ErrorResponse("Failed to communicate with places service"), nil
+		return ErrorResponse(OverpassNoResponde), nil
 	}
 	defer resp.Body.Close()
 

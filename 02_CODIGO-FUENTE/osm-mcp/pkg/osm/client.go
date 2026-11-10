@@ -42,7 +42,8 @@ func init() {
 			MaxIdleConnsPerHost: 10,
 			IdleConnTimeout:     90 * time.Second,
 		}},
-		Timeout: 30 * time.Second,
+		// LetXinet 1.1.6: 90 s cubren el servidor principal de Overpass y sus espejos; cada intento tiene su limite en overpass_fallback.go
+		Timeout: 90 * time.Second,
 	}
 
 	// Set default user agent

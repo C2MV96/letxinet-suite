@@ -30,6 +30,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import { PeticionCancelada } from './geo-context';
 
 const CACHE_DIR = path.join(process.cwd(), '.cache');
 const GATE_FILE = path.join(CACHE_DIR, 'provider-gate.json');
@@ -86,7 +87,7 @@ type GateFile = Record<string, DomainState>;
 // frenaba al dominio entero y las esperas se encadenaban.
 const inFlight: Map<string, { activos: number; espera: (() => void)[] }> = new Map();
 
-function acquireInProcessSlot(domain: string, maxConcurrent: number): Promise<() => void> {
+function acquireInProcessSlot(domain: string, maxConcurrent: number, cancelar?: AbortSignal): Promise<() => void> {
     let estado = inFlight.get(domain);
     if (!estado) { estado = { activos: 0, espera: [] }; inFlight.set(domain, estado); }
     const e = estado;
@@ -96,7 +97,20 @@ function acquireInProcessSlot(domain: string, maxConcurrent: number): Promise<()
         if (siguiente) { e.activos++; siguiente(); }
     };
     if (e.activos < maxConcurrent) { e.activos++; return Promise.resolve(release); }
-    return new Promise(r => e.espera.push(() => r(release)));
+    // 1.1.6: una peticion cancelada sale de la fila. Antes seguia en ella, recibia su turno y lo
+    // retenia 1,5 s (el intervalo minimo) aunque ya nadie esperaba el resultado: tras cancelar un
+    // batch, la busqueda siguiente esperaba unos 20 s detras de esas descargas fantasma.
+    return new Promise((resolve, reject) => {
+        const entrar = () => { cancelar?.removeEventListener('abort', salir); resolve(release); };
+        const salir = () => {
+            const i = e.espera.indexOf(entrar);
+            if (i < 0) return;
+            e.espera.splice(i, 1);
+            reject(new PeticionCancelada());
+        };
+        cancelar?.addEventListener('abort', salir, { once: true });
+        e.espera.push(entrar);
+    });
 }
 
 // ─── Disk I/O (atomic) ────────────────────────────────────────────────────────
@@ -203,7 +217,7 @@ export function domainOf(url: string): string {
  * IMPORTANT: the caller MUST call `release()` when done (success or failure),
  * same way you'd release a lock. `recordSuccess/recordFailure` are separate.
  */
-export async function acquireSlot(url: string): Promise<{ release: () => void; domain: string }> {
+export async function acquireSlot(url: string, cancelar?: AbortSignal): Promise<{ release: () => void; domain: string }> {
     const domain = domainOf(url);
     const config = getConfig(domain);
     if (!config) {
@@ -224,14 +238,20 @@ export async function acquireSlot(url: string): Promise<{ release: () => void; d
     // In-process concurrency cap (must be acquired BEFORE the disk wait,
     // otherwise we'd wait on the cross-process rate and still exceed
     // maxConcurrent within our own process.)
-    const releaseInProcess = await acquireInProcessSlot(domain, config.maxConcurrent);
+    const releaseInProcess = await acquireInProcessSlot(domain, config.maxConcurrent, cancelar);
 
     try {
+        if (cancelar?.aborted) throw new PeticionCancelada();
         // Cross-process rate-limit: wait if we're inside minIntervalMs
         const elapsed = now - state.lastRequestTs;
         if (elapsed < config.minIntervalMs) {
             const wait = config.minIntervalMs - elapsed + Math.floor(Math.random() * 200); // jitter
-            await new Promise(r => setTimeout(r, wait));
+            // 1.1.6: la espera se corta si la peticion se cancela (libera el turno enseguida)
+            await new Promise<void>((resolve, reject) => {
+                const alCancelar = () => { clearTimeout(t); reject(new PeticionCancelada()); };
+                const t = setTimeout(() => { cancelar?.removeEventListener('abort', alCancelar); resolve(); }, wait);
+                cancelar?.addEventListener('abort', alCancelar, { once: true });
+            });
         }
 
         // Write-ahead: claim the slot NOW (before the fetch) so concurrent

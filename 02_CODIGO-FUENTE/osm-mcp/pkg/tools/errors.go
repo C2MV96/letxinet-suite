@@ -230,3 +230,12 @@ func GetToolUsageExample(toolName string) string {
   "longitude": -74.0060
 }`
 }
+
+// OverpassNoResponde is the message returned when no Overpass server answers
+// (LetXinet Suite 1.1.6). Before, each tool said "Failed to communicate with
+// places service" and nothing told the user which service was down or what
+// still worked.
+const OverpassNoResponde = "Overpass no responde: se probaron el servidor principal y sus espejos. " +
+	"Las busquedas por radio, explore_area y los poligonos dependen de Overpass. " +
+	"geocode_address y reverse_geocode (Nominatim) siguen funcionando: usalos para ubicar el lugar. " +
+	"Revisa osm_health y reintenta mas tarde, o define OVERPASS_URL / OVERPASS_FALLBACK_URLS con otro servidor."

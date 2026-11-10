@@ -1,6 +1,8 @@
-# Código fuente de LetXinet Suite 1.1.5 (recompilación del 09/11/2026)
+# Código fuente de LetXinet Suite 1.1.6 (recompilación del 10/11/2026)
 
 Este es el código con el que se compiló el instalador de `01_INSTALADORES`. No contiene claves.
+
+**Cambios de la 1.1.6:** están en `CHANGELOG.md` (búsqueda y estabilidad de V11, espejos de Overpass en OSM-MCP y aviso de claves en el Desktop). La versión 1.1.6 va en el `.iss`, el `.env`, los puentes, el configurador y `actualizar-config.ps1`. Antes de compilar, `runtime-extra` debe tener `msvcp140.dll` y el `.whl` de numpy (no se guardan en git; ver `runtime-extra\LEEME.txt`).
 
 **Cambios de la 1.1.5** (arreglan lo que encontraron las pruebas del 08–09/11/2026; detalle en `06_INFORMES-Y-PRUEBAS\pruebas-busqueda-2026-11-09.md`):
 - `runtime-extra\numpy-2.3.5-cp312-cp312-win_amd64.whl` (nuevo): `recompilar-todo.ps1` lo pone en el Python de MarkItDown en lugar de numpy 2.5.1, que exige un procesador con SSE4.2. En procesadores anteriores MarkItDown no arrancaba («DLL load failed while importing _multiarray_umath»). El paso 8 comprueba que el Python de MarkItDown cargue numpy 2.3.5 con PyMuPDF4LLM.

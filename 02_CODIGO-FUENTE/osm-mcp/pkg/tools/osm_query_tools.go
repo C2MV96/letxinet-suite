@@ -216,7 +216,7 @@ func HandleOSMQueryBBox(ctx context.Context, req mcp.CallToolRequest) (*mcp.Call
 	resp, err := client.Do(httpReq)
 	if err != nil {
 		logger.Error("failed to execute request", "error", err)
-		return ErrorResponse("Failed to communicate with Overpass API"), nil
+		return ErrorResponse(OverpassNoResponde), nil
 	}
 	defer resp.Body.Close()
 

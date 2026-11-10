@@ -219,7 +219,7 @@ async function preguntar(texto) {
 
 (async () => {
   log(`LetXinet Suite: configuracion de clientes (instalacion en ${APP})`);
-  if (!fs.existsSync(PUENTE)) { aviso(`no se encuentra ${PUENTE}; instala o repara LetXinet Suite 1.1.5`); process.exit(1); }
+  if (!fs.existsSync(PUENTE)) { aviso(`no se encuentra ${PUENTE}; instala o repara LetXinet Suite 1.1.6`); process.exit(1); }
   if (modo && !['separados', 'juntos', 'ambos'].includes(modo)) {
     aviso(`modo no valido: "${modo}" (usa separados, juntos o ambos)`);
     process.exit(2);

@@ -66,6 +66,9 @@ type OSMHealthOutput struct {
 	Overpass      OSMSingleProbeResult `json:"overpass"`
 	LatencyMs     map[string]int64     `json:"latency_ms"`
 	UptimeSeconds int64                `json:"uptime_seconds"`
+	// LetXinet Suite 1.1.6: mirror in use (when the primary is down) and plain-language notes.
+	OverpassServer string   `json:"overpass_server,omitempty"`
+	Notes          []string `json:"notes,omitempty"`
 }
 
 // HandleOSMHealth implements the osm_health tool: performs 3 live HTTP probes
@@ -137,6 +140,27 @@ func HandleOSMHealth(ctx context.Context, req mcp.CallToolRequest) (*mcp.CallToo
 
 	wg.Wait()
 
+	// LetXinet Suite 1.1.6: the probe above only looks at the primary Overpass
+	// server. If a mirror answered recently, the Overpass tools work, so report
+	// "ok" and name the server in use instead of "down".
+	var notes []string
+	overpassServer := ""
+	if mirror := osm.OverpassMirrorInUse(); mirror != "" {
+		overpassServer = mirror
+		if overpass.Status != "ok" {
+			overpass.Status = "ok"
+			notes = append(notes, "Overpass: el servidor principal no responde; se usa el espejo "+mirror+" (las busquedas por radio funcionan, algo mas lentas).")
+		}
+	} else if overpass.Status != "ok" {
+		notes = append(notes, "Overpass: el servidor principal no responde. La proxima busqueda por radio probara los espejos automaticamente (puede tardar unos 15 s).")
+	}
+	if osrm.Status != "ok" {
+		notes = append(notes, "OSRM no responde: las rutas y tiempos de viaje no estan disponibles. Geocodificacion y busquedas por radio no dependen de OSRM.")
+	}
+	if nominatim.Status != "ok" {
+		notes = append(notes, "Nominatim no responde: geocode_address y reverse_geocode no estan disponibles.")
+	}
+
 	// Aggregate status: healthy (all ok) | degraded (some ok) | unhealthy (none ok)
 	okCount := 0
 	for _, r := range []OSMSingleProbeResult{nominatim, osrm, overpass} {
@@ -161,7 +185,9 @@ func HandleOSMHealth(ctx context.Context, req mcp.CallToolRequest) (*mcp.CallToo
 			"osrm":      osrm.LatencyMs,
 			"overpass":  overpass.LatencyMs,
 		},
-		UptimeSeconds: int64(time.Since(osmHealthStart).Seconds()),
+		UptimeSeconds:  int64(time.Since(osmHealthStart).Seconds()),
+		OverpassServer: overpassServer,
+		Notes:          notes,
 	}
 
 	resultBytes, err := json.Marshal(output)

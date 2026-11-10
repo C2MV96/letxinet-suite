@@ -2,6 +2,74 @@
 
 Las versiones anteriores a la 1.1.2 están en `07_DOCUMENTACION-ORIGINAL/PLAN-Y-PROGRESO-suite/CHANGELOG.md`. El detalle de cada versión está en `08_REPORTE-COMPLETO-DE-LO-SUCEDIDO.md`.
 
+## 1.1.6 (10/11/2026)
+
+Corrige todo lo que quedó pendiente de las pruebas de búsqueda del 09/11/2026 (`06_INFORMES-Y-PRUEBAS/pruebas-busqueda-2026-11-09.md`). Cambia V11, OSM-MCP y el Desktop.
+
+### Búsqueda (V11)
+
+- **Encuentra las tesis locales.** Con 4 palabras o más, la consulta a ALICIA se partía en pares de las primeras palabras y el lugar, que va al final, nunca se enviaba. Ahora se envían la consulta completa, «tema + lugar» por título y el tema solo (`planConsultasAlicia` en `utils/pertinencia-repositorios.ts`). La Referencia recibe además «tema + lugar».
+- **Lo local va primero, sin quitar resultados.** Los resultados que nombran el lugar suben al inicio, hasta media página. El filtro de pertinencia conserva los trabajos del lugar que tratan el tema aunque no tengan todas las palabras.
+- **El lugar se reconoce mejor.** Es la última palabra con mayúscula de la consulta («Aedes» ya no cuenta como lugar) o una ciudad o departamento conocido, aunque vaya en minúscula («dengue chimbote»).
+- **`location` y `university` ya no reducen los resultados.** Solo ordenan, en todas las fuentes. Antes `university` filtraba en ALICIA, OpenAlex y Scopus, y `location` se anteponía a la consulta.
+- **RENATI ya no espera a la cosecha OAI-PMH.** La cosecha corría siempre y retenía la respuesta unos 30 s. Ahora solo corre si ALICIA trae menos de 5 resultados, con un plazo de 12 s (`RENATI_OAI_TIMEOUT_MS`), y se pausa 10 minutos si vence 2 veces seguidas.
+- **`batch_search`:**
+  - aplica el filtro de pertinencia de repositorios y pone lo local primero, como `search`;
+  - respeta `fastMode` al reordenar;
+  - une los duplicados entre ALICIA y La Referencia (compara la dirección y el título, no solo «título + año»);
+  - no consulta ALICIA dos veces cuando también va RENATI;
+  - informa en `fuentesConError` las fuentes que no respondieron.
+- **`batch_search` y `smart_search` son mucho más rápidos.** Al reordenar pedían la misma geocodificación una vez por resultado, y cada petición hacía fila en el límite de 1 por segundo: 60 resultados tardaban cerca de 60 s. Ahora se pide una sola vez (`utils/osm-geocoder.ts`).
+- **`smart_search` ya no devuelve «éxito» con 0 resultados** cuando todas sus consultas fallan: devuelve el error. Si fallan algunas, lo avisa en `aviso`.
+- **`search` y `smart_search` entran en la caché.** No se guarda una respuesta a la que le faltó alguna fuente.
+- **País correcto.** La Referencia salía con país `_version` por un error al leer `country-keywords.json`.
+- **Universidad según el repositorio.** Si la dirección del registro es de un repositorio peruano conocido, manda el repositorio; el valor anterior queda en `universityReported`. Un país suelto («Ecuador») ya no figura como universidad (`utils/acabado-resultados.ts`).
+- **Enlace directo al PDF.** Para los 5 primeros resultados se resuelve el PDF en un plazo de 6 s; `pdfUrl` pasa a ser el PDF y la página del repositorio queda en `handleUrl`. En `fastMode` solo se hace con `resolverPdf: true`.
+- **ALICIA en pausa se informa.** Si su *circuit breaker* está abierto, `stats` muestra el motivo en lugar de `found: 0`.
+- **Descripciones de `search` y `batch_search`:** `search` figura como la búsqueda recomendada.
+
+### Estabilidad (V11)
+
+- **Cancela el trabajo vencido.** Al vencer el plazo de una herramienta, o si el cliente cierra la conexión, se cancelan sus descargas en curso y las que esperaban turno (`utils/geo-context.ts`, `providers/base.ts`, `utils/inter-process-provider-limiter.ts`). Antes seguían corriendo minutos y la cola crecía.
+- **Una cancelación no cuenta como fallo de la fuente,** así que no abre su *circuit breaker*.
+- **Límite de búsquedas simultáneas.** `search`, `batch_search` y `smart_search` corren como máximo 3 a la vez (`LETXINET_MAX_BUSQUEDAS`). Las demás esperan turno hasta 45 s; si no lo consiguen, devuelven «V11 está ocupado» en vez de agotar el plazo (`utils/turnos-busqueda.ts`).
+- **`health_check` informa el estado de cada fuente:** sondea ALICIA, La Referencia, OpenAlex, Crossref, PubMed, Semantic Scholar y CORE, y avisa de las que están en pausa, limitadas o con la clave rechazada. El estado general pasa a «degradado» si alguna falla.
+
+### Mapas (OSM-MCP)
+
+- **Los servidores espejo de Overpass ahora sí se usan.** El servidor principal consumía los 30 s del plazo total y los espejos nunca se probaban. Ahora cada intento tiene su límite (10 s el principal, 25 s cada espejo) y se recuerda 10 minutos el servidor que respondió.
+- **Nuevo primer espejo:** `overpass.openstreetmap.fr`, el único que respondió desde la red de pruebas el 10/11/2026.
+- **Error claro.** Si ningún servidor responde, las herramientas dicen que Overpass no responde y que `geocode_address` y `reverse_geocode` siguen funcionando.
+- **`osm_health`** indica el espejo en uso y explica en `notes` qué funciona y qué no.
+
+### Desktop
+
+- **Aviso de claves rechazadas.** La pantalla de claves comprueba con el proveedor las claves de Gemini y CORE (`GET /api/keys/verify`) y muestra un aviso si alguna fue rechazada.
+
+### Medido el 10/11/2026
+
+Consultas de la prueba B del 09/11, con `peru_fast` y `fastMode`:
+
+| Prueba | 1.1.5 | 1.1.6 |
+|---|---|---|
+| `search`: del lugar en los 10 primeros (Chimbote, Huaraz, Arequipa) | 1, 0 y 0 | 10, 10 y 10 |
+| `search` con `location` y `university` (Huaraz, Arequipa) | 0 y 3 resultados | 20 y 20 resultados |
+| `search` con RENATI (`peru`, `latam`) | 22,6 a 25,4 s | 1,9 a 9,7 s |
+| `batch_search`, 1 consulta | 44 a 197 s | 3,0 s |
+| `batch_search`, 3 consultas, 60 resultados | 217 s, 7 duplicados | 11,4 s, 0 duplicados |
+| `smart_search` | 84 s | 5,0 s |
+| `search` repetida (caché) | sin caché | 4 ms |
+| 8 `search` a la vez | atasco de 20 minutos el 09/11 | las 8 bien, 12 a 27 s en total |
+| `find_nearby_places` (hospitales en Chimbote) | sin respuesta en 60 s | 16,7 s la primera vez y 0,7 a 10,6 s las siguientes |
+
+Los tiempos dependen de ALICIA, que ese día respondió entre 1 y 9 s por consulta.
+
+### Límites de estas pruebas
+
+- OSRM (rutas) no responde desde la red de pruebas; eso no cambió.
+- El aviso de claves del Desktop se compiló, pero no se probó con una clave rechazada real.
+- Falta probar MarkItDown en un procesador sin SSE4.2 real (pendiente desde la 1.1.5).
+
 ## 1.1.5 (09/11/2026)
 
 Arregla lo que encontraron las pruebas de búsqueda del 08–09/11/2026 (`06_INFORMES-Y-PRUEBAS/pruebas-busqueda-2026-11-09.md`).

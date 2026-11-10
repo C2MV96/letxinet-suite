@@ -1,18 +1,58 @@
 package osm
 
 import (
+	"context"
+	"fmt"
+	"io"
 	"net/http"
 	"net/url"
 	"os"
 	"strings"
+	"sync"
+	"time"
 )
 
 // DefaultOverpassFallbackURLs are public Overpass mirrors tried, in order, when
 // the primary Overpass server fails. LetXinet Suite: the public overpass-api.de
 // instance is often overloaded, which made 10 of the 28 OSM tools fail at once.
+//
+// LetXinet Suite 1.1.6: overpass.openstreetmap.fr goes first. On 10/11/2026 it
+// was the only public server that answered from the test network (the other
+// three timed out).
 var DefaultOverpassFallbackURLs = []string{
+	"https://overpass.openstreetmap.fr/api/interpreter",
 	"https://overpass.kumi.systems/api/interpreter",
 	"https://overpass.private.coffee/api/interpreter",
+}
+
+// Per-attempt limits (time until the response headers arrive). LetXinet Suite
+// 1.1.6: before, the only limit was the client's 30 s total, and a primary
+// server that never answered used all of it, so the mirrors were never tried.
+const (
+	overpassPrimaryAttempt = 10 * time.Second
+	overpassMirrorAttempt  = 25 * time.Second
+	overpassStickyFor      = 10 * time.Minute
+)
+
+// Last server that answered, so that a dead primary is not retried on every
+// call. Forgotten after overpassStickyFor.
+var (
+	overpassStickyMu    sync.Mutex
+	overpassStickyHost  string
+	overpassStickyUntil time.Time
+)
+
+// OverpassMirrorInUse returns the host of the mirror that answered last, or ""
+// when requests are going to the primary server.
+func OverpassMirrorInUse() string {
+	overpassStickyMu.Lock()
+	defer overpassStickyMu.Unlock()
+	if time.Now().Before(overpassStickyUntil) {
+		if primary, err := url.Parse(OverpassBaseURLEnv()); err == nil && primary.Host != overpassStickyHost {
+			return overpassStickyHost
+		}
+	}
+	return ""
 }
 
 // OverpassFallbackURLsEnv returns the mirror list, honoring the comma-separated
@@ -42,33 +82,105 @@ type overpassFallbackTransport struct {
 	base http.RoundTripper
 }
 
+// cancelOnClose releases the per-attempt context when the body is closed.
+type cancelOnClose struct {
+	io.ReadCloser
+	cancel context.CancelFunc
+}
+
+func (c *cancelOnClose) Close() error {
+	err := c.ReadCloser.Close()
+	c.cancel()
+	return err
+}
+
+// attempt sends req and gives up if the response headers have not arrived
+// within limit. Once they arrive, the body can be read without that limit.
+func (t *overpassFallbackTransport) attempt(req *http.Request, limit time.Duration) (*http.Response, error) {
+	ctx, cancel := context.WithCancel(req.Context())
+	timer := time.AfterFunc(limit, cancel)
+	resp, err := t.base.RoundTrip(req.WithContext(ctx))
+	timer.Stop()
+	if err != nil {
+		cancel()
+		if req.Context().Err() == nil && ctx.Err() != nil {
+			return nil, fmt.Errorf("%s did not answer in %s", req.URL.Host, limit)
+		}
+		return nil, err
+	}
+	resp.Body = &cancelOnClose{ReadCloser: resp.Body, cancel: cancel}
+	return resp, nil
+}
+
 func (t *overpassFallbackTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 	primary, err := url.Parse(OverpassBaseURLEnv())
 	if err != nil || req.URL.Host != primary.Host {
 		return t.base.RoundTrip(req)
 	}
 
-	resp, err := t.base.RoundTrip(req)
-	if !overpassShouldRetry(resp, err) {
-		return resp, err
+	// Candidate servers in order: the one that answered last (if recent), the
+	// primary, then the mirrors.
+	type server struct {
+		u       *url.URL
+		primary bool
 	}
-
+	servers := []server{{u: primary, primary: true}}
 	for _, mirror := range OverpassFallbackURLsEnv() {
 		m, perr := url.Parse(mirror)
 		if perr != nil || m.Host == "" || m.Host == primary.Host {
 			continue
 		}
-		retry, cerr := cloneForMirror(req, m)
-		if cerr != nil {
-			break
+		servers = append(servers, server{u: m})
+	}
+	overpassStickyMu.Lock()
+	sticky := ""
+	if time.Now().Before(overpassStickyUntil) {
+		sticky = overpassStickyHost
+	}
+	overpassStickyMu.Unlock()
+	if sticky != "" && sticky != primary.Host {
+		for i, s := range servers {
+			if s.u.Host == sticky {
+				servers = append([]server{s}, append(servers[:i:i], servers[i+1:]...)...)
+				break
+			}
+		}
+	}
+
+	var resp *http.Response
+	var tried []string
+	for i, s := range servers {
+		attemptReq := req
+		if !s.primary {
+			clone, cerr := cloneForMirror(req, s.u)
+			if cerr != nil {
+				break
+			}
+			attemptReq = clone
+		}
+		limit := overpassMirrorAttempt
+		if s.primary && len(servers) > 1 {
+			limit = overpassPrimaryAttempt
 		}
 		if resp != nil {
 			_ = resp.Body.Close()
 		}
-		resp, err = t.base.RoundTrip(retry)
+		resp, err = t.attempt(attemptReq, limit)
+		tried = append(tried, s.u.Host)
 		if !overpassShouldRetry(resp, err) {
+			if i > 0 || sticky != "" {
+				overpassStickyMu.Lock()
+				overpassStickyHost, overpassStickyUntil = s.u.Host, time.Now().Add(overpassStickyFor)
+				overpassStickyMu.Unlock()
+			}
 			return resp, err
 		}
+		if req.Context().Err() != nil {
+			break
+		}
+	}
+	if err != nil {
+		return nil, fmt.Errorf("Overpass no responde (servidores probados: %s): %w", strings.Join(tried, ", "), err)
 	}
 	return resp, err
 }
@@ -77,7 +189,7 @@ func overpassShouldRetry(resp *http.Response, err error) bool {
 	if err != nil {
 		return true
 	}
-	return resp.StatusCode == http.StatusTooManyRequests || resp.StatusCode >= 500
+	return resp.StatusCode == http.StatusTooManyRequests || resp.StatusCode == http.StatusForbidden || resp.StatusCode >= 500
 }
 
 // cloneForMirror copies the request onto the mirror's scheme, host and path,

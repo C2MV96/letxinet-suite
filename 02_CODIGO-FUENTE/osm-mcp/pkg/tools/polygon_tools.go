@@ -123,7 +123,7 @@ func HandlePolygonFromAdmin(ctx context.Context, req mcp.CallToolRequest) (*mcp.
 	client := osm.GetClient(ctx)
 	resp, err := client.Do(httpReq)
 	if err != nil {
-		return ErrorResponse("Failed to communicate with Overpass API"), nil
+		return ErrorResponse(OverpassNoResponde), nil
 	}
 	defer resp.Body.Close()
 

@@ -2,50 +2,57 @@
 
 LetXinet Suite es un instalador para Windows 10 y 11 (x64). Deja funcionando en el equipo, como servicios locales, herramientas de investigación académica, mapas y conversión de PDF. Los clientes de IA compatibles con MCP las usan: Claude Code, Claude Desktop y OpenCode.
 
-- **Suite 1.1.5, Variante B:** sin claves; cada usuario carga las suyas.
+- **Suite 1.1.6, Variante B:** sin claves; cada usuario carga las suyas.
 - **Addon Bridges 1.0.0:** complemento opcional que agrega Word y LaTeX.
 - **Herramientas MCP:** 28 de búsqueda académica y PDF, 28 de mapas, 2 de conversión de PDF, 5 del puente de tareas largas, más 24 de Word y 9 de LaTeX con el addon.
 - **Skills:** 2 skills para Claude Code y 62 para OpenCode.
 
 | | |
 |---|---|
-| **Versión** | 1.1.5 (09/11/2026) · [cambios](CHANGELOG.md) |
+| **Versión** | 1.1.6 (10/11/2026) · [cambios](CHANGELOG.md) |
 | **Sistema** | Windows 10 y 11, 64 bits |
 | **Instalador** | `Setup.exe` (6 MB) + `Setup-1.bin` (424 MB), en *Releases* |
 | **Privacidad** | Todo corre en `127.0.0.1`; el instalador no trae claves |
-| **Estado** | Compilado y probado sin instalar; ver [qué se probó](#qué-se-probó-de-la-115) |
+| **Estado** | Compilado y probado sin instalar; ver [qué se probó](#qué-se-probó-de-la-116) |
 
 ## Inicio rápido
 
 1. Descarga de *Releases* los dos archivos del instalador y déjalos en la misma carpeta.
-2. Ejecuta `LetXinet-Suite-1.1.5-VariantB-Setup.exe` como administrador y deja marcada la casilla que configura los clientes de IA.
+2. Ejecuta `LetXinet-Suite-1.1.6-VariantB-Setup.exe` como administrador y deja marcada la casilla que configura los clientes de IA.
 3. Reinicia Claude Code, Claude Desktop u OpenCode.
 4. Pide algo como: «busca tesis peruanas sobre anemia infantil con `search` en `peru_fast`».
 5. Si algo falla: menú Inicio → «Probar LetXinet Suite» y revisa [Solución de problemas](#solución-de-problemas).
 
-## Novedades de la 1.1.5
+## Novedades de la 1.1.6
 
-- **MarkItDown funciona en procesadores antiguos:** trae numpy 2.3.5, que no exige SSE4.2.
-- **`letxinet-jobs` ya no corta las búsquedas a los 114 s** y avisa cuando una tarea falló o no existe.
-- **V11 ya no arrastra la ubicación** de una búsqueda a las siguientes.
-- **`search` respeta el límite de resultados** con `maxResults`.
-- **El skill de investigación recomienda `search`**, que en las pruebas fue más rápido y más pertinente que `batch_search`.
+- **Las tesis del lugar salen primero.** Si la consulta nombra una ciudad o región, V11 la envía a ALICIA junto con el tema y pone esos resultados al inicio.
+- **`location` y `university` ya no reducen los resultados:** solo ordenan.
+- **`batch_search` y `smart_search` tardan segundos, no minutos,** y `batch_search` ya aplica el filtro de pertinencia y une los duplicados.
+- **V11 ya no se atasca con varias búsquedas a la vez:** cancela el trabajo vencido y corre como máximo 3 búsquedas simultáneas.
+- **RENATI responde en segundos** (antes unos 30 s fijos).
+- **Enlace directo al PDF** en los 5 primeros resultados, universidad según el repositorio y país correcto.
+- **Los mapas vuelven a funcionar cuando el servidor principal de Overpass no responde:** se usan los servidores espejo.
+- **`health_check` y `osm_health` dicen qué fuente o servicio falla,** y el Desktop avisa si una clave fue rechazada.
 
-### Qué se probó de la 1.1.5
+### Qué se probó de la 1.1.6
 
-| Arreglo | Resultado |
-|---|---|
-| numpy 2.3.5 en MarkItDown | Carga con PyMuPDF4LLM y convierte un PDF; su base es SSE3 |
-| `letxinet-jobs` sin corte | `batch_search` de 3 consultas: 150 s y 20 resultados (antes, corte a 114 s) |
-| Errores de `gateway_poll` | `ERROR` con el motivo, `NOT_FOUND` e `INVALID` |
-| Ubicación por búsqueda | Huaraz y luego Arequipa: cada búsqueda usó su región |
-| Límite de resultados | Sin límite 8, `maxSources=5` 5, `maxResults=7` 7 |
+Consultas de la prueba del 09/11/2026, con `peru_fast` y `fastMode`:
 
-Falta probar MarkItDown en un procesador sin SSE4.2 real. El detalle está en `08_REPORTE-COMPLETO-DE-LO-SUCEDIDO.md`, §3.15.
+| Prueba | 1.1.5 | 1.1.6 |
+|---|---|---|
+| `search`: del lugar en los 10 primeros (Chimbote, Huaraz, Arequipa) | 1, 0 y 0 | 10, 10 y 10 |
+| `search` con `location` y `university` (Huaraz, Arequipa) | 0 y 3 resultados | 20 y 20 resultados |
+| `search` con RENATI (`peru`, `latam`) | 22,6 a 25,4 s | 1,9 a 9,7 s |
+| `batch_search`, 3 consultas, 60 resultados | 217 s, 7 duplicados | 11,4 s, 0 duplicados |
+| `smart_search` | 84 s | 5,0 s |
+| 8 `search` a la vez | atasco de 20 minutos | las 8 bien, 12 a 27 s en total |
+| `find_nearby_places` (hospitales en Chimbote) | sin respuesta en 60 s | 16,7 s la primera vez |
+
+Los tiempos dependen de ALICIA, que ese día respondió entre 1 y 9 s por consulta. Falta probar MarkItDown en un procesador sin SSE4.2 real, y OSRM (rutas) sigue sin responder desde la red de pruebas. El detalle está en [CHANGELOG.md](CHANGELOG.md).
 
 ## Contenido
 
-- [Inicio rápido](#inicio-rápido) · [Novedades de la 1.1.5](#novedades-de-la-115)
+- [Inicio rápido](#inicio-rápido) · [Novedades de la 1.1.6](#novedades-de-la-116)
 
 1. [Cómo está armado](#cómo-está-armado)
 2. [Requisitos](#requisitos)
@@ -106,16 +113,16 @@ Falta probar MarkItDown en un procesador sin SSE4.2 real. El detalle está en `0
 ## Instalar
 
 ### LetXinet Suite
-1. Descarga `LetXinet-Suite-1.1.5-VariantB-Setup.exe` y `LetXinet-Suite-1.1.5-VariantB-Setup-1.bin` desde *Releases* y déjalos en la misma carpeta.
-2. Comprueba los hashes SHA-256 (también en `01_INSTALADORES/HASHES-SHA256-v1.1.5-VariantB.txt`):
+1. Descarga `LetXinet-Suite-1.1.6-VariantB-Setup.exe` y `LetXinet-Suite-1.1.6-VariantB-Setup-1.bin` desde *Releases* y déjalos en la misma carpeta.
+2. Comprueba los hashes SHA-256 (también en `01_INSTALADORES/HASHES-SHA256-v1.1.6-VariantB.txt`):
 
    | Archivo | Tamaño | SHA-256 |
    |---|---|---|
-   | `LetXinet-Suite-1.1.5-VariantB-Setup.exe` | 6 MB | `F50E60093407C0957351B932F78DA2227A636BCACCC89A084E88FBBF4A3B5B54` |
-   | `LetXinet-Suite-1.1.5-VariantB-Setup-1.bin` | 424 MB | `BBBF28FAFAB2C8685A0AE1BF37E7A55503594C7B45B0E7C83A9F3430D3EB7CF2` |
+   | `LetXinet-Suite-1.1.6-VariantB-Setup.exe` | 6 MB | `4916A96FFD50B09B6C627FACED76AABD989B19FD75FA0B98E0495DA871FB23C1` |
+   | `LetXinet-Suite-1.1.6-VariantB-Setup-1.bin` | 424 MB | `6A3E02EF652D6A02D667A73D1DFFB35D14CA4643251FF6E559F04AE041E1AB17` |
 
    ```powershell
-   Get-FileHash .\LetXinet-Suite-1.1.5-VariantB-Setup.exe, .\LetXinet-Suite-1.1.5-VariantB-Setup-1.bin -Algorithm SHA256
+   Get-FileHash .\LetXinet-Suite-1.1.6-VariantB-Setup.exe, .\LetXinet-Suite-1.1.6-VariantB-Setup-1.bin -Algorithm SHA256
    ```
 3. Ejecuta el `.exe` como administrador. El instalador:
    - instala Node.js si falta;
@@ -131,7 +138,7 @@ Falta probar MarkItDown en un procesador sin SSE4.2 real. El detalle está en `0
 **Instalación sin ventanas** (desde una consola como administrador):
 
 ```bat
-LetXinet-Suite-1.1.5-VariantB-Setup.exe /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /LOG="instalar.log"
+LetXinet-Suite-1.1.6-VariantB-Setup.exe /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /LOG="instalar.log"
 ```
 
 **Desinstalar:** menú Inicio → «Desinstalar LetXinet Suite». Quita el programa y los tres servicios; la configuración de `C:\ProgramData\LetXinet Suite` queda en el equipo.
@@ -168,9 +175,9 @@ Servidor MCP `letxinet-v11` (también dentro de `letxinet-ambos`). El asterisco 
 
 | Herramienta | Qué hace | Parámetros |
 |---|---|---|
-| `search` | Una sola consulta en las fuentes elegidas. La más rápida: unos 5 a 9 s con `peru_fast`, unos 30 s si incluye RENATI. Úsala por defecto | `query`*, `sources`, `maxResults`, `maxSources` (alias de `maxResults` desde la 1.1.5), `yearStart`, `yearEnd`, `university`, `location`, `fastMode`, `filterFalsePositives` |
-| `batch_search` | Varias consultas en paralelo en varios grupos de fuentes, sin duplicados. Tarda de 1 a 3 minutos y no aplica el filtro de pertinencia de repositorios. Llámala directo; con la 1.1.5 también sirve `letxinet-jobs` (ver [Puentes](#puentes-mcp-de-la-suite)) | `queries`, `query`, `sources`, `maxResults`, `yearStart`, `yearEnd`, `university`, `location`, `fastMode`, `filterFalsePositives` |
-| `smart_search` | Genera variantes de la consulta (sinónimos, traducciones ES/EN/PT, términos más amplios o específicos), busca con todas y quita duplicados. Tarda de 1,5 a 3 minutos y a veces devuelve éxito con 0 resultados | `query`*, `sources`, `maxResults`, `yearStart`, `yearEnd`, `location`, `fastMode`, `filterFalsePositives` |
+| `search` | Una sola consulta en las fuentes elegidas, con filtro de pertinencia y lo local primero. Unos 2 a 10 s. Úsala por defecto | `query`*, `sources`, `maxResults`, `maxSources` (alias de `maxResults`), `yearStart`, `yearEnd`, `university`, `location`, `fastMode`, `resolverPdf`, `filterFalsePositives` |
+| `batch_search` | Varias consultas en una llamada, con una sola lista sin duplicados, el mismo filtro de pertinencia y lo local primero. Desde la 1.1.6 tarda unos 3 a 12 s con `fastMode` | `queries`, `query`, `sources`, `maxResults`, `yearStart`, `yearEnd`, `university`, `location`, `fastMode`, `resolverPdf`, `filterFalsePositives` |
+| `smart_search` | Genera variantes de la consulta (sinónimos, traducciones ES/EN/PT, términos más amplios o específicos), busca con todas y quita duplicados. Desde la 1.1.6 tarda unos 5 s con `fastMode` y avisa si alguna variante no respondió | `query`*, `sources`, `maxResults`, `yearStart`, `yearEnd`, `location`, `fastMode`, `filterFalsePositives` |
 | `search_dblp` | Busca en DBLP (informática): publicaciones, autores y eventos, listo para BibTeX | `query`*, `maxResults` |
 | `search_paperswithcode` | Papers con código, benchmarks, datasets y métodos | `query`*, `maxResults` |
 | `search_conferences` | Papers de conferencias en OpenReview (ICLR, NeurIPS, ICML…) | `query`*, `maxResults` |
@@ -185,18 +192,21 @@ Servidor MCP `letxinet-v11` (también dentro de `letxinet-ambos`). El asterisco 
 | `batch_search` con 3 variantes | 95 s | 73 % |
 | 3 `search` seguidas con las mismas 3 variantes, fusionadas | De 2 a 5 veces menos que `batch_search` | Más pertinentes que `batch_search` en 2 de 3 temas |
 
+La tabla anterior es de la 1.1.5. Con la 1.1.6 cambió así (ver [qué se probó](#qué-se-probó-de-la-116)):
+
 - **Usa `search` por defecto**, siempre con `sources`.
-- **Para varias variantes**, lanza varias `search` seguidas y fusiona los resultados. `batch_search` solo compensa cuando el filtro de `search` recorta demasiado los sinónimos.
-- **`batch_search` con una sola consulta no conviene nunca:** tarda más y trae menos.
-- **No lances varias llamadas a V11 a la vez.** V11 no cancela el trabajo vencido, así que con tres clientes a la vez la cola creció hasta que todas las búsquedas se cortaron.
-- **Para un lugar**, usa OSM para ubicarlo y sacar nombres de instituciones, y pon el lugar dentro de la consulta. Pasar `location` o `university` redujo los resultados. Verifica lo local en ALICIA: V11 se perdió tesis locales que existen.
+- **Para varias variantes** sirven tanto varias `search` seguidas como un `batch_search`: los dos aplican el mismo filtro y tardan segundos. `batch_search` entrega además una sola lista sin duplicados.
+- **Varias llamadas a la vez ya no atascan V11:** corren 3 búsquedas a la vez y el resto espera turno. Si una espera más de 45 s, recibe «V11 está ocupado» y hay que reintentar.
+- **Para un lugar**, escríbelo en la consulta («dengue Chimbote») o pásalo en `location`. Los trabajos del lugar salen primero y no se pierde ningún resultado.
 
 Notas de uso:
-- Indica siempre `sources`: sin fuentes, `search` puede superar su límite de 114 s.
-- Para limitar resultados usa `maxResults`. En la 1.1.3 y la 1.1.4, `maxSources` no limitaba nada; desde la 1.1.5 es un alias de `maxResults`.
+- Indica siempre `sources`: sin fuentes, `search` consulta todas y tarda más.
+- Para limitar resultados usa `maxResults`. `maxSources` es un alias desde la 1.1.5.
 - `sources` acepta identificadores de fuente o grupos: `latam`, `global`, `tesis`, `iberoamerica`, `peru`, `peru_fast` o `all` (ver [Fuentes académicas](#fuentes-académicas)).
-- `university` y `location` agregan términos a la consulta; no filtran los resultados.
-- `fastMode` salta el enriquecimiento lento de metadatos.
+- `university` y `location` solo ordenan: ponen primero los resultados de esa institución o de ese lugar, sin quitar ninguno.
+- `fastMode` salta el enriquecimiento lento de metadatos y la búsqueda del PDF directo.
+- `resolverPdf`: los 5 primeros resultados traen el enlace directo al PDF en `pdfUrl` (y la página del repositorio en `handleUrl`). Va activado salvo en `fastMode`; se fuerza con `true` o se apaga con `false`. Puede sumar hasta 6 s.
+- Si una fuente está caída o en pausa, `stats` (o `fuentesConError` en `batch_search`) dice cuál y por qué.
 - `filterFalsePositives` descarta resultados que no contienen las palabras o conceptos de la consulta.
 
 ### Metadatos y PDF abiertos
@@ -727,9 +737,12 @@ El script se detiene si encuentra una clave en lo que va a empaquetar o si falta
 | MarkItDown no arranca: «DLL load failed while importing _multiarray_umath» | El procesador no tiene SSE4.2 y numpy 2.5.1 (versiones 1.1.3 y 1.1.4) lo exige | Instalar la 1.1.5, que trae numpy 2.3.5, o correr `arreglo-2-markitdown` |
 | «The desktop backend did not start in time» | El backend tardó más de 2 minutos (versión 1.1.3) | Instalar la 1.1.5 o correr `arreglo-1.1.3`. Ahora espera 10 minutos |
 | Una herramienta larga se corta en el cliente | Tiempo de espera del cliente | Volver a correr el configurador, que fija `MCP_TOOL_TIMEOUT`, y llamar la herramienta directo. En la 1.1.3 y la 1.1.4, `letxinet-jobs` la corta a los 114 s (ver [Puentes](#puentes-mcp-de-la-suite)) |
-| Todas las búsquedas se cortan por tiempo aunque `/api/health` responde | Muchas llamadas a V11 a la vez: el trabajo vencido no se cancela y la cola crece | Esperar a que termine la cola o reiniciar el servicio `LetXinetSuiteMCPV11`. Hacer las búsquedas de a una |
+| Todas las búsquedas se cortan por tiempo aunque `/api/health` responde (hasta la 1.1.5) | Muchas llamadas a V11 a la vez: el trabajo vencido no se cancelaba y la cola crecía | Instalar la 1.1.6. En versiones anteriores, reiniciar el servicio `LetXinetSuiteMCPV11` |
+| «V11 está ocupado: N búsquedas en curso» | Hay 3 búsquedas corriendo y esta esperó 45 s sin turno | Reintentar en unos segundos. El máximo se cambia con `LETXINET_MAX_BUSQUEDAS` |
+| Una búsqueda trae pocos resultados o falta una fuente | Esa fuente está caída, limitada o en pausa | `health_check` muestra el estado de cada fuente; `stats` del resultado dice cuál falló |
 | Los resultados priorizan un lugar que no se pidió | En la 1.1.3 y la 1.1.4, V11 guarda la primera ubicación que detecta y no la borra hasta reiniciarse | Instalar la 1.1.5 o reiniciar el servicio `LetXinetSuiteMCPV11` |
-| `find_nearby_places`, `explore_area` o `polygon_from_admin` fallan | Overpass u OSRM no responden desde la red | `osm_health` lo confirma. `geocode_address` (Nominatim) sigue funcionando |
+| `find_nearby_places`, `explore_area` o `polygon_from_admin` fallan | Ningún servidor de Overpass responde desde la red (hasta la 1.1.5 no se llegaban a probar los espejos) | Instalar la 1.1.6. `osm_health` dice qué servidor se usa. `geocode_address` (Nominatim) sigue funcionando |
+| Las rutas y tiempos de viaje fallan | OSRM no responde desde la red | `osm_health` lo confirma; no hay servidor alterno configurado |
 | `convert_document`, `extract_tables` o `extract_formulas` fallan | Falta `MINERU_API_KEY` | Cargar la clave o usar `markitdown_convert` para PDF |
 | OSM responde lento o con errores de Overpass | Servidor público saturado | Se prueban servidores espejo solos; se pueden fijar con `OVERPASS_FALLBACK_URLS` |
 | Claude Code no ve las herramientas | No se configuró, o se instaló después de la Suite | Menú Inicio → «Configurar Claude Code, Claude Desktop y OpenCode» |
@@ -745,15 +758,24 @@ Los registros de cada servicio están en `C:\ProgramData\LetXinet Suite\Logs`, p
 - **Ubicación arrastrada entre búsquedas:** V11 guardaba la primera ubicación detectada en `globalThis.__osmGeoResult`. Ahora vale solo para la petición en curso (`utils/geo-context.ts`).
 - **`search` y `maxSources`:** `maxSources` no limitaba nada. Ahora es un alias de `maxResults`.
 
+### Corregidos en la 1.1.6
+- **Atasco con varias llamadas a la vez:** V11 cancela el trabajo vencido y limita las búsquedas simultáneas a 3.
+- **Tesis locales que no aparecían:** la consulta a ALICIA incluye el lugar, y lo local va primero.
+- **`location` y `university`:** ya no reducen los resultados.
+- **`batch_search`:** aplica el filtro de pertinencia, respeta `fastMode`, une duplicados y pasó de minutos a segundos.
+- **`search`:** entra en la caché.
+- **`smart_search`:** ya no devuelve éxito con 0 resultados cuando sus consultas fallan.
+- **Metadatos:** enlace directo al PDF en los 5 primeros resultados, país correcto en La Referencia y universidad según el repositorio.
+- **Overpass:** los servidores espejo se usan de verdad.
+
+El detalle de cada arreglo está en [CHANGELOG.md](CHANGELOG.md).
+
 ### Problemas conocidos (pendientes)
-- **V11 no cancela el trabajo que ya venció**, así que varias llamadas a la vez pueden trabar el servicio durante minutos.
-- **`batch_search`:** no aplica el filtro de pertinencia de repositorios, usa spaCy aunque se pida `fastMode` y consulta como máximo 12 fuentes por consulta (16 por el puente `letxinet-jobs`).
-- **`search`:** nunca se guarda en caché.
-- **`smart_search`:** a veces devuelve éxito con 0 resultados.
-- **Metadatos:**
-  - ningún resultado trae enlace directo al PDF (`pdfUrl` es un handle o la página del ítem);
-  - en La Referencia el país sale como `_version`;
-  - algunas fuentes ponen un valor genérico o equivocado en la universidad.
+- **`batch_search` consulta como máximo 12 fuentes por consulta** (16 con Claude). Con `latam` o `all` quedan fuera las últimas del grupo.
+- **El enlace directo al PDF solo se busca en los 5 primeros resultados** y en repositorios con handle. Para el resto sigue sirviendo `resolve_pdf`.
+- **El lugar en minúscula** solo se reconoce si es un departamento o una de unas 90 ciudades conocidas. Con mayúscula se reconoce siempre.
+- **OSRM (rutas)** no tiene servidor alterno.
+- **El aviso de claves del Desktop** solo comprueba Gemini y CORE.
 
 ## Estructura del repositorio
 

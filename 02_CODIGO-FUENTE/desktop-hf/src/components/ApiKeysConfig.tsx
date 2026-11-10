@@ -245,6 +245,8 @@ export default function ApiKeysConfig({ onSaved }: { onSaved?: () => void }) {
   const [restarting, setRestarting] = useState(false);
   const [showValues, setShowValues] = useState<Record<string, boolean>>({});
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
+  // 1.1.6: resultado de comprobar las claves con su proveedor (/api/keys/verify)
+  const [verif, setVerif] = useState<Record<string, { estado: string; detalle: string }>>({});
 
   const fetchKeys = useCallback(async () => {
     setLoading(true);
@@ -259,6 +261,11 @@ export default function ApiKeysConfig({ onSaved }: { onSaved?: () => void }) {
           (form as any)[k] = (d as any)[k] || '';
         });
         setForm(form);
+        // 1.1.6: comprobar con el proveedor si las claves guardadas son validas
+        fetch('/api/keys/verify')
+          .then((r) => (r.ok ? r.json() : null))
+          .then((v) => { if (v && !v.error) setVerif(v); })
+          .catch(() => { /* sin red: no se muestra aviso */ });
       } else {
         setMsg({ ok: false, text: `No se pudieron cargar las claves (HTTP ${res.status})` });
       }
@@ -413,6 +420,22 @@ export default function ApiKeysConfig({ onSaved }: { onSaved?: () => void }) {
           scroll estable cuando un input gana focus; el footer queda FIJO arriba
           del scroller (no sticky dentro de él), evitando saltos. */}
       <div className="flex-1 min-h-0 overflow-y-auto pr-1 -mr-1 scrollbar-thin scrollbar-thumb-zinc-300 dark:scrollbar-thumb-zinc-700 scrollbar-track-transparent">
+      {/* 1.1.6: aviso de claves que el proveedor rechazo */}
+      {Object.entries(verif).filter(([, v]) => v?.estado === 'invalida').map(([k, v]) => (
+        <div
+          key={`verif-${k}`}
+          className="flex items-start gap-2 px-3 py-2 mb-3 rounded-xl text-sm border bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800 text-red-700 dark:text-red-400"
+        >
+          <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
+          <span>
+            <strong>{LABEL[k] || k}: la clave guardada no es válida.</strong> {v.detalle}{' '}
+            {k === 'geminiApiKey'
+              ? 'El chat con Gemini no funcionará hasta que pegues una clave nueva y guardes.'
+              : 'Esa fuente no devolverá resultados hasta que cambies la clave.'}
+          </span>
+        </div>
+      ))}
+
       {/* Groups */}
       <GroupCard
         title="Sources Académicas (variante B)"

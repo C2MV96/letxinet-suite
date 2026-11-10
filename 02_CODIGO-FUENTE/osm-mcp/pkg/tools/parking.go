@@ -285,7 +285,7 @@ func fetchParkingFacilities(ctx context.Context, query string) ([]osm.OverpassEl
 	client := osm.GetClient(ctx)
 	resp, err := core.WithRetryFactory(ctx, requestFactory, client, core.DefaultRetryOptions)
 	if err != nil {
-		return nil, core.ServiceError("Overpass", http.StatusServiceUnavailable, "Failed to communicate with OSM service")
+		return nil, core.ServiceError("Overpass", http.StatusServiceUnavailable, OverpassNoResponde)
 	}
 	defer resp.Body.Close()
 
