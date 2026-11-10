@@ -7,7 +7,45 @@ LetXinet Suite es un instalador para Windows 10 y 11 (x64). Deja funcionando en 
 - **Herramientas MCP:** 28 de búsqueda académica y PDF, 28 de mapas, 2 de conversión de PDF, 5 del puente de tareas largas, más 24 de Word y 9 de LaTeX con el addon.
 - **Skills:** 2 skills para Claude Code y 62 para OpenCode.
 
+| | |
+|---|---|
+| **Versión** | 1.1.5 (09/11/2026) · [cambios](CHANGELOG.md) |
+| **Sistema** | Windows 10 y 11, 64 bits |
+| **Instalador** | `Setup.exe` (6 MB) + `Setup-1.bin` (424 MB), en *Releases* |
+| **Privacidad** | Todo corre en `127.0.0.1`; el instalador no trae claves |
+| **Estado** | Compilado y probado sin instalar; ver [qué se probó](#qué-se-probó-de-la-115) |
+
+## Inicio rápido
+
+1. Descarga de *Releases* los dos archivos del instalador y déjalos en la misma carpeta.
+2. Ejecuta `LetXinet-Suite-1.1.5-VariantB-Setup.exe` como administrador y deja marcada la casilla que configura los clientes de IA.
+3. Reinicia Claude Code, Claude Desktop u OpenCode.
+4. Pide algo como: «busca tesis peruanas sobre anemia infantil con `search` en `peru_fast`».
+5. Si algo falla: menú Inicio → «Probar LetXinet Suite» y revisa [Solución de problemas](#solución-de-problemas).
+
+## Novedades de la 1.1.5
+
+- **MarkItDown funciona en procesadores antiguos:** trae numpy 2.3.5, que no exige SSE4.2.
+- **`letxinet-jobs` ya no corta las búsquedas a los 114 s** y avisa cuando una tarea falló o no existe.
+- **V11 ya no arrastra la ubicación** de una búsqueda a las siguientes.
+- **`search` respeta el límite de resultados** con `maxResults`.
+- **El skill de investigación recomienda `search`**, que en las pruebas fue más rápido y más pertinente que `batch_search`.
+
+### Qué se probó de la 1.1.5
+
+| Arreglo | Resultado |
+|---|---|
+| numpy 2.3.5 en MarkItDown | Carga con PyMuPDF4LLM y convierte un PDF; su base es SSE3 |
+| `letxinet-jobs` sin corte | `batch_search` de 3 consultas: 150 s y 20 resultados (antes, corte a 114 s) |
+| Errores de `gateway_poll` | `ERROR` con el motivo, `NOT_FOUND` e `INVALID` |
+| Ubicación por búsqueda | Huaraz y luego Arequipa: cada búsqueda usó su región |
+| Límite de resultados | Sin límite 8, `maxSources=5` 5, `maxResults=7` 7 |
+
+Falta probar MarkItDown en un procesador sin SSE4.2 real. El detalle está en `08_REPORTE-COMPLETO-DE-LO-SUCEDIDO.md`, §3.15.
+
 ## Contenido
+
+- [Inicio rápido](#inicio-rápido) · [Novedades de la 1.1.5](#novedades-de-la-115)
 
 1. [Cómo está armado](#cómo-está-armado)
 2. [Requisitos](#requisitos)
@@ -69,7 +107,16 @@ LetXinet Suite es un instalador para Windows 10 y 11 (x64). Deja funcionando en 
 
 ### LetXinet Suite
 1. Descarga `LetXinet-Suite-1.1.5-VariantB-Setup.exe` y `LetXinet-Suite-1.1.5-VariantB-Setup-1.bin` desde *Releases* y déjalos en la misma carpeta.
-2. Comprueba los hashes con `01_INSTALADORES/HASHES-SHA256-v1.1.5-VariantB.txt`.
+2. Comprueba los hashes SHA-256 (también en `01_INSTALADORES/HASHES-SHA256-v1.1.5-VariantB.txt`):
+
+   | Archivo | Tamaño | SHA-256 |
+   |---|---|---|
+   | `LetXinet-Suite-1.1.5-VariantB-Setup.exe` | 6 MB | `F50E60093407C0957351B932F78DA2227A636BCACCC89A084E88FBBF4A3B5B54` |
+   | `LetXinet-Suite-1.1.5-VariantB-Setup-1.bin` | 424 MB | `BBBF28FAFAB2C8685A0AE1BF37E7A55503594C7B45B0E7C83A9F3430D3EB7CF2` |
+
+   ```powershell
+   Get-FileHash .\LetXinet-Suite-1.1.5-VariantB-Setup.exe, .\LetXinet-Suite-1.1.5-VariantB-Setup-1.bin -Algorithm SHA256
+   ```
 3. Ejecuta el `.exe` como administrador. El instalador:
    - instala Node.js si falta;
    - pide un correo de contacto opcional para OpenStreetMap (lo exige la política de Nominatim);
@@ -78,6 +125,16 @@ LetXinet Suite es un instalador para Windows 10 y 11 (x64). Deja funcionando en 
 4. Carga tus claves con «Configurar API keys» del menú Inicio, o desde la pantalla de claves del Desktop.
 5. Reinicia los clientes de IA.
 6. Comprueba la instalación: menú Inicio → «Probar LetXinet Suite». El informe queda en el Escritorio.
+
+**Actualizar desde una versión anterior:** ejecuta el instalador nuevo encima; no hace falta desinstalar. Conserva `LetXinet-Suite.env` con tus claves y solo agrega los ajustes nuevos.
+
+**Instalación sin ventanas** (desde una consola como administrador):
+
+```bat
+LetXinet-Suite-1.1.5-VariantB-Setup.exe /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /LOG="instalar.log"
+```
+
+**Desinstalar:** menú Inicio → «Desinstalar LetXinet Suite». Quita el programa y los tres servicios; la configuración de `C:\ProgramData\LetXinet Suite` queda en el equipo.
 
 ### Addon Bridges (opcional)
 Ejecuta `LetXinet-Addon-Bridges-v1.0.0.exe` después de la Suite. Se instala en `C:\Program Files\LetXinet Addon`, revisa los requisitos (Suite, Word, OpenCode y Node) y agrega los servidores de Word, LaTeX y el gateway a `opencode.json`. Antes guarda una copia `opencode.json.bak-<fecha>`, que se restaura al desinstalar.
