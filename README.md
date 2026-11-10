@@ -13,7 +13,7 @@ LetXinet Suite es un instalador para Windows 10 y 11 (x64). Deja funcionando en 
 | **Sistema** | Windows 10 y 11, 64 bits |
 | **Instalador** | `Setup.exe` (6 MB) + `Setup-1.bin` (424 MB), en *Releases* |
 | **Privacidad** | Todo corre en `127.0.0.1`; el instalador no trae claves |
-| **Estado** | Compilado y probado sin instalar; ver [qué se probó](#qué-se-probó-de-la-116) |
+| **Estado** | Instalada sobre la 1.1.5 y probada (harness: 33 OK, 1 aviso, 0 fallas); ver [qué se probó](#qué-se-probó-de-la-116) |
 
 ## Inicio rápido
 
@@ -183,16 +183,18 @@ Servidor MCP `letxinet-v11` (también dentro de `letxinet-ambos`). El asterisco 
 | `search_conferences` | Papers de conferencias en OpenReview (ICLR, NeurIPS, ICML…) | `query`*, `maxResults` |
 | `trending_papers` | Papers de IA del día en HuggingFace, con filtro opcional por tema | `query`, `maxResults` |
 
-**Qué conviene, según las pruebas del 09/11/2026** (tres agentes con las mismas consultas, solas y combinadas con OSM; detalle en [`06_INFORMES-Y-PRUEBAS/pruebas-busqueda-2026-11-09.md`](06_INFORMES-Y-PRUEBAS/pruebas-busqueda-2026-11-09.md)):
+**Qué conviene, según las pruebas del 10/11/2026** (versión 1.1.6 instalada, `peru_fast` y `fastMode`; las mismas consultas de la prueba del 09/11, cuyo detalle está en [`06_INFORMES-Y-PRUEBAS/pruebas-busqueda-2026-11-09.md`](06_INFORMES-Y-PRUEBAS/pruebas-busqueda-2026-11-09.md)):
 
-| Forma de buscar | Tiempo mediano | Pertinentes en los 10 primeros |
-|---|---|---|
-| `search`, 1 consulta | 31 s (5 a 9 s con `peru_fast`) | 68 % |
-| `batch_search` con 1 consulta | 77 s | 52 % |
-| `batch_search` con 3 variantes | 95 s | 73 % |
-| 3 `search` seguidas con las mismas 3 variantes, fusionadas | De 2 a 5 veces menos que `batch_search` | Más pertinentes que `batch_search` en 2 de 3 temas |
+| Forma de buscar | Tiempo | Del lugar pedido en los 10 primeros | Duplicados |
+|---|---|---|---|
+| `search`, 1 consulta | 2 a 11 s | 10 de 10 | 0 |
+| `search` con RENATI (`peru`) | 5 a 9 s | 10 de 10 | 0 |
+| `batch_search`, 1 consulta | 7 s | 10 de 10 | 0 |
+| `batch_search`, 3 consultas, 60 resultados | 30 s | 10 de 10 | 0 |
+| `smart_search` | 12 s | 10 de 10 | 0 |
+| `search` repetida | 5 ms (caché) | — | — |
 
-La tabla anterior es de la 1.1.5. Con la 1.1.6 cambió así (ver [qué se probó](#qué-se-probó-de-la-116)):
+Con la 1.1.5 las mismas pruebas dieron 1, 0 y 0 resultados del lugar, `batch_search` tardó de 44 a 217 s y `smart_search` 84 s. Los tiempos dependen de ALICIA, que ese día respondió entre 1 y 12 s por consulta.
 
 - **Usa `search` por defecto**, siempre con `sources`.
 - **Para varias variantes** sirven tanto varias `search` seguidas como un `batch_search`: los dos aplican el mismo filtro y tardan segundos. `batch_search` entrega además una sola lista sin duplicados.
@@ -245,7 +247,7 @@ Notas de uso:
 | Herramienta | Qué hace | Parámetros |
 |---|---|---|
 | `list_sources` | Lista las fuentes con su identificador y descripción | — |
-| `health_check` | Conectividad con cada fuente, latencia y claves configuradas | — |
+| `health_check` | Estado real de cada fuente principal (ALICIA, La Referencia, OpenAlex, Crossref, PubMed, Semantic Scholar, CORE): «ok», «en pausa», «limitada», «con error» o «sin clave», con el motivo. El estado general pasa a «degradado» si alguna falla. También informa cuántas búsquedas hay en curso | — |
 | `coverage_report` | Cobertura por país y fuente: repositorios activos y caídos, porcentaje de resúmenes y tiempo de respuesta | `use_cache`, `format` |
 | `help` | Ayuda y ejemplos de una herramienta, de una fuente o de todo (`all`) | `topic` |
 
@@ -286,7 +288,7 @@ V11 consulta 39 fuentes.
 
 ## Herramientas de mapas (OSM)
 
-Servidor MCP `letxinet-osm` (también dentro de `letxinet-ambos`). Usa Nominatim, Overpass y OSRM de OpenStreetMap; si Overpass falla, prueba servidores espejo.
+Servidor MCP `letxinet-osm` (también dentro de `letxinet-ambos`). Usa Nominatim, Overpass y OSRM de OpenStreetMap. Si el servidor principal de Overpass no responde en 10 s, prueba los servidores espejo (25 s cada uno) y recuerda 10 minutos el que respondió. Si ninguno responde, las herramientas lo dicen y recomiendan `geocode_address`.
 
 ### Direcciones y coordenadas
 
@@ -333,7 +335,7 @@ Servidor MCP `letxinet-osm` (también dentro de `letxinet-ambos`). Usa Nominatim
 |---|---|
 | `get_map_image` | Imagen del mapa de un lugar (`latitude`, `longitude`, `zoom` de 1 a 19) |
 | `tile_cache` | Caché de teselas: `list`, `get` o `stats` (`action`, `x`, `y`, `zoom`) |
-| `osm_health` | Conectividad con Nominatim, OSRM y Overpass |
+| `osm_health` | Conectividad con Nominatim, OSRM y Overpass. Indica en `overpass_server` el espejo en uso y explica en `notes` qué funciona y qué no |
 | `get_version` | Versión del servidor |
 
 ## Conversión de PDF a Markdown (MarkItDown)
@@ -445,7 +447,7 @@ App de escritorio (Electron y React) con su backend Express en el puerto 43123.
 | Galería de skills | Skills disponibles |
 | Herramientas activas y para adjuntos | Qué herramientas se usan y cuáles sirven para cada tipo de archivo |
 | Proveedores y modelos | OpenRouter, NVIDIA, Nebius, DeepSeek, OpenCode y proveedores o modelos propios; sincroniza los catálogos |
-| Claves API y variables del sistema | Carga claves, edita la configuración y reinicia los servicios para aplicar los cambios |
+| Claves API y variables del sistema | Carga claves, edita la configuración y reinicia los servicios para aplicar los cambios. Avisa si Google (Gemini) o CORE rechazan la clave guardada |
 
 También tiene tema claro y oscuro, varios idiomas, contador de tokens y vista para teléfono.
 
@@ -457,6 +459,7 @@ También tiene tema claro y oscuro, varios idiomas, contador de tokens y vista p
 | `POST /api/mcp/call` | Ejecuta una herramienta |
 | `POST /api/chat` | Chat con ejecución de herramientas |
 | `GET/POST /api/keys`, `POST /api/keys/restart-services` | Claves y reinicio de servicios |
+| `GET /api/keys/verify` | Comprueba con el proveedor si las claves de Gemini y CORE son válidas |
 | `GET/POST /api/system-variables` | Variables de configuración |
 | `GET /api/providers`, `GET /api/providers/:id/models`, `GET /api/detect-provider`, `ALL /api/models/sync` | Proveedores y modelos de IA |
 | `POST /api/custom-providers`, `GET/POST /api/custom-models` | Proveedores y modelos propios |
@@ -565,10 +568,11 @@ Archivo: `C:\ProgramData\LetXinet Suite\LetXinet-Suite.env`. La reinstalación l
 |---|---|
 | Puertos | `MCP_V11_PORT=4003`, `SPACY_PORT=4002`, `OSM_MCP_PORT=7082`, `OSM_METRICS_PORT=9090`, `MARKITDOWN_API_PORT=7860`, `DESKTOP_PORT=43123` |
 | Modo del Desktop | `DESKTOP_ENDPOINT_MODE`: `local_only` (de fábrica), `auto`, `remote_only` o `hf_only` |
-| OpenStreetMap | `OSM_USER_AGENT` (con el contacto que pide Nominatim), `NOMINATIM_URL`, `OVERPASS_URL`, `OVERPASS_FALLBACK_URLS` |
+| OpenStreetMap | `OSM_USER_AGENT` (con el contacto que pide Nominatim), `NOMINATIM_URL`, `OVERPASS_URL`, `OVERPASS_FALLBACK_URLS` (espejos de Overpass; el instalador 1.1.6 actualiza la lista de versiones anteriores) |
 | PDF abiertos | `UNPAYWALL_EMAIL` (correo real, lo pide Unpaywall), `UNPAYWALL_BASE_URL`, `DOI_RESOLVER_URL`, `SCIHUB_MIRRORS` (vacío: desactivado) |
 | Extracción | `DOC_EXTRACTOR_MODE=auto`, `ALLOW_REMOTE_EXTRACTION`, `MARKITDOWN_ENABLED`, `MARKITDOWN_API_URL`, `EXTRACTOR_TIMEOUT_MS`, `EXTRACTOR_MAX_MB`, `MAX_BATCH_CONCURRENCY` |
-| Tiempos | `PROVIDER_TIMEOUT_MS`, `PROVIDER_GATE_TTL_MS`, `RENATI_ATTEMPT_TIMEOUT_MS`, `MINERU_TIMEOUT`, `OAI_MAXPAGES` |
+| Tiempos | `PROVIDER_TIMEOUT_MS`, `PROVIDER_GATE_TTL_MS`, `RENATI_ATTEMPT_TIMEOUT_MS`, `RENATI_OAI_TIMEOUT_MS` (plazo de la cosecha OAI-PMH, 12 s), `MINERU_TIMEOUT`, `OAI_MAXPAGES` |
+| Búsqueda | `LETXINET_MAX_BUSQUEDAS` (búsquedas simultáneas, 3), `LETXINET_FILTRO_REPOSITORIOS=false` (apaga el filtro de pertinencia) |
 | spaCy | `SPACY_DISABLE=1` (apagado), `SPACY_MODEL=es_core_news_sm` |
 | Claves académicas | `MINERU_API_KEY`, `CORE_API_KEY`, `SCOPUS_API_KEY`, `SEMANTIC_SCHOLAR_API_KEY`, `SERP_API_KEY` y `SERPAPI_KEY`, `HF_TOKEN`, `REDALYC_TOKEN`, `OPENALEX_MAILTO` |
 | Claves de IA | `GEMINI_API_KEY`, `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `GROQ_API_KEY`, `MISTRAL_API_KEY`, `NVIDIA_API_KEY`, `OPENCODE_API_KEY`, `NEBIUS_API_KEY`, `OPENROUTER_API_KEY`, `DEEPSEEK_API_KEY` |
@@ -615,19 +619,23 @@ Los archivos de prueba (PDF, DOCX y XLSX) están en `harness/pool/fixtures`.
 |---|---|
 | `src/server.ts` | Servidor Express: monta las rutas, el estado, las métricas y los perfiles. Escucha en `127.0.0.1:4003` |
 | `src/routes/mcp.ts` | Definición de las 28 herramientas MCP y el despachador JSON-RPC. Antes de ejecutar, revisa `source`, `url`, `identifier` y `sources` para bloquear direcciones internas |
-| `src/routes/search.ts` | Orquesta la búsqueda: expande grupos de fuentes, llama a los proveedores en paralelo, quita duplicados y ordena |
+| `src/routes/search.ts` | Orquesta la búsqueda: expande grupos de fuentes, llama a los proveedores en paralelo, quita duplicados, ordena, filtra por pertinencia, pone lo local primero y resuelve el PDF de los primeros resultados |
 | `src/routes/sources.ts` | Catálogo de las 39 fuentes y sus grupos |
 | `src/routes/metadata.ts` | `fetch_metadata` y `enrich_metadata`; usa Crossref si OpenAlex no responde |
 | `src/routes/pdf.ts`, `src/routes/pdf-reader.ts` | Descarga de PDF abiertos y lectura: texto, secciones, citas, análisis, Markdown y resumen |
 | `src/providers/` | Un archivo por fuente o familia: `openalex`, `semantic-scholar`, `pubmed`, `arxiv`, `scopus`, `dblp`, `openreview`, `huggingface`, `paperswithcode`, `global-academic` (Crossref, DOAJ, Zenodo, OpenAIRE, CORE…), `latam-repositories` (ALICIA, RENATI, La Referencia y repositorios nacionales), `oai-pmh` (cosecha OAI-PMH genérica) |
-| `src/providers/base.ts` | Base común de los proveedores: `fetchWithTimeout` con plazo total, que incluye la espera en cola y la lectura de la respuesta |
+| `src/providers/base.ts` | Base común de los proveedores: `fetchWithTimeout` con plazo total, que incluye la espera en cola y la lectura de la respuesta, y que se corta si la petición se cancela |
 | `src/providers/pdf-resolver.ts`, `pdf-processor.ts` | Encuentra el PDF abierto y lo procesa |
 | `src/providers/extraction-router.ts` | Decide cómo convertir cada documento: MinerU, MarkItDown local o lectura directa |
 | `src/providers/mineru-client.ts`, `markitdown-client.ts` | Clientes de MinerU (nube) y de MarkItDown (local) |
 | `src/scraping/` | Lectura de páginas de repositorios: DSpace, handles, PMC, extracción de metadatos HTML y descargas con reintentos |
 | `src/utils/url-segura.ts` | Bloquea direcciones internas: normaliza la IP, resuelve el DNS y valida cada redirección |
 | `src/utils/inter-process-provider-limiter.ts`, `inter-process-rate-limiter.ts`, `openalex-throttle.ts` | Límites de velocidad por proveedor y por dominio, compartidos entre procesos |
-| `src/utils/reranking.ts`, `pertinencia-repositorios.ts` | Ordena por relevancia y descarta resultados que no tratan el tema |
+| `src/utils/reranking.ts` | Ordena por relevancia |
+| `src/utils/pertinencia-repositorios.ts` | Separa tema y lugar de la consulta, arma las consultas a ALICIA (`planConsultasAlicia`), descarta lo que no trata el tema y pone lo local primero |
+| `src/utils/acabado-resultados.ts` | Corrige la universidad según el repositorio y resuelve el enlace directo al PDF |
+| `src/utils/geo-context.ts` | Contexto por petición: ubicación detectada y señal de cancelación |
+| `src/utils/turnos-busqueda.ts` | Límite de búsquedas simultáneas y respuesta «V11 está ocupado» |
 | `src/utils/osm-geocoder.ts` | Ubica universidades e instituciones en el mapa |
 | `src/utils/tool-timeouts.ts`, `search-limits.ts` | Tiempos máximos por herramienta y límites de resultados |
 | `src/utils/cache.ts`, `metrics.ts`, `logger.ts`, `validators.ts`, `profile-loader.ts` | Caché, métricas, registros, validación de parámetros y perfiles de búsqueda |
@@ -733,14 +741,14 @@ El script se detiene si encuentra una clave en lo que va a empaquetar o si falta
 
 | Síntoma | Causa | Qué hacer |
 |---|---|---|
-| MarkItDown figura «Running» pero no responde en 7860 (versión 1.1.3) | Falta `msvcp140.dll` de Visual C++ | Instalar la 1.1.5 o correr `arreglo-1.1.3` |
-| MarkItDown no arranca: «DLL load failed while importing _multiarray_umath» | El procesador no tiene SSE4.2 y numpy 2.5.1 (versiones 1.1.3 y 1.1.4) lo exige | Instalar la 1.1.5, que trae numpy 2.3.5, o correr `arreglo-2-markitdown` |
-| «The desktop backend did not start in time» | El backend tardó más de 2 minutos (versión 1.1.3) | Instalar la 1.1.5 o correr `arreglo-1.1.3`. Ahora espera 10 minutos |
+| MarkItDown figura «Running» pero no responde en 7860 (versión 1.1.3) | Falta `msvcp140.dll` de Visual C++ | Instalar la 1.1.6 o correr `arreglo-1.1.3` |
+| MarkItDown no arranca: «DLL load failed while importing _multiarray_umath» | El procesador no tiene SSE4.2 y numpy 2.5.1 (versiones 1.1.3 y 1.1.4) lo exige | Instalar la 1.1.6, que trae numpy 2.3.5, o correr `arreglo-2-markitdown` |
+| «The desktop backend did not start in time» | El backend tardó más de 2 minutos (versión 1.1.3) | Instalar la 1.1.6 o correr `arreglo-1.1.3`. Ahora espera 10 minutos |
 | Una herramienta larga se corta en el cliente | Tiempo de espera del cliente | Volver a correr el configurador, que fija `MCP_TOOL_TIMEOUT`, y llamar la herramienta directo. En la 1.1.3 y la 1.1.4, `letxinet-jobs` la corta a los 114 s (ver [Puentes](#puentes-mcp-de-la-suite)) |
 | Todas las búsquedas se cortan por tiempo aunque `/api/health` responde (hasta la 1.1.5) | Muchas llamadas a V11 a la vez: el trabajo vencido no se cancelaba y la cola crecía | Instalar la 1.1.6. En versiones anteriores, reiniciar el servicio `LetXinetSuiteMCPV11` |
 | «V11 está ocupado: N búsquedas en curso» | Hay 3 búsquedas corriendo y esta esperó 45 s sin turno | Reintentar en unos segundos. El máximo se cambia con `LETXINET_MAX_BUSQUEDAS` |
 | Una búsqueda trae pocos resultados o falta una fuente | Esa fuente está caída, limitada o en pausa | `health_check` muestra el estado de cada fuente; `stats` del resultado dice cuál falló |
-| Los resultados priorizan un lugar que no se pidió | En la 1.1.3 y la 1.1.4, V11 guarda la primera ubicación que detecta y no la borra hasta reiniciarse | Instalar la 1.1.5 o reiniciar el servicio `LetXinetSuiteMCPV11` |
+| Los resultados priorizan un lugar que no se pidió | En la 1.1.3 y la 1.1.4, V11 guarda la primera ubicación que detecta y no la borra hasta reiniciarse | Instalar la 1.1.6 o reiniciar el servicio `LetXinetSuiteMCPV11` |
 | `find_nearby_places`, `explore_area` o `polygon_from_admin` fallan | Ningún servidor de Overpass responde desde la red (hasta la 1.1.5 no se llegaban a probar los espejos) | Instalar la 1.1.6. `osm_health` dice qué servidor se usa. `geocode_address` (Nominatim) sigue funcionando |
 | Las rutas y tiempos de viaje fallan | OSRM no responde desde la red | `osm_health` lo confirma; no hay servidor alterno configurado |
 | `convert_document`, `extract_tables` o `extract_formulas` fallan | Falta `MINERU_API_KEY` | Cargar la clave o usar `markitdown_convert` para PDF |
