@@ -38,7 +38,8 @@ Corrige todo lo que quedó pendiente de las pruebas de búsqueda del 09/11/2026 
 ### Mapas (OSM-MCP)
 
 - **Los servidores espejo de Overpass ahora sí se usan.** El servidor principal consumía los 30 s del plazo total y los espejos nunca se probaban. Ahora cada intento tiene su límite (10 s el principal, 25 s cada espejo) y se recuerda 10 minutos el servidor que respondió.
-- **Nuevo primer espejo:** `overpass.openstreetmap.fr`, el único que respondió desde la red de pruebas el 10/11/2026.
+- **Nuevo primer espejo:** `overpass.openstreetmap.fr`, el único que respondió desde la red de pruebas el 10/11/2026. El instalador lo agrega también a la lista de espejos de `LetXinet-Suite.env` en las laptops que se actualizan (ese archivo se conserva, y con la lista antigua el espejo nuevo no se probaba).
+- **Si ningún servidor responde, las siguientes llamadas fallan enseguida** durante 45 s, en vez de esperar otro minuto por cada reintento.
 - **Error claro.** Si ningún servidor responde, las herramientas dicen que Overpass no responde y que `geocode_address` y `reverse_geocode` siguen funcionando.
 - **`osm_health`** indica el espejo en uso y explica en `notes` qué funciona y qué no.
 
@@ -67,6 +68,7 @@ Los tiempos dependen de ALICIA, que ese día respondió entre 1 y 9 s por consul
 ### Límites de estas pruebas
 
 - OSRM (rutas) no responde desde la red de pruebas; eso no cambió.
+- Instalada sobre la 1.1.5 en la laptop de pruebas: el harness dio 33 OK, 1 aviso (Desktop cerrado) y 0 fallas.
 - El aviso de claves del Desktop se compiló, pero no se probó con una clave rechazada real.
 - Falta probar MarkItDown en un procesador sin SSE4.2 real (pendiente desde la 1.1.5).
 

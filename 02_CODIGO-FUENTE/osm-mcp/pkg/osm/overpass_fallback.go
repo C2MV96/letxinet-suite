@@ -40,7 +40,13 @@ var (
 	overpassStickyMu    sync.Mutex
 	overpassStickyHost  string
 	overpassStickyUntil time.Time
+	// Set when every server failed: for overpassDownFor the same error is
+	// returned without touching the network.
+	overpassDownErr   error
+	overpassDownUntil time.Time
 )
+
+const overpassDownFor = 45 * time.Second
 
 // OverpassMirrorInUse returns the host of the mirror that answered last, or ""
 // when requests are going to the primary server.
@@ -66,6 +72,9 @@ func OverpassFallbackURLsEnv() []string {
 	if raw == "" {
 		return DefaultOverpassFallbackURLs
 	}
+	// The variable replaces the built-in list. LetXinet-Suite.env is kept across
+	// upgrades, so the installer (actualizar-config.ps1) rewrites the list of an
+	// older version there; otherwise a mirror added later is never reached.
 	var urls []string
 	for _, u := range strings.Split(raw, ",") {
 		if u = strings.TrimSpace(u); u != "" {
@@ -147,6 +156,15 @@ func (t *overpassFallbackTransport) RoundTrip(req *http.Request) (*http.Response
 		}
 	}
 
+	// If every server failed a moment ago, answer at once instead of spending
+	// another minute per retry (the client retries each request 3 times).
+	overpassStickyMu.Lock()
+	downErr, downUntil := overpassDownErr, overpassDownUntil
+	overpassStickyMu.Unlock()
+	if downErr != nil && time.Now().Before(downUntil) {
+		return nil, downErr
+	}
+
 	var resp *http.Response
 	var tried []string
 	for i, s := range servers {
@@ -180,7 +198,13 @@ func (t *overpassFallbackTransport) RoundTrip(req *http.Request) (*http.Response
 		}
 	}
 	if err != nil {
-		return nil, fmt.Errorf("Overpass no responde (servidores probados: %s): %w", strings.Join(tried, ", "), err)
+		err = fmt.Errorf("Overpass no responde (servidores probados: %s): %w", strings.Join(tried, ", "), err)
+		if req.Context().Err() == nil {
+			overpassStickyMu.Lock()
+			overpassDownErr, overpassDownUntil = err, time.Now().Add(overpassDownFor)
+			overpassStickyMu.Unlock()
+		}
+		return nil, err
 	}
 	return resp, err
 }

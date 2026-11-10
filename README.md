@@ -118,8 +118,8 @@ Los tiempos dependen de ALICIA, que ese día respondió entre 1 y 9 s por consul
 
    | Archivo | Tamaño | SHA-256 |
    |---|---|---|
-   | `LetXinet-Suite-1.1.6-VariantB-Setup.exe` | 6 MB | `4916A96FFD50B09B6C627FACED76AABD989B19FD75FA0B98E0495DA871FB23C1` |
-   | `LetXinet-Suite-1.1.6-VariantB-Setup-1.bin` | 424 MB | `6A3E02EF652D6A02D667A73D1DFFB35D14CA4643251FF6E559F04AE041E1AB17` |
+   | `LetXinet-Suite-1.1.6-VariantB-Setup.exe` | 6 MB | `8ED9C6E8CBB041828457DAAF9DD0D610AEA14B36EFFF70A7A5CC2117BB1F6312` |
+   | `LetXinet-Suite-1.1.6-VariantB-Setup-1.bin` | 424 MB | `CE27CA2CFD38F2243921328C0A6D116063C56F69A042D25DAE62B8FDC168CB26` |
 
    ```powershell
    Get-FileHash .\LetXinet-Suite-1.1.6-VariantB-Setup.exe, .\LetXinet-Suite-1.1.6-VariantB-Setup-1.bin -Algorithm SHA256

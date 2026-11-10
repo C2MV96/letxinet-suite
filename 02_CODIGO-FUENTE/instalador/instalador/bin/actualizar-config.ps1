@@ -18,7 +18,7 @@ $cambios = @()
 $nuevos = [ordered]@{
   'OSM_MCP_URL'            = 'http://127.0.0.1:7082'
   'LETXINET_BIND_HOST'     = '127.0.0.1'
-  'OVERPASS_FALLBACK_URLS' = 'https://overpass.kumi.systems/api/interpreter,https://overpass.private.coffee/api/interpreter'
+  'OVERPASS_FALLBACK_URLS' = 'https://overpass.openstreetmap.fr/api/interpreter,https://overpass.kumi.systems/api/interpreter,https://overpass.private.coffee/api/interpreter'
 }
 $bloque = @()
 foreach ($k in $nuevos.Keys) { if ((Indice $k) -lt 0) { $bloque += "$k=$($nuevos[$k])"; $cambios += $k } }
@@ -40,6 +40,16 @@ if ($i -ge 0 -and (Valor 'SCIHUB_MIRRORS') -eq $listaVieja) {
   $lineas[$i] = 'SCIHUB_MIRRORS='
   $lineas.Insert($i, '# LetXinet 1.1.3: Sci-Hub desactivado por riesgo legal (download_pdf usa solo fuentes abiertas).')
   $cambios += 'SCIHUB_MIRRORS'
+}
+
+# 1.1.6: espejos de Overpass. La lista de la 1.1.2 a la 1.1.5 no incluia overpass.openstreetmap.fr, el unico
+# que respondio en las pruebas del 10/11/2026, y como este archivo se conserva al actualizar, el espejo nuevo
+# nunca se probaba. Se cambia solo si tiene la lista que traia la plantilla (no una que haya puesto el usuario).
+$espejosViejos = 'https://overpass.kumi.systems/api/interpreter,https://overpass.private.coffee/api/interpreter'
+$i = Indice 'OVERPASS_FALLBACK_URLS'
+if ($i -ge 0 -and (Valor 'OVERPASS_FALLBACK_URLS') -eq $espejosViejos) {
+  $lineas[$i] = "OVERPASS_FALLBACK_URLS=$($nuevos['OVERPASS_FALLBACK_URLS'])"
+  $cambios += 'OVERPASS_FALLBACK_URLS'
 }
 
 # User-Agent de OpenStreetMap: Nominatim exige que identifique la aplicacion (y pide un contacto real)
